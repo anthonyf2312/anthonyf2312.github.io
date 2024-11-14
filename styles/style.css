@@ -2,15 +2,19 @@
     /* Common background for both themes */
     --bg-gradient: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
     
-    /* Light theme */
-    --glass-bg-light: rgba(255, 255, 255, 0.15);
-    --glass-border-light: rgba(255, 255, 255, 0.2);
-    --text-color-light: #fff;
+    /* Light theme - updated colors */
+    --glass-bg-light: rgba(255, 255, 255, 0.95);  /* More white, less transparent */
+    --glass-border-light: rgba(255, 255, 255, 0.5);
+    --text-color-light: #000000;
+    --link-bg-light: rgba(255, 255, 255, 0.98);   /* Almost solid white */
+    --link-hover-bg-light: rgba(255, 255, 255, 1); /* Pure white on hover */
     
-    /* Dark theme */
+    /* Dark theme - kept the same */
     --glass-bg-dark: rgba(0, 0, 0, 0.25);
     --glass-border-dark: rgba(255, 255, 255, 0.05);
-    --text-color-dark: #fff;
+    --text-color-dark: #ffffff;
+    --link-bg-dark: rgba(0, 0, 0, 0.25);
+    --link-border-dark: rgba(255, 255, 255, 0.05);
 }
 
 html, body {
@@ -25,12 +29,17 @@ html, body {
     --glass-bg: var(--glass-bg-light);
     --glass-border: var(--glass-border-light);
     --text-color: var(--text-color-light);
+    --link-bg: var(--link-bg-light);
+    --link-border: var(--link-border-light);
+    --link-hover-bg: var(--link-hover-bg-light);
 }
 
 [data-theme="dark"] {
     --glass-bg: var(--glass-bg-dark);
     --glass-border: var(--glass-border-dark);
     --text-color: var(--text-color-dark);
+    --link-bg: var(--link-bg-dark);
+    --link-border: var(--link-border-dark);
 }
 
 body {
@@ -51,8 +60,8 @@ body {
 }
 
 #themeButton {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
+    background: var(--link-bg);
+    border: 1px solid var(--link-border);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -82,8 +91,8 @@ body {
 .glass-card {
     position: relative;
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px);     /* Increased blur */
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 40px;
@@ -128,8 +137,8 @@ body {
 }
 
 .link-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
+    background: var(--link-bg);
+    border: 1px solid var(--link-border);
     padding: 15px 20px;
     border-radius: 10px;
     text-decoration: none;
@@ -137,15 +146,16 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px);     /* Increased blur */
+    -webkit-backdrop-filter: blur(20px);
     transition: all 0.3s ease;
 }
 
 .link-card:hover {
     transform: translateY(-3px);
-    background: var(--glass-border);
+    background: var(--link-hover-bg); /* Use new hover background */
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    color: var(--text-color);
 }
 
 .link-card i {
