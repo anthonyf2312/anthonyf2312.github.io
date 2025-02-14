@@ -8,18 +8,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="back-button">
-            <i class="fas fa-arrow-left"></i> Back to Home
-        </a>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
     </nav>
-    <div class="container">
-        <div class="bot-card">
+
+    <header class="hero">
+        <div class="hero-content">
             <img src="images/lushguard-logo.png" alt="Lush Guard Logo" class="bot-logo">
             <h1>Lush Guard</h1>
             <p class="description">A powerful Discord moderation and utility bot</p>
-            
-            <div class="features">
+            <a href="#" class="cta-button">Add to Discord</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="features-section">
+            <h2>Features</h2>
+            <div class="features-grid">
                 <div class="feature-card">
                     <i class="fas fa-shield-alt"></i>
                     <h3>Moderation</h3>
@@ -51,32 +60,50 @@
                     <p>Fully configurable settings for your server's needs</p>
                 </div>
             </div>
+        </section>
 
-            <div class="command-preview">
-                <h2>Popular Commands</h2>
-                <code>/help</code> - View all commands and categories<br>
-                <code>/settings</code> - Configure server settings<br>
-                <code>/rank</code> - Check your server level<br>
-                <code>/daily</code> - Claim daily rewards
-            </div>
-
-            <div class="changelog">
-                <h2>Changelog</h2>
-                <div class="changelog-entry">
-                    <h3>Version 1.0.0</h3>
-                    <ul>
-                        <li>✨ Initial release</li>
-                        <li>🛡️ Complete moderation system</li>
-                        <li>💰 Economy system implementation</li>
-                        <li>⭐ Leveling system</li>
-                        <li>🎮 Entertainment commands</li>
-                        <li>🔧 Utility features</li>
-                    </ul>
+        <section class="commands-section">
+            <h2>Popular Commands</h2>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <code>/help</code>
+                    <p>View all commands and categories</p>
+                </div>
+                <div class="command-card">
+                    <code>/settings</code>
+                    <p>Configure server settings</p>
+                </div>
+                <div class="command-card">
+                    <code>/rank</code>
+                    <p>Check your server level</p>
+                </div>
+                <div class="command-card">
+                    <code>/daily</code>
+                    <p>Claim daily rewards</p>
                 </div>
             </div>
+        </section>
 
-            <a href="#" class="invite-button">Add to Discord</a>
+        <section class="changelog-section">
+            <h2>Latest Updates</h2>
+            <div class="changelog-card">
+                <div class="version-tag">Version 1.0.0</div>
+                <ul class="changelog-list">
+                    <li>✨ Initial release</li>
+                    <li>🛡️ Complete moderation system</li>
+                    <li>💰 Economy system implementation</li>
+                    <li>⭐ Leveling system</li>
+                    <li>🎮 Entertainment commands</li>
+                    <li>🔧 Utility features</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Lush Guard. All rights reserved.</p>
         </div>
-    </div>
+    </footer>
 </body>
 </html>

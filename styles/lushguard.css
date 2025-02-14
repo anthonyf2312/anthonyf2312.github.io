@@ -1,165 +1,211 @@
 :root {
     --primary-color: #a9eba3;
-    --secondary-color: #88c982;
-    --background-color: #1a1a1a;
-    --card-background: rgba(255, 255, 255, 0.1);
-    --text-color: #ffffff;
+    --primary-dark: #88c982;
+    --text-color: #333333;
+    --background-color: #ffffff;
+    --section-bg: #f5f5f5;
+    --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
-nav {
-    padding: 1rem;
+.navbar {
+    background-color: #ffffff;
+    box-shadow: var(--card-shadow);
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .back-button {
-    color: var(--primary-color);
+    color: var(--text-color);
     text-decoration: none;
-    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .back-button:hover {
-    color: var(--secondary-color);
+    color: var(--primary-dark);
+}
+
+.hero {
+    background-color: var(--primary-color);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.bot-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+    border: 4px solid white;
+    box-shadow: var(--card-shadow);
+}
+
+.hero h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: white;
+    color: var(--primary-dark);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 4rem 2rem;
 }
 
-.bot-card {
-    background: var(--card-background);
-    border-radius: 15px;
-    padding: 2rem;
+section {
+    margin-bottom: 4rem;
+}
+
+section h2 {
     text-align: center;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(169, 235, 163, 0.2);
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    font-size: 2rem;
 }
 
-.bot-logo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 1rem;
-}
-
-.features {
+.features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin: 3rem 0;
 }
 
 .feature-card {
-    background: rgba(169, 235, 163, 0.1);
-    padding: 1.5rem;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
 }
 
 .feature-card i {
+    color: var(--primary-color);
     font-size: 2rem;
-    color: var(--primary-color);
     margin-bottom: 1rem;
 }
 
-.invite-button {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: var(--background-color);
-    padding: 1rem 2rem;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+.commands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
 
-.invite-button:hover {
-    background-color: var(--secondary-color);
+.command-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
 }
 
-h1 {
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-}
-
-.description {
-    color: #cccccc;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-.command-preview {
-    background: rgba(169, 235, 163, 0.1);
-    padding: 2rem;
-    border-radius: 10px;
-    margin: 2rem 0;
-    text-align: left;
-}
-
-.command-preview h2 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.command-preview code {
-    background: rgba(169, 235, 163, 0.2);
+.command-card code {
+    background: var(--section-bg);
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
-    color: var(--primary-color);
-    font-family: 'Courier New', Courier, monospace;
+    color: var(--primary-dark);
+    font-family: 'Courier New', monospace;
 }
 
-.changelog {
-    background: rgba(169, 235, 163, 0.1);
+.changelog-card {
+    background: white;
     padding: 2rem;
-    border-radius: 10px;
-    margin: 2rem 0;
-    text-align: left;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
 }
 
-.changelog h2 {
-    color: var(--primary-color);
+.version-tag {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
     margin-bottom: 1rem;
+    font-weight: 600;
 }
 
-.changelog-entry {
-    margin-bottom: 1.5rem;
-}
-
-.changelog-entry h3 {
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-}
-
-.changelog-entry ul {
+.changelog-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.changelog-entry li {
+.changelog-list li {
     margin: 0.5rem 0;
     padding-left: 1.5rem;
     position: relative;
 }
 
-.changelog-entry li::before {
-    content: "•";
-    color: var(--primary-color);
+.changelog-list li::before {
+    content: "";
     position: absolute;
     left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+.footer {
+    background-color: var(--section-bg);
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 3rem 0;
+    }
+
+    .bot-logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 2rem 1rem;
+    }
 }
