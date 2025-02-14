@@ -1,10 +1,11 @@
 :root {
     --primary-color: #a9eba3;
     --primary-dark: #88c982;
-    --text-color: #333333;
-    --background-color: #ffffff;
-    --section-bg: #f5f5f5;
-    --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --text-color: #2c3e50;
+    --background-color: #f8f9fa;
+    --section-bg: #ffffff;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 body {
@@ -16,32 +17,41 @@ body {
     background-color: var(--background-color);
 }
 
+/* Navigation */
 .navbar {
-    background-color: #ffffff;
+    background-color: var(--section-bg);
     box-shadow: var(--card-shadow);
-    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 1rem 2rem;
 }
 
 .back-button {
     color: var(--text-color);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .back-button:hover {
     color: var(--primary-dark);
 }
 
+/* Hero Section */
 .hero {
-    background-color: var(--primary-color);
-    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    padding: 8rem 0 4rem;
     text-align: center;
+    margin-top: 60px;
 }
 
 .hero-content {
@@ -51,41 +61,49 @@ body {
 }
 
 .bot-logo {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     margin-bottom: 2rem;
-    border: 4px solid white;
+    border: 6px solid white;
     box-shadow: var(--card-shadow);
 }
 
 .hero h1 {
     color: white;
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .description {
     color: white;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .cta-button {
     display: inline-block;
     background-color: white;
     color: var(--primary-dark);
-    padding: 1rem 2rem;
-    border-radius: 8px;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    transition: transform 0.2s;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--card-shadow);
 }
 
 .cta-button:hover {
     transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+    background-color: var(--primary-color);
+    color: white;
 }
 
+/* Main Content */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -93,119 +111,150 @@ body {
 }
 
 section {
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
 }
 
 section h2 {
     text-align: center;
     color: var(--text-color);
-    margin-bottom: 2rem;
-    font-size: 2rem;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    position: relative;
 }
 
+section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 1rem auto 0;
+    border-radius: 2px;
+}
+
+/* Features Section */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    padding: 0 1rem;
 }
 
 .feature-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
+    background: var(--section-bg);
+    padding: 2.5rem;
+    border-radius: 12px;
     box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
 }
 
 .feature-card i {
     color: var(--primary-color);
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
+.feature-card h3 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Commands Section */
 .commands-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem;
+    padding: 0 1rem;
 }
 
 .command-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
+    background: var(--section-bg);
+    padding: 2rem;
+    border-radius: 12px;
     box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.command-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--hover-shadow);
 }
 
 .command-card code {
-    background: var(--section-bg);
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
+    display: inline-block;
+    background: var(--background-color);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
     color: var(--primary-dark);
     font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
 }
 
+/* Changelog Section */
 .changelog-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
+    background: var(--section-bg);
+    padding: 3rem;
+    border-radius: 12px;
     box-shadow: var(--card-shadow);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .version-tag {
     display: inline-block;
     background: var(--primary-color);
     color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    margin-bottom: 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    margin-bottom: 2rem;
     font-weight: 600;
 }
 
-.changelog-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.changelog-list li {
-    margin: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.changelog-list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 6px;
-    height: 6px;
-    background-color: var(--primary-color);
-    border-radius: 50%;
-}
-
+/* Footer */
 .footer {
     background-color: var(--section-bg);
     padding: 2rem 0;
     text-align: center;
     color: var(--text-color);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .hero {
-        padding: 3rem 0;
+        padding: 6rem 0 3rem;
     }
 
     .bot-logo {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
     }
 
     .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    section h2 {
         font-size: 2rem;
+    }
+
+    .feature-card, .command-card {
+        padding: 2rem;
     }
 
     .container {
         padding: 2rem 1rem;
+    }
+    
+    .changelog-card {
+        padding: 2rem;
     }
 }
