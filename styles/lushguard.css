@@ -187,34 +187,64 @@ section h2::after {
 .commands-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 1rem;
     padding: 0 1rem;
 }
 
 .command-card {
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: var(--card-shadow);
-    transition: all 0.3s ease;
+    background: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
 }
 
 .command-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--hover-shadow);
+    transform: translateY(-2px);
 }
 
 .command-card code {
     display: inline-block;
-    background-color: var(--primary-color);
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
+    background: var(--primary-color);
     color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
     font-family: 'Courier New', monospace;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.command-card p {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Add these new styles for the updated commands section */
+
+.commands-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.command-category {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.command-category h3 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.command-category h3 i {
+    color: var(--primary-dark);
 }
 
 /* Changelog Section */
@@ -282,5 +312,13 @@ section h2::after {
     
     .changelog-card {
         padding: 2rem;
+    }
+
+    .command-category {
+        padding: 1.5rem;
+    }
+    
+    .commands-grid {
+        grid-template-columns: 1fr;
     }
 }
