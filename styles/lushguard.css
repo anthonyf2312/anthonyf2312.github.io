@@ -1,0 +1,165 @@
+:root {
+    --primary-color: #a9eba3;
+    --secondary-color: #88c982;
+    --background-color: #1a1a1a;
+    --card-background: rgba(255, 255, 255, 0.1);
+    --text-color: #ffffff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+nav {
+    padding: 1rem;
+}
+
+.back-button {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.back-button:hover {
+    color: var(--secondary-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.bot-card {
+    background: var(--card-background);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(169, 235, 163, 0.2);
+}
+
+.bot-logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.feature-card {
+    background: rgba(169, 235, 163, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.invite-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.invite-button:hover {
+    background-color: var(--secondary-color);
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    color: #cccccc;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.command-preview {
+    background: rgba(169, 235, 163, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.command-preview h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.command-preview code {
+    background: rgba(169, 235, 163, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    color: var(--primary-color);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.changelog {
+    background: rgba(169, 235, 163, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.changelog h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.changelog-entry {
+    margin-bottom: 1.5rem;
+}
+
+.changelog-entry h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.changelog-entry ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.changelog-entry li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.changelog-entry li::before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
