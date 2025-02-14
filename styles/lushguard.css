@@ -1,11 +1,12 @@
 :root {
     --primary-color: #a9eba3;
     --primary-dark: #88c982;
-    --text-color: #2c3e50;
-    --background-color: #e8f5e6;
-    --section-bg: #ffffff;
-    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
-    --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    --text-color: #ffffff;
+    --text-secondary: #b3b3b3;
+    --background-color: #191A19;
+    --card-bg: #1E1F1E;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 body {
@@ -14,7 +15,7 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--primary-color);
+    background-color: var(--background-color);
     background-image: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     min-height: 100vh;
 }
@@ -33,7 +34,7 @@ body::before {
 
 /* Navigation */
 .navbar {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--card-bg);
     backdrop-filter: blur(10px);
     box-shadow: var(--card-shadow);
     position: fixed;
@@ -63,7 +64,7 @@ body::before {
 
 /* Hero Section */
 .hero {
-    background-color: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(135deg, var(--card-bg), var(--background-color));
     padding: 8rem 0 4rem;
     text-align: center;
     margin-top: 60px;
@@ -85,14 +86,14 @@ body::before {
 }
 
 .hero h1 {
-    color: var(--text-color);
+    color: var(--primary-color);
     font-size: 3rem;
     margin-bottom: 1rem;
     text-shadow: none;
 }
 
 .description {
-    color: var(--text-color);
+    color: var(--text-secondary);
     font-size: 1.25rem;
     margin-bottom: 2.5rem;
     text-shadow: none;
@@ -100,8 +101,8 @@ body::before {
 
 .cta-button {
     display: inline-block;
-    background-color: var(--primary-dark);
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--background-color);
     padding: 1rem 2.5rem;
     border-radius: 50px;
     text-decoration: none;
@@ -114,7 +115,7 @@ body::before {
 .cta-button:hover {
     transform: translateY(-2px);
     box-shadow: var(--hover-shadow);
-    background-color: var(--text-color);
+    background-color: var(--primary-dark);
     color: white;
 }
 
@@ -142,7 +143,7 @@ section h2::after {
     display: block;
     width: 60px;
     height: 4px;
-    background: var(--primary-dark);
+    background: var(--primary-color);
     margin: 1rem auto 0;
     border-radius: 2px;
 }
@@ -156,9 +157,9 @@ section h2::after {
 }
 
 .feature-card {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--card-bg);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(169, 235, 163, 0.1);
     padding: 2.5rem;
     border-radius: 12px;
     box-shadow: var(--card-shadow);
@@ -169,18 +170,25 @@ section h2::after {
 .feature-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--hover-shadow);
+    background-color: #232423;
+    border-color: var(--primary-color);
 }
 
 .feature-card i {
-    color: var(--primary-dark);
+    color: var(--primary-color);
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px rgba(169, 235, 163, 0.3);
 }
 
 .feature-card h3 {
     color: var(--text-color);
     margin-bottom: 1rem;
     font-size: 1.5rem;
+}
+
+.feature-card p {
+    color: var(--text-secondary);
 }
 
 /* Commands Section */
@@ -192,20 +200,23 @@ section h2::after {
 }
 
 .command-card {
-    background: var(--background-color);
+    background: var(--card-bg);
     padding: 1.5rem;
     border-radius: 8px;
     transition: transform 0.2s ease;
+    border: 1px solid rgba(169, 235, 163, 0.1);
 }
 
 .command-card:hover {
     transform: translateY(-2px);
+    background-color: #232423;
+    border-color: var(--primary-color);
 }
 
 .command-card code {
     display: inline-block;
-    background: var(--primary-color);
-    color: var(--text-color);
+    background: rgba(169, 235, 163, 0.1);
+    color: var(--primary-color);
     padding: 0.5rem 1rem;
     border-radius: 4px;
     font-family: 'Courier New', monospace;
@@ -214,9 +225,7 @@ section h2::after {
 }
 
 .command-card p {
-    color: var(--text-color);
-    margin: 0;
-    font-size: 0.9rem;
+    color: var(--text-secondary);
 }
 
 /* Add these new styles for the updated commands section */
@@ -228,10 +237,11 @@ section h2::after {
 }
 
 .command-category {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--card-bg);
     border-radius: 12px;
     padding: 2rem;
     box-shadow: var(--card-shadow);
+    border: 1px solid rgba(169, 235, 163, 0.1);
 }
 
 .command-category h3 {
@@ -244,14 +254,15 @@ section h2::after {
 }
 
 .command-category h3 i {
-    color: var(--primary-dark);
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(169, 235, 163, 0.3);
 }
 
 /* Changelog Section */
 .changelog-card {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--card-bg);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(169, 235, 163, 0.1);
     padding: 3rem;
     border-radius: 12px;
     box-shadow: var(--card-shadow);
@@ -262,11 +273,15 @@ section h2::after {
 .version-tag {
     display: inline-block;
     background-color: var(--primary-dark);
-    color: white;
+    color: var(--background-color);
     padding: 0.5rem 1.5rem;
     border-radius: 50px;
     margin-bottom: 2rem;
     font-weight: 600;
+}
+
+.changelog-list li {
+    color: var(--text-secondary);
 }
 
 .changelog-list li::before {
@@ -275,11 +290,11 @@ section h2::after {
 
 /* Footer */
 .footer {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--card-bg);
     backdrop-filter: blur(10px);
     padding: 2rem 0;
     text-align: center;
-    color: var(--text-color);
+    color: var(--text-secondary);
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
 }
 
