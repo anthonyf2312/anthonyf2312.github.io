@@ -391,3 +391,50 @@ section h2::after {
         grid-template-columns: 1fr;
     }
 }
+
+/* Feature Highlight Section */
+.feature-highlight {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(169, 235, 163, 0.1), rgba(136, 201, 130, 0.1));
+    border-radius: 12px;
+    border: 1px solid rgba(169, 235, 163, 0.2);
+}
+
+.highlight-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.highlight-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    animation: pulse 2s infinite;
+}
+
+.highlight-text h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.highlight-text p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
