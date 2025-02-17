@@ -2,9 +2,9 @@
     --primary-color: #a9eba3;
     --primary-dark: #88c982;
     --text-color: #ffffff;
-    --text-secondary: #b3b3b3;
-    --background-color: #191A19;
-    --card-bg: #1E1F1E;
+    --text-secondary: #e0e0e0;
+    --background-color: #121412;
+    --card-bg: #1a1e1a;
     --nav-bg: #1E1F1E;
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
@@ -394,34 +394,42 @@ section h2::after {
 
 /* Feature Highlight Section */
 .feature-highlight {
-    margin-top: 3rem;
+    margin: 4rem auto;
+    max-width: 800px;
     padding: 2rem;
-    background: linear-gradient(135deg, rgba(169, 235, 163, 0.1), rgba(136, 201, 130, 0.1));
+    background: rgba(169, 235, 163, 0.1);
     border-radius: 12px;
-    border: 1px solid rgba(169, 235, 163, 0.2);
+    border: 1px solid var(--primary-color);
+    text-align: center;
 }
 
 .highlight-content {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .highlight-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: var(--primary-color);
-    animation: pulse 2s infinite;
+    margin-bottom: 0.5rem;
+    animation: glow 2s infinite;
 }
 
 .highlight-text h3 {
     color: var(--primary-color);
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    font-size: 1.25rem;
+    text-shadow: 0 0 10px rgba(169, 235, 163, 0.3);
 }
 
 .highlight-text p {
-    color: var(--text-secondary);
-    margin: 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 @keyframes pulse {
@@ -436,5 +444,14 @@ section h2::after {
     100% {
         transform: scale(1);
         opacity: 1;
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        filter: drop-shadow(0 0 5px rgba(169, 235, 163, 0.5));
+    }
+    50% {
+        filter: drop-shadow(0 0 15px rgba(169, 235, 163, 0.8));
     }
 }
