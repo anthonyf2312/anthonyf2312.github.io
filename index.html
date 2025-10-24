@@ -3,52 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Social Links</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <meta name="description" content="Ant Fleming - Music Producer, Artist, and Creative Professional. Explore my portfolio and connect with me.">
+    <meta name="keywords" content="Ant Fleming, Music Producer, Artist, Portfolio, dot_wav3">
+    <meta name="author" content="Ant Fleming">
+    <meta name="theme-color" content="#0ea5e9">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Ant Fleming - Music Producer & Artist">
+    <meta property="og:description" content="Explore my portfolio and connect with me.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anthonyf2312.github.io">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ant Fleming - Music Producer & Artist">
+    <meta name="twitter:description" content="Explore my portfolio and connect with me.">
+    
+    <title>Ant Fleming - Music Producer & Artist</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <canvas id="particles"></canvas>
-    <div class="container">
-        <div class="glass-card">
-            <div class="theme-toggle">
-                <button id="themeButton">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
-            <div class="profile">
-                <img src="images/Profile-Picture.jpg" alt="Profile Picture" class="profile-img">
-                <h1>Ant Fleming</h1>
-                <p>View my links below</p>
-            </div>
-            <div class="links">
-                <a href="https://instagram.com/dot_wav3" class="link-card" data-aos="fade-up" target="_blank" rel="noopener">
-                    <i class="fab fa-instagram"></i>
-                    <span>Instagram</span>
-                </a>
-                <a href="https://x.com/AntFleming0" class="link-card" data-aos="fade-up" target="_blank" rel="noopener">
-                    <i class="fa-brands fa-x-twitter"></i>
-                    <span>X</span>
-                </a>
-                <a href="https://open.spotify.com/artist/06BgaycqkokqPYneN8qDom?si=GMlhSyNrQsa5KxZR8XdOIQ" class="link-card" data-aos="fade-up" target="_blank" rel="noopener">
-                    <i class="fab fa-spotify"></i>
-                    <span>Spotify</span>
-                </a>
-                <a href="https://soundcloud.com/anthony-fleming-753129500" class="link-card" data-aos="fade-up" target="_blank" rel="noopener">
-                    <i class="fab fa-soundcloud"></i>
-                    <span>soundcloud</span>
-                </a>
-                <a href="https://www.youtube.com/@Dot_WAV3" class="link-card" data-aos="fade-up" target="_blank" rel="noopener">
-                    <i class="fab fa-youtube"></i>
-                    <span>Youtube</span>
-                </a>
-                <a href="LushGuard.html" class="link-card" data-aos="fade-up">
-                    <i class="fab fa-discord"></i>
-                    <span>Lush Guard Bot</span>
-                </a>
-            </div>
-        </div>
-    </div>
-    <script src="scripts/main.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
