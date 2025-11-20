@@ -1,8 +1,6 @@
 # Anthony Fleming – Portfolio
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-blue?logo=github)](https://anthonyf2312.github.io/)
-[![Build Status](https://img.shields.io/github/workflow/status/anthonyf2312/anthonyf2312.github.io/Deploy%20to%20GitHub%20Pages?label=build)](https://github.com/anthonyf2312/anthonyf2312.github.io/actions)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![React](https://img.shields.io/badge/React-18.3.1-61DAFB?logo=react)](https://react.dev/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4.1-38B2AC?logo=tailwindcss)](https://tailwindcss.com/)
 [![Vite](https://img.shields.io/badge/Vite-7.2.2-646CFF?logo=vite)](https://vitejs.dev/)
