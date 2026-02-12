@@ -69,5 +69,8 @@ const API = (() => {
 
     /** Feature list */
     getFeatures: () => get('/api/features'),
+
+    /** Command docs */
+    getCommands: () => get('/api/commands'),
   };
 })();
