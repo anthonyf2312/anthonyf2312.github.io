@@ -297,7 +297,6 @@
         if (!this.loaded) {
           this.initSearch();
           await this.fetchCommands();
-          this.loaded = true;
           return;
         }
 
@@ -323,6 +322,7 @@
         try {
           const data = await API.getCommands();
           this.categories = Array.isArray(data.categories) ? data.categories : [];
+          this.loaded = true;
           this.render('');
         } catch (err) {
           showError(container, err.message);
@@ -391,7 +391,16 @@
 
         let timer = null;
 
-        const doSearch = () => {
+        const filterTable = () => {
+          const q = input.value.trim().toLowerCase();
+          document.querySelectorAll('#leaderboardBody tr').forEach(row => {
+            const nameCell = row.querySelector('td:nth-child(2)');
+            if (!nameCell) return;
+            row.style.display = (!q || nameCell.textContent.toLowerCase().includes(q)) ? '' : 'none';
+          });
+        };
+
+        const doApiSearch = () => {
           const q = input.value.trim();
           if (!q) {
             const result = document.getElementById('userResult');
@@ -403,14 +412,15 @@
           this.searchUser(q);
         };
 
-        btn.addEventListener('click', doSearch);
-        input.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') doSearch();
+        input.addEventListener('input', () => {
+          filterTable();
+          if (timer) clearTimeout(timer);
+          timer = setTimeout(doApiSearch, 300);
         });
 
-        input.addEventListener('input', () => {
-          if (timer) clearTimeout(timer);
-          timer = setTimeout(doSearch, 250);
+        btn.addEventListener('click', () => { filterTable(); doApiSearch(); });
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') { filterTable(); doApiSearch(); }
         });
       },
 
