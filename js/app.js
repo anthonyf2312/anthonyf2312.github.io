@@ -291,17 +291,74 @@
     // ── COMMANDS ─────────────────────────────────────
     commands: {
       loaded: false,
-      categories: [],
+      categories: [
+        {
+          id: 'general', name: 'Getting Started', emoji: '📚',
+          commands: [
+            { command: '/help', description: 'Open the interactive help menu with all user features.' },
+          ],
+        },
+        {
+          id: 'passport', name: 'Passport & Levels', emoji: '🆔',
+          commands: [
+            { command: '/passport view', description: "View your own or another member's passport profile." },
+            { command: '/passport leaderboard', description: 'Show the top users by level and total XP.' },
+            { command: '/passport setbackground', description: 'Set or reset your passport background image (Level 15+).' },
+            { command: '/passporttemplate psd', description: 'Download a blank template for custom passport backgrounds.' },
+            { command: '/level view', description: 'Check current level progress, XP details, and next milestone.' },
+            { command: '/rewards', description: 'See all level rewards and your unlock progress.' },
+            { command: '/privacy mydata', description: 'View your stored data and privacy controls.' },
+          ],
+        },
+        {
+          id: 'lastfm', name: 'Last.fm', emoji: '🎧',
+          commands: [
+            { command: '/lastfm link', description: 'Connect your Last.fm account to your Discord profile.' },
+            { command: '/lastfm unlink', description: 'Disconnect your Last.fm account.' },
+            { command: '/lastfm nowplaying', description: 'Show your current track with listening context.' },
+            { command: '/lastfm recent', description: 'View your recently played tracks.' },
+            { command: '/lastfm streak', description: 'Check your active listening streaks.' },
+            { command: '/lastfm overview', description: 'Get a quick weekly overview of listening activity.' },
+            { command: '/lastfm profile', description: 'View a Last.fm profile summary.' },
+            { command: '/lastfm toptracks', description: 'Show your top tracks for a selected period.' },
+            { command: '/lastfm topartists', description: 'Show your top artists for a selected period.' },
+            { command: '/lastfm topalbums', description: 'Show your top albums for a selected period.' },
+            { command: '/lastfm topgenres', description: 'Show your most listened genres.' },
+            { command: '/lastfm whoknows', description: 'See who in the server listens to an artist the most.' },
+            { command: '/lastfm whoknowstrack', description: 'See who in the server listens to a track the most.' },
+            { command: '/lastfm whoknowsalbum', description: 'See who in the server listens to an album the most.' },
+            { command: '/lastfm taste', description: 'Compare your music taste with another member.' },
+          ],
+        },
+        {
+          id: 'ratings', name: 'Music Ratings', emoji: '🎵',
+          commands: [
+            { command: '/rate', description: 'Rate a song, album, or EP on a 1.0 to 10.0 scale.' },
+            { command: '/editrating', description: 'Edit one of your existing ratings.' },
+            { command: '/ratings', description: 'Browse recent, top rated, or most popular community ratings.' },
+          ],
+        },
+        {
+          id: 'reactionbox', name: 'Reaction Box', emoji: '🎤',
+          commands: [
+            { command: '/reactionbox submit', description: 'Submit a song for Insko reaction consideration.' },
+            { command: '/reactionbox status', description: 'View current reaction box cycle and status.' },
+          ],
+        },
+        {
+          id: 'community', name: 'Community', emoji: '⭐',
+          commands: [
+            { command: 'Apps → Report Message', description: 'Right-click a message and report it to moderators.' },
+          ],
+        },
+      ],
 
       async load() {
         if (!this.loaded) {
           this.initSearch();
-          await this.fetchCommands();
-          return;
+          this.loaded = true;
         }
-
-        const q = document.getElementById('commandSearch')?.value?.trim() ?? '';
-        this.render(q);
+        this.render(document.getElementById('commandSearch')?.value?.trim() ?? '');
       },
 
       initSearch() {
@@ -311,22 +368,8 @@
         let timer = null;
         input.addEventListener('input', () => {
           if (timer) clearTimeout(timer);
-          timer = setTimeout(() => this.render(input.value.trim()), 180);
+          timer = setTimeout(() => this.render(input.value.trim()), 120);
         });
-      },
-
-      async fetchCommands() {
-        const container = document.getElementById('commandDocs');
-        showLoading(container, 'Loading command docs...');
-
-        try {
-          const data = await API.getCommands();
-          this.categories = Array.isArray(data.categories) ? data.categories : [];
-          this.loaded = true;
-          this.render('');
-        } catch (err) {
-          showError(container, err.message);
-        }
       },
 
       render(query) {
@@ -376,6 +419,7 @@
     leaderboard: {
       page: 1,
       loaded: false,
+      searchQuery: '',
 
       async load() {
         if (!this.loaded) {
@@ -391,36 +435,23 @@
 
         let timer = null;
 
-        const filterTable = () => {
-          const q = input.value.trim().toLowerCase();
-          document.querySelectorAll('#leaderboardBody tr').forEach(row => {
-            const nameCell = row.querySelector('td:nth-child(2)');
-            if (!nameCell) return;
-            row.style.display = (!q || nameCell.textContent.toLowerCase().includes(q)) ? '' : 'none';
-          });
-        };
-
-        const doApiSearch = () => {
+        const doSearch = () => {
           const q = input.value.trim();
-          if (!q) {
-            const result = document.getElementById('userResult');
-            result.classList.add('hidden');
-            result.innerHTML = '';
-            return;
-          }
-          if (q.length < 2) return;
-          this.searchUser(q);
+          this.searchQuery = q;
+          // Hide user card — search now filters the table directly
+          const result = document.getElementById('userResult');
+          if (result) { result.classList.add('hidden'); result.innerHTML = ''; }
+          this.fetchPage(1);
         };
 
         input.addEventListener('input', () => {
-          filterTable();
           if (timer) clearTimeout(timer);
-          timer = setTimeout(doApiSearch, 300);
+          timer = setTimeout(doSearch, 250);
         });
 
-        btn.addEventListener('click', () => { filterTable(); doApiSearch(); });
+        btn.addEventListener('click', doSearch);
         input.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') { filterTable(); doApiSearch(); }
+          if (e.key === 'Enter') { if (timer) clearTimeout(timer); doSearch(); }
         });
       },
 
@@ -481,11 +512,18 @@
         this.page = page;
         const body = document.getElementById('leaderboardBody');
         const pagination = document.getElementById('leaderboardPagination');
+        const search = this.searchQuery || '';
 
-        body.innerHTML = `<tr><td colspan="7"><div class="loading-text">Loading leaderboard...</div></td></tr>`;
+        body.innerHTML = `<tr><td colspan="7"><div class="loading-text">${search ? 'Searching...' : 'Loading leaderboard...'}</div></td></tr>`;
 
         try {
-          const data = await API.getLeaderboard(page, 15);
+          const data = await API.getLeaderboard(page, 15, search);
+
+          if (!data.entries.length && search) {
+            body.innerHTML = `<tr><td colspan="7"><div class="loading-text">No members found matching "${escapeHtml(search)}"</div></td></tr>`;
+            pagination.innerHTML = '';
+            return;
+          }
 
           body.innerHTML = data.entries.map(e => `
             <tr>

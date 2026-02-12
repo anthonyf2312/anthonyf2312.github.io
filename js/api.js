@@ -40,8 +40,8 @@ const API = (() => {
     /** Bot status — online, uptime, members, db */
     getStatus: () => get('/api/status'),
 
-    /** XP leaderboard — paginated */
-    getLeaderboard: (page = 1, limit = 15) => get('/api/leaderboard', { page, limit }),
+    /** XP leaderboard — paginated, optional name search */
+    getLeaderboard: (page = 1, limit = 15, search = '') => get('/api/leaderboard', { page, limit, search: search || undefined }),
 
     /** Search user by ID */
     getUser: (query) => get('/api/user', { q: query }),
