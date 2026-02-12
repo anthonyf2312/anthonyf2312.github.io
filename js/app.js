@@ -296,14 +296,29 @@
         const input = document.getElementById('userSearch');
         const btn = document.getElementById('userSearchBtn');
 
+        let timer = null;
+
         const doSearch = () => {
           const q = input.value.trim();
-          if (q) this.searchUser(q);
+          const isLikelyId = /^\d{5,}$/.test(q);
+          if (!q) {
+            const result = document.getElementById('userResult');
+            result.classList.add('hidden');
+            result.innerHTML = '';
+            return;
+          }
+          if (q.length < 2 && !isLikelyId) return;
+          this.searchUser(q);
         };
 
         btn.addEventListener('click', doSearch);
         input.addEventListener('keydown', (e) => {
           if (e.key === 'Enter') doSearch();
+        });
+
+        input.addEventListener('input', () => {
+          if (timer) clearTimeout(timer);
+          timer = setTimeout(doSearch, 250);
         });
       },
 
@@ -315,7 +330,7 @@
         try {
           const data = await API.getUser(query);
           if (!data.found) {
-            result.innerHTML = '<div class="loading-text">No user found with that ID</div>';
+            result.innerHTML = '<div class="loading-text">No user found</div>';
             return;
           }
 
@@ -324,7 +339,7 @@
           result.innerHTML = `
             <div class="user-result__header">
               <div>
-                <div class="user-result__name">@${name}</div>
+                <div class="user-result__name">${name}</div>
                 <div class="user-result__rank">Rank #${u.rank} · Level ${u.level} · ${levelTitle(u.level)}</div>
               </div>
             </div>
@@ -373,7 +388,7 @@
           body.innerHTML = data.entries.map(e => `
             <tr>
               <td>${rankDisplay(e.rank)}</td>
-              <td style="font-weight:500">@${e.displayName || e.userId}</td>
+              <td style="font-weight:500">${e.displayName || e.userId}</td>
               <td>
                 <span style="font-weight:600">${e.level}</span>
                 <span style="color:var(--text-muted);font-size:0.78rem;margin-left:4px">${levelTitle(e.level)}</span>
