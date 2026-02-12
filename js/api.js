@@ -43,8 +43,11 @@ const API = (() => {
     /** XP leaderboard — paginated */
     getLeaderboard: (page = 1, limit = 15) => get('/api/leaderboard', { page, limit }),
 
-    /** Search user by ID */
+    /** Search user by display name */
     getUser: (query) => get('/api/user', { q: query }),
+
+    /** User-facing command docs */
+    getCommands: () => get('/api/commands'),
 
     /** All badge definitions */
     getBadges: () => get('/api/badges'),

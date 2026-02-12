@@ -141,6 +141,15 @@
     return badges.map(id => badgeEmojis[id] || '🏅').join(' ');
   }
 
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   function showLoading(container, message = 'Loading...') {
     container.innerHTML = `<div class="loading-text">${message}</div>`;
   }
@@ -279,6 +288,90 @@
       },
     },
 
+    // ── COMMANDS ─────────────────────────────────────
+    commands: {
+      loaded: false,
+      categories: [],
+
+      async load() {
+        if (!this.loaded) {
+          this.initSearch();
+          await this.fetchCommands();
+          this.loaded = true;
+          return;
+        }
+
+        const q = document.getElementById('commandSearch')?.value?.trim() ?? '';
+        this.render(q);
+      },
+
+      initSearch() {
+        const input = document.getElementById('commandSearch');
+        if (!input) return;
+
+        let timer = null;
+        input.addEventListener('input', () => {
+          if (timer) clearTimeout(timer);
+          timer = setTimeout(() => this.render(input.value.trim()), 180);
+        });
+      },
+
+      async fetchCommands() {
+        const container = document.getElementById('commandDocs');
+        showLoading(container, 'Loading command docs...');
+
+        try {
+          const data = await API.getCommands();
+          this.categories = Array.isArray(data.categories) ? data.categories : [];
+          this.render('');
+        } catch (err) {
+          showError(container, err.message);
+        }
+      },
+
+      render(query) {
+        const container = document.getElementById('commandDocs');
+        const normalized = (query || '').toLowerCase();
+
+        const filtered = this.categories
+          .map((category) => ({
+            ...category,
+            commands: (category.commands || []).filter((cmd) => {
+              if (!normalized) return true;
+              const commandText = String(cmd.command || '').toLowerCase();
+              const descriptionText = String(cmd.description || '').toLowerCase();
+              return commandText.includes(normalized) || descriptionText.includes(normalized);
+            }),
+          }))
+          .filter((category) => category.commands.length > 0);
+
+        if (!filtered.length) {
+          container.innerHTML = '<div class="loading-text">No matching commands found</div>';
+          return;
+        }
+
+        container.innerHTML = filtered.map((category) => `
+          <article class="command-category">
+            <header class="command-category__header">
+              <div class="command-category__title-wrap">
+                <span class="command-category__emoji">${escapeHtml(category.emoji || '📌')}</span>
+                <h3 class="command-category__title">${escapeHtml(category.name || 'Commands')}</h3>
+              </div>
+              <span class="command-category__count">${category.commands.length} commands</span>
+            </header>
+            <div class="command-list">
+              ${category.commands.map((cmd) => `
+                <div class="command-item">
+                  <div class="command-item__name">${escapeHtml(cmd.command || '')}</div>
+                  <p class="command-item__desc">${escapeHtml(cmd.description || '')}</p>
+                </div>
+              `).join('')}
+            </div>
+          </article>
+        `).join('');
+      },
+    },
+
     // ── LEADERBOARD ──────────────────────────────────
     leaderboard: {
       page: 1,
@@ -300,14 +393,13 @@
 
         const doSearch = () => {
           const q = input.value.trim();
-          const isLikelyId = /^\d{5,}$/.test(q);
           if (!q) {
             const result = document.getElementById('userResult');
             result.classList.add('hidden');
             result.innerHTML = '';
             return;
           }
-          if (q.length < 2 && !isLikelyId) return;
+          if (q.length < 2) return;
           this.searchUser(q);
         };
 
