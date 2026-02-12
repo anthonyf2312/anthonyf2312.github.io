@@ -437,6 +437,8 @@
 
         const doSearch = () => {
           const q = input.value.trim();
+          // Require at least 2 characters for search
+          if (q.length === 1) return;
           this.searchQuery = q;
           // Hide user card — search now filters the table directly
           const result = document.getElementById('userResult');
@@ -446,7 +448,7 @@
 
         input.addEventListener('input', () => {
           if (timer) clearTimeout(timer);
-          timer = setTimeout(doSearch, 250);
+          timer = setTimeout(doSearch, 350);
         });
 
         btn.addEventListener('click', doSearch);
@@ -514,10 +516,17 @@
         const pagination = document.getElementById('leaderboardPagination');
         const search = this.searchQuery || '';
 
+        // Cancel any in-flight request
+        if (this._abort) this._abort.abort();
+        const controller = new AbortController();
+        this._abort = controller;
+
         body.innerHTML = `<tr><td colspan="7"><div class="loading-text">${search ? 'Searching...' : 'Loading leaderboard...'}</div></td></tr>`;
 
         try {
-          const data = await API.getLeaderboard(page, 15, search);
+          const data = await API.getLeaderboard(page, 15, search, controller.signal);
+          // If a newer request was fired, discard this result
+          if (controller.signal.aborted) return;
 
           if (!data.entries.length && search) {
             body.innerHTML = `<tr><td colspan="7"><div class="loading-text">No members found matching "${escapeHtml(search)}"</div></td></tr>`;
@@ -559,6 +568,7 @@
             pagination.innerHTML = '';
           }
         } catch (err) {
+          if (err.name === 'AbortError') return; // superseded by newer request
           body.innerHTML = `<tr><td colspan="7"><div class="error-text">${err.message}</div></td></tr>`;
         }
       },

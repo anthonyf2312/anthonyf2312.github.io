@@ -9,17 +9,20 @@ const API = (() => {
   const BASE_URL = 'https://api.inskomusic.com';
 
   // ── Internal helpers ───────────────────────────────
-  async function get(endpoint, params = {}) {
+  async function get(endpoint, params = {}, signal = null) {
     const url = new URL(`${BASE_URL}${endpoint}`);
     for (const [key, val] of Object.entries(params)) {
       if (val !== undefined && val !== null) url.searchParams.set(key, String(val));
     }
 
     try {
-      const res = await fetch(url.toString(), {
+      const opts = {
         method: 'GET',
         headers: { 'Accept': 'application/json' },
-      });
+      };
+      if (signal) opts.signal = signal;
+
+      const res = await fetch(url.toString(), opts);
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
@@ -28,6 +31,7 @@ const API = (() => {
 
       return await res.json();
     } catch (err) {
+      if (err.name === 'AbortError') throw err; // let caller handle abort
       if (err.name === 'TypeError' && err.message.includes('fetch')) {
         throw new Error('Bot is offline or unreachable');
       }
@@ -41,7 +45,7 @@ const API = (() => {
     getStatus: () => get('/api/status'),
 
     /** XP leaderboard — paginated, optional name search */
-    getLeaderboard: (page = 1, limit = 15, search = '') => get('/api/leaderboard', { page, limit, search: search || undefined }),
+    getLeaderboard: (page = 1, limit = 15, search = '', signal = null) => get('/api/leaderboard', { page, limit, search: search || undefined }, signal),
 
     /** Search user by ID */
     getUser: (query) => get('/api/user', { q: query }),
