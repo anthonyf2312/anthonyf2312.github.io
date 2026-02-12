@@ -320,10 +320,11 @@
           }
 
           const u = data.user;
+          const name = u.displayName || u.userId;
           result.innerHTML = `
             <div class="user-result__header">
               <div>
-                <div class="user-result__name">@${u.userId}</div>
+                <div class="user-result__name">@${name}</div>
                 <div class="user-result__rank">Rank #${u.rank} · Level ${u.level} · ${levelTitle(u.level)}</div>
               </div>
             </div>
@@ -372,7 +373,7 @@
           body.innerHTML = data.entries.map(e => `
             <tr>
               <td>${rankDisplay(e.rank)}</td>
-              <td style="font-weight:500">@${e.userId}</td>
+              <td style="font-weight:500">@${e.displayName || e.userId}</td>
               <td>
                 <span style="font-weight:600">${e.level}</span>
                 <span style="color:var(--text-muted);font-size:0.78rem;margin-left:4px">${levelTitle(e.level)}</span>
