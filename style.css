@@ -425,20 +425,16 @@ a.row:hover .row-arrow {
 
 /* ======================= Reveals & motion ======================= */
 
-/* hidden state only when JS is running (html.js set by script.js) */
+/* hidden state only when JS+GSAP are running (html.js set inline in head,
+   removed by script.js if GSAP failed to load) — GSAP animates to visible */
 .js .reveal {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 700ms ease, transform 700ms ease;
-}
-.js .reveal.visible {
-  opacity: 1;
-  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .js .reveal { opacity: 1; transform: none; }
   .scroll-cue { transition: none; }
   .row-title, .row-arrow, .ms-link { transition: none; }
 }

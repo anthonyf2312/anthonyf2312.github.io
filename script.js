@@ -118,23 +118,21 @@
         .to(".scroll-cue", { opacity: 1, duration: 0.5 }, 1.15)
         .call(wake);
 
-    });
-  }
-
-  /* ---------- scroll reveals ---------- */
-  var revealed = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && !reduceMotion) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add("visible");
-          io.unobserve(e.target);
-        }
+      /* scroll reveals: per-section stagger */
+      gsap.utils.toArray([".intro", ".work", ".f1", ".ms"]).forEach(function (section) {
+        var items = section.querySelectorAll(".reveal");
+        if (!items.length) return;
+        gsap.to(items, {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          stagger: 0.1,
+          scrollTrigger: { trigger: section, start: "top 72%", once: true }
+        });
       });
-    }, { threshold: 0.15 });
-    revealed.forEach(function (el) { io.observe(el); });
-  } else {
-    revealed.forEach(function (el) { el.classList.add("visible"); });
+
+    });
   }
 
   /* ---------- scroll cue ---------- */
