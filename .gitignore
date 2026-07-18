@@ -1,2 +1,4 @@
 .playwright-mcp/
 debug.log
+# Playwright verification screenshots land in the repo root
+*.png
