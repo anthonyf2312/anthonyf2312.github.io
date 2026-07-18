@@ -156,21 +156,33 @@
       gsap.to(".glow", { xPercent: 2.5, yPercent: 3, duration: 26, yoyo: true, repeat: -1, ease: "sine.inOut" });
 
       /* magnetic row arrows (mouse only) */
+      var magnetCleanups = [];
       document.querySelectorAll("a.row").forEach(function (row) {
         var arrow = row.querySelector(".row-arrow");
         if (!arrow) return;
         var qx = gsap.quickTo(arrow, "x", { duration: 0.3, ease: "power3" });
         var qy = gsap.quickTo(arrow, "y", { duration: 0.3, ease: "power3" });
-        row.addEventListener("pointermove", function (e) {
+        function onMove(e) {
           if (e.pointerType !== "mouse") return;
           var r = arrow.getBoundingClientRect();
           var relX = (e.clientX - (r.left + r.width / 2)) * 0.06;
           var relY = (e.clientY - (r.top + r.height / 2)) * 0.06;
           qx(Math.max(-12, Math.min(12, relX)));
           qy(Math.max(-12, Math.min(12, relY)));
+        }
+        function onLeave() { qx(0); qy(0); }
+        row.addEventListener("pointermove", onMove);
+        row.addEventListener("pointerleave", onLeave);
+        magnetCleanups.push(function () {
+          row.removeEventListener("pointermove", onMove);
+          row.removeEventListener("pointerleave", onLeave);
         });
-        row.addEventListener("pointerleave", function () { qx(0); qy(0); });
       });
+
+      /* matchMedia cleanup: GSAP reverts its own objects; listeners are ours to remove */
+      return function () {
+        magnetCleanups.forEach(function (fn) { fn(); });
+      };
 
     });
   }
