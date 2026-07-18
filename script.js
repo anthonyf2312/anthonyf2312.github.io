@@ -14,6 +14,28 @@
     document.documentElement.classList.remove("js");
   }
 
+  /* ---------- GSAP motion (skipped entirely under reduced motion) ---------- */
+  var entrance = null;
+  if (hasGsap) {
+    var mm = gsap.matchMedia();
+    mm.add("(prefers-reduced-motion: no-preference)", function () {
+
+      /* stinger: sweep the papaya panel off toward the top-right */
+      entrance = gsap.timeline({ defaults: { ease: "power3.out" } });
+      entrance.to(".stinger", {
+        xPercent: 115,
+        yPercent: -12,
+        duration: 0.7,
+        ease: "power3.inOut",
+        onComplete: function () {
+          var s = document.querySelector(".stinger");
+          if (s) s.remove();
+        }
+      }, 0.15);
+
+    });
+  }
+
   /* ---------- scroll reveals ---------- */
   var revealed = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduceMotion) {

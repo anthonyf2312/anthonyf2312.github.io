@@ -402,6 +402,27 @@ a.row:hover .row-arrow {
 .footer a { text-decoration: none; }
 .footer a:hover { color: var(--fg); }
 
+/* ======================= Stinger ======================= */
+
+/* papaya load wipe — oversized skewed panel, swept off by GSAP */
+.stinger {
+  display: none;
+  position: fixed;
+  top: -10vh;
+  left: -35vw;
+  width: 170vw;
+  height: 120vh;
+  z-index: 100; /* above the grain layer (z 50) */
+  background: var(--papaya);
+  transform: skewX(-15deg);
+  pointer-events: none;
+}
+.js .stinger { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .stinger { display: none; }
+}
+
 /* ======================= Reveals & motion ======================= */
 
 /* hidden state only when JS is running (html.js set by script.js) */
