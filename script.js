@@ -14,6 +14,76 @@
     document.documentElement.classList.remove("js");
   }
 
+  /* ---------- kinetic hero type: split letters ---------- */
+  var letters = [];
+  if (!reduceMotion) {
+    document.querySelectorAll(".kinetic").forEach(function (line) {
+      var text = line.textContent;
+      line.textContent = "";
+      line.setAttribute("aria-label", text);
+      for (var i = 0; i < text.length; i++) {
+        var s = document.createElement("span");
+        s.className = "k";
+        s.setAttribute("aria-hidden", "true");
+        s.textContent = text[i];
+        line.appendChild(s);
+        letters.push({ el: s, w: 600, target: 600 });
+      }
+    });
+  }
+
+  var MIN = 200, MAX = 900;
+  var RADIUS = Math.max(220, window.innerWidth * 0.22);
+  var mouse = null;
+  var t = 0;
+  var running = false;
+
+  function frame() {
+    var active = false;
+    t += 0.035;
+
+    for (var i = 0; i < letters.length; i++) {
+      var L = letters[i];
+
+      if (mouse) {
+        var r = L.el.getBoundingClientRect();
+        var dx = mouse.x - (r.left + r.width / 2);
+        var dy = mouse.y - (r.top + r.height / 2);
+        var d = Math.sqrt(dx * dx + dy * dy);
+        var p = Math.max(0, 1 - d / RADIUS);
+        p = p * p * (3 - 2 * p);
+        L.target = MIN + p * (MAX - MIN);
+      } else {
+        L.target = 500 + 300 * (0.5 + 0.5 * Math.sin(t + i * 0.45));
+      }
+
+      L.w += (L.target - L.w) * 0.16;
+      if (Math.abs(L.target - L.w) > 0.5) active = true;
+      L.el.style.setProperty("--w", L.w.toFixed(1));
+    }
+
+    if (active || !mouse) {
+      requestAnimationFrame(frame);
+    } else {
+      running = false;
+    }
+  }
+
+  function wake() {
+    if (!running || !letters.length) {
+      if (!letters.length) return;
+      running = true;
+      requestAnimationFrame(frame);
+    }
+  }
+
+  window.addEventListener("pointermove", function (e) {
+    if (e.pointerType === "mouse") {
+      mouse = { x: e.clientX, y: e.clientY };
+      wake();
+    }
+  }, { passive: true });
+
   /* ---------- GSAP motion (skipped entirely under reduced motion) ---------- */
   var entrance = null;
   if (hasGsap) {
@@ -32,6 +102,21 @@
           if (s) s.remove();
         }
       }, 0.15);
+
+      /* entrance: eyebrow → letters rise with weight ramp → cue, then kinetic */
+      var eyebrowSpans = document.querySelectorAll(".hero-eyebrow span");
+      var ks = document.querySelectorAll(".hero-title .k");
+
+      gsap.set(eyebrowSpans, { opacity: 0, y: 12 });
+      gsap.set(".scroll-cue", { opacity: 0 });
+      gsap.set(ks, { "--w": 200 });
+
+      entrance
+        .to(eyebrowSpans, { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 }, 0.4)
+        .from(ks, { yPercent: 40, opacity: 0, duration: 0.6, stagger: 0.045 }, 0.5)
+        .to(ks, { "--w": 600, duration: 0.5, ease: "power1.inOut", stagger: 0.045 }, 0.55)
+        .to(".scroll-cue", { opacity: 1, duration: 0.5 }, 1.15)
+        .call(wake);
 
     });
   }
@@ -56,82 +141,15 @@
   var cue = document.querySelector(".scroll-cue");
   window.addEventListener("scroll", function onScroll() {
     if (window.scrollY > 40) {
-      cue.classList.add("hidden");
+      if (hasGsap && !reduceMotion) {
+        gsap.to(cue, { opacity: 0, duration: 0.4 });
+      } else {
+        cue.classList.add("hidden");
+      }
       window.removeEventListener("scroll", onScroll);
     }
   }, { passive: true });
 
-  /* ---------- kinetic hero type ---------- */
-  if (reduceMotion) return;
-
-  // Split each hero line into per-letter spans.
-  var letters = [];
-  document.querySelectorAll(".kinetic").forEach(function (line) {
-    var text = line.textContent;
-    line.textContent = "";
-    line.setAttribute("aria-label", text);
-    for (var i = 0; i < text.length; i++) {
-      var s = document.createElement("span");
-      s.className = "k";
-      s.setAttribute("aria-hidden", "true");
-      s.textContent = text[i];
-      line.appendChild(s);
-      letters.push({ el: s, w: 800, target: 800 });
-    }
-  });
-  if (!letters.length) return;
-
-  var MIN = 200, MAX = 900;
-  var RADIUS = Math.max(220, window.innerWidth * 0.22); // px of cursor influence
-  var mouse = null;          // last cursor position, null until first move
-  var t = 0;                 // wave clock for touch / pre-mouse state
-  var running = false;
-
-  function frame() {
-    var active = false;
-    t += 0.035;
-
-    for (var i = 0; i < letters.length; i++) {
-      var L = letters[i];
-
-      if (mouse) {
-        var r = L.el.getBoundingClientRect();
-        var dx = mouse.x - (r.left + r.width / 2);
-        var dy = mouse.y - (r.top + r.height / 2);
-        var d = Math.sqrt(dx * dx + dy * dy);
-        var p = Math.max(0, 1 - d / RADIUS);        // 1 near cursor, 0 far
-        p = p * p * (3 - 2 * p);                    // smoothstep for a soft bulge
-        L.target = MIN + p * (MAX - MIN);           // thin far away, black under the cursor
-      } else {
-        // ambient wave until the cursor arrives (also covers touch devices)
-        L.target = 500 + 300 * (0.5 + 0.5 * Math.sin(t + i * 0.45));
-      }
-
-      L.w += (L.target - L.w) * 0.16; // ease toward target
-      if (Math.abs(L.target - L.w) > 0.5) active = true;
-      L.el.style.setProperty("--w", L.w.toFixed(1));
-    }
-
-    if (active || !mouse) {
-      requestAnimationFrame(frame);
-    } else {
-      running = false;
-    }
-  }
-
-  function wake() {
-    if (!running) {
-      running = true;
-      requestAnimationFrame(frame);
-    }
-  }
-
-  window.addEventListener("pointermove", function (e) {
-    if (e.pointerType === "mouse") {
-      mouse = { x: e.clientX, y: e.clientY };
-      wake();
-    }
-  }, { passive: true });
-
-  wake(); // start with the ambient wave
+  // Without GSAP there is no entrance timeline to start the kinetic loop.
+  if (!hasGsap) wake();
 })();
