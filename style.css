@@ -30,7 +30,10 @@ html { scroll-behavior: smooth; }
 
 body {
   overflow-x: clip; /* kinetic weight changes can momentarily widen the hero line */
-  background: var(--bg);
+  background:
+    radial-gradient(70rem 45rem at 88% -5%, rgba(255, 107, 43, 0.075), transparent 62%),
+    radial-gradient(55rem 55rem at -12% 55%, rgba(255, 128, 0, 0.05), transparent 60%)
+    var(--bg);
   color: var(--fg);
   font-family: var(--font-sans);
   font-size: 1.0625rem;
@@ -45,6 +48,18 @@ a:focus-visible {
 }
 
 ::selection { background: var(--accent); color: #111113; }
+
+/* film grain over the whole viewport — kills the flat-color look */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background: url("assets/grain.svg") repeat;
+  background-size: 240px 240px;
+  opacity: 0.055;
+}
 
 /* ======================= Nav ======================= */
 
@@ -112,15 +127,28 @@ a:focus-visible {
   white-space: nowrap;
 }
 
-/* small line stretched to the same width as the headline */
-.hero-sub {
-  margin-top: 1rem;
+/* meta line above the headline, poster-index style */
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-bottom: clamp(1rem, 2.5vh, 2rem);
   font-family: var(--font-mono);
-  font-size: clamp(0.8rem, 1.9vw, 1.4rem);
-  letter-spacing: 0.14em;
+  font-size: clamp(0.75rem, 1.3vw, 0.9375rem);
+  letter-spacing: 0.22em;
   color: var(--fg-muted);
-  text-align: justify;
-  text-align-last: justify;
+  white-space: nowrap;
+}
+.hero-eyebrow span + span::before {
+  content: "·";
+  margin-right: 1.1rem;
+  color: var(--accent);
+}
+.hero-eyebrow::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--hairline);
 }
 
 .scroll-cue {
@@ -245,8 +273,30 @@ a.row:hover .row-arrow {
 /* ======================= F1 ======================= */
 
 .f1 {
+  position: relative;
+  overflow: hidden;
   border-top: 1px solid var(--hairline);
   padding-bottom: clamp(4rem, 10vh, 8rem);
+}
+
+/* oversized speedmark bleeding off the right edge, behind the text */
+.f1-mark {
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  width: clamp(20rem, 48vw, 44rem);
+  height: auto;
+  transform: translateY(-50%) rotate(-8deg);
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+}
+
+.f1-tag-logo {
+  width: 1.4em;
+  height: auto;
+  vertical-align: -0.35em;
+  margin-right: 0.6em;
 }
 
 .poster-f1 {
@@ -285,10 +335,27 @@ a.row:hover .row-arrow {
 /* ======================= MS ======================= */
 
 .ms {
+  position: relative;
+  overflow: hidden;
   background: var(--accent);
   color: #111113;
   padding: clamp(4rem, 12vh, 9rem) var(--pad);
 }
+
+/* ink ribbon ghosted into the orange, behind the type */
+.ms-ribbon {
+  position: absolute;
+  top: 50%;
+  right: clamp(1rem, 8vw, 8rem);
+  height: min(75%, 24rem);
+  width: auto;
+  transform: translateY(-50%) rotate(10deg);
+  opacity: 0.16;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ms-body, .poster-ms, .ms-link { position: relative; }
 
 .poster-ms {
   font-size: clamp(3rem, 11vw, 9.5rem);

@@ -7,29 +7,6 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- match the sub-line width to ANTHONY ---------- */
-  // The headline's width shifts as the kinetic weights animate, so measure a
-  // hidden clone pinned at the resting weight (600) and size the sub to that.
-  function sizeSub() {
-    var title = document.querySelector(".hero-title");
-    var sub = document.querySelector(".hero-sub");
-    if (!title || !sub) return;
-    var clone = title.cloneNode(true);
-    clone.style.cssText = "position:absolute;visibility:hidden;left:-9999px;font-variation-settings:'wght' 600";
-    clone.querySelectorAll(".k").forEach(function (k) {
-      k.style.setProperty("--w", "600");
-    });
-    document.body.appendChild(clone);
-    sub.style.width = clone.getBoundingClientRect().width + "px";
-    clone.remove();
-  }
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(sizeSub);
-  } else {
-    sizeSub();
-  }
-  window.addEventListener("resize", sizeSub);
-
   /* ---------- scroll reveals ---------- */
   var revealed = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !reduceMotion) {
@@ -75,8 +52,6 @@
   });
   if (!letters.length) return;
 
-  var subEl = document.querySelector(".hero-sub");
-
   var MIN = 200, MAX = 900;
   var RADIUS = Math.max(220, window.innerWidth * 0.22); // px of cursor influence
   var mouse = null;          // last cursor position, null until first move
@@ -106,14 +81,6 @@
       L.w += (L.target - L.w) * 0.16; // ease toward target
       if (Math.abs(L.target - L.w) > 0.5) active = true;
       L.el.style.setProperty("--w", L.w.toFixed(1));
-    }
-
-    // keep the sub-line exactly as wide as the name is right now
-    // (the h1 is a block, so measure from first letter to last letter)
-    if (subEl && letters.length) {
-      var first = letters[0].el.getBoundingClientRect();
-      var last = letters[letters.length - 1].el.getBoundingClientRect();
-      subEl.style.width = (last.right - first.left) + "px";
     }
 
     if (active || !mouse) {
