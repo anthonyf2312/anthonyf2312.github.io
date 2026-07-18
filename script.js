@@ -1,11 +1,18 @@
-// Type poster interactions: kinetic hero weight, scroll reveals, scroll cue.
+// Type poster interactions: stinger, entrance, kinetic hero weight, scroll motion.
 (function () {
   "use strict";
 
-  document.documentElement.classList.add("js");
   document.getElementById("year").textContent = new Date().getFullYear();
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hasGsap = !!(window.gsap && window.ScrollTrigger);
+
+  if (hasGsap) {
+    gsap.registerPlugin(ScrollTrigger);
+  } else {
+    // GSAP CDN blocked but JS running: drop all motion, reveal everything.
+    document.documentElement.classList.remove("js");
+  }
 
   /* ---------- scroll reveals ---------- */
   var revealed = document.querySelectorAll(".reveal");
