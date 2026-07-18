@@ -2,7 +2,8 @@
 (function () {
   "use strict";
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+  var yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var hasGsap = !!(window.gsap && window.ScrollTrigger);
@@ -189,16 +190,19 @@
 
   /* ---------- scroll cue ---------- */
   var cue = document.querySelector(".scroll-cue");
-  window.addEventListener("scroll", function onScroll() {
-    if (window.scrollY > 40) {
-      if (hasGsap && !reduceMotion) {
-        gsap.to(cue, { opacity: 0, duration: 0.4 });
-      } else {
-        cue.classList.add("hidden");
+  if (cue) {
+    window.addEventListener("scroll", function onScroll() {
+      if (window.scrollY > 40) {
+        if (hasGsap && !reduceMotion) {
+          gsap.killTweensOf(cue);
+          gsap.to(cue, { opacity: 0, duration: 0.4 });
+        } else if (cue) {
+          cue.classList.add("hidden");
+        }
+        window.removeEventListener("scroll", onScroll);
       }
-      window.removeEventListener("scroll", onScroll);
-    }
-  }, { passive: true });
+    }, { passive: true });
+  }
 
   // Without GSAP there is no entrance timeline to start the kinetic loop.
   if (!hasGsap) wake();
