@@ -1,0 +1,285 @@
+/* ============================================================
+   Ink on paper — Anthony's page
+   Palette
+     paper        #f6efe3   aged parchment
+     paper-deep   #efe5d2   shadowed paper
+     ink          #292118   iron-gall ink
+     ink-faded    #6b5d49   old ink, secondary text
+     quink        #31456a   fountain-pen blue (links)
+     ribbon       #d96c2f   MS awareness orange (MS section only)
+     hairline     #d9cdb6   ruled line
+   ============================================================ */
+
+:root {
+  --paper: #f6efe3;
+  --paper-deep: #efe5d2;
+  --ink: #292118;
+  --ink-faded: #6b5d49;
+  --quink: #31456a;
+  --ribbon: #d96c2f;
+  --hairline: #d9cdb6;
+
+  --font-script: "Corinthia", cursive;
+  --font-display: "Cormorant", serif;
+  --font-body: "Newsreader", serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--paper);
+  /* faint laid-paper texture: horizontal chain lines */
+  background-image: repeating-linear-gradient(
+    180deg,
+    transparent 0,
+    transparent 27px,
+    rgba(41, 33, 24, 0.025) 27px,
+    rgba(41, 33, 24, 0.025) 28px
+  );
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.1875rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.page {
+  max-width: 41rem;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+a {
+  color: var(--quink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 150ms ease;
+}
+a:hover { color: var(--ink); }
+a:focus-visible {
+  outline: 2px solid var(--quink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection { background: var(--quink); color: var(--paper); }
+
+/* ======================= Hero ======================= */
+
+.hero {
+  text-align: center;
+  padding: clamp(4rem, 12vh, 7rem) 0 3.5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+}
+
+.name {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: clamp(5rem, 16vw, 8.5rem);
+  line-height: 1.05;
+  margin-top: 0.5rem;
+  /* keep the Corinthia swashes from clipping */
+  padding: 0 0.4em;
+}
+
+.underflourish {
+  display: block;
+  width: min(24rem, 80%);
+  margin: -0.75rem auto 0;
+  color: var(--ink);
+}
+
+.underflourish-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 1.6s ease-out 0.35s forwards;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.tagline {
+  margin-top: 1.75rem;
+  font-style: italic;
+  color: var(--ink-faded);
+}
+
+/* staggered fade-up on load */
+.reveal {
+  opacity: 0;
+  transform: translateY(0.5rem);
+  animation: rise 0.9s ease-out forwards;
+}
+.eyebrow.reveal { animation-delay: 0.1s; }
+.name.reveal { animation-delay: 0.2s; }
+.tagline.reveal { animation-delay: 1.2s; }
+
+@keyframes rise {
+  to { opacity: 1; transform: none; }
+}
+
+/* ======================= Letter body ======================= */
+
+.letter { padding: 1.5rem 0; }
+
+.letter p + p { margin-top: 1.1em; }
+
+.salutation {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 2.4rem;
+  margin-bottom: 0.4em;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 1.4em;
+}
+
+.divider {
+  display: flex;
+  justify-content: center;
+  padding: 1.75rem 0;
+  color: var(--ink-faded);
+}
+.divider svg { width: 11rem; height: 1.75rem; }
+
+/* ======================= RRMS ======================= */
+
+.ms .section-heading { color: var(--ribbon); }
+
+.ms-ribbon {
+  margin-top: 1.6em;
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--ink-faded);
+}
+
+.ribbon-mark {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+  background: var(--ribbon);
+  margin-right: 0.5em;
+  vertical-align: baseline;
+}
+
+/* ======================= Bots ======================= */
+
+.bot {
+  border: 1px solid var(--hairline);
+  background: var(--paper-deep);
+  padding: 1.6rem 1.75rem 1.5rem;
+  margin-top: 1.5rem;
+}
+.bot:first-of-type { margin-top: 0; }
+
+.bot-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.bot-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.75rem;
+}
+.bot-name a { text-decoration: none; color: var(--ink); }
+.bot-name a:hover { color: var(--quink); }
+
+.bot-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-faded);
+  border: 1px solid var(--hairline);
+  padding: 0.25em 0.7em;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.bot-badge-dev {
+  color: var(--quink);
+  border-color: var(--quink);
+}
+
+.bot-motto {
+  font-style: italic;
+  color: var(--ink-faded);
+  margin: 0.35em 0 0.9em;
+}
+
+.bot p + p { margin-top: 0.9em; }
+
+.tech { font-family: var(--font-mono); font-size: 0.85em; }
+
+.bot-link a { text-decoration: none; font-weight: 500; }
+.bot-link a:hover { text-decoration: underline; }
+
+/* ======================= Footer ======================= */
+
+.closing {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.valediction {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--ink-faded);
+}
+
+.signature {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 3.4rem;
+  line-height: 1.2;
+  padding: 0 0.4em;
+}
+
+.small-print {
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-faded);
+}
+.small-print a { color: inherit; }
+.small-print a:hover { color: var(--quink); }
+.sep { margin: 0 0.6em; }
+
+/* ======================= Motion & small screens ======================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { animation: none; opacity: 1; transform: none; }
+  .underflourish-path { animation: none; stroke-dashoffset: 0; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 1.0625rem; }
+  .bot { padding: 1.25rem 1.1rem; }
+  .bot-head { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+}
