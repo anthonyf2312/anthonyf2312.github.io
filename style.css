@@ -91,6 +91,21 @@ body::after {
 .nav a:hover { color: var(--fg); }
 .nav-name { color: var(--fg) !important; font-weight: 500; }
 .nav-links { display: flex; gap: 1.75rem; }
+.nav-links a { position: relative; }
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after { transform: scaleX(1); }
 
 /* ======================= Poster type ======================= */
 
@@ -271,10 +286,9 @@ a.row:hover .row-title {
   flex: none;
   font-size: clamp(1.5rem, 4vw, 2.75rem);
   color: var(--fg-muted);
-  transition: transform 250ms ease, color 250ms ease;
+  transition: color 250ms ease;
 }
 a.row:hover .row-arrow {
-  transform: translate(0.3rem, -0.3rem);
   color: var(--accent);
 }
 
@@ -390,8 +404,9 @@ a.row:hover .row-arrow {
   border: 1.5px solid #111113;
   border-radius: 999px;
   padding: 0.8em 1.6em;
-  transition: background-color 180ms ease, color 180ms ease;
+  transition: background-color 180ms ease, color 180ms ease, transform 120ms ease;
 }
+.ms-link:active { transform: scale(0.97); }
 .ms-link:hover { background: #111113; color: var(--accent); }
 .ms-link:focus-visible { outline-color: #111113; }
 
@@ -444,7 +459,7 @@ a.row:hover .row-arrow {
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; }
   .scroll-cue { transition: none; }
-  .row-title, .row-arrow, .ms-link { transition: none; }
+  .row-title, .row-arrow, .ms-link, .nav-links a::after { transition: none; }
 }
 
 /* ======================= Small screens ======================= */
