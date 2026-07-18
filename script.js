@@ -132,6 +132,29 @@
         });
       });
 
+      /* parallax (scrubbed y) + ambient float (slow rotation) on the marks */
+      var mark = document.querySelector(".f1-mark");
+      var ribbon = document.querySelector(".ms-ribbon");
+
+      // normalize into GSAP's transform system (matches the CSS centering transforms)
+      gsap.set(mark, { yPercent: -50, rotation: -8, y: 0 });
+      gsap.set(ribbon, { yPercent: -50, rotation: 10, y: 0 });
+
+      gsap.fromTo(mark, { y: 70 }, {
+        y: -70, ease: "none",
+        scrollTrigger: { trigger: ".f1", start: "top bottom", end: "bottom top", scrub: true }
+      });
+      gsap.fromTo(ribbon, { y: 50 }, {
+        y: -50, ease: "none",
+        scrollTrigger: { trigger: ".ms", start: "top bottom", end: "bottom top", scrub: true }
+      });
+
+      gsap.to(mark, { rotation: -11, duration: 7, yoyo: true, repeat: -1, ease: "sine.inOut" });
+      gsap.to(ribbon, { rotation: 13, duration: 6, yoyo: true, repeat: -1, ease: "sine.inOut" });
+
+      /* imperceptible glow drift */
+      gsap.to(".glow", { xPercent: 2.5, yPercent: 3, duration: 26, yoyo: true, repeat: -1, ease: "sine.inOut" });
+
     });
   }
 

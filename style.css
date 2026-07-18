@@ -30,10 +30,7 @@ html { scroll-behavior: smooth; }
 
 body {
   overflow-x: clip; /* kinetic weight changes can momentarily widen the hero line */
-  background:
-    radial-gradient(70rem 45rem at 88% -5%, rgba(255, 107, 43, 0.075), transparent 62%),
-    radial-gradient(55rem 55rem at -12% 55%, rgba(255, 128, 0, 0.05), transparent 60%)
-    var(--bg);
+  background: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans);
   font-size: 1.0625rem;
@@ -59,6 +56,17 @@ body::after {
   background: url("assets/grain.svg") repeat;
   background-size: 240px 240px;
   opacity: 0.055;
+}
+
+/* background glows on their own fixed layer so they can drift via transform */
+.glow {
+  position: fixed;
+  inset: -12%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(70rem 45rem at 80% 5%, rgba(255, 107, 43, 0.075), transparent 62%),
+    radial-gradient(55rem 55rem at 0% 55%, rgba(255, 128, 0, 0.05), transparent 60%);
 }
 
 /* ======================= Nav ======================= */
