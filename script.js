@@ -91,32 +91,33 @@
     var mm = gsap.matchMedia();
     mm.add("(prefers-reduced-motion: no-preference)", function () {
 
-      /* stinger: sweep the papaya panel off toward the top-right */
+      /* stinger: hold a beat on the papaya, then sweep off slow + heavy */
       entrance = gsap.timeline({ defaults: { ease: "power3.out" } });
       entrance.to(".stinger", {
         xPercent: 115,
         yPercent: -12,
-        duration: 0.7,
-        ease: "power3.inOut",
+        duration: 1.1,
+        ease: "power4.inOut",
         onComplete: function () {
           var s = document.querySelector(".stinger");
           if (s) s.remove();
         }
-      }, 0.15);
+      }, 0.35);
 
-      /* entrance: eyebrow → letters rise with weight ramp → cue, then kinetic */
+      /* entrance: eyebrow → letters rise (overshoot) → weight ramp → cue, then kinetic.
+         Positioned on an absolute timeline so the beats stay choreographed. */
       var eyebrowSpans = document.querySelectorAll(".hero-eyebrow span");
       var ks = document.querySelectorAll(".hero-title .k");
 
-      gsap.set(eyebrowSpans, { opacity: 0, y: 12 });
+      gsap.set(eyebrowSpans, { opacity: 0, y: 14 });
       gsap.set(".scroll-cue", { opacity: 0 });
       gsap.set(ks, { "--w": 200 });
 
       entrance
-        .to(eyebrowSpans, { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 }, 0.4)
-        .from(ks, { yPercent: 40, opacity: 0, duration: 0.6, stagger: 0.045 }, 0.5)
-        .to(ks, { "--w": 600, duration: 0.5, ease: "power1.inOut", stagger: 0.045 }, 0.55)
-        .to(".scroll-cue", { opacity: 1, duration: 0.5 }, 1.15)
+        .to(eyebrowSpans, { opacity: 1, y: 0, duration: 0.7, stagger: 0.14 }, 0.55)
+        .from(ks, { yPercent: 65, opacity: 0, duration: 0.85, ease: "back.out(1.4)", stagger: 0.11 }, 0.75)
+        .to(ks, { "--w": 600, duration: 0.8, ease: "power2.inOut", stagger: 0.11 }, 0.9)
+        .to(".scroll-cue", { opacity: 1, duration: 0.65 }, 2.4)
         .call(wake);
 
       /* scroll reveals: per-section stagger */
