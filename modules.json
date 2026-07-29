@@ -1,15 +1,63 @@
 {
   "$comment": "Tessel module catalogue. Two consumers: the bot verifies this file against modules.json.sig and trusts ONLY `entries`; the website renders `entries` as Reviewed and `listings` as Unreviewed. Anything in `entries` has been read by a person at that exact commit and bundle hash — never add an entry without reviewing it, because the signature is what admins rely on. `listings` is for submitted modules nobody has reviewed yet; the bot ignores it completely.",
-
-  "issuedAt": "2026-07-29T00:00:00Z",
+  "issuedAt": "2026-07-29T14:31:46Z",
   "expiresAt": "2026-10-29T00:00:00Z",
-
   "entries": [],
-
-  "listings": [],
-
+  "listings": [
+    {
+      "moduleId": "com.github.anthonyf2312.ping",
+      "version": "1.0.0",
+      "name": "Ping",
+      "description": "Checks the bot is alive, and rolls a die. Asks for no permissions at all.",
+      "author": "anthonyf2312",
+      "repository": "https://github.com/anthonyf2312/tessel-ping",
+      "permissions": [],
+      "tags": [
+        "utility",
+        "example",
+        "starter"
+      ]
+    },
+    {
+      "moduleId": "com.github.anthonyf2312.welcome",
+      "version": "1.0.0",
+      "name": "Welcome",
+      "description": "Greets people when they join, with a message you write. Can also say goodbye.",
+      "author": "anthonyf2312",
+      "repository": "https://github.com/anthonyf2312/tessel-welcome",
+      "permissions": [
+        "storage",
+        "messages.send",
+        "events.guild"
+      ],
+      "tags": [
+        "welcome",
+        "greeting",
+        "onboarding"
+      ]
+    },
+    {
+      "moduleId": "com.github.anthonyf2312.moderation",
+      "version": "1.0.0",
+      "name": "Moderation",
+      "description": "Catches invite spam, mass mentions and flooding. Warns, then escalates. Logs everything.",
+      "author": "anthonyf2312",
+      "repository": "https://github.com/anthonyf2312/tessel-moderation",
+      "permissions": [
+        "storage",
+        "messages.read",
+        "messages.manage",
+        "messages.send",
+        "members.moderate"
+      ],
+      "tags": [
+        "moderation",
+        "automod",
+        "spam"
+      ]
+    }
+  ],
   "revoked": [],
-
   "$schema_notes": {
     "entries[]": {
       "moduleId": "must match module.json id exactly",
