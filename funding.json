@@ -1,12 +1,9 @@
 {
-  "$comment": "Running-cost funding bar, rendered by docs.js on docs.html and modules.html. Updated by hand — nothing here is live, and it should never claim otherwise. Set `raised` to what has actually come in and `updated` to the date you changed it.",
-
-  "$todo": "Set donateUrl to your Buy Me a Coffee page, e.g. https://buymeacoffee.com/yourhandle — it is left empty deliberately because a wrong handle would send other people's money to a stranger. The button stays hidden until it is a real https URL, so nothing links nowhere in the meantime.",
-
+  "$comment": "Running-cost funding bar, rendered by docs.js on docs.html and modules.html. Updated by hand — nothing here is live, and it should never claim otherwise. Set `raised` to what has actually come in and `updated` to the date you changed it. Leave `donateUrl` empty to hide the button rather than link nowhere.",
   "currency": "GBP",
   "goalMonthly": 15,
   "raised": 0,
   "supporters": 0,
   "updated": "2026-07-29",
-  "donateUrl": ""
+  "donateUrl": "https://buymeacoffee.com/anthonyf2312"
 }
