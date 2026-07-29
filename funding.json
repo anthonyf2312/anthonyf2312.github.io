@@ -1,5 +1,7 @@
 {
-  "$comment": "Running-cost funding bar, rendered by docs.js on docs.html and modules.html. Updated by hand — nothing here is live, and it should never claim otherwise. Set `raised` to what has actually come in this month and `updated` to the date you changed it. Leave `donateUrl` empty and the button hides itself rather than linking nowhere.",
+  "$comment": "Running-cost funding bar, rendered by docs.js on docs.html and modules.html. Updated by hand — nothing here is live, and it should never claim otherwise. Set `raised` to what has actually come in and `updated` to the date you changed it.",
+
+  "$todo": "Set donateUrl to your Buy Me a Coffee page, e.g. https://buymeacoffee.com/yourhandle — it is left empty deliberately because a wrong handle would send other people's money to a stranger. The button stays hidden until it is a real https URL, so nothing links nowhere in the meantime.",
 
   "currency": "GBP",
   "goalMonthly": 15,
