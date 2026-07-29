@@ -72,9 +72,13 @@
 
   function buildTile(entry) {
     const signed = entry.trust === 'signed';
+    const rejected = entry.trust === 'rejected';
     const repoUrl = safeRepoUrl(entry.repository);
     const iconUrl = safeImageUrl(entry.icon);
-    const tile = el('article', 'cat-tile' + (signed ? '' : ' cat-tile-unsigned'));
+    const tile = el(
+      'article',
+      'cat-tile' + (signed ? '' : ' cat-tile-unsigned') + (rejected ? ' cat-tile-rejected' : ''),
+    );
 
     const head = el('div', 'cat-tile-head');
     if (iconUrl) {
@@ -95,14 +99,28 @@
     head.appendChild(heading);
     tile.appendChild(head);
 
-    tile.appendChild(
-      el('span', 'cat-chip ' + (signed ? 'cat-chip-signed' : 'cat-chip-unsigned'),
-        signed ? 'Reviewed' : 'Unreviewed'),
-    );
+    const chipClass = rejected
+      ? 'cat-chip cat-chip-rejected'
+      : signed
+        ? 'cat-chip cat-chip-signed'
+        : 'cat-chip cat-chip-unsigned';
+    const chipText = rejected ? 'Not recommended' : signed ? 'Reviewed' : 'Unreviewed';
+    tile.appendChild(el('span', chipClass, chipText));
 
     tile.appendChild(el('p', 'cat-tile-desc', entry.description || ''));
 
-    if (!signed) {
+    // The published reason, when a decision was recorded. Rendered as text, never markup —
+    // it is generated from a review of a stranger's code and read by strangers.
+    const review = entry.review && typeof entry.review === 'object' ? entry.review : null;
+    if (review && typeof review.reason === 'string') {
+      tile.appendChild(el('p', 'cat-tile-reason' + (rejected ? ' is-rejected' : ''), review.reason));
+
+      const decided = review.decidedBy === 'maintainer' ? 'a maintainer' : 'an automated review';
+      const when = typeof review.reviewedAt === 'string' ? review.reviewedAt.slice(0, 10) : '';
+      tile.appendChild(
+        el('p', 'cat-tile-reviewmeta', `Decided by ${decided}${when ? ` on ${when}` : ''}.`),
+      );
+    } else if (!signed) {
       tile.appendChild(
         el('p', 'cat-tile-warn',
           'Nobody has reviewed this code. Tessel will warn you before installing it.'),
@@ -226,7 +244,10 @@
       }));
       const unreviewed = (Array.isArray(data.listings) ? data.listings : []).map((entry) => ({
         ...entry,
-        trust: 'unsigned',
+        // A listing carrying an "unsafe" review was looked at and refused; one without is
+        // simply not finished. Collapsing those two into one label would be unfair to the
+        // second group, so they render differently.
+        trust: entry.review && entry.review.verdict === 'unsafe' ? 'rejected' : 'unsigned',
       }));
 
       modules = [...reviewed, ...unreviewed];
