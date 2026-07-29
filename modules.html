@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tessel modules — browse and install</title>
+  <meta name="description" content="Browse modules for Tessel, the modular Discord bot. Install any module with one command, per server.">
+  <link rel="canonical" href="https://anthonyf2312.github.io/modules.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tessel modules">
+  <meta property="og:description" content="Browse modules for Tessel, the modular Discord bot. One command to install, per server.">
+  <meta property="og:url" content="https://anthonyf2312.github.io/modules.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tessel modules">
+  <meta name="twitter:description" content="Browse modules for Tessel, the modular Discord bot.">
+  <meta name="theme-color" content="#111113">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111113'/%3E%3Cpath d='M32 12 52 32 32 52 12 32Z' fill='%23ff6b2b'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="modules.css?v=1">
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <nav class="cat-nav" aria-label="Page navigation">
+    <a class="cat-nav-name" href="index.html">anthony</a>
+    <div class="cat-nav-links">
+      <a href="index.html#work">work</a>
+      <a href="modules.html" aria-current="page">modules</a>
+      <a href="https://github.com/anthonyf2312" rel="noopener">github&nbsp;↗</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="cat-hero">
+      <p class="cat-eyebrow"><span>TESSEL</span><span>DISCORD&nbsp;BOT</span></p>
+      <h1 class="cat-title">MODULES</h1>
+      <p class="cat-lede">Tessel is a Discord bot with no features of its own. You add the ones
+      you want, one server at a time — moderation here, levelling there, nothing shared between
+      them. Modules tile together; that's the whole idea.</p>
+
+      <div class="cat-how">
+        <p class="cat-how-step"><span class="cat-how-label">install</span><code>/module install &lt;url&gt;</code></p>
+        <p class="cat-how-step"><span class="cat-how-label">turn on</span><code>/module load &lt;name&gt;</code></p>
+        <p class="cat-how-note">Approve what it's allowed to do, and its commands appear. In your
+        server only. No restart.</p>
+      </div>
+    </header>
+
+    <section class="cat-controls" aria-label="Filter modules">
+      <div class="cat-search">
+        <label class="cat-visually-hidden" for="cat-q">Search modules</label>
+        <input id="cat-q" type="search" placeholder="Search modules" autocomplete="off">
+      </div>
+      <label class="cat-toggle">
+        <input id="cat-signed-only" type="checkbox">
+        <span>Reviewed only</span>
+      </label>
+      <p class="cat-count" id="cat-count" role="status"></p>
+    </section>
+
+    <section class="cat-grid" id="cat-grid" aria-label="Modules"></section>
+
+    <template id="cat-empty">
+      <div class="cat-empty">
+        <p class="cat-empty-title">Nothing listed yet.</p>
+        <p>The catalogue is new. If you've built a module, it can be the first one here — or
+        install any module straight from its GitHub URL without waiting for a listing.</p>
+        <a class="cat-btn" href="https://github.com/anthonyf2312/anthonyf2312.github.io/issues/new?labels=module-request&amp;title=Module%20listing%3A%20&amp;body=Repository%20URL%3A%0ADescription%20(one%20line)%3A%0AIcon%20URL%20(optional)%3A%0ATags%3A" rel="noopener">Submit a module&nbsp;↗</a>
+      </div>
+    </template>
+
+    <template id="cat-none-match">
+      <div class="cat-empty">
+        <p class="cat-empty-title">No modules match that.</p>
+        <p>Try a shorter search, or turn off “Reviewed only” to include modules nobody has
+        reviewed yet.</p>
+      </div>
+    </template>
+
+    <section class="cat-trust" aria-labelledby="cat-trust-h">
+      <h2 class="cat-trust-h" id="cat-trust-h">Reviewed and unreviewed</h2>
+      <div class="cat-trust-body">
+        <p><strong class="cat-chip cat-chip-signed">Reviewed</strong> means someone read the code
+        at a specific commit and signed it. Change one byte afterwards and the signature stops
+        matching, so it can't be inherited by code nobody looked at.</p>
+        <p><strong class="cat-chip cat-chip-unsigned">Unreviewed</strong> means exactly that.
+        Tessel will still install it — you'll get a warning first, because an unreviewed module
+        can do anything the permissions it asks for allow.</p>
+        <p class="cat-trust-note">Either way, modules run locked away from the bot's token, its
+        database and the filesystem. What they <em>can</em> do is the permission list on each
+        tile, and you approve that before anything runs.</p>
+      </div>
+    </section>
+
+    <section class="cat-cta">
+      <p class="cat-cta-line">Built something?</p>
+      <a class="cat-btn" href="https://github.com/anthonyf2312/anthonyf2312.github.io/issues/new?labels=module-request&amp;title=Module%20listing%3A%20&amp;body=Repository%20URL%3A%0ADescription%20(one%20line)%3A%0AIcon%20URL%20(optional)%3A%0ATags%3A" rel="noopener">Submit it for listing&nbsp;↗</a>
+      <p class="cat-cta-note">Opens a GitHub issue with the details prefilled. Listing is free and
+      the review is done by a person.</p>
+    </section>
+  </main>
+
+  <footer class="cat-footer">
+    <a href="index.html">← back to anthony</a>
+    <span>tessel — modular discord bot</span>
+    <span>© <span id="cat-year">2026</span></span>
+  </footer>
+
+  <script defer src="modules.js?v=1"></script>
+</body>
+</html>

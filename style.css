@@ -275,13 +275,6 @@ a.row:hover .row-title {
   color: var(--fg-muted);
 }
 
-.tag-dev {
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  border-radius: 999px;
-  padding: 0.25em 0.8em;
-}
-
 .row-arrow {
   flex: none;
   font-size: clamp(1.5rem, 4vw, 2.75rem);

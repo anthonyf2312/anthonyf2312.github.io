@@ -1,0 +1,34 @@
+{
+  "$comment": "Tessel module catalogue. Two consumers: the bot verifies this file against modules.json.sig and trusts ONLY `entries`; the website renders `entries` as Reviewed and `listings` as Unreviewed. Anything in `entries` has been read by a person at that exact commit and bundle hash — never add an entry without reviewing it, because the signature is what admins rely on. `listings` is for submitted modules nobody has reviewed yet; the bot ignores it completely.",
+
+  "issuedAt": "2026-07-29T00:00:00Z",
+  "expiresAt": "2026-10-29T00:00:00Z",
+
+  "entries": [],
+
+  "listings": [],
+
+  "revoked": [],
+
+  "$schema_notes": {
+    "entries[]": {
+      "moduleId": "must match module.json id exactly",
+      "version": "must match module.json version exactly",
+      "commitSha": "full 40-character commit sha that was reviewed",
+      "bundleSha256": "sha256 of the esbuild bundle produced from that commit",
+      "name": "display only",
+      "description": "display only, one line",
+      "author": "display only",
+      "repository": "https://github.com/owner/repo — what /module install takes",
+      "icon": "display only, absolute or site-relative image URL",
+      "permissions": "display only, copied from module.json",
+      "tags": "display only, for search"
+    },
+    "listings[]": "same display fields as entries, minus commitSha and bundleSha256",
+    "revoked[]": {
+      "moduleId": "required",
+      "version": "omit to revoke every version",
+      "reason": "shown to admins"
+    }
+  }
+}

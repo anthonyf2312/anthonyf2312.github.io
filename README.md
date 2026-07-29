@@ -7,6 +7,9 @@ Dark type-poster design: Inter variable font with a cursor-reactive kinetic ANTH
 ## Structure
 
 - `index.html` — the whole page
+- `modules.html` / `modules.css` / `modules.js` — the Tessel module catalogue
+- `modules.json` — catalogue data. `entries` are reviewed and signed (the bot verifies them against
+  `modules.json.sig`); `listings` are submitted but unreviewed and the bot ignores them
 - `style.css` — design tokens at the top, one section per block
 - `script.js` — kinetic hero type, scroll reveals
 - `assets/` — McLaren speedmark PNGs ([icons8](https://icons8.com)), hand-made SVGs (ribbon, grain)
