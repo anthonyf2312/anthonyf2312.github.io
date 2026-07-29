@@ -7,6 +7,8 @@ Dark type-poster design: Inter variable font with a cursor-reactive kinetic ANTH
 ## Structure
 
 - `index.html` — the whole page
+- `docs.html` / `docs.css` / `docs.js` — Tessel module documentation, and the funding bar
+- `funding.json` — running-cost bar data. Updated by hand; nothing here is live
 - `modules.html` / `modules.css` / `modules.js` — the Tessel module catalogue
 - `modules.json` — catalogue data. `entries` are reviewed and signed (the bot verifies them against
   `modules.json.sig`); `listings` are submitted but unreviewed and the bot ignores them

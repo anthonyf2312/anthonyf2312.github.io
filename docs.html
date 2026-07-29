@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tessel docs — writing modules</title>
+  <meta name="description" content="Documentation for Tessel, the modular Discord bot: manifest reference, SDK, permissions, events and the security model.">
+  <link rel="canonical" href="https://anthonyf2312.github.io/docs.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tessel docs">
+  <meta property="og:description" content="Manifest reference, SDK, permissions, events and the security model.">
+  <meta property="og:url" content="https://anthonyf2312.github.io/docs.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#111113">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111113'/%3E%3Cpath d='M32 12 52 32 32 52 12 32Z' fill='%23ff6b2b'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="docs.css?v=1">
+</head>
+<body>
+  <a class="doc-skip" href="#docs-main">Skip to content</a>
+
+  <nav class="doc-nav" aria-label="Page navigation">
+    <a class="doc-nav-name" href="index.html">anthony</a>
+    <div class="doc-nav-links">
+      <a href="modules.html">modules</a>
+      <a href="docs.html" aria-current="page">docs</a>
+      <a href="https://github.com/anthonyf2312/tessel" rel="noopener">source&nbsp;↗</a>
+    </div>
+  </nav>
+
+  <div class="doc-shell">
+
+    <!-- ======================= Sidebar ======================= -->
+    <aside class="doc-side" aria-label="Documentation sections">
+      <label class="cat-visually-hidden" for="doc-search">Filter sections</label>
+      <input id="doc-search" class="doc-search" type="search" placeholder="Filter…  ( / )" autocomplete="off">
+
+      <h2>Start here</h2>
+      <ul>
+        <li><a href="#what-is-tessel">What Tessel is</a></li>
+        <li><a href="#quickstart">Your first module</a></li>
+        <li><a href="#installing">Installing a module</a></li>
+      </ul>
+
+      <h2>Reference</h2>
+      <ul>
+        <li><a href="#manifest">module.json</a></li>
+        <li><a href="#commands">Commands</a></li>
+        <li><a href="#options">Command options</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#context">The context object</a></li>
+      </ul>
+
+      <h2>Actions</h2>
+      <ul>
+        <li><a href="#actions-messages">Messages</a></li>
+        <li><a href="#actions-reactions">Reactions</a></li>
+        <li><a href="#actions-members">Members</a></li>
+        <li><a href="#actions-channels">Channels</a></li>
+        <li><a href="#actions-roles">Roles &amp; guild</a></li>
+        <li><a href="#actions-storage">Storage</a></li>
+        <li><a href="#actions-http">HTTP</a></li>
+        <li><a href="#actions-raw">Raw API</a></li>
+      </ul>
+
+      <h2>Concepts</h2>
+      <ul>
+        <li><a href="#permissions">Permissions</a></li>
+        <li><a href="#per-guild">Per-server isolation</a></li>
+        <li><a href="#sandbox">The sandbox</a></li>
+        <li><a href="#trust">Reviewed &amp; unreviewed</a></li>
+      </ul>
+
+      <h2>Shipping</h2>
+      <ul>
+        <li><a href="#publishing">Publishing</a></li>
+        <li><a href="#versioning">Versioning</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+      </ul>
+
+      <p class="doc-side-empty" id="doc-side-empty" hidden>Nothing matches that.</p>
+    </aside>
+
+    <!-- ======================= Content ======================= -->
+    <main class="doc-main" id="docs-main">
+
+      <header class="doc-hero">
+        <p class="doc-eyebrow">TESSEL · MODULE DOCUMENTATION</p>
+        <h1 class="doc-title">Build a<br>module</h1>
+        <p class="doc-lede">A module is a GitHub repository. Someone runs one command, approves
+        what it's allowed to do, and your commands appear in their server. Nothing restarts.</p>
+      </header>
+
+      <section id="what-is-tessel">
+        <h2>What Tessel is</h2>
+        <p>Tessel is a Discord bot with no features of its own. Server admins install the ones
+        they want, one server at a time. A module enabled in one server is invisible in every
+        other — its commands don't appear, its code doesn't run, its data isn't shared.</p>
+        <p>Modules are <strong>untrusted third-party code</strong>. Yours runs in an isolated
+        child process with no bot token, no database access and no filesystem. Everything it can
+        do is declared in its manifest and approved by the admin before anything runs.</p>
+        <p>That constraint shapes the whole API, so it's worth reading
+        <a href="#sandbox">The sandbox</a> before you get far.</p>
+      </section>
+
+      <section id="quickstart">
+        <h2>Your first module</h2>
+        <p>Two files. A manifest, and the code.</p>
+
+        <h4>module.json</h4>
+<pre><code>{
+  "id": "com.github.yourname.greeter",
+  "name": "Greeter",
+  "version": "1.0.0",
+  "apiVersion": "1",
+  "description": "Greets people, and counts how many times.",
+  "author": "yourname",
+  "repository": "https://github.com/yourname/greeter",
+  "entry": "src/index.ts",
+  "permissions": ["storage"],
+  "commands": [
+    { "name": "greet", "description": "Say hello" }
+  ]
+}</code></pre>
+
+        <h4>src/index.ts</h4>
+<pre><code>import { defineModule } from '@tessel/sdk';
+
+export default defineModule({
+  commands: {
+    async greet(ctx) {
+      const count = Number(await ctx.storage.get('greetings') ?? '0') + 1;
+      await ctx.storage.set('greetings', String(count));
+      ctx.reply(`Hello! That's greeting number ${count} in this server.`);
+    },
+  },
+});</code></pre>
+
+        <p>Push it to GitHub. That's the whole module — there is no build step, no
+        <code>package.json</code>, and no dependency to install. Tessel bundles your TypeScript
+        itself at install time.</p>
+
+        <div class="doc-note">
+          <p><strong>You don't install <code>@tessel/sdk</code>.</strong> It's bundled in for
+          you from the bot's own copy, which is also why a module can't ship a doctored version
+          of it. Your editor will complain it can't find the import; that's expected.</p>
+        </div>
+      </section>
+
+      <section id="installing">
+        <h2>Installing a module</h2>
+        <p>Anyone with <strong>Manage Server</strong> can install from a GitHub URL.</p>
+<pre><code>/module install https://github.com/yourname/greeter
+/module load greeter</code></pre>
+
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Command</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td><code>/module install &lt;url&gt;</code></td><td>Installs from GitHub, pinned to a commit. Warns if unreviewed.</td></tr>
+              <tr><td><code>/module load &lt;module&gt;</code></td><td>Shows the permission list, then turns it on here.</td></tr>
+              <tr><td><code>/module unload &lt;module&gt;</code></td><td>Turns it off. Commands disappear from this server.</td></tr>
+              <tr><td><code>/module list</code></td><td>What's installed here, and what's on.</td></tr>
+              <tr><td><code>/module info &lt;module&gt;</code></td><td>What it does, what it can do, which commit it's pinned to.</td></tr>
+              <tr><td><code>/module uninstall &lt;module&gt;</code></td><td>Removes it and everything it stored here.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="manifest">
+        <h2>module.json</h2>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Field</th><th>Required</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td><code>id</code></td><td>yes</td><td>Globally unique, reverse-domain style. Letters, numbers, dots, hyphens. Becomes a directory name, so no separators or <code>..</code>.</td></tr>
+              <tr><td><code>name</code></td><td>yes</td><td>Up to 64 characters.</td></tr>
+              <tr><td><code>version</code></td><td>yes</td><td>Semantic version, e.g. <code>1.2.0</code>.</td></tr>
+              <tr><td><code>apiVersion</code></td><td>yes</td><td>Currently <code>"1"</code>.</td></tr>
+              <tr><td><code>description</code></td><td>yes</td><td>Shown at install time. One or two sentences.</td></tr>
+              <tr><td><code>author</code></td><td>yes</td><td>Your name or handle.</td></tr>
+              <tr><td><code>entry</code></td><td>yes</td><td>Relative path to your entry file. <code>.ts</code>, <code>.mts</code>, <code>.js</code> or <code>.mjs</code>.</td></tr>
+              <tr><td><code>repository</code></td><td>no</td><td>Your repo URL.</td></tr>
+              <tr><td><code>icon</code></td><td>no</td><td>Image path, used on the catalogue.</td></tr>
+              <tr><td><code>permissions</code></td><td>no</td><td>See <a href="#permissions">Permissions</a>. Defaults to none.</td></tr>
+              <tr><td><code>network</code></td><td>no</td><td>Bare hostnames you may contact. Requires <code>http</code>.</td></tr>
+              <tr><td><code>commands</code></td><td>no</td><td>Up to 50.</td></tr>
+              <tr><td><code>storage</code></td><td>no</td><td><code>{ "quotaKb": 512 }</code>. Max 10240.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="commands">
+        <h2>Commands</h2>
+        <p>Commands are declared in the manifest as <strong>data, not code</strong>. That's
+        deliberate: it lets Tessel register your slash commands with Discord without ever
+        executing your code.</p>
+        <p>It also means adding a command needs a version bump and a <code>/module update</code>,
+        not just a code change.</p>
+        <p>Every command in the manifest needs a handler of the same name. A declared command
+        with no handler replies "Unknown command"; a handler with no manifest entry is
+        unreachable, because Discord was never told it exists.</p>
+      </section>
+
+      <section id="options">
+        <h2>Command options</h2>
+<pre><code>"commands": [{
+  "name": "warn",
+  "description": "Warn a member",
+  "options": [
+    { "name": "member", "description": "Who", "type": "user", "required": true },
+    { "name": "reason", "description": "Why", "type": "string" }
+  ]
+}]</code></pre>
+        <p>Types are <code>string</code>, <code>integer</code>, <code>number</code>,
+        <code>boolean</code>, <code>user</code>, <code>channel</code> and <code>role</code>.
+        <code>user</code>, <code>channel</code> and <code>role</code> arrive as ids.</p>
+        <p>Command names must be lowercase, 1–32 characters, letters/numbers/hyphens/underscores
+        — Discord's rule, not ours.</p>
+        <div class="doc-note doc-warn">
+          <p><strong>Options are user input.</strong> Anything someone can type reaches your
+          handler. Validate it — <code>sides</code> could be <code>0</code>, <code>-5</code> or
+          <code>1e9</code>.</p>
+        </div>
+      </section>
+
+      <section id="events">
+        <h2>Events</h2>
+        <p>Events arrive without anyone running a command.</p>
+<pre><code>export default defineModule({
+  events: {
+    async memberJoin(ctx) {
+      const channel = await ctx.storage.get('welcomeChannel');
+      if (channel) await ctx.sendMessage(channel, `Welcome ${ctx.member.username}!`);
+    },
+  },
+});</code></pre>
+
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Event</th><th>Context</th><th>Needs</th></tr></thead>
+            <tbody>
+              <tr><td><code>memberJoin</code></td><td><code>ctx.member</code>, <code>ctx.memberCount</code></td><td><span class="doc-perm">events.guild</span></td></tr>
+              <tr><td><code>memberLeave</code></td><td><code>ctx.member</code>, <code>ctx.memberCount</code></td><td><span class="doc-perm">events.guild</span></td></tr>
+              <tr><td><code>messageCreate</code></td><td><code>ctx.message</code></td><td><span class="doc-perm">messages.read</span></td></tr>
+              <tr><td><code>messageDelete</code></td><td><code>ctx.message</code></td><td><span class="doc-perm">messages.read</span></td></tr>
+              <tr><td><code>voiceStateUpdate</code></td><td><code>ctx.voice</code></td><td><span class="doc-perm">voice.read</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>If you lack the permission an event requires, you are <strong>not sent it</strong> —
+        you don't receive it and discard it.</p>
+        <p>Nobody is waiting on an event, so a handler that throws has nowhere to report. The
+        error is swallowed rather than killing the process for every server using your module.
+        Crash repeatedly and the supervisor disables you.</p>
+
+        <div class="doc-note doc-warn">
+          <p><strong>Events need privileged intents on the bot.</strong> Member events require
+          the operator to run Tessel with <code>PRIVILEGED_INTENTS=members</code>, and message
+          content requires <code>messageContent</code> — both also enabled in Discord's
+          Developer Portal. Say so in your README, or people will install your module and wonder
+          why nothing happens.</p>
+        </div>
+      </section>
+
+      <section id="context">
+        <h2>The context object</h2>
+        <p>Every handler gets a <code>ctx</code>. It carries information about where it's
+        running, and every action you're allowed to take.</p>
+
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Property</th><th>Where</th><th>What</th></tr></thead>
+            <tbody>
+              <tr><td><code>ctx.guildId</code></td><td>everywhere</td><td>The server. Set by Tessel; you can't influence it.</td></tr>
+              <tr><td><code>ctx.guildName</code></td><td>everywhere</td><td>Its display name.</td></tr>
+              <tr><td><code>ctx.userId</code></td><td>commands</td><td>Who ran it.</td></tr>
+              <tr><td><code>ctx.options</code></td><td>commands</td><td>What they filled in.</td></tr>
+              <tr><td><code>ctx.reply(text)</code></td><td>commands</td><td>Answers them. Call once.</td></tr>
+              <tr><td><code>ctx.member</code></td><td>member events</td><td><code>id</code>, <code>username</code>, <code>displayName</code>, <code>bot</code>, <code>createdAt</code></td></tr>
+              <tr><td><code>ctx.message</code></td><td>message events</td><td><code>id</code>, <code>channelId</code>, <code>content</code>, <code>author</code></td></tr>
+              <tr><td><code>ctx.voice</code></td><td>voice events</td><td><code>member</code>, <code>channelId</code>, <code>previousChannelId</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>If your handler finishes without replying, Tessel replies "Done." so nobody is left
+        watching a spinner. If it throws, the user gets a short failure message and the details
+        go to the bot's logs — never to them.</p>
+      </section>
+
+      <section id="actions-messages">
+        <h2>Messages</h2>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Method</th><th>Returns</th><th>Needs</th></tr></thead>
+            <tbody>
+              <tr><td><code>ctx.sendMessage(channelId, text)</code></td><td>message id</td><td><span class="doc-perm">messages.send</span></td></tr>
+              <tr><td><code>ctx.editMessage(channelId, messageId, text)</code></td><td>—</td><td><span class="doc-perm">messages.send</span></td></tr>
+              <tr><td><code>ctx.replyToMessage(channelId, messageId, text)</code></td><td>message id</td><td><span class="doc-perm">messages.send</span></td></tr>
+              <tr><td><code>ctx.deleteMessage(channelId, messageId)</code></td><td>—</td><td><span class="doc-perm">messages.manage</span></td></tr>
+              <tr><td><code>ctx.pinMessage(channelId, messageId, pinned?)</code></td><td>—</td><td><span class="doc-perm">messages.manage</span></td></tr>
+              <tr><td><code>ctx.fetchMessage(channelId, messageId)</code></td><td>message</td><td><span class="doc-perm">messages.read</span></td></tr>
+              <tr><td><code>ctx.fetchMessages(channelId, limit?)</code></td><td>messages</td><td><span class="doc-perm">messages.read</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>You can only edit messages your own module sent. <code>fetchMessages</code> returns
+        most-recent-first, capped at 100.</p>
+        <div class="doc-note">
+          <p>Your text may mention <em>users</em> — a welcome ping is the point — but role and
+          <code>@everyone</code> mentions are stripped. A module can't ping a server.</p>
+        </div>
+      </section>
+
+      <section id="actions-reactions">
+        <h2>Reactions</h2>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Method</th><th>Needs</th></tr></thead>
+            <tbody>
+              <tr><td><code>ctx.addReaction(channelId, messageId, emoji)</code></td><td><span class="doc-perm">reactions</span></td></tr>
+              <tr><td><code>ctx.removeReaction(channelId, messageId, emoji)</code></td><td><span class="doc-perm">reactions</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>A unicode emoji, or <code>name:id</code> for a custom one.</p>
+      </section>
+
+      <section id="actions-members">
+        <h2>Members</h2>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Method</th><th>Needs</th></tr></thead>
+            <tbody>
+              <tr><td><code>ctx.fetchMember(userId)</code></td><td><span class="doc-perm">members.read</span></td></tr>
+              <tr><td><code>ctx.timeoutMember(userId, ms, reason?)</code></td><td><span class="doc-perm">members.moderate</span></td></tr>
+              <tr><td><code>ctx.kickMember(userId, reason?)</code></td><td><span class="doc-perm">members.moderate</span></td></tr>
+              <tr><td><code>ctx.banMember(userId, reason?)</code></td><td><span class="doc-perm">members.ban</span></td></tr>
+              <tr><td><code>ctx.unbanMember(userId, reason?)</code></td><td><span class="doc-perm">members.ban</span></td></tr>
+              <tr><td><code>ctx.setNickname(userId, nickname)</code></td><td><span class="doc-perm">members.roles</span></td></tr>
+              <tr><td><code>ctx.addRole(userId, roleId)</code></td><td><span class="doc-perm">members.roles</span></td></tr>
+              <tr><td><code>ctx.removeRole(userId, roleId)</code></td><td><span class="doc-perm">members.roles</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Timeouts cap at 28 days, Discord's own limit. Moderation actions depend on the bot's
+        role being <em>above</em> the target's — when it isn't, you get a clear error saying so
+        rather than a raw API failure.</p>
+      </section>
+
+      <section id="actions-channels">
+        <h2>Channels</h2>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Method</th><th>Needs</th></tr></thead>
+            <tbody>
+              <tr><td><code>ctx.listChannels()</code></td><td><span class="doc-perm">channels.read</span></td></tr>
+              <tr><td><code>ctx.fetchChannel(channelId)</code></td><td><span class="doc-perm">channels.read</span></td></tr>
+              <tr><td><code>ctx.createChannel(name, type?, parentId?)</code></td><td><span class="doc-perm">channels.manage</span></td></tr>
+              <tr><td><code>ctx.deleteChannel(channelId, reason?)</code></td><td><span class="doc-perm">channels.manage</span></td></tr>
+              <tr><td><code>ctx.setChannelTopic(channelId, topic)</code></td><td><span class="doc-perm">channels.manage</span></td></tr>
+              <tr><td><code>ctx.setSlowmode(channelId, seconds)</code></td><td><span class="doc-perm">channels.manage</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><code>type</code> is <code>'text'</code>, <code>'voice'</code> or
+        <code>'category'</code>. Slowmode caps at 21600 seconds.</p>
+      </section>
+
+      <section id="actions-roles">
+        <h2>Roles &amp; guild</h2>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Method</th><th>Needs</th></tr></thead>
+            <tbody>
+              <tr><td><code>ctx.listRoles()</code></td><td><span class="doc-perm">members.read</span></td></tr>
+              <tr><td><code>ctx.createRole(name, colour?)</code></td><td><span class="doc-perm">members.roles</span></td></tr>
+              <tr><td><code>ctx.deleteRole(roleId, reason?)</code></td><td><span class="doc-perm">members.roles</span></td></tr>
+              <tr><td><code>ctx.fetchGuild()</code></td><td><span class="doc-perm">channels.read</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><code>fetchGuild()</code> returns <code>id</code>, <code>name</code>,
+        <code>memberCount</code>, <code>ownerId</code> and <code>iconUrl</code>.</p>
+      </section>
+
+      <section id="actions-storage">
+        <h2>Storage</h2>
+<pre><code>const notes = JSON.parse(await ctx.storage.get('notes') ?? '[]');
+notes.push({ by: ctx.userId, at: Date.now() });
+await ctx.storage.set('notes', JSON.stringify(notes));</code></pre>
+        <p>A per-server key/value store, namespaced to your module. Values are strings — use
+        <code>JSON.stringify</code> for anything richer. Needs
+        <span class="doc-perm">storage</span>.</p>
+        <ul>
+          <li><strong>Per server.</strong> The same key in two servers holds two different values.</li>
+          <li><strong>Per module.</strong> Another module using <code>notes</code> doesn't see yours.</li>
+          <li><strong>Quota'd.</strong> <code>storage.quotaKb</code> per server, 512KB by default. A write that would exceed it is refused and your <code>set()</code> rejects.</li>
+        </ul>
+      </section>
+
+      <section id="actions-http">
+        <h2>HTTP</h2>
+<pre><code>// module.json
+"permissions": ["http"],
+"network": ["api.example.com"]</code></pre>
+<pre><code>const response = await ctx.fetch('https://api.example.com/thing');
+if (response.ok) {
+  const data = JSON.parse(response.body);
+}</code></pre>
+        <p>Needs <span class="doc-perm">http</span>. Returns <code>{ status, ok, body }</code>.</p>
+        <ul>
+          <li>https only.</li>
+          <li>Only hostnames listed in your <code>network</code> field. That list comes from your manifest, so you can't widen it at runtime.</li>
+          <li>Redirects are refused — a permitted host that redirects elsewhere would otherwise be a way around the list.</li>
+          <li>10 second timeout, response capped at 100KB.</li>
+        </ul>
+        <div class="doc-note doc-warn">
+          <p>This is the permission that lets a module move data <em>off</em> the server. Admins
+          are told exactly which hosts you listed. Ask for as few as possible.</p>
+        </div>
+      </section>
+
+      <section id="actions-raw">
+        <h2>Raw API</h2>
+<pre><code>const emojis = await ctx.raw('GET', `/guilds/${ctx.guildId}/emojis`);</code></pre>
+        <p>The escape hatch, for anything the SDK doesn't cover. Needs
+        <span class="doc-perm">discord.raw</span>.</p>
+        <p>Tessel injects the token and refuses any route not scoped to the calling server, so
+        this means <strong>anything within this server</strong>, not anything. Only
+        <code>/guilds/…</code> naming your guild and <code>/channels/…</code> resolving inside
+        it are allowed. <code>/users</code>, <code>/applications</code> and global endpoints are
+        refused.</p>
+        <div class="doc-note doc-warn">
+          <p>The consent screen calls this out loudly, and rightly. Expect fewer installs if you
+          ask for it. Prefer a specific SDK method where one exists — and if something's missing,
+          that's worth reporting rather than working around.</p>
+        </div>
+      </section>
+
+      <section id="permissions">
+        <h2>Permissions</h2>
+        <p>Your module gets nothing by default. Every capability is requested in the manifest
+        and approved by the admin, who sees this wording before saying yes.</p>
+
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Permission</th><th>What the admin is told</th></tr></thead>
+            <tbody>
+              <tr><td><span class="doc-perm">messages.read</span></td><td>Read the content of messages sent in this server.</td></tr>
+              <tr><td><span class="doc-perm">messages.send</span></td><td>Send, edit and delete its own messages.</td></tr>
+              <tr><td><span class="doc-perm">messages.manage</span></td><td>Delete other people's messages.</td></tr>
+              <tr><td><span class="doc-perm">reactions</span></td><td>Add and remove reactions on messages.</td></tr>
+              <tr><td><span class="doc-perm">members.read</span></td><td>See the list of members and their profile details.</td></tr>
+              <tr><td><span class="doc-perm">members.roles</span></td><td>Give and take away roles from members.</td></tr>
+              <tr><td><span class="doc-perm">members.moderate</span></td><td>Time out or kick members from this server.</td></tr>
+              <tr><td><span class="doc-perm">members.ban</span></td><td>Ban and unban members from this server.</td></tr>
+              <tr><td><span class="doc-perm">channels.read</span></td><td>See the list of channels and their settings.</td></tr>
+              <tr><td><span class="doc-perm">channels.manage</span></td><td>Create, edit and delete channels.</td></tr>
+              <tr><td><span class="doc-perm">events.guild</span></td><td>Be notified when members join or leave this server.</td></tr>
+              <tr><td><span class="doc-perm">voice.read</span></td><td>See who joins, leaves and moves between voice channels.</td></tr>
+              <tr><td><span class="doc-perm">storage</span></td><td>Save its own data for this server.</td></tr>
+              <tr><td><span class="doc-perm">http</span></td><td>Contact the internet addresses listed in the manifest.</td></tr>
+              <tr><td><span class="doc-perm">discord.raw</span></td><td>Make any Discord request within this server.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Ask for as little as possible.</strong> The permission list is the main thing
+        a cautious admin reads, and the dangerous ones are called out separately and more loudly.
+        A module asking for <code>discord.raw</code> when it only needed
+        <code>messages.send</code> will be installed by fewer people.</p>
+        <p>Use a capability you didn't request and the call fails at runtime, with the refusal
+        written to that server's audit log.</p>
+      </section>
+
+      <section id="per-guild">
+        <h2>Per-server isolation</h2>
+        <p>One process serves every server that enabled your module — isolation is enforced per
+        call, not by running a copy per server.</p>
+        <p>You never pass a guild id to an action. <code>ctx.guildId</code> is stamped by Tessel,
+        and every action resolves through the server the command or event came from. A module
+        cannot reach a server it wasn't invoked from, even deliberately.</p>
+        <p>The same applies to storage, warnings, settings — everything is keyed by server, and
+        no query can return one server's rows to another.</p>
+      </section>
+
+      <section id="sandbox">
+        <h2>The sandbox</h2>
+        <p>Your module runs in a locked-down child process. Two independent layers, and an
+        escape has to defeat both.</p>
+        <p><strong>You cannot:</strong></p>
+        <ul>
+          <li><code>import</code> <code>node:fs</code>, <code>net</code>, <code>http</code>,
+          <code>child_process</code>, <code>worker_threads</code>, <code>os</code>,
+          <code>vm</code>, <code>process</code> or similar. The bundler rejects these at install
+          time with a clear error.</li>
+          <li>Use <code>fetch</code>, <code>WebSocket</code> or <code>XMLHttpRequest</code> —
+          they don't exist. Outbound HTTP is <a href="#actions-http">a brokered call</a>.</li>
+          <li>Read <code>process.env</code>, the bot token, or the database.</li>
+          <li>Depend on npm packages. There is no <code>node_modules</code>. Need a library?
+          Vendor its source into your repo where a reviewer can see it, and import it relatively.</li>
+          <li>Use <code>eval</code> or <code>new Function</code>.</li>
+        </ul>
+        <p><strong>You can</strong> import <code>node:path</code>, <code>url</code>,
+        <code>util</code>, <code>buffer</code>, <code>crypto</code>, <code>events</code>,
+        <code>stream</code>, <code>zlib</code>, <code>assert</code>, <code>timers</code> and
+        <code>string_decoder</code> — everything pure and local. <code>setInterval</code> works
+        normally.</p>
+      </section>
+
+      <section id="trust">
+        <h2>Reviewed &amp; unreviewed</h2>
+        <p>Every module is <strong>reviewed</strong> or <strong>unreviewed</strong>. There's no
+        third state.</p>
+        <p>A signature covers your module id, version, the exact commit and the hash of the built
+        bundle — deliberately not the repo URL, because tags move and branches get force-pushed.
+        Retag or amend after review and the hash changes, so your module drops back to unreviewed
+        until it's looked at again. That tamper-evidence is the whole point: a signature can't be
+        inherited by code nobody read.</p>
+        <p>Unreviewed modules still install. The person installing is told plainly that nobody
+        has reviewed the code and it could be malware, and has to click through it. Many will.
+        Some won't.</p>
+      </section>
+
+      <section id="publishing">
+        <h2>Publishing</h2>
+        <p>Push to GitHub. That's it — there's no registry to publish to and no account to make.
+        Anyone can install from your URL immediately.</p>
+        <p>To get listed on the <a href="modules.html">catalogue</a>, open an issue from that
+        page with your repository URL and a one-line description.</p>
+      </section>
+
+      <section id="versioning">
+        <h2>Versioning</h2>
+        <p>Your module is installed from a <strong>specific commit</strong>, resolved at install
+        time. Moving a tag doesn't change what anyone already has.</p>
+        <ul>
+          <li>Bump <code>version</code> for every release. Patch for fixes, minor for new
+          commands, major for breaking changes to how commands behave.</li>
+          <li>Tag releases so people can pin one:
+          <code>/module install https://github.com/you/yours/tree/v1.2.0</code></li>
+          <li>If a new version asks for <strong>more permissions</strong>, the admin is asked to
+          approve again. Adding permissions in a patch release is a good way to have your update
+          declined.</li>
+        </ul>
+      </section>
+
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+
+        <h4>'node:fs' is not available inside the module sandbox</h4>
+        <p>You imported something the sandbox denies. See <a href="#sandbox">The sandbox</a>.</p>
+
+        <h4>modules may not depend on npm packages</h4>
+        <p>There's no <code>node_modules</code> at runtime. Vendor the source into your repo and
+        import it relatively.</p>
+
+        <h4>it resolves outside the module directory</h4>
+        <p>A relative import climbed above your repo root with <code>../</code>. Everything you
+        import must live inside your module.</p>
+
+        <h4>module.json — permissions.0: Unknown permission 'x'</h4>
+        <p>Check the spelling against <a href="#permissions">Permissions</a>. The error names the
+        value it rejected.</p>
+
+        <h4>declares network hosts but does not request the 'http' permission</h4>
+        <p>Add <code>"http"</code> to permissions, or remove the <code>network</code> entry.
+        Listing hosts you can't reach would mislead the admin approving your module.</p>
+
+        <h4>My command doesn't appear</h4>
+        <p>Commands come from the manifest. Bump <code>version</code>, push, have the admin run
+        <code>/module update</code>, then check <code>/module info</code>.</p>
+
+        <h4>My event handler never fires</h4>
+        <p>Either you didn't request the permission it needs, or the bot isn't running with the
+        privileged intent that makes those events exist. See <a href="#events">Events</a>.</p>
+
+        <h4>My module was auto-disabled</h4>
+        <p>It crashed or stopped responding three times within five minutes. The person who
+        installed it is told why.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ======================= Funding ======================= -->
+  <section class="fund" id="fund" aria-labelledby="fund-title">
+    <div class="fund-inner">
+      <div class="fund-head">
+        <p class="fund-title" id="fund-title">Running costs</p>
+        <p class="fund-amount" id="fund-amount">—</p>
+      </div>
+
+      <div class="fund-track" role="progressbar" aria-labelledby="fund-title"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="fund-fill" id="fund-fill"></div>
+      </div>
+
+      <p class="fund-meta" id="fund-meta"></p>
+
+      <p class="fund-body">Tessel runs on a machine at home, and the bot and this site are free
+      with no ads and nothing gated behind payment. If it's useful to you, chipping in covers the
+      electricity and the domain. If it isn't, use it anyway — nothing here changes either way.</p>
+
+      <div class="fund-actions">
+        <a class="fund-btn" id="fund-btn" href="#" rel="noopener">Chip in&nbsp;↗</a>
+        <span class="fund-secondary">or ⭐ the <a href="https://github.com/anthonyf2312/tessel" rel="noopener">repo</a> — that's free</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="doc-footer">
+    <a href="index.html">← back to anthony</a>
+    <a href="modules.html">browse modules</a>
+    <a href="https://github.com/anthonyf2312/tessel" rel="noopener">source ↗</a>
+    <span>tessel — modular discord bot</span>
+  </footer>
+
+  <script defer src="docs.js?v=1"></script>
+</body>
+</html>

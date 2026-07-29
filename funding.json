@@ -1,0 +1,10 @@
+{
+  "$comment": "Running-cost funding bar, rendered by docs.js on docs.html and modules.html. Updated by hand — nothing here is live, and it should never claim otherwise. Set `raised` to what has actually come in this month and `updated` to the date you changed it. Leave `donateUrl` empty and the button hides itself rather than linking nowhere.",
+
+  "currency": "GBP",
+  "goalMonthly": 15,
+  "raised": 0,
+  "supporters": 0,
+  "updated": "2026-07-29",
+  "donateUrl": ""
+}
