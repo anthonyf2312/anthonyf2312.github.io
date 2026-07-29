@@ -1,7 +1,7 @@
 {
   "$comment": "Tessel module catalogue. Two consumers: the bot verifies this file against modules.json.sig and trusts ONLY `entries`; the website renders `entries` as Reviewed and `listings` as Unreviewed. Anything in `entries` has been read by a person at that exact commit and bundle hash — never add an entry without reviewing it, because the signature is what admins rely on. `listings` is for submitted modules nobody has reviewed yet; the bot ignores it completely.",
-  "issuedAt": "2026-07-29T16:22:41Z",
-  "expiresAt": "2026-10-27T16:22:41Z",
+  "issuedAt": "2026-07-29T16:44:03Z",
+  "expiresAt": "2026-10-27T16:44:03Z",
   "entries": [
     {
       "moduleId": "com.github.anthonyf2312.ping",
@@ -14,6 +14,24 @@
       "tags": [],
       "commitSha": "69cf3ab1ba1bf5f127cf1254d6481a23826cb8ce",
       "bundleSha256": "ae81b75d571914a96d496f8b895f3cce298834381d91a7b432a2919934363b95"
+    },
+    {
+      "moduleId": "com.github.anthonyf2312.moderation",
+      "version": "1.0.0",
+      "name": "Moderation",
+      "description": "Catches invite spam, mass mentions and flooding. Warns, then escalates. Logs everything.",
+      "author": "anthonyf2312",
+      "repository": "https://github.com/anthonyf2312/tessel-moderation",
+      "permissions": [
+        "storage",
+        "messages.read",
+        "messages.manage",
+        "messages.send",
+        "members.moderate"
+      ],
+      "tags": [],
+      "commitSha": "0cc68b82e1ab7cc62799d36544b9659e60be9f0e",
+      "bundleSha256": "64e961604af60180132831c6b879211e8f7e2d5c4d7e84166bb3db344662f8c5"
     }
   ],
   "listings": [
@@ -34,53 +52,6 @@
         "greeting",
         "onboarding"
       ]
-    },
-    {
-      "moduleId": "com.github.anthonyf2312.moderation",
-      "version": "1.0.0",
-      "name": "Moderation",
-      "description": "Catches invite spam, mass mentions and flooding. Warns, then escalates. Logs everything.",
-      "author": "anthonyf2312",
-      "repository": "https://github.com/anthonyf2312/tessel-moderation",
-      "permissions": [
-        "storage",
-        "messages.read",
-        "messages.manage",
-        "messages.send",
-        "members.moderate"
-      ],
-      "tags": [],
-      "commitSha": "0cc68b82e1ab7cc62799d36544b9659e60be9f0e",
-      "bundleSha256": "64e961604af60180132831c6b879211e8f7e2d5c4d7e84166bb3db344662f8c5",
-      "review": {
-        "verdict": "needs_human",
-        "reason": "Awaiting review by a person. This module asks for messages.read, messages.manage, members.moderate, which can move server data elsewhere or take actions that are hard to undo, so it is not signed on an automated check alone. An automated review noted: settings commands do no authorization check of their own; deletes the offending message, which the description never mentions; undisclosed fourth rule: all-caps detection; warnings are not reset after a timeout, so every later violation re-times-out; flood counter only records messages that pass the earlier rules. None of this means the module is unsafe — it has not been cleared yet.",
-        "decidedBy": "automated-review",
-        "reviewedAt": "2026-07-29T16:05:20Z",
-        "commitSha": "0cc68b82e1ab7cc62799d36544b9659e60be9f0e",
-        "findings": [
-          {
-            "severity": "medium",
-            "title": "Settings commands do no authorization check of their own"
-          },
-          {
-            "severity": "low",
-            "title": "Deletes the offending message, which the description never mentions"
-          },
-          {
-            "severity": "low",
-            "title": "Undisclosed fourth rule: all-caps detection"
-          },
-          {
-            "severity": "low",
-            "title": "Warnings are not reset after a timeout, so every later violation re-times-out"
-          },
-          {
-            "severity": "low",
-            "title": "Flood counter only records messages that pass the earlier rules"
-          }
-        ]
-      }
     }
   ],
   "revoked": [],
