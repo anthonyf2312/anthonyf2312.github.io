@@ -1,7 +1,7 @@
 {
   "$comment": "Tessel module catalogue. Two consumers: the bot verifies this file against modules.json.sig and trusts ONLY `entries`; the website renders `entries` as Reviewed and `listings` as Unreviewed. Anything in `entries` has been read by a person at that exact commit and bundle hash — never add an entry without reviewing it, because the signature is what admins rely on. `listings` is for submitted modules nobody has reviewed yet; the bot ignores it completely.",
-  "issuedAt": "2026-07-29T16:05:20Z",
-  "expiresAt": "2026-10-27T16:05:20Z",
+  "issuedAt": "2026-07-29T16:20:29Z",
+  "expiresAt": "2026-10-27T16:20:29Z",
   "entries": [
     {
       "moduleId": "com.github.anthonyf2312.ping",
