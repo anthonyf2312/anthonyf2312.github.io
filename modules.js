@@ -39,18 +39,47 @@
     return node;
   }
 
-  function installUrl(entry) {
-    return entry.repository || '';
+  /**
+   * Listing values are submitted by strangers, so a URL is not trusted until it is parsed and
+   * its scheme checked. Assigning an unvalidated value to `href` would let `javascript:` run
+   * on click; `new URL` is what makes the scheme visible rather than assumed.
+   *
+   * Repositories are additionally required to be github.com, because that is the only thing
+   * `/module install` accepts — showing an install command the bot would refuse is misleading.
+   */
+  function safeRepoUrl(value) {
+    if (typeof value !== 'string' || value === '') return null;
+    try {
+      const url = new URL(String(value));
+      if (url.protocol !== 'https:') return null;
+      if (url.hostname !== 'github.com' && url.hostname !== 'www.github.com') return null;
+      return url.href;
+    } catch {
+      return null;
+    }
+  }
+
+  function safeImageUrl(value) {
+    // A missing icon must not become the relative URL "undefined".
+    if (typeof value !== 'string' || value === '') return null;
+    try {
+      const url = new URL(String(value), location.href);
+      return url.protocol === 'https:' || url.protocol === 'http:' ? url.href : null;
+    } catch {
+      return null;
+    }
   }
 
   function buildTile(entry) {
     const signed = entry.trust === 'signed';
+    const repoUrl = safeRepoUrl(entry.repository);
+    const iconUrl = safeImageUrl(entry.icon);
     const tile = el('article', 'cat-tile' + (signed ? '' : ' cat-tile-unsigned'));
 
     const head = el('div', 'cat-tile-head');
-    if (entry.icon) {
+    if (iconUrl) {
       const icon = el('img', 'cat-tile-icon');
-      icon.src = entry.icon;
+      icon.src = iconUrl;
       icon.alt = '';
       icon.loading = 'lazy';
       icon.width = 48;
@@ -95,22 +124,31 @@
     }
 
     const links = el('div', 'cat-tile-links');
-    if (entry.repository) {
+    if (repoUrl) {
       const repo = el('a', null, 'source ↗');
-      repo.href = entry.repository;
-      repo.rel = 'noopener';
+      repo.href = repoUrl;
+      repo.rel = 'noopener noreferrer';
+      repo.target = '_blank';
       links.appendChild(repo);
     }
     tile.appendChild(links);
 
+    // A listing whose repository did not survive validation gets no install line at all —
+    // better to show nothing than a command that would fail or point somewhere unexpected.
+    if (!repoUrl) {
+      tile.appendChild(el('p', 'cat-perms-none', 'This listing has no valid GitHub repository.'));
+      return tile;
+    }
+
+    const command = `/module install ${repoUrl}`;
     const install = el('div', 'cat-install');
-    install.appendChild(el('code', null, `/module install ${installUrl(entry)}`));
+    install.appendChild(el('code', null, command));
 
     const copy = el('button', 'cat-copy', 'Copy');
     copy.type = 'button';
     copy.addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText(`/module install ${installUrl(entry)}`);
+        await navigator.clipboard.writeText(command);
         copy.textContent = 'Copied';
         copy.dataset.copied = 'true';
       } catch {
