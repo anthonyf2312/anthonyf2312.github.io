@@ -1,7 +1,7 @@
 {
   "$comment": "Tessel module catalogue. Two consumers: the bot verifies this file against modules.json.sig and trusts ONLY `entries`; the website renders `entries` as Reviewed and `listings` as Unreviewed. Anything in `entries` has been read by a person at that exact commit and bundle hash — never add an entry without reviewing it, because the signature is what admins rely on. `listings` is for submitted modules nobody has reviewed yet; the bot ignores it completely.",
-  "issuedAt": "2026-07-29T16:44:03Z",
-  "expiresAt": "2026-10-27T16:44:03Z",
+  "issuedAt": "2026-07-29T16:46:19Z",
+  "expiresAt": "2026-10-27T16:46:19Z",
   "entries": [
     {
       "moduleId": "com.github.anthonyf2312.ping",
@@ -32,9 +32,7 @@
       "tags": [],
       "commitSha": "0cc68b82e1ab7cc62799d36544b9659e60be9f0e",
       "bundleSha256": "64e961604af60180132831c6b879211e8f7e2d5c4d7e84166bb3db344662f8c5"
-    }
-  ],
-  "listings": [
+    },
     {
       "moduleId": "com.github.anthonyf2312.welcome",
       "version": "1.0.0",
@@ -51,9 +49,12 @@
         "welcome",
         "greeting",
         "onboarding"
-      ]
+      ],
+      "commitSha": "e5391129545f0d5fa0785194f3655e76341d2f8f",
+      "bundleSha256": "d6d1b8ca4adec302eebac21a294601e6f1c09fecfa41bc4d0e3ac06b103172e1"
     }
   ],
+  "listings": [],
   "revoked": [],
   "$schema_notes": {
     "entries[]": {
