@@ -1,5 +1,5 @@
 {
-  "$comment": "Rush Royale unit reference. Rendered by rushroyale.js on units.html. Authored order is Common -> Legendary and the page renders it as-is, so keep new entries in their rarity block. Fields: name, rarity (Common|Rare|Epic|Legendary), role (Damage|Support|Control|Summoner), damage (Physical|Magic|Poison|Mixed|None), summary (one plain sentence, no numbers), tags (search only), detail ('stub' draws the hatched marker). Every entry is a stub until someone checks it in-game and adds real figures — no numbers were invented here. This is not the full roster.",
+  "$comment": "Rush Royale unit reference. Rendered by rushroyale.js on units.html. Authored order is Common -> Legendary and the page renders it as-is, so keep new entries in their rarity block. Fields: name, rarity (Common|Rare|Epic|Legendary), role (Damage|Support|Control|Summoner), damage (Physical|Magic|Poison|Mixed|None), summary (one plain sentence, no numbers), tags (search only), detail ('stub' draws the hatched marker). Every entry is a stub until someone checks it in-game and adds real figures — no numbers were invented here. This is not the full roster. Knight Statue, Kobold and Enchanted Swords were supplied by a player along with their role; their rarity is deliberately absent rather than guessed, so they show under All but under no rarity chip \u2014 add a 'rarity' key once it is confirmed.",
   "reviewed": "2026-08-27",
   "entries": [
     {
@@ -318,6 +318,27 @@
       "damage": "Magic",
       "summary": "A legendary damage dealer that shows up in current competitive lists.",
       "tags": ["damage", "meta"],
+      "detail": "stub"
+    },
+    {
+      "name": "Knight Statue",
+      "role": "Support",
+      "summary": "Raises your carry's damage. One of the standard picks for the four support slots in a one-carry deck.",
+      "tags": ["damage buff", "support", "carry", "amplifier"],
+      "detail": "stub"
+    },
+    {
+      "name": "Kobold",
+      "role": "Support",
+      "summary": "Also raises damage \u2014 the other name that comes up alongside Knight Statue when people describe the standard support shell.",
+      "tags": ["damage buff", "support", "carry", "amplifier"],
+      "detail": "stub"
+    },
+    {
+      "name": "Enchanted Swords",
+      "role": "Support",
+      "summary": "Raises attack speed rather than damage, so the carry gets more hits in before the wave ends and the Phantom appears.",
+      "tags": ["attack speed", "support", "carry", "amplifier"],
       "detail": "stub"
     },
     {
