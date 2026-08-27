@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css?v=6">
   <link rel="stylesheet" href="/docs.css?v=2">
-  <link rel="stylesheet" href="rushroyale.css?v=1">
+  <link rel="stylesheet" href="rushroyale.css?v=2">
 </head>
 <body>
   <a class="doc-skip" href="#docs-main">Skip to content</a>
@@ -153,8 +153,9 @@
         <p>Enemies arrive in waves. What exactly spawns in each one is not written up here
         yet — but the part that decides PvP matches is what happens <em>between</em> them.</p>
 
-        <h3>The Phantom</h3>
-        <p>At the end of <strong>every</strong> wave — not some of them — the
+        <h3>The Phantom <span class="rr-scope">PvP only</span></h3>
+        <p>There is no Phantom in <a href="modes.html#co-op">co-op</a>. In PvP, at the end of
+        <strong>every</strong> wave — not some of them — the
         <strong>Phantom</strong> appears on your board. Your units attack it, and this is the
         moment the whole match turns on:</p>
         <div class="doc-note">
@@ -188,11 +189,14 @@
 
       <section id="losing">
         <h2>Hearts, and how you lose</h2>
-        <p>You start with <strong>3 hearts</strong>. That is the whole health bar, and it is
-        far tighter than new players expect.</p>
+        <p>This works differently in the two modes, and the co-op version is far harsher
+        than people expect coming from PvP.</p>
+
+        <h3>In PvP: three hearts</h3>
+        <p>You start with <strong>3 hearts</strong>. That is the whole health bar.</p>
         <div class="doc-table-wrap">
           <table>
-            <thead><tr><th>What reaches the gate</th><th>Costs you</th><th>So you can afford</th></tr></thead>
+            <thead><tr><th>What reaches your gate</th><th>Costs you</th><th>So you can afford</th></tr></thead>
             <tbody>
               <tr><td>An ordinary monster</td><td>1 heart</td><td>two leaks, and the third kills you</td></tr>
               <tr><td>A boss</td><td>2 hearts</td><td>one leak — a second ends the match</td></tr>
@@ -200,10 +204,21 @@
           </table>
         </div>
         <p>Three common monsters getting through is a loss. One boss plus one common is a
-        loss. There is no healing back to full and no margin to play with, which is why
-        letting even a single enemy slip past matters far more than it looks like it should.</p>
+        loss. There is no healing back to full, which is why letting even a single enemy slip
+        past matters more than it looks like it should.</p>
 
-        <h3>How the whole loop fits together</h3>
+        <h3>In co-op: one shared gate, no second chances</h3>
+        <p>Co-op does not give each player a gate. There is <strong>one gate between
+        you</strong>, and there are no hearts to spend:</p>
+        <div class="doc-note doc-warn">
+          <p><strong>If a single monster reaches the gate, the game is over.</strong> Not a
+          heart lost — the whole run, immediately.</p>
+        </div>
+        <p>So co-op is sudden death. Everything that leaks is fatal, which makes coverage —
+        making sure nothing gets past at all — worth more than it is in PvP, where you have
+        two mistakes in hand.</p>
+
+        <h3>How the PvP loop fits together</h3>
         <p>Put the <a href="#waves">Phantom</a> next to the hearts and PvP makes sense:</p>
         <ol>
           <li>You clear a wave. Anything you miss costs you a heart.</li>
@@ -212,12 +227,10 @@
           <li>If they cannot kill it, it reaches their gate and takes <strong>2 of their
           3 hearts</strong>.</li>
         </ol>
-        <p>So you win by sending a boss too big for the other player to handle — and one
-        that lands is very nearly fatal on its own. Their damage does the same to you.</p>
-        <div class="doc-note">
-          <p><strong>In co-op</strong> you and a teammate face AI waves instead, surviving
-          together for as long as you can rather than pressuring an opponent.</p>
-        </div>
+        <p>You win by sending a boss too big for the other player to handle — and one that
+        lands is very nearly fatal on its own. Their damage does the same to you.</p>
+        <p>None of this applies in co-op. With no Phantom there, damage has nowhere to go
+        except the wave in front of you.</p>
       </section>
 
       <section id="mistakes">

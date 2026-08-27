@@ -242,6 +242,22 @@
 }
 .rr-facts dd { margin: 0.15rem 0 0; font-size: 0.9rem; color: var(--fg-muted); }
 
+/* A heading that only applies to one mode says so inline, so nobody carries a PvP rule
+   into co-op. Same mono-tag vocabulary as the rarity tags. */
+.rr-scope {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.45rem;
+  margin-left: 0.55rem;
+  vertical-align: middle;
+  white-space: nowrap;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-weight: 400;
+}
+
 /* ---------- stubs ---------- */
 
 /* Same diagonal hatch the catalogue uses for unreviewed modules: an entry that

@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css?v=6">
   <link rel="stylesheet" href="/docs.css?v=2">
-  <link rel="stylesheet" href="rushroyale.css?v=1">
+  <link rel="stylesheet" href="rushroyale.css?v=2">
 </head>
 <body>
   <a class="doc-skip" href="#docs-main">Skip to content</a>
@@ -126,8 +126,26 @@
 
       <section id="co-op">
         <h2>Co-op</h2>
-        <p>You and a teammate face waves of AI enemies together, surviving as long as you
-        can.</p>
+        <p>Two players clearing waves of AI enemies together. It shares the board and the
+        deck rules with PvP and almost nothing else — the two things that define a PvP match
+        are both absent here.</p>
+
+        <h3>One gate, and it is sudden death</h3>
+        <p>There is no gate each. There is <strong>one gate between the two of you</strong>,
+        and no hearts:</p>
+        <div class="doc-note doc-warn">
+          <p><strong>If one monster reaches the gate, the game finishes.</strong> There is no
+          heart to lose and no second chance — a single leak ends the run for both players.</p>
+        </div>
+
+        <h3>No Phantom</h3>
+        <p>The <a href="basics.html#waves">Phantom</a> does not appear in co-op. Nothing is
+        being sent anywhere, so the burst-damage arithmetic that decides PvP simply is not
+        running. Damage here has one job: kill what is in front of you before it walks past.</p>
+        <p>That flips the emphasis. In PvP you can afford two leaks and are really competing
+        on peak damage into the Phantom; in co-op a leak is instantly fatal, so consistent
+        coverage of the whole wave is what keeps the run alive.</p>
+
         <h3>The two roles</h3>
         <p>Co-op teams generally split into <strong>DPS</strong> and <strong>support</strong>:</p>
         <ul>
@@ -184,7 +202,7 @@
             <tbody>
               <tr><td>To climb and earn trophies</td><td><a href="#pvp">PvP</a></td></tr>
               <tr><td>To compete without a deep collection</td><td><a href="#variants">Mirror Decks</a> or Rush for Glory</td></tr>
-              <tr><td>Something lower-pressure</td><td><a href="#co-op">Co-op</a></td></tr>
+              <tr><td>To play with someone rather than against them</td><td><a href="#co-op">Co-op</a> — but note one leak ends it</td></tr>
               <tr><td>Rewards you cannot get solo</td><td><a href="#dragon-rift">Dragon Rift</a>, <a href="#tournament">Clan Tournament</a></td></tr>
             </tbody>
           </table>
