@@ -1,0 +1,72 @@
+{
+  "$comment": "Spells, artifacts and profile perks, rendered by rushroyale.js on spells.html. Sourced from the game's in-game Knowledge Base, recorded 2026-08-27, which is authoritative - these entries carry no 'detail' flag because they are not waiting on verification. What is missing here is the roster, not the rules: the in-game text explains how the system works without naming the individual spells, artifacts and relics, so none are invented. Only the six archetypes are recorded so far, as kind='Archetype'. When real spells and artifacts are added, give them kind='Spell', 'Artifact' or 'Relic' and the filter chips will appear on their own - buildChips() skips a facet with fewer than two distinct values. Fields as in resources.json: name, id (becomes the anchor), kind (the filter facet), summary, facts (ordered [label, text] pairs), tags. Authored order follows the order the game lists the archetypes in.",
+  "reviewed": "2026-08-27",
+  "entries": [
+    {
+      "name": "Damage",
+      "id": "archetype-damage",
+      "kind": "Archetype",
+      "summary": "The spells and artifacts that specialize in increasing the damage you deal.",
+      "facts": [
+        ["What it does", "Raises your own damage output."],
+        ["When it matters", "In PvP the number that counts is your hit on the Phantom at the end of a wave, because that is what becomes the boss on the other player's path."]
+      ],
+      "tags": ["damage", "archetype", "offence"]
+    },
+    {
+      "name": "Economy",
+      "id": "archetype-economy",
+      "kind": "Archetype",
+      "summary": "The spells and artifacts that specialize in granting extra mana, merge ranks or units.",
+      "facts": [
+        ["What it does", "Gives you extra mana, extra merge ranks, or extra units."],
+        ["Why that is power", "Mana and board space are the two things a match is actually short of, so an economy effect buys everything else."]
+      ],
+      "tags": ["economy", "archetype", "mana", "merge", "units"]
+    },
+    {
+      "name": "Monsters",
+      "id": "archetype-monsters",
+      "kind": "Archetype",
+      "summary": "The spells and artifacts that specialize in making the opponent's monsters more powerful.",
+      "facts": [
+        ["What it does", "Strengthens the monsters walking at your opponent."],
+        ["Scope", "PvP only in effect - co-op has no opponent to send anything to."]
+      ],
+      "tags": ["monsters", "archetype", "pvp", "offence"]
+    },
+    {
+      "name": "Negatives",
+      "id": "archetype-negatives",
+      "kind": "Archetype",
+      "summary": "The spells and artifacts that specialize in weakening the opponent in various ways.",
+      "facts": [
+        ["What it does", "Weakens the opposing player rather than strengthening you."],
+        ["Scope", "PvP only in effect, for the same reason as Monsters."]
+      ],
+      "tags": ["negatives", "archetype", "debuff", "pvp"]
+    },
+    {
+      "name": "Empowerment",
+      "id": "archetype-empowerment",
+      "kind": "Archetype",
+      "summary": "The spells and artifacts that specialize in making the decks suited for special strategies stronger.",
+      "facts": [
+        ["What it does", "Rewards a deck built around a particular strategy rather than a general-purpose one."],
+        ["Who it is for", "Decks with a specific plan. An empowerment effect attached to a strategy your deck does not run is a dead slot."]
+      ],
+      "tags": ["empowerment", "archetype", "strategy", "synergy"]
+    },
+    {
+      "name": "Defense",
+      "id": "archetype-defense",
+      "kind": "Archetype",
+      "summary": "The spells and artifacts that specialize in protecting your units against the various negative effects.",
+      "facts": [
+        ["What it does", "Protects your units from negative effects."],
+        ["What it answers", "The Negatives and Monsters archetypes on the other side of the board, and boss abilities that disable units."]
+      ],
+      "tags": ["defense", "archetype", "protection", "counterplay"]
+    }
+  ]
+}

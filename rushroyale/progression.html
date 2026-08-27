@@ -26,7 +26,7 @@
       <a href="index.html">overview</a>
       <a href="basics.html">basics</a>
       <a href="units.html">units</a>
-      <a href="items.html">items</a>
+      <a href="spells.html">spells</a>
       <a href="resources.html">resources</a>
       <a href="progression.html" aria-current="page">progression</a>
       <a href="modes.html">modes</a>
@@ -44,6 +44,7 @@
       <ul>
         <li><a href="#card-levels">Card levels</a></li>
         <li><a href="#heroes">Heroes</a></li>
+        <li><a href="#ability-points">Ability points</a></li>
         <li><a href="#critical-damage">Critical damage</a></li>
         <li><a href="#expeditions">Expeditions</a></li>
         <li><a href="#legendarity">Legendarity</a></li>
@@ -78,13 +79,13 @@
         <p><b>Unofficial community reference.</b> Not affiliated with My.Games or the Rush Royale team.</p>
         <p>Rules confirmed by someone who plays the game are stated plainly, numbers and all.
         Entries marked with a hatched edge are still waiting on figures checked in-game.</p>
-        <p><b>Sourced from the Rush Royale Fandom wiki.</b> Heroes follow that wiki's page, last
-        edited <b>2021-05-26</b> — five years old, and it plainly describes an older build, so it
-        is reproduced below with that caveat attached rather than silently. Expeditions come from
-        its <i>Expedition</i> page (<b>2026-01-06</b>) and critical damage from
-        <i>Critical Damage</i> (<b>2024-06-17</b>), both of which are current enough to trust
-        more. Legendarity, talents, spells and artifacts are kept from the earlier in-game
-        reporting: the wiki has no page for any of them.</p>
+        <p><b>Heroes and legendarity are sourced from the game's in-game Knowledge Base</b>,
+        recorded <b>2026-08-27</b>. Heroes are now developed with <a href="#ability-points">ability
+        points</a>, and the wiki's account — a three-hero roster with craftable equipment, last
+        edited <b>2021-05-26</b> — has been removed rather than reproduced with a caveat.</p>
+        <p>Expeditions still come from the wiki's <i>Expedition</i> page (<b>2026-01-06</b>) and
+        critical damage from <i>Critical Damage</i> (<b>2024-06-17</b>). Talents are kept from
+        earlier in-game reporting; the wiki has no page for them.</p>
         <p>Last reviewed 2026-08-27.</p>
       </div>
 
@@ -104,27 +105,27 @@
 
       <section id="heroes">
         <h2>Heroes</h2>
-        <p>A hero is the character behind your deck. Levelling one does three separate
+        <p>A hero is the character behind your deck. Levelling one does two separate
         things, and the second is easy to miss:</p>
         <ul>
-          <li>The hero itself gets stronger.</li>
+          <li>The hero itself gets stronger, and each level issues
+          <a href="#ability-points">ability points</a> to spend on its abilities.</li>
           <li><strong>Every 4th hero level raises your account's critical damage</strong> —
           a benefit that applies no matter which hero or deck you play.</li>
-          <li>It unlocks more <a href="items.html#slots">item slots</a>, up to four.</li>
         </ul>
         <h3>Summoning and levelling a hero</h3>
         <p>Heroes are summoned with <strong>fragments</strong>, which come from the battle
-        pass, the shop, or Hero's Chests. Once summoned they level to a maximum of
-        <strong>level 20</strong>, unlocking abilities as they go.</p>
-        <div class="doc-note doc-warn">
-          <p><b>The source for this is five years old and describes a much smaller game.</b>
-          The wiki's Heroes page was last edited <b>2021-05-26</b>, when heroes had just
-          arrived in version 4.0 and there were <b>three of them</b>: Trainer (common),
-          Jay (rare) and Snowflake (epic). It records that Jay and Snowflake each start with
-          two abilities and unlock another at levels 5 and 10, while Trainer starts with one
-          and unlocks at 5, 10 and 15.</p>
-          <p>The game has had five years of heroes added since. Treat the roster above as
-          historical, not as the current line-up.</p>
+        pass, the shop, or Hero's Chests. Once summoned they level up, unlocking abilities and
+        issuing ability points as they go.</p>
+
+        <h3 id="ability-points">Ability points</h3>
+        <p><strong>Ability points are issued for levelling up your hero</strong>, and they are
+        what you spend to enhance that hero's abilities.</p>
+        <div class="doc-note">
+          <p>This replaces the old equipment system outright. Heroes no longer have item slots,
+          and there are no craftable items to put in them — a hero's power now comes from its
+          level and the points that level pays out. What you equip to a <em>deck</em> is a
+          separate system: see <a href="spells.html">spells, artifacts &amp; perks</a>.</p>
         </div>
 
         <h3 id="critical-damage">Critical damage</h3>
@@ -168,16 +169,19 @@
       <section id="legendarity">
         <h2>Legendarity</h2>
         <p>Legendarity is an <strong>account-wide stat</strong>, not a currency and not
-        something you can buy directly. It is calculated from the raw levels of your
-        legendary units and your heroes, and it rises every time one of those levels up.</p>
-        <p>What it is <em>for</em>: legendarity unlocks the <strong>spells and artifacts</strong>
-        you can equip to a deck and use in battle. So it is the mechanism that turns
-        investment in legendaries into an ability rather than just a bigger number.</p>
+        something you can buy directly. It is received for <strong>upgrading legendary units and
+        heroes</strong>, and it rises every time one of those is upgraded.</p>
+        <p>It does two jobs. High legendarity <strong>shows your status</strong>, and it
+        <strong>unlocks access to spells, artifacts and profile components</strong>. The higher
+        your legendarity, the more choices you have — so it is the mechanism that turns
+        investment in legendaries into options rather than just a bigger number.</p>
         <div class="doc-note">
-          <p>Because it derives from levels rather than from how many legendaries you own,
+          <p>Because it comes from upgrading rather than from how many legendaries you own,
           committing hard to a few legendaries raises legendarity faster than collecting
-          many and levelling none.</p>
+          many and upgrading none.</p>
         </div>
+        <p>What it unlocks lives on its own page: see
+        <a href="spells.html">spells, artifacts &amp; perks</a>.</p>
       </section>
 
       <section id="talents">
@@ -191,10 +195,13 @@
 
       <section id="spells-artifacts">
         <h2>Spells and artifacts</h2>
-        <p>Both are abilities you equip to a deck and use in battle, and both are gated
-        behind <a href="#legendarity">legendarity</a>. They sit alongside your five cards
+        <p>Both are abilities you equip to a deck and use in battle, and both are unlocked by
+        gaining <a href="#legendarity">legendarity</a>. They sit alongside your five cards
         rather than replacing any of them, which makes them a second axis of deckbuilding
         once you have enough legendarity to have a choice.</p>
+        <p>You take <strong>one spell and up to three artifacts</strong> into battle.
+        <a href="spells.html">Spells, artifacts &amp; perks</a> covers the archetypes, relics,
+        slots and profile perks in full.</p>
       </section>
 
       <section id="what-to-level">
@@ -203,8 +210,9 @@
         <ol>
           <li><strong>The five cards in your actual deck.</strong> Nothing else changes a
           match you are playing today.</li>
-          <li><strong>Your hero.</strong> The crit bonus every 4th level and the extra item
-          slots apply to every deck you will ever build, so this never becomes wasted.</li>
+          <li><strong>Your hero.</strong> The crit bonus every 4th level and the
+          <a href="#ability-points">ability points</a> apply to every deck you will ever build,
+          so this never becomes wasted.</li>
           <li><strong>Two or three legendaries, deeply.</strong> Orbs are the constraint, and
           depth raises legendarity while breadth does not.</li>
           <li><strong>Talents</strong> on the cards you have committed to.</li>

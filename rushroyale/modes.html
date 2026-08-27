@@ -26,7 +26,7 @@
       <a href="index.html">overview</a>
       <a href="basics.html">basics</a>
       <a href="units.html">units</a>
-      <a href="items.html">items</a>
+      <a href="spells.html">spells</a>
       <a href="resources.html">resources</a>
       <a href="progression.html">progression</a>
       <a href="modes.html" aria-current="page">modes</a>
@@ -50,6 +50,9 @@
       <h2>Together</h2>
       <ul>
         <li><a href="#co-op">Co-op</a></li>
+        <li><a href="#dungeons">Chapters &amp; floors</a></li>
+        <li><a href="#modifiers">Modifiers &amp; boosts</a></li>
+        <li><a href="#treasure-maps">Treasure Maps</a></li>
         <li><a href="#clans">Clans</a></li>
         <li><a href="#dragon-rift">Dragon Rift</a></li>
         <li><a href="#tournament">Clan Tournament</a></li>
@@ -82,12 +85,13 @@
         <p><b>Unofficial community reference.</b> Not affiliated with My.Games or the Rush Royale team.</p>
         <p>Rules confirmed by someone who plays the game are stated plainly, numbers and all.
         Entries marked with a hatched edge are still waiting on figures checked in-game.</p>
-        <p><b>Sourced from the Rush Royale Fandom wiki.</b> PvP, co-op, clans and events below
-        follow that wiki's pages, last edited <b>2022-11-25</b>, <b>2021-05-24</b>,
-        <b>2022-11-25</b> and <b>2022-11-22</b>. Some of that is four to five years old and
-        predates modes this site already covered — the wave counts and boss order in co-op in
-        particular describe an older build. Dragon Rift and the Clan Tournament are kept from
-        the earlier in-game reporting because the wiki has no page for either.</p>
+        <p><b>Co-op is sourced from the game's in-game Knowledge Base</b>, recorded
+        <b>2026-08-27</b>. Its dungeon, chapter and floor structure supersedes the Fandom wiki's
+        account, which described a flat run of numbered waves with a boss every tenth — that was
+        from <b>2021-05-24</b> and has been removed rather than left standing beside this one.</p>
+        <p>PvP, clans and events still follow the wiki's pages, last edited <b>2022-11-25</b>,
+        <b>2022-11-25</b> and <b>2022-11-22</b>. Dragon Rift and the Clan Tournament are kept from
+        earlier in-game reporting because the wiki has no page for either.</p>
         <p>Last reviewed 2026-08-27.</p>
       </div>
 
@@ -100,17 +104,22 @@
         you kill — bosses aside — respawns out of your opponent's portal as a common
         monster.</strong> Kill faster and you bury them in traffic; stall and the traffic is
         all yours.</p>
-        <p>Each round is a wave that ends in a boss fight, and
-        <a href="basics.html#waves">the boss's health is its base plus everything still alive
-        on your path</a> when the timer expires. As rounds pass the gaps get shorter while
-        monster health, spawn rate and mana per kill all climb.</p>
+        <p>Each round ends with a <a href="basics.html#waves"><strong>Phantom</strong></a>
+        appearing on your board. The damage your units deal to it is converted into the health
+        of the boss that appears on your <strong>opponent's</strong> path — so the boss they have
+        to survive is one you built. How much of your damage carries over
+        <a href="basics.html#waves">depends on the wave number</a>, counting for very little in
+        the opening waves and growing from wave 3 onwards.</p>
+        <p>Kill your boss before they kill theirs and you take a <strong>mana bonus that lasts
+        the rest of the battle</strong>, and those bonuses stack.</p>
         <div class="doc-note">
           <p>If both gates fall at the same instant, the tiebreak is
           <strong>whoever has less total monster health left on their path</strong>. Clearing
           the board is the win condition even at the moment you lose it.</p>
         </div>
         <p>This is why decks are built as <a href="units.html#synergy">one carry and four
-        supports</a> — sustained clearing speed is the whole game.</p>
+        supports</a>: the supports exist to make the carry's hit on the Phantom as large as
+        possible at the one moment it is measured.</p>
         <p>PvP is also where <a href="resources.html#trophies">trophies</a> come from, which is
         what decides your arena.</p>
       </section>
@@ -155,32 +164,51 @@
         </div>
 
         <h3>Nothing is sent anywhere</h3>
-        <p>There is no opponent to feed. Your kills stay dead instead of respawning on someone
-        else's board, so damage here has exactly one job: kill what is in front of you before
-        it walks past. Killing a monster gives mana to <strong>both</strong> players.</p>
-        <p>That flips the emphasis. In PvP you can afford two leaks and are competing on
-        clearing speed; in co-op a single leak is instantly fatal, so consistent coverage of
-        the whole wave is what keeps the run alive.</p>
+        <p>There is <strong>no <a href="basics.html#waves">Phantom</a> in co-op</strong>, and no
+        opponent to feed. Your kills stay dead instead of respawning on someone else's board, so
+        damage here has exactly one job: kill what is in front of you before it walks past.
+        Killing a monster gives mana to <strong>both</strong> players.</p>
+        <p>That flips the emphasis completely. PvP rewards one enormous hit at the end of a wave,
+        because that hit is your attack; co-op has nowhere to send damage, so a burst deck that
+        goes quiet between waves is simply a deck with gaps. A single leak is instantly fatal
+        here, which makes consistent coverage worth more than peak damage.</p>
 
-        <h3>How the waves are built</h3>
-        <p>Waves are discrete here — the next one does not start until the last monster of the
-        current one is dead. Up to wave 60 each wave is <strong>10 monsters</strong>, and the
-        further you get the more of them are the fast variety rather than commons.</p>
-        <div class="doc-table-wrap">
-          <table>
-            <thead><tr><th>Wave</th><th>What arrives</th></tr></thead>
-            <tbody>
-              <tr><td>Every 5th</td><td>a mini boss, plus commons</td></tr>
-              <tr><td>Every 10th</td><td>a boss — Tamer at 10, Gorgon 20, Bedlam 30, Warlock 40, Tribunal 50, Puppeteer 60</td></tr>
-              <tr><td>After 60</td><td>the pattern switches: boss on every even wave, mini boss on every odd one, same boss cycle</td></tr>
-              <tr><td>After 100</td><td>two bosses at once, starting with Gorgon at wave 100</td></tr>
-            </tbody>
-          </table>
+        <h3 id="dungeons">Chapters, dungeons and floors</h3>
+        <p>Co-op is not an open-ended run of numbered waves. It is structured:</p>
+        <ul>
+          <li>Each <strong>chapter</strong> is a separate <strong>dungeon</strong>.</li>
+          <li>Each dungeon has several <strong>floors</strong>.</li>
+          <li>A floor is a battlefield where you defeat <strong>several bosses</strong> and the
+          waves of monsters ahead of them.</li>
+        </ul>
+        <p>Floors and chapters are completed in a specific order, so there is a fixed path through
+        the content rather than a difficulty dial. You can return to floors you have already
+        completed.</p>
+        <div class="doc-note">
+          <p><strong>The final floor of a dungeon is Endless</strong>, and has no defined waves.
+          It is the one floor that does not end on its own — how long you last is the score.</p>
         </div>
-        <p>Monster health rises with every monster, and the <em>rate</em> it rises at increases
-        every ten waves. Mana per kill goes up by 10 every tenth wave and caps at
-        <strong>50</strong> at wave 50. Unlike PvP, a co-op boss always has the same health on
-        a given floor, because it only spawns once the field is clear.</p>
+
+        <h3 id="modifiers">Modifiers and boosts</h3>
+        <p>Each season has its own <strong>dungeon modifier</strong>, which becomes active
+        <strong>after the 5th floor</strong>. On top of that, each floor carries its own negative
+        modifiers and offers a selection of <strong>boosts</strong> to choose from.</p>
+        <p>The Endless floor is the exception: the choices available there are different from the
+        ones on ordinary floors.</p>
+        <div class="doc-note doc-warn">
+          <p>The in-game text points at the Knowledge Base for the Endless floor's specific
+          choices rather than listing them, so they are not reproduced here. This is a gap worth
+          filling from the game.</p>
+        </div>
+
+        <h3 id="treasure-maps">Treasure Maps and rewards</h3>
+        <p><strong>Treasure Maps</strong> are used before you start a run, and earn you more gold
+        for your achievements in it. There are <strong>two types</strong>; the source does not say
+        what distinguishes them, so that is not guessed at here.</p>
+        <p>Completing each floor and each chapter <em>for the first time</em> awards
+        <strong>Treasure Chests</strong>. Replaying a cleared floor does not repeat that reward.</p>
+        <p>The Endless floor pays out on <strong>time survived</strong> instead. The one worked
+        example the game gives: <strong>8 minutes earns 1650 gold</strong>.</p>
 
         <h3>The two roles</h3>
         <p>Co-op teams generally split into <strong>DPS</strong> and <strong>support</strong>:</p>
