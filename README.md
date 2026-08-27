@@ -12,6 +12,14 @@ Dark type-poster design: Inter variable font with a cursor-reactive kinetic ANTH
 - `modules.html` / `modules.css` / `modules.js` — the Tessel module catalogue
 - `modules.json` — catalogue data. `entries` are reviewed and signed (the bot verifies them against
   `modules.json.sig`); `listings` are submitted but unreviewed and the bot ignores them
+- `rushroyale/` — a plain-English Rush Royale reference (hub, basics, units, items, resources,
+  progression, modes, glossary). **Unlisted and in progress**: nothing on the site links to it,
+  it is absent from `sitemap.xml`, and every page carries `noindex`. Reach it at
+  `/rushroyale/`. Content lives in `units.json` / `items.json` / `resources.json` /
+  `glossary.json` and is rendered by `rushroyale.js`, so corrections are JSON edits. The pages
+  reuse `style.css`, `docs.css` and `docs.js` from the root — their links are root-absolute
+  because the pages sit one level down. Entries marked with a hatched edge still need real
+  numbers; none were invented
 - `style.css` — design tokens at the top, one section per block
 - `script.js` — kinetic hero type, scroll reveals
 - `assets/` — McLaren speedmark PNGs ([icons8](https://icons8.com)), hand-made SVGs (ribbon, grain)

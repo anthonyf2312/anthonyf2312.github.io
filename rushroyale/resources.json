@@ -1,0 +1,136 @@
+{
+  "$comment": "Every currency and material in Rush Royale, rendered by rushroyale.js on resources.html. Each entry answers the same three questions in the same order, because that is what people actually come to a resources page for. Fields: name, id (becomes the anchor, so other pages can link straight at #magic-dust), kind (the filter facet), summary, facts (ordered [label, text] pairs), tags, detail. No exchange rates, costs or drop rates are recorded here unless they were confirmed from a public source — add them as you verify them in-game.",
+  "reviewed": "2026-08-27",
+  "entries": [
+    {
+      "name": "Gold",
+      "id": "gold",
+      "kind": "Currency",
+      "summary": "The everyday currency. You will always want more of it, and it is the thing that actually gates how fast your cards level.",
+      "facts": [
+        ["What it is", "The soft currency, sometimes shown as coins. Earned constantly just by playing."],
+        ["Where it comes from", "Playing matches, career achievements, quests, watching ads, and chests. Also from Expeditions."],
+        ["What to spend it on", "Levelling cards, opening and buying chests, crafting and upgrading equipment, and levelling heroes."]
+      ],
+      "tags": ["coins", "soft currency", "upgrades"],
+      "detail": "stub"
+    },
+    {
+      "name": "Gems",
+      "id": "gems",
+      "kind": "Currency",
+      "summary": "The premium currency, sometimes called crystals. You can earn it without paying, just slowly.",
+      "facts": [
+        ["What it is", "The hard currency. Free to earn, or buyable with real money."],
+        ["Where it comes from", "Career achievements, quests, watching adverts, events, and direct purchase."],
+        ["What to spend it on", "Chests and shop offers. Spending it on chests is usually better value than spending it to rush timers."]
+      ],
+      "tags": ["crystals", "premium currency", "hard currency"],
+      "detail": "stub"
+    },
+    {
+      "name": "Magic Dust",
+      "id": "magic-dust",
+      "kind": "Material",
+      "summary": "A slow, guaranteed route to a legendary card. It does not expire and there is no cap on how much you can hold, so it is the one resource you can safely just accumulate.",
+      "facts": [
+        ["What it is", "A material you bank up and trade in. The published exchange rate is 1,000 magic dust for one random legendary card."],
+        ["Where it comes from", "The Chest of Magic Dust in the Seasonal Items store, which costs a rune key; career achievement rewards; and some chests on the season pass reward ladder."],
+        ["What to spend it on", "Nothing but the legendary trade-in at the store. Because it is uncapped and does not expire, there is no reason to rush it — the only decision is when you hit 1,000."]
+      ],
+      "tags": ["dust", "legendary", "uncapped", "seasonal", "trade in"],
+      "detail": "stub"
+    },
+    {
+      "name": "Magic Orbs",
+      "id": "orbs",
+      "kind": "Material",
+      "summary": "The reason legendaries level so much slower than everything else. Duplicate cards alone are not enough — every legendary upgrade wants orbs too.",
+      "facts": [
+        ["What it is", "An upgrade material used specifically on legendary units. You need both copies of the card and orbs to push a legendary to the next level, at every level."],
+        ["Where it comes from", "The premium track of the season pass, alongside experiment coins, plus other sources in events and the store."],
+        ["What to spend it on", "Levelling legendary units — nothing else. Because orbs are the bottleneck rather than the cards, spreading them thinly across many legendaries is usually worse than committing to the two or three you actually play."]
+      ],
+      "tags": ["magic orbs", "legendary", "upgrade material", "season pass"],
+      "detail": "stub"
+    },
+    {
+      "name": "Experiment Coins",
+      "id": "experiment-coins",
+      "kind": "Currency",
+      "summary": "A separate, narrower currency that arrives through the premium season pass.",
+      "facts": [
+        ["What it is", "A special-purpose currency, not interchangeable with gold or gems."],
+        ["Where it comes from", "The premium part of the season pass, together with magic orbs."],
+        ["What to spend it on", "Its own dedicated shop section rather than general upgrades."]
+      ],
+      "tags": ["experiment", "season pass", "premium"],
+      "detail": "stub"
+    },
+    {
+      "name": "Rune Keys",
+      "id": "rune-keys",
+      "kind": "Currency",
+      "summary": "The key that opens the Seasonal Items store — most importantly the chest that pays out magic dust.",
+      "facts": [
+        ["What it is", "A seasonal currency earned by progressing a season, not by playing matches directly."],
+        ["Where it comes from", "Levelling up through the season pass rewards."],
+        ["What to spend it on", "Chests in the Seasonal Items store, including the Chest of Magic Dust."]
+      ],
+      "tags": ["rune key", "season pass", "seasonal store"],
+      "detail": "stub"
+    },
+    {
+      "name": "Item Fragments",
+      "id": "item-fragments",
+      "kind": "Material",
+      "summary": "Crafting material for equipment. Fragments are tied to a specific slot, so amulet fragments only ever become amulets.",
+      "facts": [
+        ["What it is", "Per-slot crafting material. Crafting one item takes 200 fragments of that slot's type plus some gold."],
+        ["Where it comes from", "General play and Career quest rewards, among other sources."],
+        ["What to spend it on", "Crafting and upgrading equipment. See the items page for what each slot does."]
+      ],
+      "tags": ["fragments", "crafting", "equipment", "items"],
+      "detail": "stub"
+    },
+    {
+      "name": "Hero Fragments",
+      "id": "hero-fragments",
+      "kind": "Material",
+      "summary": "What you need to unlock and level heroes. The steady source is Expeditions, which tick along without you playing matches.",
+      "facts": [
+        ["What it is", "Per-hero material used to unlock a hero and raise its level."],
+        ["Where it comes from", "Expeditions are the reliable passive source, and can turn up legendary heroes for gold. Also from chests and events."],
+        ["What to spend it on", "Hero levels — which matter more than they look, because every 4th hero level raises your account's critical damage."]
+      ],
+      "tags": ["hero", "expedition", "fragments", "unlock"],
+      "detail": "stub"
+    },
+    {
+      "name": "Trophies",
+      "id": "trophies",
+      "kind": "Rating",
+      "summary": "Not a currency you spend — a score that decides which arena you play in and therefore what you face.",
+      "facts": [
+        ["What it is", "Your PvP rating. It goes up when you win and down when you lose."],
+        ["Where it comes from", "PvP matches only."],
+        ["What to spend it on", "Nothing. It gates arena progression, and new enemies appear as you climb — the Virus boss from arena 7, the Assassin from arena 9."]
+      ],
+      "tags": ["trophies", "rating", "arena", "pvp", "ranking"],
+      "detail": "stub"
+    },
+    {
+      "name": "Chests",
+      "id": "chests",
+      "kind": "Container",
+      "summary": "The main way cards enter your account. Which chest a card can appear in is most of what rarity actually controls.",
+      "facts": [
+        ["What it is", "Containers holding cards, gold, gems and materials. Different chests draw from different pools."],
+        ["Where it comes from", "Winning matches, the shop, the season pass ladder, the Seasonal Items store, and events."],
+        ["What to spend it on", "Not spent — opened. Rarer cards appear less often, which is why duplicates of a legendary are the slow part of levelling one."]
+      ],
+      "tags": ["chest", "cards", "drops", "shop"],
+      "detail": "stub"
+    }
+  ]
+}
