@@ -5,7 +5,8 @@
  *
  *   data-rr-source  the JSON file to fetch, relative to this directory
  *   data-rr-shape   how to lay an entry out: "cards" | "facts" | "terms"
- *   data-rr-facet   optional field name to build filter chips from (e.g. "rarity")
+ *   data-rr-facet   optional comma-separated field names to build filter chip groups from
+ *                   (e.g. "rarity,faction"); groups combine, so picking one of each narrows
  *
  * The prose pages load this file too — one cached copy for the whole section — so it
  * early-returns when there is nothing to render into.
@@ -22,7 +23,8 @@
 
   const source = document.body.dataset.rrSource;
   const shape = document.body.dataset.rrShape || 'cards';
-  const facetKey = document.body.dataset.rrFacet || '';
+  const facetKeys = (document.body.dataset.rrFacet || '')
+    .split(',').map((k) => k.trim()).filter(Boolean);
 
   const search = document.getElementById('rr-q');
   const chipBox = document.getElementById('rr-chips');
@@ -30,10 +32,12 @@
 
   // Rendered as tags, in this order, whenever an entry carries them. Keeping the list here
   // rather than in the JSON means a new field shows up by editing one line.
-  const TAG_KEYS = ['rarity', 'role', 'damage', 'slot', 'kind'];
+  const TAG_KEYS = ['rarity', 'faction', 'role', 'damage', 'slot', 'kind'];
 
   let entries = [];
-  let facet = '';
+
+  // field name -> currently selected value, '' meaning "all". Groups AND together.
+  const chosen = new Map(facetKeys.map((k) => [k, '']));
 
   // --- helpers ----------------------------------------------------------------------------
 
@@ -47,6 +51,12 @@
   /* Everything a query should match, flattened once at load rather than on every keystroke. */
   function haystack(entry) {
     const parts = [entry.name, entry.summary, entry.def];
+
+    // Ability and note text is the substance of a unit entry, so it has to be searchable —
+    // looking up "tornado" or "orb of fear" should find the unit that does it.
+    for (const key of ['abilities', 'notes']) {
+      if (Array.isArray(entry[key])) parts.push(...entry[key]);
+    }
 
     for (const key of TAG_KEYS) if (entry[key]) parts.push(entry[key]);
     if (Array.isArray(entry.tags)) parts.push(...entry.tags);
@@ -143,7 +153,37 @@
     return li;
   }
 
-  const LAYOUTS = { cards: card, facts, terms: term };
+  /* A unit's ability text runs to several paragraphs, which a narrow grid tile cannot hold.
+     These render full width, one per row, with the abilities as a list — closer to a rules
+     card than to a catalogue tile. */
+  function unit(entry) {
+    const li = el('li', 'rr-unit');
+    if (entry.id) li.id = entry.id;
+
+    li.append(el('h3', 'rr-unit-name', entry.name));
+
+    const tags = tagsFor(entry);
+    if (tags) li.append(tags);
+    if (entry.summary) li.append(el('p', 'rr-unit-summary', entry.summary));
+
+    if (Array.isArray(entry.abilities) && entry.abilities.length > 0) {
+      const ul = el('ul', 'rr-abilities');
+      for (const line of entry.abilities) ul.append(el('li', null, line));
+      li.append(ul);
+    }
+
+    if (Array.isArray(entry.notes) && entry.notes.length > 0) {
+      const box = el('div', 'rr-unit-notes');
+      for (const line of entry.notes) box.append(el('p', null, line));
+      li.append(box);
+    }
+
+    const stub = stubNote(entry);
+    if (stub) li.append(stub);
+    return li;
+  }
+
+  const LAYOUTS = { cards: card, facts, terms: term, units: unit };
 
   // --- filtering --------------------------------------------------------------------------
 
@@ -152,8 +192,11 @@
     const layout = LAYOUTS[shape] || card;
 
     const matches = entries.filter((entry) => {
-      const byFacet = !facet || String(entry[facetKey] || '') === facet;
-      return byFacet && (!query || entry._haystack.includes(query));
+      const byFacets = facetKeys.every((key) => {
+        const want = chosen.get(key);
+        return !want || String(entry[key] || '') === want;
+      });
+      return byFacets && (!query || entry._haystack.includes(query));
     });
 
     grid.replaceChildren(...matches.map(layout));
@@ -171,32 +214,43 @@
   }
 
   function buildChips() {
-    if (!chipBox || !facetKey) return;
+    if (!chipBox || facetKeys.length === 0) return;
 
-    // Chip order follows first appearance in the JSON, which is authored Common → Legendary,
-    // so the filters read in the same order as the list itself.
-    const values = [];
-    for (const entry of entries) {
-      const value = entry[facetKey];
-      if (value && !values.includes(value)) values.push(value);
-    }
-    if (values.length < 2) return;
+    for (const key of facetKeys) {
+      const values = [];
+      for (const entry of entries) {
+        const value = entry[key];
+        if (value && !values.includes(value)) values.push(value);
+      }
 
-    const buttons = [];
+      // Rarity keeps the order it was authored in, because Common -> Legendary is meaningful.
+      // Every other facet is an unordered set, so alphabetical beats "whichever unit came
+      // first in the file" — which is what the reader is scanning for anyway.
+      if (key !== 'rarity') values.sort((a, b) => a.localeCompare(b));
 
-    function select(value, button) {
-      facet = value;
-      for (const other of buttons) other.setAttribute('aria-pressed', String(other === button));
-      draw();
-    }
+      // One value is not a filter — it would sit there looking clickable and do nothing.
+      if (values.length < 2) continue;
 
-    for (const [value, label] of [['', 'All'], ...values.map((v) => [v, v])]) {
-      const button = el('button', 'rr-chip', label);
-      button.type = 'button';
-      button.setAttribute('aria-pressed', String(value === ''));
-      button.addEventListener('click', () => select(value, button));
-      buttons.push(button);
-      chipBox.append(button);
+      const group = el('div', 'rr-chip-group');
+      group.setAttribute('role', 'group');
+      group.setAttribute('aria-label', `Filter by ${key}`);
+      group.append(el('span', 'rr-chip-label', key));
+
+      const buttons = [];
+      for (const [value, label] of [['', 'All'], ...values.map((v) => [v, v])]) {
+        const button = el('button', 'rr-chip', label);
+        button.type = 'button';
+        button.setAttribute('aria-pressed', String(value === ''));
+        button.addEventListener('click', () => {
+          chosen.set(key, value);
+          for (const other of buttons) other.setAttribute('aria-pressed', String(other === button));
+          draw();
+        });
+        buttons.push(button);
+        group.append(button);
+      }
+
+      chipBox.append(group);
     }
   }
 

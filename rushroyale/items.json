@@ -63,7 +63,7 @@
       "summary": "How much harder a critical hit lands. Worth noting this also grows on its own as your heroes level.",
       "facts": [
         ["What it does", "Raises the damage of critical hits."],
-        ["Who wants it", "Crit-based units like Rogue and Sharpshooter. Your account's critical damage also rises with every 4th hero level, independently of any item."]
+        ["Who wants it", "A crit-based carry. Your account's critical damage also rises with every 4th hero level, independently of any item."]
       ],
       "tags": ["crit", "critical", "hero", "rogue", "sharpshooter"],
       "detail": "stub"
@@ -74,7 +74,7 @@
       "summary": "How often your units attack rather than how hard.",
       "facts": [
         ["What it does", "Units attack more frequently."],
-        ["Who wants it", "Units that hit lightly and often — Wind Archer over Executioner — and anything that ramps the longer it keeps firing, like Crystalmancer."]
+        ["Who wants it", "Carries that hit lightly and often, and anything that ramps up the longer it keeps firing."]
       ],
       "tags": ["attack speed", "rate of fire", "wind archer", "crystalmancer"],
       "detail": "stub"

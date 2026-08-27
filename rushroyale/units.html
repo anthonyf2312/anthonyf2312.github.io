@@ -15,9 +15,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css?v=6">
   <link rel="stylesheet" href="/docs.css?v=2">
-  <link rel="stylesheet" href="rushroyale.css?v=2">
+  <link rel="stylesheet" href="rushroyale.css?v=3">
 </head>
-<body data-rr-source="units.json" data-rr-shape="cards" data-rr-facet="rarity">
+<body data-rr-source="units.json" data-rr-shape="units" data-rr-facet="rarity,faction">
   <a class="doc-skip" href="#docs-main">Skip to content</a>
 
   <nav class="doc-nav" aria-label="Rush Royale reference navigation">
@@ -40,23 +40,24 @@
     <aside class="doc-side" aria-label="Page sections">
       <label class="cat-visually-hidden" for="doc-search">Filter sections</label>
       <input id="doc-search" class="doc-search" type="search" placeholder="Filter…  ( / )" autocomplete="off">
+
       <h2>Understanding units</h2>
       <ul>
         <li><a href="#what">What a unit is</a></li>
         <li><a href="#rarity">What rarity means</a></li>
-        <li><a href="#roles">The four roles</a></li>
-        <li><a href="#damage-types">Damage types</a></li>
+        <li><a href="#factions">Factions</a></li>
+        <li><a href="#mana-power-up">Mana Power-up</a></li>
       </ul>
 
       <h2>Building with them</h2>
       <ul>
-        <li><a href="#synergy">Why synergy beats rarity</a></li>
+        <li><a href="#synergy">One carry, four supports</a></li>
         <li><a href="#placement">Placement</a></li>
       </ul>
 
       <h2>Reference</h2>
       <ul>
-        <li><a href="#browse">Browse every unit</a></li>
+        <li><a href="#browse">Every unit</a></li>
       </ul>
 
       <p class="doc-side-empty" id="doc-side-empty" hidden>Nothing matches that.</p>
@@ -68,9 +69,8 @@
       <header class="doc-hero">
         <p class="doc-eyebrow">RUSH ROYALE · UNITS</p>
         <h1 class="doc-title">What the<br>units do</h1>
-        <p class="doc-lede">Read a unit's role before you read its rarity. The role tells
-        you whether it belongs in your deck; the rarity only tells you how hard it was
-        to get.</p>
+        <p class="doc-lede">Rebuilt from scratch. Every unit here is transcribed from its
+        real ability text — numbers included, nothing rounded, nothing guessed.</p>
       </header>
 
       <div class="doc-note rr-stamp">
@@ -82,14 +82,23 @@
         <p>Last reviewed 2026-08-27.</p>
       </div>
 
+      <div class="doc-note doc-warn">
+        <p><strong>The roster is being rebuilt and is nowhere near complete.</strong> An
+        earlier version of this page listed around forty units written from unverified web
+        sources. All of them have been deleted rather than left up, because a reference that
+        is confidently wrong is worse than one that is obviously unfinished. What is here
+        now is accurate; there is just not much of it yet.</p>
+      </div>
+
       <section id="what">
         <h2>What a unit is</h2>
         <p>A unit is a card you put in your five-card deck. During a match you cannot summon
-        it on demand — you pay mana and one of your five cards appears at random. So a unit
-        is less "a tower you place" and more "one of five things that might show up".</p>
-        <p>Each unit has a <strong>rank</strong> on the board, raised by merging, and a
-        <strong>level</strong> on the card itself, raised permanently with gold outside
-        matches. Two different numbers, easy to confuse.</p>
+        it on demand — you pay mana and one of your five cards appears at random. So a unit is
+        less "a tower you place" and more "one of five things that might show up".</p>
+        <p>Each unit has a <strong>rank</strong> on the board, raised by merging and reset when
+        the match ends, and a <strong>level</strong> on the card itself, raised permanently
+        with gold outside matches. Two different numbers, easy to confuse — and some units
+        interact with rank directly, so the distinction matters more than it first appears.</p>
       </section>
 
       <section id="rarity">
@@ -113,45 +122,40 @@
         </div>
       </section>
 
-      <section id="roles">
-        <h2>The four roles</h2>
-        <h4>Damage</h4>
-        <p>Kills things — and in PvP dumps damage into the
-        <a href="basics.html#waves">Phantom</a> at the end of a wave, which is what actually
-        pressures your opponent. A deck
-        normally runs <strong>exactly one</strong> of these, called the <strong>carry</strong>.
-        Damage units do not help each other, so a second one splits your summons and your
-        support instead of doubling your output.</p>
-        <h4>Support</h4>
-        <p>Deals little or no damage itself and makes the carry better. This is where
-        <em>four of your five slots</em> go. Knight Statue and Kobold raise damage;
-        Enchanted Swords raises attack speed; Banner and Grindstone buff whatever is near
-        them; Earth Elemental makes poison from any source hurt more. Support is not the
-        supporting cast — in this game it is most of the deck.</p>
-        <h4>Control</h4>
-        <p>Slows, chills or otherwise delays enemies so your damage has longer to work.
-        Cold Mage is the plainest example. Control looks weak on paper because it kills
-        nothing, and is what keeps you alive on the waves that would otherwise overrun you.</p>
-        <h4>Summoner</h4>
-        <p>Puts extra units on the board without you paying mana for them. The Summoner
-        itself, on merging, drops a random unit from your deck onto a free tile at a rank
-        between 1 and its own merge rank.</p>
+      <section id="factions">
+        <h2>Factions</h2>
+        <p>Every unit belongs to a faction. Five are documented here so far:</p>
+        <ul>
+          <li><strong>Dark Domain</strong></li>
+          <li><strong>Forest Alliance</strong></li>
+          <li><strong>Kingdom of Light</strong></li>
+          <li><strong>Magic Council</strong></li>
+          <li><strong>Technogenic Society</strong></li>
+        </ul>
+        <p>Faction is not just flavour: higher-rarity <a href="items.html#rarity">items</a>
+        carry bonuses that apply to one faction rather than to everything. A faction bonus on
+        an item is worth nothing if no unit in your deck belongs to that faction, so factions
+        are a real constraint on which items are worth equipping.</p>
+        <p>You can filter the list below by faction.</p>
       </section>
 
-      <section id="damage-types">
-        <h2>Damage types</h2>
-        <p>Damage type matters mostly because units that share one amplify each other.</p>
-        <h4>Physical</h4>
-        <p>Direct hits. Usually built around attack speed, critical hits, or clearing groups.</p>
-        <h4>Magic</h4>
-        <p>Elemental effects that often carry something extra — Lightning Mage chains between
-        enemies, Fire Mage leaves a burn, Cold Elemental makes what it hits take more damage
-        with each icy shard and hits harder still into enemies already stunned or slowed.</p>
-        <h4>Poison</h4>
-        <p>Damage over time rather than on impact. Alchemist drops short-lived poison puddles
-        on random spots in the lane every few seconds; Earth Elemental infects enemies so
-        poison from <em>any</em> source does more. Poison rewards commitment: one poison card
-        is mediocre, and three that feed each other are not.</p>
+      <section id="mana-power-up">
+        <h2>Mana Power-up</h2>
+        <p>Units have a <strong>Mana Power-up</strong> — an ability you spend mana to trigger
+        during a match, separate from summoning and merging. It is a third thing mana is
+        for, and it is easy to forget it exists.</p>
+        <p>What it does depends entirely on the unit, and some units rewrite it completely:</p>
+        <ul>
+          <li><a href="#banshee">Banshee</a> uses it to make every Banshee on the board
+          shriek, damaging all monsters and barring bosses and mini bosses from using their
+          abilities for 2 seconds.</li>
+          <li><a href="#bard">Bard</a> does not get a classic Mana Power-up at all — the
+          button toggles between two modes instead, and the mode is shared by every Bard.</li>
+          <li><a href="#blazey">Blazey</a> uses it to extinguish every Blazey at once,
+          converting them into rank and Ash.</li>
+        </ul>
+        <p>So "what does its mana ability do" is a question worth asking of every unit before
+        you build around it.</p>
       </section>
 
       <section id="synergy">
@@ -160,50 +164,66 @@
         it</strong>. Not two damage units and three supports, and definitely not four damage
         units — one.</p>
         <p>The reason sits in <a href="basics.html#waves">the Phantom</a>: in PvP, at the end
-        of each wave your damage is converted directly into the health of the boss your opponent
-        must kill. You are being scored on one big number at one moment, so concentrating
-        everything into a single unit beats spreading it across several.</p>
+        of each wave your damage is converted directly into the health of the boss your
+        opponent must kill. You are being scored on one big number at one moment, so
+        concentrating everything into a single unit beats spreading it across several.</p>
         <p><a href="modes.html#co-op">Co-op has no Phantom</a>, so that particular arithmetic
         does not apply there — but the shape holds for a different reason: one leak ends the
         run, so you still want the strongest possible board rather than several mediocre ones.</p>
         <p>So the question to ask of a candidate card is not "is this card good?" but
-        <strong>"what does this do for my carry?"</strong> Raise its damage (Knight Statue,
-        Kobold), raise its attack speed (Enchanted Swords), buff whatever sits beside it
-        (Banner, Grindstone), or keep the wave off it. A card that does none of those is a
-        bad card <em>for this deck</em>, whatever colour its border is.</p>
+        <strong>"what does this do for my carry?"</strong> Raise its damage, raise its attack
+        speed, or keep the wave off it. A card that does none of those is a bad card
+        <em>for this deck</em>, whatever colour its border is.</p>
+        <div class="doc-note">
+          <p>Some units break this rule by wanting <em>copies of themselves</em> rather than
+          support. <a href="#blade-dancer">Blade Dancer</a> scales with every Dancer on the
+          field and peaks at seven; <a href="#banshee">Banshee</a> needs inactive Banshees to
+          feed the active ones; <a href="#blazey">Blazey</a> passes flame between Blazeys and
+          doubles an attack at four or more. Read the ability text before assuming the
+          standard shape applies.</p>
+        </div>
       </section>
 
       <section id="placement">
         <h2>Placement</h2>
-        <p>Most units do not care where they land. The ones that do are support units with
-        an area of effect: Banner and Grindstone help the units around them, so dropping one
-        in a corner wastes most of it. When one of those appears in a bad spot, that is a
-        genuine reason to merge.</p>
+        <p>Most units do not care which tile they land on. The ones that do care a great deal,
+        and their ability text says so explicitly:</p>
+        <ul>
+          <li><strong>Distance from the path.</strong> <a href="#banshee">Banshee</a> only
+          activates on a tile bordering the path. Off the path she does nothing but feed her
+          rank to the Banshees that are on it.</li>
+          <li><strong>Distance from her own kind.</strong> <a href="#blade-dancer">Blade
+          Dancer</a> wants <em>no</em> nearby Dancers for its attack speed bonus, while
+          wanting as many Dancers on the field as possible for its damage bonus — near, but
+          not adjacent.</li>
+          <li><strong>Proximity for spreading.</strong> <a href="#blazey">Blazey</a> passes
+          the flame to other Blazeys around her, so clustering is the point.</li>
+        </ul>
+        <p>When one of these lands badly, that is a genuine reason to
+        <a href="basics.html#merging">merge</a> it away.</p>
       </section>
 
       <section id="browse">
-        <h2>Browse every unit</h2>
-        <p>Filter by rarity, or search by name, role, damage type or a keyword like
-        <code>poison</code>, <code>crit</code> or <code>aoe</code>.</p>
-        <div class="doc-note doc-warn">
-          <p><strong>This roster is partial, and every entry is a stub.</strong> Descriptions
-          are at the level of "what family of thing does this do" — they carry no damage
-          figures, ranges or costs, because those could not be verified for this page and
-          change between patches. Check the card in-game before building around it.</p>
+        <h2>Every unit</h2>
+        <p>Filter by rarity or faction, or search — the search covers the full ability text,
+        so <code>tornado</code>, <code>enrage</code> or <code>orb of fear</code> all find the
+        unit that does it.</p>
+
+        <div class="rr-toolbar">
+          <label class="cat-visually-hidden" for="rr-q">Search units</label>
+          <input id="rr-q" class="rr-search" type="search" placeholder="Search units and abilities…" autocomplete="off">
         </div>
-      <div class="rr-toolbar">
-        <label class="cat-visually-hidden" for="rr-q">Search</label>
-        <input id="rr-q" class="rr-search" type="search" placeholder="Search units…  (name, role, tag)" autocomplete="off">
-        <div class="rr-chips" id="rr-chips" role="group" aria-label="Filter by rarity"></div>
-      </div>
-      <p class="rr-count" id="rr-count" role="status"></p>
-      <ul class="rr-grid" id="rr-grid">
-        <li class="rr-empty">Loading…</li>
-      </ul>
-      <noscript>
-        <p class="rr-error">This list is built from <a href="units.json">its data file</a>, which
-        needs JavaScript to render. The file itself is readable as-is.</p>
-      </noscript>
+        <div class="rr-chips" id="rr-chips"></div>
+        <p class="rr-count" id="rr-count" role="status"></p>
+
+        <ul class="rr-units" id="rr-grid">
+          <li class="rr-empty">Loading…</li>
+        </ul>
+
+        <noscript>
+          <p class="rr-error">This list is built from <a href="units.json">units.json</a>,
+          which needs JavaScript to render. The file itself is readable as-is.</p>
+        </noscript>
       </section>
 
     </main>
@@ -217,6 +237,6 @@
   </footer>
 
   <script defer src="/docs.js?v=2"></script>
-  <script defer src="rushroyale.js?v=1"></script>
+  <script defer src="rushroyale.js?v=3"></script>
 </body>
 </html>

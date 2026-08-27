@@ -172,6 +172,88 @@
   margin: 0.9rem 0 0;
 }
 
+/* ---------- chip groups ---------- */
+
+.rr-chip-group { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+
+.rr-chip-label {
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-right: 0.15rem;
+}
+
+/* ---------- units ---------- */
+
+/* A unit's ability text is several paragraphs of rules, so these run full width one per row
+   rather than sitting in the two-column tile grid the other pages use. Same hairline seams. */
+.rr-units {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.rr-unit {
+  padding: 1.6rem 0 1.8rem;
+  border-bottom: 1px solid var(--hairline);
+  scroll-margin-top: 5rem;
+}
+
+.rr-unit-name {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 0.6rem;
+}
+
+.rr-unit-summary {
+  font-size: 1rem;
+  color: var(--fg);
+  margin: 0.75rem 0 0;
+  max-width: 60ch;
+}
+
+/* Transcribed rules text. Each item is one ability, marked with an accent rule rather than a
+   bullet so the block reads as a card's ability list rather than as prose. */
+.rr-abilities { list-style: none; margin: 1.1rem 0 0; padding: 0; display: grid; gap: 0.55rem; }
+
+.rr-abilities li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--fg-muted);
+  margin: 0;
+}
+.rr-abilities li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* Caps, immunities and mode-specific exceptions — the fine print under the abilities. */
+.rr-unit-notes {
+  margin: 1.1rem 0 0;
+  padding: 0.75rem 0 0.75rem 1rem;
+  border-left: 1px solid var(--hairline);
+}
+.rr-unit-notes p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--fg-muted);
+  margin: 0.3rem 0;
+}
+.rr-unit-notes p:first-child { margin-top: 0; }
+.rr-unit-notes p:last-child { margin-bottom: 0; }
+
 /* ---------- card grid ---------- */
 
 .rr-grid {
@@ -316,4 +398,6 @@
 @media (max-width: 40rem) {
   .rr-toolbar { gap: 0.8rem; }
   .rr-search { flex-basis: 100%; }
+  .rr-chip-group { width: 100%; }
+  .rr-unit-name { font-size: 1.25rem; }
 }
