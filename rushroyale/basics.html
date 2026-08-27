@@ -148,23 +148,38 @@
       </section>
 
       <section id="waves">
-        <h2>Waves and bosses</h2>
-        <p>Enemies arrive in waves, and the schedule is predictable enough to plan around:</p>
-        <div class="doc-table-wrap">
-          <table>
-            <thead>
-              <tr><th>Wave</th><th>What arrives</th><th>What it means for you</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Most waves</td><td>Ordinary enemies, in groups</td><td>Area damage earns its place</td></tr>
-              <tr><td>Every 5th</td><td>A miniboss</td><td>Single-target damage matters more</td></tr>
-              <tr><td>Every 10th</td><td>A boss</td><td>One tough target — anything that ramps up over a long fight shines</td></tr>
-            </tbody>
-          </table>
+        <h2>Waves, the Phantom and bosses</h2>
+        <p>Enemies arrive in waves. What exactly spawns in each one is not written up here
+        yet — but the part that decides PvP matches is what happens <em>between</em> them.</p>
+
+        <h3>The Phantom</h3>
+        <p>At the end of a wave, the <strong>Phantom</strong> appears on your board. Your
+        units attack it, and this is the moment the whole match turns on:</p>
+        <div class="doc-note">
+          <p><strong>The damage you deal to the Phantom is sent to your opponent.</strong>
+          It becomes the health of the boss that spawns on their side.</p>
+          <p>Deal 5 billion damage to the Phantom and the boss they have to kill — Bedlam,
+          say — arrives with 5 billion health. Their damage comes back at you the same way.</p>
         </div>
-        <p>Because the cadence never changes, you always know roughly two waves ahead
-        whether you are about to face a crowd or a single heavy target. That is when to
-        decide about merging.</p>
+
+        <h3>Why this changes everything</h3>
+        <p>It means <strong>PvP is not a survival game with a scoreboard — your damage
+        output <em>is</em> your attack.</strong> Clearing your own waves keeps you alive;
+        hitting the Phantom hard is what actually threatens the other player.</p>
+        <p>Two consequences worth internalising early:</p>
+        <ul>
+          <li><strong>Peak damage matters more than steady damage.</strong> You are being
+          measured on one number, at one moment, at the end of a wave — not on how tidily
+          you handled the wave itself.</li>
+          <li><strong>This is why decks run a single damage unit.</strong> Everything else
+          exists to make that one unit's hit on the Phantom as large as possible. See
+          <a href="#first-deck">building a deck</a>.</li>
+        </ul>
+        <div class="doc-note doc-warn">
+          <p>Corrected by a player after the first draft of this page got it wrong. The
+          earlier version described a fixed "miniboss every 5 waves, boss every 10" cadence,
+          which is not how the game works.</p>
+        </div>
       </section>
 
       <section id="losing">
@@ -179,11 +194,16 @@
       </section>
 
       <section id="mistakes">
-        <h2>Three early mistakes</h2>
+        <h2>Four early mistakes</h2>
         <h3>Spending all your mana in waves 1–5</h3>
         <p>The opening waves are survivable with very little. Save it.</p>
         <h3>Merging to tidy up</h3>
         <p>A full board is a working board. Merge for a reason, not for neatness.</p>
+        <h3>Packing the deck with damage units</h3>
+        <p>The most common deckbuilding mistake, and it feels like the safe one. The norm is
+        <strong>one</strong> damage unit supported by four other cards — see
+        <a href="#first-deck">a first deck</a>.</p>
+
         <h3>Chasing rarity</h3>
         <p>Legendary does not mean strong — it means rare. Four Common units that support
         each other beat one expensive Legendary that has nothing to work with. See
@@ -192,13 +212,32 @@
 
       <section id="first-deck">
         <h2>A first deck</h2>
-        <p>You do not need rare cards to build something coherent. A workable beginner shape
-        is one reliable single-target damage dealer, one area damage dealer, one thing that
-        slows enemies down, and two cards that support the rest.</p>
-        <p>Using cards from the common pool — an <a href="units.html#browse">Archer</a> or
-        Thrower for single targets, a Bombardier or Hunter for crowds, a Cold Mage to slow
-        things down — gets you a long way, and you will see copies of them often enough to
-        merge.</p>
+        <p>There is a standard shape, and it is much narrower than it looks:</p>
+        <div class="doc-note">
+          <p><strong>One damage unit. Four cards that make it hit harder.</strong></p>
+        </div>
+        <p>That one damage unit is your <strong>carry</strong> — the unit that actually
+        kills things and, more importantly, the unit that dumps damage into the
+        <a href="#waves">Phantom</a> at the end of a wave. The other four slots are not
+        there to add damage of their own. They are there to multiply the carry's.</p>
+
+        <h3>What the four support slots do</h3>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Job</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr><td>Raise the carry's damage</td><td>Knight Statue, Kobold</td></tr>
+              <tr><td>Raise its attack speed</td><td>Enchanted Swords</td></tr>
+              <tr><td>Buff whatever is near it</td><td>Banner, Grindstone</td></tr>
+              <tr><td>Keep the wave off you</td><td>a slow or a control unit</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Adding a second damage unit feels productive and is usually a downgrade: the two
+        split your summons and your support, so instead of one enormous hit on the Phantom
+        you get two mediocre ones. Remember that <a href="#summoning">summons are
+        random</a> — a five-card deck means each card is roughly one summon in five, so
+        every slot you spend on a second carry is a slot not spent feeding the first.</p>
         <div class="doc-note">
           <p>Next: <a href="units.html">what each unit actually does</a>, or the
           <a href="glossary.html">glossary</a> if any word above went past you.</p>
