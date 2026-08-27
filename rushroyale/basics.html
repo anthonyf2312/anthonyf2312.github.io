@@ -57,7 +57,7 @@
 
       <h2>Getting better</h2>
       <ul>
-        <li><a href="#mistakes">Three early mistakes</a></li>
+        <li><a href="#mistakes">Four early mistakes</a></li>
         <li><a href="#first-deck">A first deck</a></li>
       </ul>
 
@@ -77,9 +77,12 @@
       <div class="doc-note rr-stamp">
         <p><b>Unofficial community reference.</b> Not affiliated with My.Games or the Rush Royale team.</p>
         <p>Rules confirmed by someone who plays the game are stated plainly, numbers and all.
-        Unverified stat figures — damage values, upgrade costs, drop rates — are left out rather than
-        guessed, because they shift every patch and a wrong number is worse than none. Entries marked
-        with a hatched edge are still waiting on figures checked in-game.</p>
+        Entries marked with a hatched edge are still waiting on figures checked in-game.</p>
+        <p><b>Sourced from the Rush Royale Fandom wiki.</b> The match rules below now follow that
+        wiki's <i>PvP</i>, <i>Monsters</i> and <i>Bosses</i> pages, last edited <b>2022-11-25</b>,
+        <b>2022-11-22</b> and <b>2025-10-17</b> respectively. That is older than the in-game
+        reporting this page previously carried, so treat anything here as unconfirmed until it is
+        checked against the current build.</p>
         <p>Last reviewed 2026-08-27.</p>
       </div>
 
@@ -149,41 +152,68 @@
       </section>
 
       <section id="waves">
-        <h2>Waves, the Phantom and bosses</h2>
-        <p>Enemies arrive in waves. What exactly spawns in each one is not written up here
-        yet — but the part that decides PvP matches is what happens <em>between</em> them.</p>
+        <h2>Waves, monsters and bosses</h2>
+        <p>Enemies arrive continuously along the lane. There are
+        <strong>three kinds</strong> of them, and they behave differently enough that it is
+        worth knowing which one is walking at you.</p>
 
-        <h3>The Phantom <span class="rr-scope">PvP only</span></h3>
-        <p>There is no Phantom in <a href="modes.html#co-op">co-op</a>. In PvP, at the end of
-        <strong>every</strong> wave — not some of them — the
-        <strong>Phantom</strong> appears on your board. Your units attack it, and this is the
-        moment the whole match turns on:</p>
-        <div class="doc-note">
-          <p><strong>The damage you deal to the Phantom is sent to your opponent.</strong>
-          It becomes the health of the boss that spawns on their side.</p>
-          <p>Deal 5 billion damage to the Phantom and the boss they have to kill — Bedlam,
-          say — arrives with 5 billion health. Their damage comes back at you the same way.</p>
-          <p>A boss that reaches the gate costs <a href="#losing">2 of a player's 3 hearts</a>,
-          so this is not chip damage — it is most of a life.</p>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Monster</th><th>Health</th><th>Speed</th><th>Damage to your gate</th></tr></thead>
+            <tbody>
+              <tr><td>Common</td><td>baseline, and grows every 10 seconds in PvP</td><td>normal</td><td>1</td></tr>
+              <tr><td>Fast</td><td>half a common's</td><td>twice as fast</td><td>1</td></tr>
+              <tr><td>Mini boss</td><td>five times a common's</td><td>slightly slower</td><td>2</td></tr>
+            </tbody>
+          </table>
         </div>
+        <p>Mini bosses also give <strong>five times the mana</strong> a common or fast monster
+        does, so they are worth killing rather than merely surviving.</p>
 
-        <h3>Why this changes everything</h3>
-        <p>It means <strong>PvP is not a survival game with a scoreboard — your damage
-        output <em>is</em> your attack.</strong> Clearing your own waves keeps you alive;
-        hitting the Phantom hard is what actually threatens the other player.</p>
-        <p>Two consequences worth internalising early:</p>
-        <ul>
-          <li><strong>Peak damage matters more than steady damage.</strong> You are being
-          measured on one number, at one moment, at the end of a wave — not on how tidily
-          you handled the wave itself.</li>
-          <li><strong>This is why decks run a single damage unit.</strong> Everything else
-          exists to make that one unit's hit on the Phantom as large as possible. See
-          <a href="#first-deck">building a deck</a>.</li>
-        </ul>
+        <h3>Bosses arrive on a timer <span class="rr-scope">PvP and events</span></h3>
+        <p>Bosses are not tied to a wave count in PvP — they are tied to the clock. The
+        <strong>first boss arrives after 2 minutes</strong>, and each subsequent gap is
+        <strong>20 seconds shorter</strong>, down to a floor of <strong>1 minute</strong>
+        between fights.</p>
+        <div class="doc-note">
+          <p><strong>A boss's health depends on how badly you are doing.</strong> It is the
+          boss's own base health <em>plus the combined health of every monster still alive on
+          your side</em> when the timer runs out:</p>
+          <p><code>boss health = n × 50,000 + health of monsters left on your path</code></p>
+          <p>The first boss has a base of <strong>50,000</strong>, and each later one adds
+          another 50,000. So a board you have not cleared does not just threaten your gate —
+          it inflates the thing arriving next.</p>
+        </div>
         <div class="doc-note doc-warn">
-          <p>Corrected by a player after the first draft of this page got it wrong. The
-          earlier version described a fixed "miniboss every 5 waves, boss every 10" cadence,
-          which is not how the game works. The Phantom is every wave.</p>
+          <p>When the timer hits zero it kills whatever is still on the field — but this takes
+          <strong>about a second</strong>. Monsters can and do reach the gate in that gap,
+          which is a common and thoroughly unfair-feeling way to lose a boss wave.</p>
+        </div>
+        <p>A boss fight ends when the boss dies <em>or</em> reaches your gate; either way the
+        next wave starts, provided both gates still have lives. Bosses and mini bosses take
+        <a href="#losing">2 hearts</a>.</p>
+
+        <h3>Which bosses, and when</h3>
+        <p>Early PvP cycles through six: <strong>Tamer, Gorgon, Bedlam, Warlock, Tribunal</strong>
+        and <strong>Puppeteer</strong>. Higher arenas add <strong>Virus</strong> (from Arena 7)
+        and <strong>Assassin</strong> (from Arena 9). <strong>King Pudding</strong> and
+        <strong>Grandmaster</strong> are in the game too, at arenas the source does not record.</p>
+        <p>They are not equally dangerous. Tamer is the mildest — it summons commons behind
+        itself, and the only real risk is a monster tanking alongside it. Gorgon petrifies two
+        of your units so they stop attacking. Bedlam rerolls every unit on your board into a
+        random one, which is the most disruptive thing any boss does.</p>
+
+        <h3>In co-op, bosses are fixed</h3>
+        <p>Co-op spawns a boss only once the field is clear, so its health is the same every
+        time — no timer, no leftovers to inflate it. See <a href="modes.html#co-op">co-op</a>.</p>
+
+        <div class="doc-note doc-warn">
+          <p><b>This section was rewritten from the Fandom wiki and contradicts what this page
+          said before.</b> The previous version described a <i>Phantom</i> appearing at the end
+          of every wave, with the damage you dealt to it becoming the health of a boss on your
+          opponent's board — reported by a player against the live game. The wiki describes the
+          timer-and-base-health model above instead. Both cannot be current; the wiki pages are
+          from 2022 and 2025. Worth settling in-game.</p>
         </div>
       </section>
 
@@ -219,18 +249,22 @@
         two mistakes in hand.</p>
 
         <h3>How the PvP loop fits together</h3>
-        <p>Put the <a href="#waves">Phantom</a> next to the hearts and PvP makes sense:</p>
+        <p>Put the <a href="#waves">boss timer</a> next to the hearts and PvP makes sense:</p>
         <ol>
-          <li>You clear a wave. Anything you miss costs you a heart.</li>
-          <li>The Phantom appears and your units hit it.</li>
-          <li>That damage becomes the health of a boss on your opponent's board.</li>
-          <li>If they cannot kill it, it reaches their gate and takes <strong>2 of their
+          <li>Monsters walk at you continuously. Anything that reaches your gate costs a heart.</li>
+          <li>Every monster you kill — except a boss — reappears out of your
+          <strong>opponent's</strong> portal as a common monster.</li>
+          <li>When the timer runs out, a boss spawns on your side. Its health is its base plus
+          <strong>everything you failed to clear</strong>.</li>
+          <li>If you cannot kill it, it reaches your gate and takes <strong>2 of your
           3 hearts</strong>.</li>
         </ol>
-        <p>You win by sending a boss too big for the other player to handle — and one that
-        lands is very nearly fatal on its own. Their damage does the same to you.</p>
-        <p>None of this applies in co-op. With no Phantom there, damage has nowhere to go
-        except the wave in front of you.</p>
+        <p>So you do not attack the other player directly — you attack them by
+        <em>killing quickly</em>, because your kills become their traffic. And if both gates
+        are breached at the same moment, the winner is whoever has the
+        <strong>lower total monster health</strong> left on their path.</p>
+        <p>None of this applies in co-op, where there is no opponent to feed and bosses arrive
+        on a fixed schedule instead.</p>
       </section>
 
       <section id="mistakes">
@@ -257,9 +291,10 @@
           <p><strong>One damage unit. Four cards that make it hit harder.</strong></p>
         </div>
         <p>That one damage unit is your <strong>carry</strong> — the unit that actually
-        kills things and, more importantly, the unit that dumps damage into the
-        <a href="#waves">Phantom</a> at the end of a wave. The other four slots are not
-        there to add damage of their own. They are there to multiply the carry's.</p>
+        kills things — and, more importantly, the unit that clears the board fast enough
+        that the <a href="#waves">next boss</a> does not arrive carrying your leftovers as
+        extra health. The other four slots are not there to add damage of their own. They are
+        there to multiply the carry's.</p>
 
         <h3>What the four support slots do</h3>
         <div class="doc-table-wrap">
@@ -274,8 +309,8 @@
           </table>
         </div>
         <p>Adding a second damage unit feels productive and is usually a downgrade: the two
-        split your summons and your support, so instead of one enormous hit on the Phantom
-        you get two mediocre ones. Remember that <a href="#summoning">summons are
+        split your summons and your support, so instead of one carry that melts a boss you get
+        two that cannot. Remember that <a href="#summoning">summons are
         random</a> — a five-card deck means each card is roughly one summon in five, so
         every slot you spend on a second carry is a slot not spent feeding the first.</p>
         <div class="doc-note">

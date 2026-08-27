@@ -55,6 +55,11 @@
         <li><a href="#tournament">Clan Tournament</a></li>
       </ul>
 
+      <h2>Weekends</h2>
+      <ul>
+        <li><a href="#events">Events</a></li>
+      </ul>
+
       <h2>Which to play</h2>
       <ul>
         <li><a href="#picking">Picking a mode</a></li>
@@ -76,9 +81,13 @@
       <div class="doc-note rr-stamp">
         <p><b>Unofficial community reference.</b> Not affiliated with My.Games or the Rush Royale team.</p>
         <p>Rules confirmed by someone who plays the game are stated plainly, numbers and all.
-        Unverified stat figures — damage values, upgrade costs, drop rates — are left out rather than
-        guessed, because they shift every patch and a wrong number is worse than none. Entries marked
-        with a hatched edge are still waiting on figures checked in-game.</p>
+        Entries marked with a hatched edge are still waiting on figures checked in-game.</p>
+        <p><b>Sourced from the Rush Royale Fandom wiki.</b> PvP, co-op, clans and events below
+        follow that wiki's pages, last edited <b>2022-11-25</b>, <b>2021-05-24</b>,
+        <b>2022-11-25</b> and <b>2022-11-22</b>. Some of that is four to five years old and
+        predates modes this site already covered — the wave counts and boss order in co-op in
+        particular describe an older build. Dragon Rift and the Clan Tournament are kept from
+        the earlier in-game reporting because the wiki has no page for either.</p>
         <p>Last reviewed 2026-08-27.</p>
       </div>
 
@@ -87,14 +96,21 @@
         <p>Real-time, head to head. Both players get an identical board and face the same
         waves. Each starts with <strong>3 hearts</strong>: an ordinary monster reaching the
         gate costs 1, a boss costs 2. You lose when they run out.</p>
-        <p>You attack through the <a href="basics.html#waves">Phantom</a>: at the end of
-        every wave it appears on your board, and whatever damage your units deal to it
-        becomes the health of the boss that spawns on your opponent's side. Deal 5 billion and
-        their Bedlam turns up with 5 billion health — and if it reaches their gate it takes 2 of
-        their 3 hearts. Their damage arrives at you the same way, so a PvP match is two players
-        trying to out-damage each other into a boss neither of them fights directly.</p>
+        <p>You attack the other player indirectly, by killing things. <strong>Every monster
+        you kill — bosses aside — respawns out of your opponent's portal as a common
+        monster.</strong> Kill faster and you bury them in traffic; stall and the traffic is
+        all yours.</p>
+        <p>Each round is a wave that ends in a boss fight, and
+        <a href="basics.html#waves">the boss's health is its base plus everything still alive
+        on your path</a> when the timer expires. As rounds pass the gaps get shorter while
+        monster health, spawn rate and mana per kill all climb.</p>
+        <div class="doc-note">
+          <p>If both gates fall at the same instant, the tiebreak is
+          <strong>whoever has less total monster health left on their path</strong>. Clearing
+          the board is the win condition even at the moment you lose it.</p>
+        </div>
         <p>This is why decks are built as <a href="units.html#synergy">one carry and four
-        supports</a> — peak damage at the end of a wave is the whole game.</p>
+        supports</a> — sustained clearing speed is the whole game.</p>
         <p>PvP is also where <a href="resources.html#trophies">trophies</a> come from, which is
         what decides your arena.</p>
       </section>
@@ -138,13 +154,33 @@
           heart to lose and no second chance — a single leak ends the run for both players.</p>
         </div>
 
-        <h3>No Phantom</h3>
-        <p>The <a href="basics.html#waves">Phantom</a> does not appear in co-op. Nothing is
-        being sent anywhere, so the burst-damage arithmetic that decides PvP simply is not
-        running. Damage here has one job: kill what is in front of you before it walks past.</p>
-        <p>That flips the emphasis. In PvP you can afford two leaks and are really competing
-        on peak damage into the Phantom; in co-op a leak is instantly fatal, so consistent
-        coverage of the whole wave is what keeps the run alive.</p>
+        <h3>Nothing is sent anywhere</h3>
+        <p>There is no opponent to feed. Your kills stay dead instead of respawning on someone
+        else's board, so damage here has exactly one job: kill what is in front of you before
+        it walks past. Killing a monster gives mana to <strong>both</strong> players.</p>
+        <p>That flips the emphasis. In PvP you can afford two leaks and are competing on
+        clearing speed; in co-op a single leak is instantly fatal, so consistent coverage of
+        the whole wave is what keeps the run alive.</p>
+
+        <h3>How the waves are built</h3>
+        <p>Waves are discrete here — the next one does not start until the last monster of the
+        current one is dead. Up to wave 60 each wave is <strong>10 monsters</strong>, and the
+        further you get the more of them are the fast variety rather than commons.</p>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Wave</th><th>What arrives</th></tr></thead>
+            <tbody>
+              <tr><td>Every 5th</td><td>a mini boss, plus commons</td></tr>
+              <tr><td>Every 10th</td><td>a boss — Tamer at 10, Gorgon 20, Bedlam 30, Warlock 40, Tribunal 50, Puppeteer 60</td></tr>
+              <tr><td>After 60</td><td>the pattern switches: boss on every even wave, mini boss on every odd one, same boss cycle</td></tr>
+              <tr><td>After 100</td><td>two bosses at once, starting with Gorgon at wave 100</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Monster health rises with every monster, and the <em>rate</em> it rises at increases
+        every ten waves. Mana per kill goes up by 10 every tenth wave and caps at
+        <strong>50</strong> at wave 50. Unlike PvP, a co-op boss always has the same health on
+        a given floor, because it only spawns once the field is clear.</p>
 
         <h3>The two roles</h3>
         <p>Co-op teams generally split into <strong>DPS</strong> and <strong>support</strong>:</p>
@@ -164,6 +200,16 @@
         access to clan-only content — chiefly <a href="#dragon-rift">Dragon Rift</a> and the
         <a href="#tournament">Clan Tournament</a>. Joining one is close to free power, since
         both of those are content you cannot reach alone.</p>
+        <p>Clans open up at <strong>arena 2</strong>. Joining one is free; founding your own
+        costs <strong>5,000 coins</strong>. A clan holds up to <strong>50 players</strong>.</p>
+        <p>What membership actually buys you:</p>
+        <ul>
+          <li>Clan chat.</li>
+          <li><strong>Requesting</strong> common and rare cards you are short of — and
+          <strong>earning coins</strong> by donating cards to other members.</li>
+          <li>Training battles and <a href="#co-op">co-op</a> with people you know.</li>
+          <li>Entry to the <a href="#tournament">Clan Tournament</a>.</li>
+        </ul>
       </section>
 
       <section id="dragon-rift">
@@ -194,6 +240,33 @@
         </div>
       </section>
 
+      <section id="events">
+        <h2>Events</h2>
+        <p>Events are the third mode alongside <a href="#pvp">PvP</a> and
+        <a href="#co-op">co-op</a>, and they live in the fourth tab along the bottom of the
+        screen. They run <strong>every weekend</strong> and last <strong>48 hours</strong>.</p>
+
+        <h3>Rush for Glory</h3>
+        <p>The recurring event format. You are sorted into one of <strong>10 groups</strong> by
+        trophy count — past <strong>4,000 trophies</strong> you are always in group 10, the
+        highest. You get <strong>10 games</strong> to bank as many Glory Points as you can:</p>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Result</th><th>Glory Points</th></tr></thead>
+            <tbody>
+              <tr><td>A win</td><td>1,000</td></tr>
+              <tr><td>Each life you finish with</td><td>100</td></tr>
+              <tr><td>Each monster left on the enemy's side</td><td>1</td></tr>
+              <tr><td>A loss</td><td>100</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Each group holds <strong>100 players</strong>, and the <strong>top 3</strong> take
+        the best rewards. Note the scoring: winning with lives intact is worth far more than
+        winning narrowly, and a loss is not worth nothing — playing all 10 games beats
+        protecting a record.</p>
+      </section>
+
       <section id="picking">
         <h2>Picking a mode</h2>
         <div class="doc-table-wrap">
@@ -201,7 +274,8 @@
             <thead><tr><th>If you want…</th><th>Play</th></tr></thead>
             <tbody>
               <tr><td>To climb and earn trophies</td><td><a href="#pvp">PvP</a></td></tr>
-              <tr><td>To compete without a deep collection</td><td><a href="#variants">Mirror Decks</a> or Rush for Glory</td></tr>
+              <tr><td>To compete without a deep collection</td><td><a href="#variants">Mirror Decks</a> or <a href="#events">Rush for Glory</a></td></tr>
+              <tr><td>A weekend push for rewards</td><td><a href="#events">Events</a> — 48 hours, 10 games</td></tr>
               <tr><td>To play with someone rather than against them</td><td><a href="#co-op">Co-op</a> — but note one leak ends it</td></tr>
               <tr><td>Rewards you cannot get solo</td><td><a href="#dragon-rift">Dragon Rift</a>, <a href="#tournament">Clan Tournament</a></td></tr>
             </tbody>
