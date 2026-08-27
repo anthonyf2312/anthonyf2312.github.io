@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rush Royale progression — heroes, talents and legendarity</title>
+  <meta name="description" content="How Rush Royale accounts get stronger: card levels, hero levels, legendarity, talents, spells and artifacts, and what to level first.">
+  <!-- Unlisted while the content is incomplete: nothing on the site links here, and this
+       keeps it out of search results too. Same mechanism 404.html uses. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#111113">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111113'/%3E%3Cpath d='M32 10 50 21v22L32 54 14 43V21Z' fill='%23ff6b2b'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css?v=6">
+  <link rel="stylesheet" href="/docs.css?v=2">
+  <link rel="stylesheet" href="rushroyale.css?v=1">
+</head>
+<body>
+  <a class="doc-skip" href="#docs-main">Skip to content</a>
+
+  <nav class="doc-nav" aria-label="Rush Royale reference navigation">
+    <a class="doc-nav-name" href="/">anthony</a>
+    <div class="doc-nav-links">
+      <a href="index.html">overview</a>
+      <a href="basics.html">basics</a>
+      <a href="units.html">units</a>
+      <a href="items.html">items</a>
+      <a href="resources.html">resources</a>
+      <a href="progression.html" aria-current="page">progression</a>
+      <a href="modes.html">modes</a>
+      <a href="glossary.html">glossary</a>
+    </div>
+  </nav>
+
+  <div class="doc-shell">
+
+    <!-- ======================= Sidebar ======================= -->
+    <aside class="doc-side" aria-label="Page sections">
+      <label class="cat-visually-hidden" for="doc-search">Filter sections</label>
+      <input id="doc-search" class="doc-search" type="search" placeholder="Filter…  ( / )" autocomplete="off">
+      <h2>The three ladders</h2>
+      <ul>
+        <li><a href="#card-levels">Card levels</a></li>
+        <li><a href="#heroes">Heroes</a></li>
+        <li><a href="#legendarity">Legendarity</a></li>
+      </ul>
+
+      <h2>What it unlocks</h2>
+      <ul>
+        <li><a href="#talents">Talents</a></li>
+        <li><a href="#spells-artifacts">Spells and artifacts</a></li>
+      </ul>
+
+      <h2>Deciding</h2>
+      <ul>
+        <li><a href="#what-to-level">What to level first</a></li>
+      </ul>
+
+      <p class="doc-side-empty" id="doc-side-empty" hidden>Nothing matches that.</p>
+    </aside>
+
+    <!-- ======================= Content ======================= -->
+    <main class="doc-main" id="docs-main">
+
+      <header class="doc-hero">
+        <p class="doc-eyebrow">RUSH ROYALE · PROGRESSION</p>
+        <h1 class="doc-title">Getting<br>stronger</h1>
+        <p class="doc-lede">Three separate ladders run at once — cards, heroes, and the
+        account stat they feed. Understanding which is which stops you spending on the
+        wrong one.</p>
+      </header>
+
+      <div class="doc-note rr-stamp">
+        <p><b>Unofficial community reference.</b> Not affiliated with My.Games or the Rush Royale team.</p>
+        <p>Written from public information and deliberately kept free of exact numbers — damage values,
+        costs and drop rates change every patch, and a wrong number is worse than no number. Entries
+        marked with a hatched edge still need figures checked in-game.</p>
+        <p>Last reviewed 2026-08-27.</p>
+      </div>
+
+      <section id="card-levels">
+        <h2>Card levels</h2>
+        <p>A card's level is permanent and lives outside matches. Raising it takes
+        <strong>duplicate copies of that card plus gold</strong> — and for legendaries,
+        <a href="resources.html#orbs">magic orbs</a> as well, at every level.</p>
+        <div class="doc-note">
+          <p>Do not confuse card <strong>level</strong> with board <strong>rank</strong>.
+          Rank comes from merging during a match and resets when the match ends. Level is
+          what you actually own. See <a href="basics.html#merging">merging</a>.</p>
+        </div>
+        <p>This duplicate-plus-currency shape is why rarity matters: rarer cards produce
+        duplicates more slowly, so they climb more slowly even when you have the gold.</p>
+      </section>
+
+      <section id="heroes">
+        <h2>Heroes</h2>
+        <p>A hero is the character behind your deck. Levelling one does three separate
+        things, and the second is easy to miss:</p>
+        <ul>
+          <li>The hero itself gets stronger.</li>
+          <li><strong>Every 4th hero level raises your account's critical damage</strong> —
+          a benefit that applies no matter which hero or deck you play.</li>
+          <li>It unlocks more <a href="items.html#slots">item slots</a>, up to four.</li>
+        </ul>
+        <h3>Expeditions</h3>
+        <p>Expeditions are a passive, constantly running source of hero fragments — they
+        tick along without you playing matches, and can turn up legendary heroes for gold.
+        If you check nothing else daily, check these.</p>
+      </section>
+
+      <section id="legendarity">
+        <h2>Legendarity</h2>
+        <p>Legendarity is an <strong>account-wide stat</strong>, not a currency and not
+        something you can buy directly. It is calculated from the raw levels of your
+        legendary units and your heroes, and it rises every time one of those levels up.</p>
+        <p>What it is <em>for</em>: legendarity unlocks the <strong>spells and artifacts</strong>
+        you can equip to a deck and use in battle. So it is the mechanism that turns
+        investment in legendaries into an ability rather than just a bigger number.</p>
+        <div class="doc-note">
+          <p>Because it derives from levels rather than from how many legendaries you own,
+          committing hard to a few legendaries raises legendarity faster than collecting
+          many and levelling none.</p>
+        </div>
+      </section>
+
+      <section id="talents">
+        <h2>Talents</h2>
+        <p>Talents are unlockable upgrades attached to cards, which you then level. Talent
+        acquisition is tied to legendarity progression, so it advances as your heroes and
+        legendary units do.</p>
+        <p>They are not optional flavour — staying competitive at higher arenas assumes you
+        have been unlocking and levelling them along the way.</p>
+      </section>
+
+      <section id="spells-artifacts">
+        <h2>Spells and artifacts</h2>
+        <p>Both are abilities you equip to a deck and use in battle, and both are gated
+        behind <a href="#legendarity">legendarity</a>. They sit alongside your five cards
+        rather than replacing any of them, which makes them a second axis of deckbuilding
+        once you have enough legendarity to have a choice.</p>
+      </section>
+
+      <section id="what-to-level">
+        <h2>What to level first</h2>
+        <p>With everything competing for the same gold, a reasonable order:</p>
+        <ol>
+          <li><strong>The five cards in your actual deck.</strong> Nothing else changes a
+          match you are playing today.</li>
+          <li><strong>Your hero.</strong> The crit bonus every 4th level and the extra item
+          slots apply to every deck you will ever build, so this never becomes wasted.</li>
+          <li><strong>Two or three legendaries, deeply.</strong> Orbs are the constraint, and
+          depth raises legendarity while breadth does not.</li>
+          <li><strong>Talents</strong> on the cards you have committed to.</li>
+        </ol>
+        <div class="doc-note doc-warn">
+          <p>The tempting order — level whatever just dropped — is the one that leaves you
+          with a wide, shallow collection and no deck strong enough to climb with.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="doc-footer">
+    <a href="index.html">← Rush Royale contents</a>
+    <a href="glossary.html">glossary</a>
+    <a href="/">anthonyf2312.github.io</a>
+    <span>unofficial · work in progress</span>
+  </footer>
+
+  <script defer src="/docs.js?v=2"></script>
+  <script defer src="rushroyale.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+/* ============================================================
+   Rush Royale reference
+   Inherits tokens, base type and film grain from style.css, and
+   the whole documentation shell — nav, sidebar, prose, tables,
+   notes, footer — from docs.css. This file only adds what the
+   shell has no equivalent for: the hub map, the browsable card
+   grids, and the tags that carry rarity.
+
+   Deliberately no new colour variables. Rarity is read off tag
+   *weight* rather than hue — filled, outlined, hairline, muted —
+   so the section still looks like the rest of the site instead
+   of importing a fantasy palette.
+   ============================================================ */
+
+/* ---------- freshness stamp ---------- */
+
+/* Sits above the hero on every page. .doc-note gives it the accent rule and
+   raised fill; this only tightens the type, because it is a caveat and should
+   not read as loudly as the prose it precedes. */
+.rr-stamp {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  line-height: 1.6;
+  margin-top: 0;
+}
+.rr-stamp p { font-size: inherit; margin: 0.3rem 0; }
+.rr-stamp b { color: var(--fg); font-weight: 500; }
+
+/* ---------- hub ---------- */
+
+.rr-hub { padding: 0 var(--pad) 6rem; max-width: 96rem; margin: 0 auto; }
+
+.rr-hub-hero {
+  padding: clamp(3rem, 9vw, 6.5rem) 0 clamp(2rem, 5vw, 3.5rem);
+}
+
+/* Same tessellation trick as the module catalogue: the grid draws the top rule
+   and pulls up 1px, each tile draws only its right and bottom edge, so adjacent
+   tiles share one hairline instead of stacking two. */
+.rr-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  border-top: 1px solid var(--hairline);
+  border-left: 1px solid var(--hairline);
+  margin-top: -1px;
+}
+
+.rr-hub-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  border-right: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  background: var(--bg);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s ease;
+}
+.rr-hub-card:hover { background: var(--bg-raised); }
+
+.rr-hub-num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: var(--fg-muted);
+}
+
+.rr-hub-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.rr-hub-card:hover .rr-hub-name { color: var(--accent); }
+
+.rr-hub-desc { font-size: 0.95rem; color: var(--fg-muted); }
+
+.rr-hub-list {
+  list-style: none;
+  margin: auto 0 0;
+  padding-top: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.9;
+  color: var(--fg-muted);
+}
+
+/* ---------- "never played?" strip ---------- */
+
+.rr-start {
+  border: 1px solid var(--hairline);
+  padding: clamp(1.3rem, 3vw, 1.9rem);
+  margin-bottom: 3rem;
+}
+
+.rr-start-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 1rem;
+}
+
+.rr-start-steps {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  align-items: baseline;
+  margin: 0;
+}
+.rr-start-steps li { display: flex; gap: 0.55rem; align-items: baseline; }
+.rr-start-steps span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--fg-muted);
+}
+.rr-start-steps a { color: var(--accent); text-underline-offset: 3px; }
+
+/* ---------- browse toolbar ---------- */
+
+.rr-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.2rem;
+  align-items: center;
+  margin: 1.4rem 0 0.2rem;
+}
+
+.rr-search {
+  flex: 1 1 14rem;
+  min-width: 0;
+  background: transparent;
+  border: 1px solid var(--hairline);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.55rem 0.7rem;
+}
+.rr-search::placeholder { color: var(--fg-muted); }
+.rr-search:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.rr-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.rr-chip {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.7rem;
+  background: transparent;
+  border: 1px solid var(--hairline);
+  color: var(--fg-muted);
+  cursor: pointer;
+  transition: color 0.16s, border-color 0.16s, background 0.16s;
+}
+.rr-chip:hover { color: var(--fg); border-color: var(--fg-muted); }
+.rr-chip[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #111113;
+}
+.rr-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.rr-count {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--fg-muted);
+  margin: 0.9rem 0 0;
+}
+
+/* ---------- card grid ---------- */
+
+.rr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  border-top: 1px solid var(--hairline);
+  border-left: 1px solid var(--hairline);
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rr-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.3rem 1.4rem;
+  border-right: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  background: var(--bg);
+  margin: 0;
+  transition: background 0.2s ease;
+}
+.rr-card:hover { background: var(--bg-raised); }
+
+.rr-card-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.rr-card-summary { font-size: 0.92rem; color: var(--fg-muted); margin: 0; }
+
+.rr-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+.rr-tag {
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.45rem;
+  white-space: nowrap;
+  border: 1px solid var(--hairline);
+  color: var(--fg-muted);
+}
+
+/* Rarity by tag weight, not hue — filled reads loudest, muted reads quietest,
+   which is the same ordering the game gives the four tiers. */
+.rr-tag-legendary { background: var(--accent); border-color: var(--accent); color: #111113; font-weight: 500; }
+.rr-tag-epic      { border-color: var(--accent); color: var(--accent); }
+.rr-tag-rare      { border-color: var(--fg-muted); color: var(--fg); }
+.rr-tag-common    { border-color: var(--hairline); color: var(--fg-muted); }
+
+/* ---------- "what / where / spend" rows ---------- */
+
+/* resources.json and items.json answer a fixed set of questions per entry, so the
+   card renders them as a definition list rather than free prose. */
+.rr-facts { margin: 0.2rem 0 0; }
+.rr-facts dt {
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 0.7rem;
+}
+.rr-facts dd { margin: 0.15rem 0 0; font-size: 0.9rem; color: var(--fg-muted); }
+
+/* ---------- stubs ---------- */
+
+/* Same diagonal hatch the catalogue uses for unreviewed modules: an entry that
+   still needs real numbers should be visibly incomplete, not quietly thin. */
+.rr-card-stub::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: repeating-linear-gradient(45deg, var(--fg-muted) 0 2px, transparent 2px 6px);
+  opacity: 0.55;
+}
+
+.rr-stub-note {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+  margin: 0.2rem 0 0;
+}
+
+/* ---------- states ---------- */
+
+.rr-empty, .rr-error {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--fg-muted);
+  border: 1px solid var(--hairline);
+  padding: 1.4rem 1.5rem;
+  margin: 1rem 0 0;
+}
+.rr-error b { color: var(--fg); font-weight: 500; }
+
+/* ---------- glossary ---------- */
+
+.rr-terms { margin: 1rem 0 0; border-top: 1px solid var(--hairline); }
+
+.rr-term {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.rr-term-name {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.rr-term-def { font-size: 0.94rem; color: var(--fg-muted); margin: 0.3rem 0 0; }
+.rr-term-def a { color: var(--accent); text-underline-offset: 2px; }
+
+/* ---------- narrow screens ---------- */
+
+@media (max-width: 40rem) {
+  .rr-toolbar { gap: 0.8rem; }
+  .rr-search { flex-basis: 100%; }
+}

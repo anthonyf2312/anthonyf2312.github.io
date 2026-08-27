@@ -1,0 +1,333 @@
+{
+  "$comment": "Rush Royale unit reference. Rendered by rushroyale.js on units.html. Authored order is Common -> Legendary and the page renders it as-is, so keep new entries in their rarity block. Fields: name, rarity (Common|Rare|Epic|Legendary), role (Damage|Support|Control|Summoner), damage (Physical|Magic|Poison|Mixed|None), summary (one plain sentence, no numbers), tags (search only), detail ('stub' draws the hatched marker). Every entry is a stub until someone checks it in-game and adds real figures — no numbers were invented here. This is not the full roster.",
+  "reviewed": "2026-08-27",
+  "entries": [
+    {
+      "name": "Archer",
+      "rarity": "Common",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "The unit you start with. Plain single-target damage at range, no special rule to learn — it is the baseline everything else is measured against.",
+      "tags": ["starter", "single target", "beginner"],
+      "detail": "stub"
+    },
+    {
+      "name": "Bombardier",
+      "rarity": "Common",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "Lobs explosives that damage a small area rather than one enemy, so it earns its place on packed waves and wastes itself on single targets.",
+      "tags": ["aoe", "splash", "area"],
+      "detail": "stub"
+    },
+    {
+      "name": "Cold Mage",
+      "rarity": "Common",
+      "role": "Control",
+      "damage": "Magic",
+      "summary": "Chills what it hits, slowing enemies down. Its real value is buying time for your damage dealers, not the damage it does itself.",
+      "tags": ["slow", "freeze", "crowd control", "ice"],
+      "detail": "stub"
+    },
+    {
+      "name": "Fire Mage",
+      "rarity": "Common",
+      "role": "Damage",
+      "damage": "Magic",
+      "summary": "Area magic damage with a burn attached, so it keeps hurting after the hit lands.",
+      "tags": ["burn", "aoe", "fire", "damage over time"],
+      "detail": "stub"
+    },
+    {
+      "name": "Hunter",
+      "rarity": "Common",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "A ranged attacker that catches more than one enemy at a time — a common early answer to waves that arrive in clumps.",
+      "tags": ["aoe", "area", "beginner"],
+      "detail": "stub"
+    },
+    {
+      "name": "Lightning Mage",
+      "rarity": "Common",
+      "role": "Damage",
+      "damage": "Magic",
+      "summary": "Its attack jumps between nearby enemies, so the more tightly packed the wave, the more total damage it does.",
+      "tags": ["chain", "lightning", "aoe"],
+      "detail": "stub"
+    },
+    {
+      "name": "Poisoner",
+      "rarity": "Common",
+      "role": "Damage",
+      "damage": "Poison",
+      "summary": "Applies poison that ticks over time instead of hitting hard once. Good into things with a lot of health, poor into things that die instantly.",
+      "tags": ["poison", "damage over time", "dot"],
+      "detail": "stub"
+    },
+    {
+      "name": "Rogue",
+      "rarity": "Common",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "Single-target damage that leans on landing critical hits, so it gains a lot from anything that raises crit.",
+      "tags": ["crit", "single target", "burst"],
+      "detail": "stub"
+    },
+    {
+      "name": "Thrower",
+      "rarity": "Common",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "Straightforward thrown damage at a single target — cheap, reliable, and easy to merge because copies show up often.",
+      "tags": ["single target", "beginner"],
+      "detail": "stub"
+    },
+
+    {
+      "name": "Alchemist",
+      "rarity": "Rare",
+      "role": "Damage",
+      "damage": "Poison",
+      "summary": "Every few seconds it drops a short-lived poison puddle on a random spot in the lane, damaging anything that walks through it. It does not aim, so it works best when the lane is busy.",
+      "tags": ["poison", "puddle", "aoe", "random"],
+      "detail": "stub"
+    },
+    {
+      "name": "Banner",
+      "rarity": "Rare",
+      "role": "Support",
+      "damage": "None",
+      "summary": "Deals no damage of its own. It buffs the units around it, which means where you place it matters more than what rank it is.",
+      "tags": ["buff", "support", "placement", "aura"],
+      "detail": "stub"
+    },
+    {
+      "name": "Magic Cauldron",
+      "rarity": "Rare",
+      "role": "Support",
+      "damage": "Magic",
+      "summary": "A support piece that works on a timer rather than by attacking — it does its job in the background while your damage dealers do theirs.",
+      "tags": ["support", "timer", "brew"],
+      "detail": "stub"
+    },
+    {
+      "name": "Chemist",
+      "rarity": "Rare",
+      "role": "Support",
+      "damage": "Poison",
+      "summary": "Built around poison. It is a payoff card: worth including when the rest of your deck already applies poison, close to wasted when it does not.",
+      "tags": ["poison", "synergy", "support"],
+      "detail": "stub"
+    },
+    {
+      "name": "Grindstone",
+      "rarity": "Rare",
+      "role": "Support",
+      "damage": "None",
+      "summary": "Another placement-dependent support that sharpens the units near it instead of attacking. Put it in the middle of your damage, not in a corner.",
+      "tags": ["buff", "attack speed", "support", "aura"],
+      "detail": "stub"
+    },
+    {
+      "name": "Priestess",
+      "rarity": "Rare",
+      "role": "Support",
+      "damage": "None",
+      "summary": "A support unit that helps the board survive rather than clearing it. Most useful in co-op, where staying alive is the shared job.",
+      "tags": ["support", "heal", "co-op"],
+      "detail": "stub"
+    },
+    {
+      "name": "Sentry",
+      "rarity": "Rare",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "Sits still and shoots what comes past. Predictable damage with no setup, which makes it a safe filler slot.",
+      "tags": ["turret", "single target", "reliable"],
+      "detail": "stub"
+    },
+    {
+      "name": "Sharpshooter",
+      "rarity": "Rare",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "Long-range single-target damage built around critical hits, so it pairs with anything that raises crit chance or crit damage.",
+      "tags": ["crit", "range", "single target"],
+      "detail": "stub"
+    },
+    {
+      "name": "Zealot",
+      "rarity": "Rare",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "A scaling unit — it gets stronger the longer it is on the board, so it rewards leaving it alone rather than merging it away.",
+      "tags": ["scaling", "stacks", "single target"],
+      "detail": "stub"
+    },
+
+    {
+      "name": "Crystalmancer",
+      "rarity": "Epic",
+      "role": "Damage",
+      "damage": "Magic",
+      "summary": "A ramping magic attacker: its attack speed climbs the longer it keeps firing at the same target, so it wants long waves and bosses.",
+      "tags": ["ramp", "attack speed", "boss", "scaling"],
+      "detail": "stub"
+    },
+    {
+      "name": "Engineer",
+      "rarity": "Epic",
+      "role": "Support",
+      "damage": "Physical",
+      "summary": "Builds and maintains rather than attacking directly. A deck-shaping card — it changes what the rest of your board is doing.",
+      "tags": ["build", "support", "utility"],
+      "detail": "stub"
+    },
+    {
+      "name": "Executioner",
+      "rarity": "Epic",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "Hits much harder against enemies that are already hurt, so it finishes waves other units have softened up.",
+      "tags": ["execute", "finisher", "boss", "single target"],
+      "detail": "stub"
+    },
+    {
+      "name": "Wind Archer",
+      "rarity": "Epic",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "Fast, light hits rather than heavy ones. It leans on attack speed, so buffs that add speed pay off more than buffs that add damage.",
+      "tags": ["attack speed", "fast", "single target"],
+      "detail": "stub"
+    },
+    {
+      "name": "Gargoyle",
+      "rarity": "Epic",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "A sturdy attacker with a condition attached to its power — worth reading its card text carefully before building around it.",
+      "tags": ["conditional", "single target"],
+      "detail": "stub"
+    },
+    {
+      "name": "Cold Elemental",
+      "rarity": "Epic",
+      "role": "Damage",
+      "damage": "Magic",
+      "summary": "Area damage plus an icy shard that makes a hit enemy take more damage each time it lands, and it hits harder still against enemies that are already stunned, slowed or paralysed.",
+      "tags": ["ice", "aoe", "vulnerability", "slow", "synergy"],
+      "detail": "stub"
+    },
+    {
+      "name": "Earth Elemental",
+      "rarity": "Epic",
+      "role": "Support",
+      "damage": "Poison",
+      "summary": "Periodically infects enemies so that any poison they take from any source hurts more. It is a multiplier for a poison deck, not a damage dealer on its own.",
+      "tags": ["poison", "amplify", "synergy", "support"],
+      "detail": "stub"
+    },
+
+    {
+      "name": "Summoner",
+      "rarity": "Legendary",
+      "role": "Summoner",
+      "damage": "None",
+      "summary": "When you merge it, it summons a random unit from your deck onto a free tile at a rank somewhere between 1 and the Summoner's own merge rank — a way to fill the board without paying mana.",
+      "tags": ["summon", "merge", "board", "mana"],
+      "detail": "stub"
+    },
+    {
+      "name": "Bard",
+      "rarity": "Legendary",
+      "role": "Support",
+      "damage": "None",
+      "summary": "A top-tier support that lifts the whole board rather than one lane. Widely treated as one of the strongest cards to invest in.",
+      "tags": ["support", "buff", "meta", "priority"],
+      "detail": "stub"
+    },
+    {
+      "name": "Corsair",
+      "rarity": "Legendary",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "A high-end damage legendary that features in most current top decks.",
+      "tags": ["damage", "meta", "priority"],
+      "detail": "stub"
+    },
+    {
+      "name": "Genie",
+      "rarity": "Legendary",
+      "role": "Support",
+      "damage": "Magic",
+      "summary": "A flexible legendary that does useful work in a lot of different decks, which makes it a safe early legendary to level.",
+      "tags": ["flexible", "support", "priority"],
+      "detail": "stub"
+    },
+    {
+      "name": "Dryad",
+      "rarity": "Legendary",
+      "role": "Support",
+      "damage": "Magic",
+      "summary": "An all-purpose legendary commonly recommended as an early investment because it fits so many deck shapes.",
+      "tags": ["flexible", "support", "priority"],
+      "detail": "stub"
+    },
+    {
+      "name": "Wukong",
+      "rarity": "Legendary",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "A strong general-purpose damage legendary, regularly listed alongside Bard and Genie as a card worth levelling first.",
+      "tags": ["damage", "meta", "priority"],
+      "detail": "stub"
+    },
+    {
+      "name": "Valkyrie",
+      "rarity": "Legendary",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "A damage legendary built around a specific trigger condition rather than steady output.",
+      "tags": ["damage", "conditional"],
+      "detail": "stub"
+    },
+    {
+      "name": "Monk",
+      "rarity": "Legendary",
+      "role": "Support",
+      "damage": "Magic",
+      "summary": "Uses reincarnation — it comes back after dying, which changes how you value the tile it occupies.",
+      "tags": ["reincarnation", "revive", "support"],
+      "detail": "stub"
+    },
+    {
+      "name": "Demon Hunter",
+      "rarity": "Legendary",
+      "role": "Damage",
+      "damage": "Physical",
+      "summary": "Also uses reincarnation, pairing a damage role with the ability to return after dying.",
+      "tags": ["reincarnation", "revive", "damage"],
+      "detail": "stub"
+    },
+    {
+      "name": "Lucia",
+      "rarity": "Legendary",
+      "role": "Damage",
+      "damage": "Magic",
+      "summary": "A legendary damage dealer that shows up in current competitive lists.",
+      "tags": ["damage", "meta"],
+      "detail": "stub"
+    },
+    {
+      "name": "Mountain Avens",
+      "rarity": "Legendary",
+      "role": "Support",
+      "damage": "Magic",
+      "summary": "Currently rated at the very top alongside Bard and Corsair.",
+      "tags": ["support", "meta", "priority"],
+      "detail": "stub"
+    }
+  ]
+}
