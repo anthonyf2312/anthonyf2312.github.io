@@ -1,7 +1,784 @@
 {
-  "$comment": "Rush Royale unit reference, rendered by rushroyale.js on units.html. Rebuilt from scratch: every unit previously here was written from unverified web sources and has been deleted. Entries below are transcribed from ability text supplied by a player, so the numbers in them are real — do not add, round or 'tidy' any figure that did not come from that text. Fields: name, id (anchor slug), rarity, faction, damage (omit when the text does not state it), summary (one line, written to match the ability text, never beyond it), abilities (ordered paragraphs, transcribed), notes (caps, immunities, mode-specific behaviour), tags (search only). Authored order is alphabetical within a rarity block. This is not the full roster.",
+  "$comment": "Rush Royale unit reference, rendered by rushroyale.js on units.html. Entries come from two tiers and the difference matters. TIER 1, player-verified: no 'source' field, no 'detail' flag. Transcribed from ability text supplied by a player, so the numbers are real - do not add, round or 'tidy' any figure that did not come from that text. TIER 2, wiki-imported: carries source='fandom-wiki' and sourceRevision, and is flagged detail='stub' so the card renders a 'Needs numbers' line. These were imported from the Fandom wiki, which is community-edited and largely stale (77% of its pages were last touched in 2021-2022); treat every figure in them as unconfirmed until someone checks it in-game. When a tier-2 entry is verified, drop 'source', 'sourceRevision' and 'detail'. Fields: name, id (anchor slug), rarity, faction, role (unit type), damage (omit when unstated), summary, abilities (ordered paragraphs), notes, tags (search only). Authored order is alphabetical within a rarity block.",
   "reviewed": "2026-08-27",
   "entries": [
+    {
+      "name": "Archer",
+      "id": "archer",
+      "rarity": "Common",
+      "faction": "Forest Alliance",
+      "role": "Damage",
+      "summary": "Has high attack speed.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "The Fandom wiki unit page (revision 2026-01-06) lists base damage 54, attack interval 0.45s, attack speed increase 24% and hero cooldown 4.5% at maximum card level; at level 1, damage 29 and attack speed increase 10%. Not yet checked in-game.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "archer",
+        "attack speed",
+        "common",
+        "damage",
+        "first",
+        "forest alliance",
+        "mana power-up",
+        "starter"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02",
+      "abilities": [
+        "The Archer attacks the very first target on the path. Increases its attack speed with each Mana Power-Up."
+      ]
+    },
+    {
+      "name": "Bombardier",
+      "id": "bombardier",
+      "rarity": "Common",
+      "faction": "Technogenic Society",
+      "role": "Debuff",
+      "summary": "Has a chance to stun the target. Chance of subsequent stun is decreased.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "bombardier",
+        "common",
+        "debuff",
+        "first",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Cold Mage",
+      "id": "cold-mage",
+      "rarity": "Common",
+      "faction": "Magic Council",
+      "role": "Debuff",
+      "summary": "Lowers target's movement speed on every hit.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "cold mage",
+        "common",
+        "debuff",
+        "first",
+        "magic council"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Fire Mage",
+      "id": "fire-mage",
+      "rarity": "Common",
+      "faction": "Magic Council",
+      "role": "Damage",
+      "summary": "Deals damage in an area around the target.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "common",
+        "damage",
+        "fire mage",
+        "first",
+        "magic council"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Hunter",
+      "id": "hunter",
+      "rarity": "Common",
+      "faction": "Forest Alliance",
+      "role": "Damage",
+      "summary": "The first hit at a target deals increased damage. Damage also grows with merge rank.",
+      "notes": [
+        "Attacks a random enemy.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "common",
+        "damage",
+        "forest alliance",
+        "hunter",
+        "random"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Lightning Mage",
+      "id": "lightning-mage",
+      "rarity": "Common",
+      "faction": "Magic Council",
+      "role": "Damage",
+      "summary": "Deals lightning damage to the first three targets (100%, 70%, and 30% respectively).",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "common",
+        "damage",
+        "first",
+        "lightning mage",
+        "magic council"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Poisoner",
+      "id": "poisoner",
+      "rarity": "Common",
+      "faction": "Forest Alliance",
+      "role": "Debuff",
+      "summary": "Poisons enemies, dealing damage over time. Damage from poison increases with each merge rank.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "common",
+        "debuff",
+        "first",
+        "forest alliance",
+        "poisoner"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Rogue",
+      "id": "rogue",
+      "rarity": "Common",
+      "faction": "Forest Alliance",
+      "role": "Damage",
+      "summary": "Damage per strike increases by a random number between 1 and your critical damage value.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "common",
+        "damage",
+        "first",
+        "forest alliance",
+        "rogue"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Thrower",
+      "id": "thrower",
+      "rarity": "Common",
+      "faction": "Kingdom of Light",
+      "role": "Damage",
+      "summary": "Attacks a random target.",
+      "notes": [
+        "Attacks a random enemy.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "common",
+        "damage",
+        "kingdom of light",
+        "random",
+        "thrower"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Alchemist",
+      "id": "alchemist",
+      "rarity": "Rare",
+      "faction": "Technogenic Society",
+      "role": "Summon",
+      "summary": "Periodically spawns a puddle of acid that deals damage to monsters.",
+      "notes": [
+        "Does not attack a target directly.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "alchemist",
+        "none",
+        "rare",
+        "summon",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Banner",
+      "id": "banner",
+      "rarity": "Rare",
+      "faction": "Kingdom of Light",
+      "role": "Support",
+      "summary": "Increases attack speed for four neighboring units based on merge rank.",
+      "notes": [
+        "Does not attack a target directly.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "banner",
+        "kingdom of light",
+        "none",
+        "rare",
+        "support"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Chemist",
+      "id": "chemist",
+      "rarity": "Rare",
+      "faction": "Technogenic Society",
+      "role": "Debuff",
+      "summary": "Increases damage taken by the target.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "chemist",
+        "debuff",
+        "first",
+        "rare",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Grindstone",
+      "id": "grindstone",
+      "rarity": "Rare",
+      "faction": "Technogenic Society",
+      "role": "Support",
+      "summary": "Allows adjacent units to inflict additional damage against monsters.",
+      "notes": [
+        "Does not attack a target directly.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "grindstone",
+        "none",
+        "rare",
+        "support",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Magic Cauldron",
+      "id": "magic-cauldron",
+      "rarity": "Rare",
+      "faction": "Magic Council",
+      "role": "Support",
+      "summary": "Produces mana every several seconds.",
+      "notes": [
+        "Does not attack a target directly.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "magic cauldron",
+        "magic council",
+        "none",
+        "rare",
+        "support"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Priestess",
+      "id": "priestess",
+      "rarity": "Rare",
+      "faction": "Kingdom of Light",
+      "role": "Support",
+      "summary": "Gives mana when merged or killed.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "first",
+        "kingdom of light",
+        "priestess",
+        "rare",
+        "support"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Sentry",
+      "id": "sentry",
+      "rarity": "Rare",
+      "faction": "Kingdom of Light",
+      "role": "Damage",
+      "summary": "Gradually increases damage dealt in 10% increments.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "first",
+        "kingdom of light",
+        "rare",
+        "sentry"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Sharpshooter",
+      "id": "sharpshooter",
+      "rarity": "Rare",
+      "faction": "Technogenic Society",
+      "role": "Damage",
+      "summary": "Deals additional damage to bosses and minibosses. Crazy Shooting is triggered, increasing damage and attack speed.",
+      "notes": [
+        "Attacks the enemy with the most health.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "max health",
+        "rare",
+        "sharpshooter",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Zealot",
+      "id": "zealot",
+      "rarity": "Rare",
+      "faction": "Kingdom of Light",
+      "role": "Damage",
+      "summary": "Increases damage according to the amount of unused mana.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "first",
+        "kingdom of light",
+        "rare",
+        "zealot"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Catapult",
+      "id": "catapult",
+      "rarity": "Epic",
+      "faction": "Kingdom of Light",
+      "role": "Support",
+      "summary": "Hurls a projectile that stuns enemies in the area.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "catapult",
+        "epic",
+        "first",
+        "kingdom of light",
+        "support"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Cold Elemental",
+      "id": "cold-elemental",
+      "rarity": "Epic",
+      "faction": "Dark Domain",
+      "role": "Damage",
+      "summary": "Has AoE attacks and inflicts additional damage against monsters under control effects.",
+      "notes": [
+        "Attacks a random enemy.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "cold elemental",
+        "damage",
+        "dark domain",
+        "epic",
+        "random"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Crystalmancer",
+      "id": "crystalmancer",
+      "rarity": "Epic",
+      "faction": "Dark Domain",
+      "role": "Damage",
+      "summary": "With each attack against the target, the damage dealt to it by every Crystalmancer increases.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "crystalmancer",
+        "damage",
+        "dark domain",
+        "epic",
+        "first"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Earth Elemental",
+      "id": "earth-elemental",
+      "rarity": "Epic",
+      "faction": "Forest Alliance",
+      "role": "Debuff",
+      "summary": "Periodically throws projectiles at monsters, inflicting venom damage and increasing venom damage in proportion to the number of hits.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "debuff",
+        "earth elemental",
+        "epic",
+        "first",
+        "forest alliance"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Engineer",
+      "id": "engineer",
+      "rarity": "Epic",
+      "faction": "Technogenic Society",
+      "role": "Damage",
+      "summary": "Damage increased for every Engineer connected to this one.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "engineer",
+        "epic",
+        "first",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Executioner",
+      "id": "executioner",
+      "rarity": "Epic",
+      "faction": "Dark Domain",
+      "role": "Damage",
+      "summary": "Finishes off a monster below a certain amount of health.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "dark domain",
+        "epic",
+        "executioner",
+        "first"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Gargoyle",
+      "id": "gargoyle",
+      "rarity": "Epic",
+      "faction": "Kingdom of Light",
+      "role": "Damage",
+      "summary": "The Gargoyle attacks enemies at odd merge ranks, and sleeps at even merge ranks.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "epic",
+        "first",
+        "gargoyle",
+        "kingdom of light"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Ivy",
+      "id": "ivy",
+      "rarity": "Epic",
+      "faction": "Forest Alliance",
+      "role": "Debuff",
+      "summary": "Throws seeds that periodically deal damage.",
+      "notes": [
+        "Attacks the enemy with the most health.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "debuff",
+        "epic",
+        "forest alliance",
+        "ivy",
+        "max health"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Mime",
+      "id": "mime",
+      "rarity": "Epic",
+      "faction": "Dark Domain",
+      "role": "Special",
+      "summary": "Can be merged with any other unit of the same merge rank.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "dark domain",
+        "epic",
+        "first",
+        "mime",
+        "special"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Plague Doctor",
+      "id": "plague-doctor",
+      "rarity": "Epic",
+      "faction": "Technogenic Society",
+      "role": "Debuff",
+      "summary": "Poisons enemies, leaving a cloud that causes damage when they die.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "debuff",
+        "epic",
+        "first",
+        "plague doctor",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Portal Keeper",
+      "id": "portal-keeper",
+      "rarity": "Epic",
+      "faction": "Magic Council",
+      "role": "Support",
+      "summary": "Can swap positions with any unit of the same merge rank, then become temporarily inactive.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "epic",
+        "first",
+        "magic council",
+        "portal keeper",
+        "support"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Portal Mage",
+      "id": "portal-mage",
+      "rarity": "Epic",
+      "faction": "Magic Council",
+      "role": "Debuff",
+      "summary": "Has a chance to teleport an enemy to the start of the map.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "debuff",
+        "epic",
+        "first",
+        "magic council",
+        "portal mage"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Pyrotechnic",
+      "id": "pyrotechnic",
+      "rarity": "Epic",
+      "faction": "Technogenic Society",
+      "role": "Damage",
+      "summary": "With an odd number, attack speed is reduced, he attacks a random target, and gains area damage.",
+      "notes": [
+        "Attacks a random enemy.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "epic",
+        "pyrotechnic",
+        "random",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Reaper",
+      "id": "reaper",
+      "rarity": "Epic",
+      "faction": "Dark Domain",
+      "role": "Damage",
+      "summary": "Has a chance to instantly kill the target. Does not affect bosses.",
+      "notes": [
+        "Attacks a random enemy.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "dark domain",
+        "epic",
+        "random",
+        "reaper"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Thunderer",
+      "id": "thunderer",
+      "rarity": "Epic",
+      "faction": "Magic Council",
+      "role": "Damage",
+      "summary": "Hits an extra target with chain lightning for each merge rank.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "epic",
+        "first",
+        "magic council",
+        "thunderer"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Vampire",
+      "id": "vampire",
+      "rarity": "Epic",
+      "faction": "Dark Domain",
+      "role": "Support",
+      "summary": "Bites the target, making it periodically give you mana.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "dark domain",
+        "epic",
+        "first",
+        "support",
+        "vampire"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Wind Archer",
+      "id": "wind-archer",
+      "rarity": "Epic",
+      "faction": "Forest Alliance",
+      "role": "Damage",
+      "summary": "Goes into hurricane mode every few seconds, significantly increasing own attack speed.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "epic",
+        "first",
+        "forest alliance",
+        "wind archer"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
     {
       "name": "Banshee",
       "id": "banshee",
@@ -18,7 +795,17 @@
         "Damage type is venom.",
         "Impervious to stunning and paralyzing effects, and to boosts and debuffs affecting the attack interval."
       ],
-      "tags": ["banshee", "venom", "orb of fear", "shriek", "path", "merge rank", "mana ability", "boss", "immunity"]
+      "tags": [
+        "banshee",
+        "venom",
+        "orb of fear",
+        "shriek",
+        "path",
+        "merge rank",
+        "mana ability",
+        "boss",
+        "immunity"
+      ]
     },
     {
       "name": "Bard",
@@ -33,9 +820,19 @@
       ],
       "notes": [
         "When the amount of mana falls to 100% of the summoning cost, the process of accumulating Inspiration slows down by a factor of 20.",
-        "After Inspiration level 300, the damage bonus is reduced to 0.25%. After Inspiration level 1000, it is reduced to 0.1%."
+        "After Inspiration level 300, the damage bonus is reduced to 0.25%. After Inspiration level 1000, it is reduced to 0.1%.",
+        "The Fandom wiki unit page (revision 2026-01-06) lists these base figures, before talents, reincarnation or level bonuses: base damage 930, attack interval 0.5s, inspiration cooldown 0.53s, hero cooldown 4%, 3 ricochets, armour destruction 2% rising to a 30% cap. Not yet checked in-game."
       ],
-      "tags": ["bard", "inspiration", "music mode", "attack mode", "ricochet", "mana power-up", "vulnerability", "modes"]
+      "tags": [
+        "bard",
+        "inspiration",
+        "music mode",
+        "attack mode",
+        "ricochet",
+        "mana power-up",
+        "vulnerability",
+        "modes"
+      ]
     },
     {
       "name": "Blade Dancer",
@@ -50,7 +847,14 @@
       "notes": [
         "The maximum damage bonus is attained with seven Blade Dancers present."
       ],
-      "tags": ["blade dancer", "tornado", "attack speed", "scaling", "placement", "forest"]
+      "tags": [
+        "blade dancer",
+        "tornado",
+        "attack speed",
+        "scaling",
+        "placement",
+        "forest"
+      ]
     },
     {
       "name": "Blazey",
@@ -68,7 +872,39 @@
         "Blazey only ranks up by merging (for example with a Dryad) or by using the mana power-up.",
         "Extinguishing gives Ash for each Blazey extinguished, in proportion to merge rank. Each Ash charge increases the damage of all Blazeys by 2%."
       ],
-      "tags": ["blazey", "coal", "ash", "burning", "flaming", "merge rank", "mana power-up", "fire", "technogenic"]
+      "tags": [
+        "blazey",
+        "coal",
+        "ash",
+        "burning",
+        "flaming",
+        "merge rank",
+        "mana power-up",
+        "fire",
+        "technogenic"
+      ]
+    },
+    {
+      "name": "Boreas",
+      "id": "boreas",
+      "rarity": "Legendary",
+      "faction": "Forest Alliance",
+      "role": "Damage",
+      "summary": "Periodically changes firing phase.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "boreas",
+        "damage",
+        "first",
+        "forest alliance",
+        "legendary"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
     },
     {
       "name": "Bruiser",
@@ -84,7 +920,752 @@
       "notes": [
         "In Co-Op mode, becomes enraged regardless of the number of monsters on the battlefield."
       ],
-      "tags": ["bruiser", "enrage", "rage", "area attack", "boss", "co-op", "downtime", "magic council"]
+      "tags": [
+        "bruiser",
+        "enrage",
+        "rage",
+        "area attack",
+        "boss",
+        "co-op",
+        "downtime",
+        "magic council"
+      ]
+    },
+    {
+      "name": "Clock of Power",
+      "id": "clock-of-power",
+      "rarity": "Legendary",
+      "faction": "Kingdom of Light",
+      "role": "Support",
+      "summary": "Lowers (in PvP) or increases (in PvE) the attack speed of the other player's units.",
+      "notes": [
+        "Does not attack a target directly.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "clock of power",
+        "kingdom of light",
+        "legendary",
+        "none",
+        "support"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Corsair",
+      "id": "corsair",
+      "rarity": "Legendary",
+      "faction": "Technogenic Society",
+      "role": "Damage",
+      "summary": "The Corsair leaves explosive traps on the battlefield.",
+      "notes": [
+        "Does not attack a target directly.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "corsair",
+        "damage",
+        "legendary",
+        "none",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Cultist",
+      "id": "cultist",
+      "rarity": "Legendary",
+      "faction": "Dark Domain",
+      "role": "Damage",
+      "summary": "If there are 1 to 3 cultists nearby, begins attacking additional targets. If there are 4 Cultists nearby, becomes empowered and gains AoE attack.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "cultist",
+        "damage",
+        "dark domain",
+        "first",
+        "legendary"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Demon Hunter",
+      "id": "demon-hunter",
+      "rarity": "Legendary",
+      "faction": "Magic Council",
+      "role": "Damage",
+      "summary": "Attacks a number of first targets equal to her merge rank number.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "demon hunter",
+        "first",
+        "legendary",
+        "magic council"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Demonologist",
+      "id": "demonologist",
+      "rarity": "Legendary",
+      "faction": "Dark Domain",
+      "role": "Special",
+      "summary": "Summons a monster to the opponent's side when merging.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "dark domain",
+        "demonologist",
+        "first",
+        "legendary",
+        "special"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Dryad",
+      "id": "dryad",
+      "rarity": "Legendary",
+      "faction": "Forest Alliance",
+      "role": "Support",
+      "summary": "Increases the merging rank of the unit it merges with.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "dryad",
+        "first",
+        "forest alliance",
+        "legendary",
+        "support"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Enchanted Swords",
+      "id": "enchanted-swords",
+      "rarity": "Legendary",
+      "faction": "Magic Council",
+      "role": "Special",
+      "summary": "Blue sword increases unit damage, red sword decreases opponent damage.",
+      "notes": [
+        "Attacks a random enemy.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "enchanted swords",
+        "legendary",
+        "magic council",
+        "random",
+        "special"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Franky and Stein",
+      "id": "franky-and-stein",
+      "rarity": "Legendary",
+      "faction": "Technogenic Society",
+      "role": "Damage",
+      "summary": "Stein is always on the path.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Event unit — available only while its event is running.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "event",
+        "first",
+        "franky and stein",
+        "legendary",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Frost",
+      "id": "frost",
+      "rarity": "Legendary",
+      "faction": "Dark Domain",
+      "role": "Debuff",
+      "summary": "Throws a blizzard at opponents every several seconds that slows them all at once.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "dark domain",
+        "debuff",
+        "first",
+        "frost",
+        "legendary"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Genie",
+      "id": "genie",
+      "rarity": "Legendary",
+      "faction": "Magic Council",
+      "role": "Damage",
+      "summary": "Creates a vortex that follows the first target, if it forms a line of three Genies it gains a buff charge, increasing the damage of all Genies and temporarily activating them.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "first",
+        "genie",
+        "legendary",
+        "magic council"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Gunsinger",
+      "id": "gunsinger",
+      "rarity": "Legendary",
+      "faction": "Dark Domain",
+      "role": "Support",
+      "summary": "Can swap places with units his rank or lower.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Event unit — available only while its event is running.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "dark domain",
+        "event",
+        "first",
+        "gunsinger",
+        "legendary",
+        "support"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Harlequin",
+      "id": "harlequin",
+      "rarity": "Legendary",
+      "faction": "Dark Domain",
+      "role": "Special",
+      "summary": "When merged, creates a copy of any unit with the same merge rank.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "dark domain",
+        "first",
+        "harlequin",
+        "legendary",
+        "special"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Hex",
+      "id": "hex",
+      "rarity": "Legendary",
+      "faction": "Dark Domain",
+      "role": "Support",
+      "summary": "Gives an instant kill chance to 4 neighboring units.",
+      "notes": [
+        "Does not attack a target directly.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "dark domain",
+        "hex",
+        "legendary",
+        "none",
+        "support"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Inquisitor",
+      "id": "inquisitor",
+      "rarity": "Legendary",
+      "faction": "Kingdom of Light",
+      "role": "Damage",
+      "summary": "Increases damage against the target with each attack.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "first",
+        "inquisitor",
+        "kingdom of light",
+        "legendary"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Knight Statue",
+      "id": "knight-statue",
+      "rarity": "Legendary",
+      "faction": "Kingdom of Light",
+      "role": "Support",
+      "summary": "Increases the attack speed of neighboring units.",
+      "notes": [
+        "Does not attack a target directly.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "kingdom of light",
+        "knight statue",
+        "legendary",
+        "none",
+        "support"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Kobold",
+      "id": "kobold",
+      "rarity": "Legendary",
+      "faction": "Technogenic Society",
+      "role": "Support",
+      "summary": "Kobolds on mines will enter them.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Event unit — available only while its event is running.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "event",
+        "first",
+        "kobold",
+        "legendary",
+        "support",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Meteor",
+      "id": "meteor",
+      "rarity": "Legendary",
+      "faction": "Magic Council",
+      "role": "Damage",
+      "summary": "When merged, drops a meteorite down on enemies.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "first",
+        "legendary",
+        "magic council",
+        "meteor"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Minotaur",
+      "id": "minotaur",
+      "rarity": "Legendary",
+      "faction": "Kingdom of Light",
+      "role": "Damage",
+      "summary": "Periodically causes Earthquakes that slow down and damage monsters in the area.",
+      "notes": [
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "kingdom of light",
+        "legendary",
+        "minotaur"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Monk",
+      "id": "monk",
+      "rarity": "Legendary",
+      "faction": "Kingdom of Light",
+      "role": "Damage",
+      "summary": "Power-up does not use any mana, but it is limited in time and has a cooldown.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "first",
+        "kingdom of light",
+        "legendary",
+        "monk"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Riding Hood",
+      "id": "riding-hood",
+      "rarity": "Legendary",
+      "faction": "Technogenic Society",
+      "role": "Damage",
+      "summary": "Absorbs other units of same or lower rank gaining a charge. Gets bonus abilities at 1, 5, 9 and 10 charges.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "first",
+        "legendary",
+        "riding hood",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Robot",
+      "id": "robot",
+      "rarity": "Legendary",
+      "faction": "Technogenic Society",
+      "role": "Damage",
+      "summary": "Gets new abilities, depending on the number of merges this unit has been part of.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "first",
+        "legendary",
+        "robot",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Scrapper",
+      "id": "scrapper",
+      "rarity": "Legendary",
+      "faction": "Technogenic Society",
+      "role": "Support",
+      "summary": "Absorbs allied units to increase the merge rank of other units.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "first",
+        "legendary",
+        "scrapper",
+        "support",
+        "technogenic society"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Sea Dog",
+      "id": "sea-dog",
+      "rarity": "Legendary",
+      "faction": "Dark Domain",
+      "role": "Damage",
+      "summary": "Damage bonus from gaining treasure.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "dark domain",
+        "first",
+        "legendary",
+        "sea dog"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Shaman",
+      "id": "shaman",
+      "rarity": "Legendary",
+      "faction": "Dark Domain",
+      "role": "Special",
+      "summary": "When merged, it stuns a unit and applies an effect that will reduce the merge rank after a delay.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "dark domain",
+        "first",
+        "legendary",
+        "shaman",
+        "special"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Spirit Master",
+      "id": "spirit-master",
+      "rarity": "Legendary",
+      "faction": "Forest Alliance",
+      "role": "Damage",
+      "summary": "The Spirit Master has more Mana power-up levels than other units.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "first",
+        "forest alliance",
+        "legendary",
+        "spirit master"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Stasis",
+      "id": "stasis",
+      "rarity": "Legendary",
+      "faction": "Magic Council",
+      "role": "Debuff",
+      "summary": "Creates time control spheres that stop enemies in place.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "debuff",
+        "first",
+        "legendary",
+        "magic council",
+        "stasis"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Summoner",
+      "id": "summoner",
+      "rarity": "Legendary",
+      "faction": "Forest Alliance",
+      "role": "Support",
+      "summary": "When merged, summons a random unit to a free tile.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "first",
+        "forest alliance",
+        "legendary",
+        "summoner",
+        "support"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Tesla",
+      "id": "tesla",
+      "rarity": "Legendary",
+      "faction": "Technogenic Society",
+      "role": "Damage",
+      "summary": "Receives charges when units in adjacent tiles are merged or increase rank.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "first",
+        "legendary",
+        "technogenic society",
+        "tesla"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Trapper",
+      "id": "trapper",
+      "rarity": "Legendary",
+      "faction": "Forest Alliance",
+      "role": "Debuff",
+      "summary": "Periodically throws 2 nets at random points on the field, slowing monsters down and making them take more damage.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "debuff",
+        "first",
+        "forest alliance",
+        "legendary",
+        "trapper"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Treant",
+      "id": "treant",
+      "rarity": "Legendary",
+      "faction": "Forest Alliance",
+      "role": "Damage",
+      "summary": "Always appears merge rank one.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Event unit — available only while its event is running.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "event",
+        "first",
+        "forest alliance",
+        "legendary",
+        "treant"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Twilight Ranger",
+      "id": "twilight-ranger",
+      "rarity": "Legendary",
+      "faction": "Dark Domain",
+      "role": "Damage",
+      "summary": "Collects souls from monsters (except summoned ones).",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Event unit — available only while its event is running.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "dark domain",
+        "event",
+        "first",
+        "legendary",
+        "twilight ranger"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Twins",
+      "id": "twins",
+      "rarity": "Legendary",
+      "faction": "Magic Council",
+      "role": "Damage",
+      "summary": "Appears moon or sun, can be ranked by merging or using Dryad unit.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Event unit — available only while its event is running.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "damage",
+        "event",
+        "first",
+        "legendary",
+        "magic council",
+        "twins"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Witch",
+      "id": "witch",
+      "rarity": "Legendary",
+      "faction": "Magic Council",
+      "role": "Debuff",
+      "summary": "When merging, the Witch curses an opponent's unit in PvP and enchants an ally's unit in Co-Op.",
+      "notes": [
+        "Attacks the first enemy on the path.",
+        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+      ],
+      "tags": [
+        "debuff",
+        "first",
+        "legendary",
+        "magic council",
+        "witch"
+      ],
+      "detail": "stub",
+      "source": "fandom-wiki",
+      "sourceRevision": "2026-08-02"
     }
   ]
 }
