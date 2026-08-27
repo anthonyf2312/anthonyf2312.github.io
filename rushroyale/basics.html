@@ -52,7 +52,7 @@
       <ul>
         <li><a href="#merging">Merging</a></li>
         <li><a href="#waves">Waves and bosses</a></li>
-        <li><a href="#losing">How you lose</a></li>
+        <li><a href="#losing">Hearts &amp; losing</a></li>
       </ul>
 
       <h2>Getting better</h2>
@@ -76,9 +76,10 @@
 
       <div class="doc-note rr-stamp">
         <p><b>Unofficial community reference.</b> Not affiliated with My.Games or the Rush Royale team.</p>
-        <p>Written from public information and deliberately kept free of exact numbers — damage values,
-        costs and drop rates change every patch, and a wrong number is worse than no number. Entries
-        marked with a hatched edge still need figures checked in-game.</p>
+        <p>Rules confirmed by someone who plays the game are stated plainly, numbers and all.
+        Unverified stat figures — damage values, upgrade costs, drop rates — are left out rather than
+        guessed, because they shift every patch and a wrong number is worse than none. Entries marked
+        with a hatched edge are still waiting on figures checked in-game.</p>
         <p>Last reviewed 2026-08-27.</p>
       </div>
 
@@ -153,13 +154,16 @@
         yet — but the part that decides PvP matches is what happens <em>between</em> them.</p>
 
         <h3>The Phantom</h3>
-        <p>At the end of a wave, the <strong>Phantom</strong> appears on your board. Your
-        units attack it, and this is the moment the whole match turns on:</p>
+        <p>At the end of <strong>every</strong> wave — not some of them — the
+        <strong>Phantom</strong> appears on your board. Your units attack it, and this is the
+        moment the whole match turns on:</p>
         <div class="doc-note">
           <p><strong>The damage you deal to the Phantom is sent to your opponent.</strong>
           It becomes the health of the boss that spawns on their side.</p>
           <p>Deal 5 billion damage to the Phantom and the boss they have to kill — Bedlam,
           say — arrives with 5 billion health. Their damage comes back at you the same way.</p>
+          <p>A boss that reaches the gate costs <a href="#losing">2 of a player's 3 hearts</a>,
+          so this is not chip damage — it is most of a life.</p>
         </div>
 
         <h3>Why this changes everything</h3>
@@ -178,19 +182,42 @@
         <div class="doc-note doc-warn">
           <p>Corrected by a player after the first draft of this page got it wrong. The
           earlier version described a fixed "miniboss every 5 waves, boss every 10" cadence,
-          which is not how the game works.</p>
+          which is not how the game works. The Phantom is every wave.</p>
         </div>
       </section>
 
       <section id="losing">
-        <h2>How you lose</h2>
-        <p>Enemies that get past your board cost you lives. Run out and you are done.</p>
-        <ul>
-          <li><strong>In PvP</strong>, you are not really racing the enemies — you are
-          outlasting the other player. Whoever survives further wins.</li>
-          <li><strong>In co-op</strong>, you and a teammate share the pressure and the goal
-          is simply to survive as long as possible together.</li>
-        </ul>
+        <h2>Hearts, and how you lose</h2>
+        <p>You start with <strong>3 hearts</strong>. That is the whole health bar, and it is
+        far tighter than new players expect.</p>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>What reaches the gate</th><th>Costs you</th><th>So you can afford</th></tr></thead>
+            <tbody>
+              <tr><td>An ordinary monster</td><td>1 heart</td><td>two leaks, and the third kills you</td></tr>
+              <tr><td>A boss</td><td>2 hearts</td><td>one leak — a second ends the match</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Three common monsters getting through is a loss. One boss plus one common is a
+        loss. There is no healing back to full and no margin to play with, which is why
+        letting even a single enemy slip past matters far more than it looks like it should.</p>
+
+        <h3>How the whole loop fits together</h3>
+        <p>Put the <a href="#waves">Phantom</a> next to the hearts and PvP makes sense:</p>
+        <ol>
+          <li>You clear a wave. Anything you miss costs you a heart.</li>
+          <li>The Phantom appears and your units hit it.</li>
+          <li>That damage becomes the health of a boss on your opponent's board.</li>
+          <li>If they cannot kill it, it reaches their gate and takes <strong>2 of their
+          3 hearts</strong>.</li>
+        </ol>
+        <p>So you win by sending a boss too big for the other player to handle — and one
+        that lands is very nearly fatal on its own. Their damage does the same to you.</p>
+        <div class="doc-note">
+          <p><strong>In co-op</strong> you and a teammate face AI waves instead, surviving
+          together for as long as you can rather than pressuring an opponent.</p>
+        </div>
       </section>
 
       <section id="mistakes">
