@@ -8,14 +8,19 @@
   <!-- Unlisted while the content is incomplete: nothing on the site links here, and this
        keeps it out of search results too. Same mechanism 404.html uses. -->
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#111113">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111113'/%3E%3Cpath d='M32 10 50 21v22L32 54 14 43V21Z' fill='%23ff6b2b'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#FBFBFD" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0B0E13" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0E13'/%3E%3Cpath d='M32 10 50 21v22L32 54 14 43V21Z' fill='%2339D3BB'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css?v=6">
-  <link rel="stylesheet" href="/docs.css?v=2">
-  <link rel="stylesheet" href="rushroyale.css?v=3">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap">
+  <!-- This section is deliberately self-contained: it does not load /style.css or
+       /docs.css. Inheriting them is what made it look like the rest of the site. -->
+  <link rel="stylesheet" href="rushroyale.css?v=4">
+  <!-- Applies the stored theme before first paint, so a dark-mode reader never gets a
+       white flash on navigation. Same idiom as the homepage's js flag. -->
+  <script>try{var t=localStorage.getItem('rr-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 </head>
 <body data-rr-source="units.json" data-rr-shape="units" data-rr-facet="rarity,faction">
   <a class="doc-skip" href="#docs-main">Skip to content</a>
@@ -313,7 +318,6 @@
     <span>unofficial · work in progress</span>
   </footer>
 
-  <script defer src="/docs.js?v=2"></script>
-  <script defer src="rushroyale.js?v=3"></script>
+  <script defer src="rushroyale.js?v=4"></script>
 </body>
 </html>

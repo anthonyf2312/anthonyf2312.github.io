@@ -1,255 +1,1012 @@
 /* ============================================================
-   Rush Royale reference
-   Inherits tokens, base type and film grain from style.css, and
-   the whole documentation shell — nav, sidebar, prose, tables,
-   notes, footer — from docs.css. This file only adds what the
-   shell has no equivalent for: the hub map, the browsable card
-   grids, and the tags that carry rarity.
-
-   Deliberately no new colour variables. Rarity is read off tag
-   *weight* rather than hue — filled, outlined, hairline, muted —
-   so the section still looks like the rest of the site instead
-   of importing a fantasy palette.
+   Rush Royale reference — visual system
+   ------------------------------------------------------------
+   THESIS       A game reference built to the craft level of a
+                product site, not a wiki. It refuses the parent
+                site's zero-radius hairline grid and its orange.
+   OWN-WORLD    Cool blue-black (or paper white) ground, layered
+                elevated surfaces with generous continuous radii,
+                translucent blurred chrome, one type family
+                (Manrope) with tabular figures and no monospace
+                anywhere. Colour is reserved for meaning: azure
+                is interface, the four rarity hues are content.
+   STORY        The reader arrives with one question, finds the
+                answer in seconds, and can tell what is verified
+                from what was imported from a stale wiki.
+   FIRST VIEW   Translucent nav over a large title; the section
+                map as elevated cards on a calm ground. Search
+                sits in the nav on every page.
+   FORM         The category standard, chosen deliberately and
+                executed at full fidelity.
+   ------------------------------------------------------------
+   Self-contained on purpose. This section does NOT load
+   /style.css or /docs.css — that inheritance is what made it
+   look like the rest of the site, and the brief was to make it
+   look like somewhere else. Nothing here leaks outward either.
    ============================================================ */
 
-/* ---------- freshness stamp ---------- */
+/* ---------- reset ---------- */
 
-/* Sits above the hero on every page. .doc-note gives it the accent rule and
-   raised fill; this only tightens the type, because it is a caveat and should
-   not read as loudly as the prose it precedes. */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+img, svg, video { display: block; max-width: 100%; height: auto; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+/* ---------- tokens: light is the base ---------- */
+
+:root {
+  color-scheme: light;
+
+  --rr-bg: #FBFBFD;
+  --rr-bg-elevated: #FFFFFF;
+  --rr-bg-raised: #F3F4F7;
+  --rr-bg-sunken: #EFF0F4;
+  --rr-bg-overlay: rgba(251, 251, 253, 0.72);
+  --rr-scrim: rgba(13, 17, 23, 0.32);
+
+  --rr-fg: #0D1117;
+  --rr-fg-secondary: #4A515E;
+  --rr-fg-muted: #656C79;
+
+  --rr-hairline: rgba(0, 0, 0, 0.10);
+  --rr-hairline-strong: rgba(0, 0, 0, 0.18);
+
+  /* Teal, not blue. The four rarity hues below are the game's own and the player already
+     knows them, so the interface accent is the one that has to move out of their way —
+     otherwise a Rare badge and a selected filter chip are the same colour. */
+  --rr-accent: #00786B;
+  --rr-accent-hover: #005F55;
+  --rr-accent-ink: #FFFFFF;
+  --rr-accent-wash: rgba(0, 120, 107, 0.10);
+
+  --rr-common: #5C6472;
+  --rr-rare: #0B62D6;
+  --rr-epic: #6D42C0;
+  --rr-legendary: #8A5A08;
+
+  /* "Checked in-game" is a state, not a rarity, so it gets its own green. */
+  --rr-verified: #1F7A43;
+
+  --rr-shadow-sm: 0 1px 2px rgba(13, 17, 23, 0.06), 0 1px 1px rgba(13, 17, 23, 0.04);
+  --rr-shadow-md: 0 8px 24px -10px rgba(13, 17, 23, 0.18), 0 2px 6px -2px rgba(13, 17, 23, 0.08);
+  --rr-shadow-lg: 0 28px 64px -20px rgba(13, 17, 23, 0.28), 0 6px 16px -6px rgba(13, 17, 23, 0.10);
+
+  /* 4px base. The site has never had a spacing scale; every gap below comes from here. */
+  --rr-space-1: 0.25rem;
+  --rr-space-2: 0.5rem;
+  --rr-space-3: 0.75rem;
+  --rr-space-4: 1rem;
+  --rr-space-5: 1.5rem;
+  --rr-space-6: 2rem;
+  --rr-space-8: 3rem;
+  --rr-space-10: 4rem;
+  --rr-space-12: 6rem;
+  --rr-space-16: 8rem;
+
+  --rr-r-sm: 8px;
+  --rr-r-md: 12px;
+  --rr-r-lg: 18px;
+  --rr-r-xl: 28px;
+  --rr-r-full: 999px;
+
+  --rr-text-xs: 0.75rem;
+  --rr-text-sm: 0.875rem;
+  --rr-text-base: 1.0625rem;
+  --rr-text-lg: 1.25rem;
+  --rr-text-xl: 1.5rem;
+  --rr-text-2xl: clamp(1.75rem, 3.2vw, 2.125rem);
+  --rr-text-3xl: clamp(2.25rem, 6vw, 3.5rem);
+
+  --rr-font: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --rr-pad: clamp(1.25rem, 4vw, 3.5rem);
+  --rr-nav-h: 3.75rem;
+  --rr-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark, applied both by preference and by the toggle, so neither can strand the other.
+   No colour is defined only inside a media block — every token above has a light value. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --rr-bg: #0B0E13;
+    --rr-bg-elevated: #12161D;
+    --rr-bg-raised: #191E27;
+    --rr-bg-sunken: #070A0E;
+    --rr-bg-overlay: rgba(11, 14, 19, 0.72);
+    --rr-scrim: rgba(3, 5, 8, 0.62);
+
+    --rr-fg: #F5F7FA;
+    --rr-fg-secondary: #A8B0BD;
+    --rr-fg-muted: #8B93A2;
+
+    --rr-hairline: rgba(255, 255, 255, 0.09);
+    --rr-hairline-strong: rgba(255, 255, 255, 0.17);
+
+    --rr-accent: #39D3BB;
+    --rr-accent-hover: #5FE0CC;
+    --rr-accent-ink: #05070B;
+    --rr-accent-wash: rgba(57, 211, 187, 0.14);
+
+    --rr-common: #8A93A3;
+    --rr-rare: #5AA2FF;
+    --rr-epic: #A97BFF;
+    --rr-legendary: #F2B23C;
+
+    --rr-verified: #5CCB7E;
+
+    --rr-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.40), 0 1px 1px rgba(0, 0, 0, 0.24);
+    --rr-shadow-md: 0 8px 24px -10px rgba(0, 0, 0, 0.62), 0 2px 6px -2px rgba(0, 0, 0, 0.40);
+    --rr-shadow-lg: 0 28px 64px -20px rgba(0, 0, 0, 0.72), 0 6px 16px -6px rgba(0, 0, 0, 0.44);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --rr-bg: #0B0E13;
+  --rr-bg-elevated: #12161D;
+  --rr-bg-raised: #191E27;
+  --rr-bg-sunken: #070A0E;
+  --rr-bg-overlay: rgba(11, 14, 19, 0.72);
+  --rr-scrim: rgba(3, 5, 8, 0.62);
+
+  --rr-fg: #F5F7FA;
+  --rr-fg-secondary: #A8B0BD;
+  --rr-fg-muted: #8B93A2;
+
+  --rr-hairline: rgba(255, 255, 255, 0.09);
+  --rr-hairline-strong: rgba(255, 255, 255, 0.17);
+
+  --rr-accent: #39D3BB;
+  --rr-accent-hover: #5FE0CC;
+  --rr-accent-ink: #05070B;
+  --rr-accent-wash: rgba(57, 211, 187, 0.14);
+
+  --rr-common: #8A93A3;
+  --rr-rare: #5AA2FF;
+  --rr-epic: #A97BFF;
+  --rr-legendary: #F2B23C;
+
+  --rr-verified: #5CCB7E;
+
+  --rr-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.40), 0 1px 1px rgba(0, 0, 0, 0.24);
+  --rr-shadow-md: 0 8px 24px -10px rgba(0, 0, 0, 0.62), 0 2px 6px -2px rgba(0, 0, 0, 0.40);
+  --rr-shadow-lg: 0 28px 64px -20px rgba(0, 0, 0, 0.72), 0 6px 16px -6px rgba(0, 0, 0, 0.44);
+}
+
+/* ---------- base ---------- */
+
+body {
+  background: var(--rr-bg);
+  color: var(--rr-fg);
+  font-family: var(--rr-font);
+  font-size: var(--rr-text-base);
+  line-height: 1.65;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; font-weight: 700; }
+
+a { color: inherit; }
+
+/* Browser surfaces the design still owns. Left at their defaults these are the
+   cheapest tell that a page was assembled rather than built. */
+::selection { background: var(--rr-accent); color: var(--rr-accent-ink); }
+:root { accent-color: var(--rr-accent); caret-color: var(--rr-accent); }
+
+* { scrollbar-width: thin; scrollbar-color: var(--rr-hairline-strong) transparent; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+  background: var(--rr-hairline-strong);
+  border-radius: var(--rr-r-full);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover { background: var(--rr-fg-muted); background-clip: content-box; }
+
+:focus-visible {
+  outline: 2px solid var(--rr-accent);
+  outline-offset: 2px;
+  border-radius: var(--rr-r-sm);
+}
+
+/* Every figure in this section is read against another figure. */
+table, .rr-tag, .rr-count, .rr-facts dd, .rr-hub-num { font-variant-numeric: tabular-nums; }
+
+.cat-visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+[hidden] { display: none !important; }
+
+.doc-skip {
+  position: absolute;
+  left: var(--rr-space-4);
+  top: var(--rr-space-4);
+  z-index: 100;
+  transform: translateY(-200%);
+  background: var(--rr-accent);
+  color: var(--rr-accent-ink);
+  padding: var(--rr-space-3) var(--rr-space-4);
+  border-radius: var(--rr-r-md);
+  font-size: var(--rr-text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--rr-shadow-md);
+  transition: transform 0.2s var(--rr-ease);
+}
+.doc-skip:focus { transform: translateY(0); }
+
+/* ---------- nav ---------- */
+
+.doc-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: var(--rr-space-5);
+  min-height: var(--rr-nav-h);
+  padding: var(--rr-space-2) var(--rr-pad);
+  background: var(--rr-bg-overlay);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s var(--rr-ease);
+}
+.doc-nav.is-stuck { border-bottom-color: var(--rr-hairline); }
+
+.doc-nav-name {
+  font-weight: 700;
+  font-size: var(--rr-text-sm);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  padding: var(--rr-space-1) var(--rr-space-2);
+  border-radius: var(--rr-r-sm);
+  flex: none;
+  transition: color 0.18s var(--rr-ease);
+}
+.doc-nav-name:hover { color: var(--rr-accent); }
+
+.doc-nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--rr-space-1);
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  /* Eight links do not fit a phone. They scroll, and the trailing fade is what says so —
+     a strip that just clips looks like the list ends there. */
+  mask-image: linear-gradient(to right, #000 calc(100% - 2rem), transparent);
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2rem), transparent);
+}
+.doc-nav-links::-webkit-scrollbar { display: none; }
+
+@media (min-width: 64rem) {
+  .doc-nav-links { mask-image: none; -webkit-mask-image: none; }
+}
+
+.doc-nav-links a {
+  position: relative;
+  flex: none;
+  padding: var(--rr-space-2) var(--rr-space-3);
+  border-radius: var(--rr-r-sm);
+  font-size: var(--rr-text-sm);
+  font-weight: 500;
+  color: var(--rr-fg-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.18s var(--rr-ease), background 0.18s var(--rr-ease);
+}
+.doc-nav-links a:hover { color: var(--rr-fg); background: var(--rr-bg-raised); }
+.doc-nav-links a[aria-current="page"] { color: var(--rr-fg); font-weight: 700; }
+.doc-nav-links a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: var(--rr-space-3);
+  right: var(--rr-space-3);
+  bottom: 2px;
+  height: 2px;
+  border-radius: var(--rr-r-full);
+  background: var(--rr-accent);
+}
+
+.doc-nav-tools { display: flex; align-items: center; gap: var(--rr-space-2); flex: none; }
+
+.rr-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--rr-space-2);
+  height: 2.25rem;
+  padding: 0 var(--rr-space-3);
+  background: var(--rr-bg-raised);
+  border: 1px solid var(--rr-hairline);
+  border-radius: var(--rr-r-full);
+  color: var(--rr-fg-secondary);
+  font-size: var(--rr-text-sm);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: color 0.18s var(--rr-ease), border-color 0.18s var(--rr-ease),
+              background 0.18s var(--rr-ease);
+}
+.rr-icon-btn:hover { color: var(--rr-fg); border-color: var(--rr-hairline-strong); }
+.rr-icon-btn svg { width: 1rem; height: 1rem; flex: none; }
+.rr-icon-btn.is-square { width: 2.25rem; padding: 0; }
+
+.rr-cmd-hint {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--rr-r-sm);
+  border: 1px solid var(--rr-hairline);
+  font-size: var(--rr-text-xs);
+  font-weight: 600;
+  color: var(--rr-fg-muted);
+  line-height: 1.5;
+}
+
+/* The theme button shows the icon for the mode it will switch TO. */
+.rr-theme-btn .rr-icon-moon { display: none; }
+:root[data-theme="dark"] .rr-theme-btn .rr-icon-moon { display: block; }
+:root[data-theme="dark"] .rr-theme-btn .rr-icon-sun { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .rr-theme-btn .rr-icon-moon { display: block; }
+  :root:not([data-theme="light"]) .rr-theme-btn .rr-icon-sun { display: none; }
+}
+
+/* ---------- command palette ---------- */
+
+.rr-palette {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  align-items: start;
+  justify-items: center;
+  padding: clamp(3rem, 12vh, 8rem) var(--rr-space-4) var(--rr-space-4);
+  background: var(--rr-scrim);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: rr-fade 0.18s var(--rr-ease);
+}
+
+.rr-palette-panel {
+  width: min(40rem, 100%);
+  max-height: min(30rem, 72vh);
+  display: flex;
+  flex-direction: column;
+  background: var(--rr-bg-elevated);
+  border: 1px solid var(--rr-hairline);
+  border-radius: var(--rr-r-xl);
+  box-shadow: var(--rr-shadow-lg);
+  overflow: hidden;
+  overscroll-behavior: contain;
+  animation: rr-rise 0.24s var(--rr-ease);
+}
+
+.rr-palette-head {
+  display: flex;
+  align-items: center;
+  gap: var(--rr-space-3);
+  padding: var(--rr-space-4) var(--rr-space-5);
+  border-bottom: 1px solid var(--rr-hairline);
+  flex: none;
+}
+.rr-palette-head svg { width: 1.15rem; height: 1.15rem; color: var(--rr-fg-muted); flex: none; }
+
+/* No outline reset here: it would out-specify the global :focus-visible rule and leave
+   a keyboard user with no focus indicator inside the dialog. */
+.rr-palette-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: none;
+  border: 0;
+  font-size: var(--rr-text-lg);
+  letter-spacing: -0.015em;
+}
+.rr-palette-input:focus { outline: none; }
+.rr-palette-input:focus-visible { outline: 2px solid var(--rr-accent); outline-offset: 4px; }
+.rr-palette-input::placeholder { color: var(--rr-fg-muted); }
+
+.rr-palette-results {
+  list-style: none;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--rr-space-2);
+  flex: 1 1 auto;
+}
+
+.rr-palette-group {
+  padding: var(--rr-space-3) var(--rr-space-3) var(--rr-space-1);
+  font-size: var(--rr-text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rr-fg-muted);
+}
+
+.rr-palette-hit a {
+  display: flex;
+  align-items: baseline;
+  gap: var(--rr-space-3);
+  padding: var(--rr-space-3);
+  border-radius: var(--rr-r-md);
+  text-decoration: none;
+  color: inherit;
+}
+.rr-palette-hit a:hover,
+.rr-palette-hit.is-active a { background: var(--rr-accent-wash); }
+.rr-palette-hit.is-active a { outline: 1px solid var(--rr-accent); outline-offset: -1px; }
+
+.rr-palette-name { font-weight: 600; flex: none; }
+.rr-palette-where {
+  font-size: var(--rr-text-sm);
+  color: var(--rr-fg-muted);
+  margin-left: auto;
+  flex: none;
+  white-space: nowrap;
+}
+.rr-palette-desc {
+  font-size: var(--rr-text-sm);
+  color: var(--rr-fg-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.rr-palette-empty, .rr-palette-loading {
+  padding: var(--rr-space-6) var(--rr-space-4);
+  text-align: center;
+  color: var(--rr-fg-muted);
+  font-size: var(--rr-text-sm);
+}
+
+.rr-palette-foot {
+  display: flex;
+  gap: var(--rr-space-4);
+  padding: var(--rr-space-3) var(--rr-space-5);
+  border-top: 1px solid var(--rr-hairline);
+  font-size: var(--rr-text-xs);
+  color: var(--rr-fg-muted);
+  flex: none;
+}
+
+@keyframes rr-fade { from { opacity: 0; } }
+@keyframes rr-rise { from { opacity: 0; transform: translateY(0.75rem) scale(0.985); } }
+
+/* ---------- shell ---------- */
+
+.doc-shell {
+  display: grid;
+  grid-template-columns: 17.5rem minmax(0, 1fr);
+  align-items: start;
+  max-width: 90rem;
+  margin: 0 auto;
+  gap: var(--rr-space-8);
+  padding-right: var(--rr-pad);
+}
+
+.doc-side {
+  position: sticky;
+  top: var(--rr-nav-h);
+  max-height: calc(100vh - var(--rr-nav-h));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--rr-space-8) var(--rr-space-2) var(--rr-space-10) var(--rr-pad);
+}
+
+.doc-search {
+  width: 100%;
+  background: var(--rr-bg-raised);
+  border: 1px solid var(--rr-hairline);
+  border-radius: var(--rr-r-md);
+  padding: var(--rr-space-2) var(--rr-space-3);
+  font-size: var(--rr-text-sm);
+  margin-bottom: var(--rr-space-5);
+  transition: border-color 0.18s var(--rr-ease), background 0.18s var(--rr-ease);
+}
+.doc-search::placeholder { color: var(--rr-fg-muted); }
+.doc-search:hover { border-color: var(--rr-hairline-strong); }
+.doc-search:focus { background: var(--rr-bg-elevated); }
+
+.doc-side h2 {
+  font-size: var(--rr-text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rr-fg-muted);
+  margin: var(--rr-space-5) 0 var(--rr-space-2);
+}
+.doc-side h2:first-of-type { margin-top: 0; }
+
+.doc-side ul { list-style: none; display: grid; gap: 1px; }
+
+.doc-side a {
+  display: block;
+  padding: var(--rr-space-2) var(--rr-space-3);
+  border-radius: var(--rr-r-sm);
+  font-size: var(--rr-text-sm);
+  color: var(--rr-fg-secondary);
+  text-decoration: none;
+  transition: color 0.16s var(--rr-ease), background 0.16s var(--rr-ease);
+}
+.doc-side a:hover { color: var(--rr-fg); background: var(--rr-bg-raised); }
+.doc-side a.is-current {
+  color: var(--rr-accent);
+  background: var(--rr-accent-wash);
+  font-weight: 600;
+}
+.doc-side li.is-hidden { display: none; }
+
+.doc-side-empty {
+  font-size: var(--rr-text-sm);
+  color: var(--rr-fg-muted);
+  padding: var(--rr-space-2) var(--rr-space-3);
+}
+
+/* ---------- content ---------- */
+
+.doc-main {
+  padding: var(--rr-space-8) 0 var(--rr-space-16);
+  min-width: 0;
+  max-width: 52rem;
+}
+
+/* The hub and the glossary have no sidebar, so they supply their own gutters. */
+.rr-hub { padding: 0 var(--rr-pad) var(--rr-space-16); max-width: 82rem; margin: 0 auto; }
+body > .doc-main { padding-left: var(--rr-pad); padding-right: var(--rr-pad); max-width: 58rem; }
+
+.doc-hero { margin-bottom: var(--rr-space-8); }
+
+/* Kept as wayfinding rather than decoration: it says where in the reference you are. */
+.doc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--rr-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--rr-fg-muted);
+  background: var(--rr-bg-raised);
+  border: 1px solid var(--rr-hairline);
+  border-radius: var(--rr-r-full);
+  padding: var(--rr-space-1) var(--rr-space-3);
+  margin-bottom: var(--rr-space-4);
+}
+
+.doc-title {
+  font-size: var(--rr-text-3xl);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+.doc-lede {
+  max-width: 52ch;
+  margin-top: var(--rr-space-4);
+  font-size: var(--rr-text-lg);
+  line-height: 1.55;
+  color: var(--rr-fg-secondary);
+  letter-spacing: -0.012em;
+}
+
+.doc-main section { scroll-margin-top: calc(var(--rr-nav-h) + var(--rr-space-4)); }
+
+/* More space above a heading than below it, everywhere. */
+.doc-main h2 {
+  font-size: var(--rr-text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  margin: var(--rr-space-12) 0 var(--rr-space-4);
+  padding-top: var(--rr-space-6);
+  border-top: 1px solid var(--rr-hairline);
+}
+.doc-main section:first-of-type h2 { border-top: 0; padding-top: 0; margin-top: 0; }
+
+.doc-main h3 {
+  font-size: var(--rr-text-lg);
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  margin: var(--rr-space-8) 0 var(--rr-space-3);
+  scroll-margin-top: calc(var(--rr-nav-h) + var(--rr-space-4));
+}
+
+.doc-main h4 {
+  font-size: var(--rr-text-base);
+  font-weight: 700;
+  color: var(--rr-fg);
+  margin: var(--rr-space-6) 0 var(--rr-space-2);
+}
+
+/* Card titles are h3s inside .doc-main, so the prose h3 rule above out-specifies the
+   .rr-*-name classes and lands a 3rem margin at the top of every card. Reset it here
+   rather than raising the card rules, so prose spacing stays owned in one place. */
+.doc-main .rr-unit-name,
+.doc-main .rr-card-name,
+.doc-main .rr-term-name { margin-top: 0; }
+
+.doc-main p {
+  margin: var(--rr-space-4) 0;
+  color: var(--rr-fg-secondary);
+  max-width: 68ch;
+}
+.doc-main strong { color: var(--rr-fg); font-weight: 700; }
+
+.doc-main a {
+  color: var(--rr-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, var(--rr-accent) 40%, transparent);
+  transition: text-decoration-color 0.18s var(--rr-ease);
+}
+.doc-main a:hover { text-decoration-color: currentColor; }
+
+.doc-main ul, .doc-main ol {
+  margin: var(--rr-space-4) 0 var(--rr-space-4) var(--rr-space-5);
+  color: var(--rr-fg-secondary);
+  max-width: 66ch;
+}
+.doc-main li { margin: var(--rr-space-2) 0; }
+.doc-main li::marker { color: var(--rr-fg-muted); }
+
+.doc-main code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  font-size: 0.86em;
+  background: var(--rr-bg-raised);
+  border: 1px solid var(--rr-hairline);
+  border-radius: var(--rr-r-sm);
+  padding: 0.1em 0.38em;
+  color: var(--rr-fg);
+}
+
+/* ---------- tables ---------- */
+
+.doc-table-wrap {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  margin: var(--rr-space-5) 0;
+  border: 1px solid var(--rr-hairline);
+  border-radius: var(--rr-r-lg);
+  background: var(--rr-bg-elevated);
+  box-shadow: var(--rr-shadow-sm);
+}
+.doc-main table { border-collapse: collapse; width: 100%; font-size: var(--rr-text-sm); min-width: 32rem; }
+.doc-main th, .doc-main td {
+  text-align: left;
+  padding: var(--rr-space-3) var(--rr-space-4);
+  border-bottom: 1px solid var(--rr-hairline);
+  vertical-align: top;
+}
+.doc-main th {
+  font-size: var(--rr-text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rr-fg-muted);
+  background: var(--rr-bg-raised);
+  white-space: nowrap;
+}
+.doc-main td { color: var(--rr-fg-secondary); }
+.doc-main tbody tr:last-child td { border-bottom: 0; }
+.doc-main tbody tr { transition: background 0.16s var(--rr-ease); }
+.doc-main tbody tr:hover { background: var(--rr-bg-raised); }
+.doc-main td code { white-space: nowrap; }
+
+/* ---------- notes ---------- */
+
+/* A tinted panel, not a side rule: a thick coloured border-left on a callout is the
+   single most recognisable stock-UI tell, and the tint separates the note from the
+   prose just as clearly. */
+.doc-note {
+  background: color-mix(in srgb, var(--rr-accent) 5%, var(--rr-bg-elevated));
+  border: 1px solid color-mix(in srgb, var(--rr-accent) 22%, transparent);
+  border-radius: var(--rr-r-lg);
+  padding: var(--rr-space-4) var(--rr-space-5);
+  margin: var(--rr-space-5) 0;
+  box-shadow: var(--rr-shadow-sm);
+}
+.doc-note p { margin: var(--rr-space-2) 0; max-width: 70ch; }
+.doc-note p:first-child { margin-top: 0; }
+.doc-note p:last-child { margin-bottom: 0; }
+
+.doc-warn {
+  background: var(--rr-bg-raised);
+  border-color: var(--rr-hairline);
+}
+
+/* The provenance block. It is a caveat, so it sits quieter than the prose it precedes. */
 .rr-stamp {
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--rr-text-sm);
   line-height: 1.6;
+  color: var(--rr-fg-muted);
   margin-top: 0;
 }
-.rr-stamp p { font-size: inherit; margin: 0.3rem 0; }
-.rr-stamp b { color: var(--fg); font-weight: 500; }
+.rr-stamp p { font-size: inherit; color: inherit; }
+.rr-stamp b { color: var(--rr-fg); font-weight: 700; }
 
 /* ---------- hub ---------- */
 
-.rr-hub { padding: 0 var(--pad) 6rem; max-width: 96rem; margin: 0 auto; }
+.rr-hub-hero { padding: var(--rr-space-12) 0 var(--rr-space-8); }
+.rr-hub-hero .doc-title { font-size: clamp(2.75rem, 9vw, 5.5rem); }
 
-.rr-hub-hero {
-  padding: clamp(3rem, 9vw, 6.5rem) 0 clamp(2rem, 5vw, 3.5rem);
-}
-
-/* Same tessellation trick as the module catalogue: the grid draws the top rule
-   and pulls up 1px, each tile draws only its right and bottom edge, so adjacent
-   tiles share one hairline instead of stacking two. */
-.rr-hub-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
-  border-top: 1px solid var(--hairline);
-  border-left: 1px solid var(--hairline);
-  margin-top: -1px;
-}
-
-.rr-hub-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  padding: clamp(1.4rem, 3vw, 2rem);
-  border-right: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-  background: var(--bg);
-  text-decoration: none;
-  color: inherit;
-  transition: background 0.2s ease;
-}
-.rr-hub-card:hover { background: var(--bg-raised); }
-
-.rr-hub-num {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  color: var(--fg-muted);
-}
-
-.rr-hub-name {
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-}
-.rr-hub-card:hover .rr-hub-name { color: var(--accent); }
-
-.rr-hub-desc { font-size: 0.95rem; color: var(--fg-muted); }
-
-.rr-hub-list {
-  list-style: none;
-  margin: auto 0 0;
-  padding-top: 0.6rem;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  line-height: 1.9;
-  color: var(--fg-muted);
-}
-
-/* ---------- "never played?" strip ---------- */
+/* The card grid earns the full 82rem; prose does not. Left unbounded, the provenance
+   note draws a box twice as wide as the text inside it. */
+.rr-hub > .doc-hero,
+.rr-hub > .doc-note,
+.rr-hub > .rr-start { max-width: 58rem; }
 
 .rr-start {
-  border: 1px solid var(--hairline);
-  padding: clamp(1.3rem, 3vw, 1.9rem);
-  margin-bottom: 3rem;
+  background: var(--rr-bg-elevated);
+  border: 1px solid var(--rr-hairline);
+  border-radius: var(--rr-r-xl);
+  padding: var(--rr-space-5) var(--rr-space-6);
+  margin: var(--rr-space-6) 0 var(--rr-space-8);
+  box-shadow: var(--rr-shadow-sm);
 }
 
 .rr-start-title {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
+  font-size: var(--rr-text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--fg-muted);
-  margin-bottom: 1rem;
+  color: var(--rr-fg-muted);
+  margin-bottom: var(--rr-space-3);
 }
 
 .rr-start-steps {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem 1.4rem;
-  align-items: baseline;
-  margin: 0;
+  gap: var(--rr-space-2) var(--rr-space-6);
+  align-items: center;
 }
-.rr-start-steps li { display: flex; gap: 0.55rem; align-items: baseline; }
+.rr-start-steps li { display: flex; gap: var(--rr-space-2); align-items: center; }
 .rr-start-steps span {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--fg-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem; height: 1.5rem;
+  border-radius: var(--rr-r-full);
+  background: var(--rr-accent-wash);
+  color: var(--rr-accent);
+  font-size: var(--rr-text-xs);
+  font-weight: 700;
+  flex: none;
 }
-.rr-start-steps a { color: var(--accent); text-underline-offset: 3px; }
+.rr-start-steps a {
+  color: var(--rr-accent);
+  font-weight: 600;
+  text-underline-offset: 0.2em;
+}
+
+/* min() on the track floor, or a 19rem minimum pushes the grid wider than a 320px
+   phone and the whole page scrolls sideways. */
+.rr-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr));
+  gap: var(--rr-space-4);
+}
+
+.rr-hub-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--rr-space-2);
+  padding: var(--rr-space-5);
+  background: var(--rr-bg-elevated);
+  border: 1px solid var(--rr-hairline);
+  border-radius: var(--rr-r-xl);
+  box-shadow: var(--rr-shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.28s var(--rr-ease), box-shadow 0.28s var(--rr-ease),
+              border-color 0.28s var(--rr-ease);
+}
+.rr-hub-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--rr-shadow-md);
+  border-color: var(--rr-hairline-strong);
+}
+
+.rr-hub-num {
+  font-size: var(--rr-text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--rr-fg-muted);
+}
+
+.rr-hub-name {
+  font-size: var(--rr-text-xl);
+  font-weight: 700;
+  letter-spacing: -0.024em;
+  line-height: 1.2;
+  transition: color 0.2s var(--rr-ease);
+}
+.rr-hub-card:hover .rr-hub-name { color: var(--rr-accent); }
+
+.rr-hub-desc { font-size: var(--rr-text-sm); color: var(--rr-fg-secondary); line-height: 1.55; }
+
+.rr-hub-list {
+  list-style: none;
+  margin: auto 0 0;
+  padding-top: var(--rr-space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rr-space-1) var(--rr-space-2);
+}
+.rr-hub-list li {
+  font-size: var(--rr-text-xs);
+  color: var(--rr-fg-muted);
+  background: var(--rr-bg-raised);
+  border-radius: var(--rr-r-full);
+  padding: 0.15rem var(--rr-space-2);
+}
 
 /* ---------- browse toolbar ---------- */
 
+/* Sticks under the nav so the filters stay reachable while scrolling 74 units. */
 .rr-toolbar {
+  position: sticky;
+  top: var(--rr-nav-h);
+  z-index: 20;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.9rem 1.2rem;
+  gap: var(--rr-space-3) var(--rr-space-4);
   align-items: center;
-  margin: 1.4rem 0 0.2rem;
+  margin: var(--rr-space-5) 0 0;
+  padding: var(--rr-space-3) 0;
+  background: var(--rr-bg-overlay);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
 
 .rr-search {
-  flex: 1 1 14rem;
+  flex: 1 1 16rem;
   min-width: 0;
-  background: transparent;
-  border: 1px solid var(--hairline);
-  color: var(--fg);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  padding: 0.55rem 0.7rem;
+  background: var(--rr-bg-raised);
+  border: 1px solid var(--rr-hairline);
+  border-radius: var(--rr-r-full);
+  padding: var(--rr-space-2) var(--rr-space-4);
+  font-size: var(--rr-text-sm);
+  transition: border-color 0.18s var(--rr-ease), background 0.18s var(--rr-ease);
 }
-.rr-search::placeholder { color: var(--fg-muted); }
-.rr-search:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.rr-search::placeholder { color: var(--rr-fg-muted); }
+.rr-search:hover { border-color: var(--rr-hairline-strong); }
+.rr-search:focus { background: var(--rr-bg-elevated); }
 
-.rr-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-
-.rr-chip {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.4rem 0.7rem;
-  background: transparent;
-  border: 1px solid var(--hairline);
-  color: var(--fg-muted);
-  cursor: pointer;
-  transition: color 0.16s, border-color 0.16s, background 0.16s;
-}
-.rr-chip:hover { color: var(--fg); border-color: var(--fg-muted); }
-.rr-chip[aria-pressed="true"] {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #111113;
-}
-.rr-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
-.rr-count {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  color: var(--fg-muted);
-  margin: 0.9rem 0 0;
-}
-
-/* ---------- chip groups ---------- */
-
-.rr-chip-group { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.rr-chips { display: flex; flex-wrap: wrap; gap: var(--rr-space-2); }
+.rr-chip-group { display: flex; flex-wrap: wrap; gap: var(--rr-space-1); align-items: center; }
 
 .rr-chip-label {
-  font-family: var(--font-mono);
-  font-size: 0.63rem;
-  letter-spacing: 0.16em;
+  font-size: var(--rr-text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--fg-muted);
-  margin-right: 0.15rem;
+  color: var(--rr-fg-muted);
+  margin-right: var(--rr-space-1);
+}
+
+.rr-chip {
+  padding: var(--rr-space-1) var(--rr-space-3);
+  background: transparent;
+  border: 1px solid var(--rr-hairline);
+  border-radius: var(--rr-r-full);
+  color: var(--rr-fg-secondary);
+  font-size: var(--rr-text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  touch-action: manipulation;
+  transition: color 0.16s var(--rr-ease), border-color 0.16s var(--rr-ease),
+              background 0.16s var(--rr-ease);
+}
+.rr-chip:hover { color: var(--rr-fg); border-color: var(--rr-hairline-strong); background: var(--rr-bg-raised); }
+.rr-chip[aria-pressed="true"] {
+  background: var(--rr-accent);
+  border-color: var(--rr-accent);
+  color: var(--rr-accent-ink);
+  font-weight: 600;
+}
+
+.rr-count {
+  font-size: var(--rr-text-sm);
+  color: var(--rr-fg-muted);
+  margin: var(--rr-space-4) 0 0;
 }
 
 /* ---------- units ---------- */
 
-/* A unit's ability text is several paragraphs of rules, so these run full width one per row
-   rather than sitting in the two-column tile grid the other pages use. Same hairline seams. */
+/* minmax(0, 1fr), not the default auto: an auto track sizes to its widest card's
+   min-content, and one long unbreakable ability line then widens the whole page. */
 .rr-units {
   list-style: none;
-  margin: 1rem 0 0;
-  padding: 0;
-  border-top: 1px solid var(--hairline);
+  margin: var(--rr-space-4) 0 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--rr-space-4);
 }
 
 .rr-unit {
-  padding: 1.6rem 0 1.8rem;
-  border-bottom: 1px solid var(--hairline);
-  scroll-margin-top: 5rem;
+  position: relative;
+  padding: var(--rr-space-5);
+  background: var(--rr-bg-elevated);
+  border: 1px solid var(--rr-hairline);
+  border-radius: var(--rr-r-xl);
+  box-shadow: var(--rr-shadow-sm);
+  scroll-margin-top: calc(var(--rr-nav-h) + 4.5rem);
+  /* 74 rows, no virtualization library and no build step. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 20rem;
+  transition: border-color 0.2s var(--rr-ease), box-shadow 0.2s var(--rr-ease);
 }
+.rr-unit:hover { border-color: var(--rr-hairline-strong); box-shadow: var(--rr-shadow-md); }
 
 .rr-unit-name {
-  font-size: 1.45rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin: 0 0 0.6rem;
+  font-size: var(--rr-text-xl);
+  font-weight: 700;
+  letter-spacing: -0.024em;
+  margin-bottom: var(--rr-space-2);
 }
 
 .rr-unit-summary {
-  font-size: 1rem;
-  color: var(--fg);
-  margin: 0.75rem 0 0;
-  max-width: 60ch;
+  font-size: var(--rr-text-base);
+  color: var(--rr-fg);
+  margin: var(--rr-space-3) 0 0;
+  max-width: 66ch;
 }
 
-/* Transcribed rules text. Each item is one ability, marked with an accent rule rather than a
-   bullet so the block reads as a card's ability list rather than as prose. */
-.rr-abilities { list-style: none; margin: 1.1rem 0 0; padding: 0; display: grid; gap: 0.55rem; }
-
+.rr-abilities { list-style: none; margin: var(--rr-space-4) 0 0; display: grid; gap: var(--rr-space-2); }
 .rr-abilities li {
   position: relative;
-  padding-left: 1rem;
-  font-size: 0.94rem;
+  padding-left: var(--rr-space-4);
+  font-size: var(--rr-text-sm);
   line-height: 1.6;
-  color: var(--fg-muted);
-  margin: 0;
+  color: var(--rr-fg-secondary);
+  max-width: 70ch;
 }
 .rr-abilities li::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.55em;
-  width: 5px;
-  height: 1px;
-  background: var(--accent);
+  top: 0.62em;
+  width: 6px; height: 6px;
+  border-radius: var(--rr-r-full);
+  background: var(--rr-accent);
 }
 
-/* Caps, immunities and mode-specific exceptions — the fine print under the abilities. */
 .rr-unit-notes {
-  margin: 1.1rem 0 0;
-  padding: 0.75rem 0 0.75rem 1rem;
-  border-left: 1px solid var(--hairline);
+  margin: var(--rr-space-4) 0 0;
+  padding: var(--rr-space-3) var(--rr-space-4);
+  background: var(--rr-bg-raised);
+  border-radius: var(--rr-r-md);
 }
 .rr-unit-notes p {
-  font-size: 0.88rem;
+  font-size: var(--rr-text-sm);
   line-height: 1.6;
-  color: var(--fg-muted);
-  margin: 0.3rem 0;
+  color: var(--rr-fg-muted);
+  margin: var(--rr-space-2) 0;
+  max-width: 70ch;
 }
 .rr-unit-notes p:first-child { margin-top: 0; }
 .rr-unit-notes p:last-child { margin-bottom: 0; }
@@ -258,11 +1015,9 @@
 
 .rr-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
-  border-top: 1px solid var(--hairline);
-  border-left: 1px solid var(--hairline);
-  margin: 1rem 0 0;
-  padding: 0;
+  grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr));
+  gap: var(--rr-space-4);
+  margin: var(--rr-space-4) 0 0;
   list-style: none;
 }
 
@@ -270,134 +1025,264 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  padding: 1.3rem 1.4rem;
-  border-right: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-  background: var(--bg);
-  margin: 0;
-  transition: background 0.2s ease;
+  gap: var(--rr-space-2);
+  padding: var(--rr-space-5);
+  background: var(--rr-bg-elevated);
+  border: 1px solid var(--rr-hairline);
+  border-radius: var(--rr-r-xl);
+  box-shadow: var(--rr-shadow-sm);
+  scroll-margin-top: calc(var(--rr-nav-h) + 4.5rem);
+  transition: transform 0.24s var(--rr-ease), border-color 0.24s var(--rr-ease),
+              box-shadow 0.24s var(--rr-ease);
 }
-.rr-card:hover { background: var(--bg-raised); }
-
-.rr-card-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
+.rr-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--rr-hairline-strong);
+  box-shadow: var(--rr-shadow-md);
 }
 
-.rr-card-summary { font-size: 0.92rem; color: var(--fg-muted); margin: 0; }
+.rr-card-name { font-size: var(--rr-text-lg); font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; }
+.rr-card-summary { font-size: var(--rr-text-sm); color: var(--rr-fg-secondary); }
 
-.rr-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+/* ---------- tags & badges ---------- */
+
+.rr-tags { display: flex; flex-wrap: wrap; gap: var(--rr-space-2); align-items: center; }
 
 .rr-tag {
-  font-family: var(--font-mono);
-  font-size: 0.63rem;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.45rem;
+  font-size: var(--rr-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.15rem var(--rr-space-2);
+  border-radius: var(--rr-r-sm);
   white-space: nowrap;
-  border: 1px solid var(--hairline);
-  color: var(--fg-muted);
+  background: var(--rr-bg-raised);
+  border: 1px solid var(--rr-hairline);
+  color: var(--rr-fg-muted);
 }
 
-/* Rarity by tag weight, not hue — filled reads loudest, muted reads quietest,
-   which is the same ordering the game gives the four tiers. */
-.rr-tag-legendary { background: var(--accent); border-color: var(--accent); color: #111113; font-weight: 500; }
-.rr-tag-epic      { border-color: var(--accent); color: var(--accent); }
-.rr-tag-rare      { border-color: var(--fg-muted); color: var(--fg); }
-.rr-tag-common    { border-color: var(--hairline); color: var(--fg-muted); }
-
-/* ---------- "what / where / spend" rows ---------- */
-
-/* resources.json and items.json answer a fixed set of questions per entry, so the
-   card renders them as a definition list rather than free prose. */
-.rr-facts { margin: 0.2rem 0 0; }
-.rr-facts dt {
-  font-family: var(--font-mono);
-  font-size: 0.63rem;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-top: 0.7rem;
+/* Rarity is the one tag that carries hue. The tier's word is always printed beside
+   the colour, so rarity is never signalled by colour alone. */
+.rr-tag-common, .rr-tag-rare, .rr-tag-epic, .rr-tag-legendary {
+  color: var(--rr-rarity);
+  border-color: color-mix(in srgb, var(--rr-rarity) 35%, transparent);
+  background: color-mix(in srgb, var(--rr-rarity) 12%, var(--rr-bg-elevated));
+  font-weight: 700;
 }
-.rr-facts dd { margin: 0.15rem 0 0; font-size: 0.9rem; color: var(--fg-muted); }
+.rr-tag-common { --rr-rarity: var(--rr-common); }
+.rr-tag-rare { --rr-rarity: var(--rr-rare); }
+.rr-tag-epic { --rr-rarity: var(--rr-epic); }
+.rr-tag-legendary { --rr-rarity: var(--rr-legendary); }
 
-/* A heading that only applies to one mode says so inline, so nobody carries a PvP rule
-   into co-op. Same mono-tag vocabulary as the rarity tags. */
+/* Where a claim came from. Rendered from the data's own source fields — it reports
+   what the file already records and adds nothing to it. */
+.rr-source {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rr-space-1);
+  font-size: var(--rr-text-xs);
+  font-weight: 600;
+  padding: 0.15rem var(--rr-space-2);
+  border-radius: var(--rr-r-sm);
+  border: 1px solid var(--rr-hairline);
+  color: var(--rr-fg-muted);
+  background: var(--rr-bg-raised);
+  white-space: nowrap;
+}
+.rr-source-verified {
+  color: var(--rr-verified);
+  border-color: color-mix(in srgb, var(--rr-verified) 35%, transparent);
+  background: color-mix(in srgb, var(--rr-verified) 12%, var(--rr-bg-elevated));
+}
+
+/* A heading that only applies to one mode says so inline. */
 .rr-scope {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.13em;
+  display: inline-block;
+  font-size: var(--rr-text-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 0.2rem 0.45rem;
-  margin-left: 0.55rem;
+  padding: 0.1rem var(--rr-space-2);
+  margin-left: var(--rr-space-2);
   vertical-align: middle;
   white-space: nowrap;
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  font-weight: 400;
+  border-radius: var(--rr-r-sm);
+  border: 1px solid color-mix(in srgb, var(--rr-accent) 35%, transparent);
+  background: var(--rr-accent-wash);
+  color: var(--rr-accent);
 }
+
+/* ---------- facts list ---------- */
+
+.rr-facts { margin: var(--rr-space-1) 0 0; }
+.rr-facts dt {
+  font-size: var(--rr-text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rr-fg-muted);
+  margin-top: var(--rr-space-3);
+}
+.rr-facts dd { margin: var(--rr-space-1) 0 0; font-size: var(--rr-text-sm); color: var(--rr-fg-secondary); }
 
 /* ---------- stubs ---------- */
 
-/* Same diagonal hatch the catalogue uses for unreviewed modules: an entry that
-   still needs real numbers should be visibly incomplete, not quietly thin. */
-.rr-card-stub::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 5px;
-  background: repeating-linear-gradient(45deg, var(--fg-muted) 0 2px, transparent 2px 6px);
-  opacity: 0.55;
-}
-
 .rr-stub-note {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.06em;
-  color: var(--fg-muted);
-  margin: 0.2rem 0 0;
+  font-size: var(--rr-text-xs);
+  font-weight: 600;
+  color: var(--rr-fg-muted);
+  margin: var(--rr-space-1) 0 0;
 }
 
 /* ---------- states ---------- */
 
 .rr-empty, .rr-error {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  grid-column: 1 / -1;
+  font-size: var(--rr-text-sm);
   line-height: 1.7;
-  color: var(--fg-muted);
-  border: 1px solid var(--hairline);
-  padding: 1.4rem 1.5rem;
-  margin: 1rem 0 0;
+  color: var(--rr-fg-muted);
+  background: var(--rr-bg-elevated);
+  border: 1px solid var(--rr-hairline);
+  border-radius: var(--rr-r-xl);
+  padding: var(--rr-space-6);
+  text-align: center;
+  margin: var(--rr-space-4) 0 0;
 }
-.rr-error b { color: var(--fg); font-weight: 500; }
+.rr-error b { color: var(--rr-fg); font-weight: 700; display: block; margin-bottom: var(--rr-space-1); }
+.rr-error a { color: var(--rr-accent); }
 
 /* ---------- glossary ---------- */
 
-.rr-terms { margin: 1rem 0 0; border-top: 1px solid var(--hairline); }
+.rr-terms {
+  list-style: none;
+  margin: var(--rr-space-4) 0 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1px;
+}
 
+/* 53 terms separated by whitespace alone is a wall to scan. One hairline per entry
+   turns it into a list you can run your eye down. */
 .rr-term {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--hairline);
+  padding: var(--rr-space-4);
+  border-radius: var(--rr-r-md);
+  border-bottom: 1px solid var(--rr-hairline);
+  scroll-margin-top: calc(var(--rr-nav-h) + 4.5rem);
+  transition: background 0.16s var(--rr-ease);
 }
+.rr-term:last-child { border-bottom: 0; }
+.rr-term:hover { background: var(--rr-bg-raised); }
 
-.rr-term-name {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  margin: 0;
+.rr-term-name { font-size: var(--rr-text-base); font-weight: 700; letter-spacing: -0.015em; }
+.rr-term-def { font-size: var(--rr-text-sm); color: var(--rr-fg-secondary); margin: var(--rr-space-1) 0 0; max-width: 70ch; }
+.rr-term-def a { color: var(--rr-accent); text-underline-offset: 0.2em; }
+
+/* ---------- back to top ---------- */
+
+.rr-top {
+  position: fixed;
+  right: var(--rr-space-5);
+  bottom: calc(var(--rr-space-5) + env(safe-area-inset-bottom));
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem; height: 2.75rem;
+  border-radius: var(--rr-r-full);
+  background: var(--rr-bg-overlay);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--rr-hairline);
+  color: var(--rr-fg-secondary);
+  box-shadow: var(--rr-shadow-md);
+  cursor: pointer;
+  touch-action: manipulation;
+  opacity: 0;
+  transform: translateY(0.5rem) scale(0.9);
+  pointer-events: none;
+  transition: opacity 0.24s var(--rr-ease), transform 0.24s var(--rr-ease), color 0.18s var(--rr-ease);
 }
+.rr-top.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.rr-top:hover { color: var(--rr-fg); }
+.rr-top svg { width: 1.15rem; height: 1.15rem; }
 
-.rr-term-def { font-size: 0.94rem; color: var(--fg-muted); margin: 0.3rem 0 0; }
-.rr-term-def a { color: var(--accent); text-underline-offset: 2px; }
+/* ---------- footer ---------- */
+
+.doc-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rr-space-2) var(--rr-space-6);
+  align-items: center;
+  padding: var(--rr-space-6) var(--rr-pad) var(--rr-space-10);
+  border-top: 1px solid var(--rr-hairline);
+  font-size: var(--rr-text-sm);
+  color: var(--rr-fg-muted);
+  max-width: 90rem;
+  margin: 0 auto;
+}
+.doc-footer a {
+  color: var(--rr-fg-secondary);
+  text-decoration: none;
+  transition: color 0.18s var(--rr-ease);
+}
+.doc-footer a:hover { color: var(--rr-accent); }
+
+/* ---------- motion ---------- */
+
+/* Visible by default. JS adds .rr-anim to <html> only when it is actually going to
+   animate, so a page with broken or blocked JS never hides its own content. */
+.rr-anim .rr-reveal { opacity: 0; transform: translateY(14px); }
+.rr-anim .rr-reveal.is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s var(--rr-ease), transform 0.6s var(--rr-ease);
+  transition-delay: var(--rr-delay, 0ms);
+}
 
 /* ---------- narrow screens ---------- */
 
-@media (max-width: 40rem) {
-  .rr-toolbar { gap: 0.8rem; }
+@media (max-width: 60rem) {
+  .doc-shell { grid-template-columns: 1fr; gap: 0; padding-right: 0; }
+
+  .doc-side {
+    position: static;
+    max-height: none;
+    padding: var(--rr-space-5) var(--rr-pad);
+    border-bottom: 1px solid var(--rr-hairline);
+  }
+  .doc-side ul { grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); }
+
+  .doc-main { padding: var(--rr-space-6) var(--rr-pad) var(--rr-space-12); max-width: none; }
+}
+
+@media (max-width: 46rem) {
+  .doc-nav { gap: var(--rr-space-3); }
+  .rr-cmd-label, .rr-cmd-hint { display: none; }
+  .rr-icon-btn { width: 2.25rem; padding: 0; }
+  .rr-toolbar { gap: var(--rr-space-3); }
   .rr-search { flex-basis: 100%; }
   .rr-chip-group { width: 100%; }
-  .rr-unit-name { font-size: 1.25rem; }
+  .rr-palette { padding-top: var(--rr-space-4); }
+  .rr-palette-where { display: none; }
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .rr-anim .rr-reveal { opacity: 1; transform: none; }
+  .rr-hub-card:hover, .rr-card:hover { transform: none; }
+}
+
+/* ---------- print ---------- */
+
+@media print {
+  .doc-nav, .doc-side, .rr-toolbar, .rr-top, .rr-palette, .doc-skip { display: none !important; }
+  body { background: #fff; color: #000; }
+  .doc-shell { display: block; }
+  .rr-unit, .rr-card { break-inside: avoid; box-shadow: none; }
 }

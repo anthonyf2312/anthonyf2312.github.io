@@ -1,0 +1,260 @@
+{
+  "$comment": "Index for the section-wide command palette. Generated from the sidebar of each page - every title here is copied verbatim from the page it points at. If you add or rename a section, add it here too, or the palette will not find it.",
+  "reviewed": "2026-08-27",
+  "pages": [
+    {
+      "path": "index.html",
+      "title": "Rush Royale",
+      "sections": []
+    },
+    {
+      "path": "basics.html",
+      "title": "How a match works",
+      "sections": [
+        {
+          "id": "board",
+          "title": "The board"
+        },
+        {
+          "id": "mana",
+          "title": "Mana"
+        },
+        {
+          "id": "deck",
+          "title": "Your deck"
+        },
+        {
+          "id": "summoning",
+          "title": "Summoning"
+        },
+        {
+          "id": "merging",
+          "title": "Merging"
+        },
+        {
+          "id": "waves",
+          "title": "Waves, Phantom & bosses"
+        },
+        {
+          "id": "losing",
+          "title": "Hearts & losing"
+        },
+        {
+          "id": "mistakes",
+          "title": "Two early mistakes"
+        },
+        {
+          "id": "first-deck",
+          "title": "A first deck"
+        }
+      ]
+    },
+    {
+      "path": "units.html",
+      "title": "What the units do",
+      "sections": [
+        {
+          "id": "what",
+          "title": "What a unit is"
+        },
+        {
+          "id": "rarity",
+          "title": "What rarity means"
+        },
+        {
+          "id": "factions",
+          "title": "Factions"
+        },
+        {
+          "id": "mana-power-up",
+          "title": "Mana Power-up"
+        },
+        {
+          "id": "synergy",
+          "title": "One carry, four supports"
+        },
+        {
+          "id": "placement",
+          "title": "Placement"
+        },
+        {
+          "id": "reincarnation",
+          "title": "Reincarnation"
+        },
+        {
+          "id": "synergized-units",
+          "title": "Synergized units"
+        },
+        {
+          "id": "celestial-shards",
+          "title": "Celestial Shards"
+        },
+        {
+          "id": "browse",
+          "title": "Every unit"
+        }
+      ]
+    },
+    {
+      "path": "spells.html",
+      "title": "Spells, artifacts & perks",
+      "sections": [
+        {
+          "id": "what",
+          "title": "Spells and artifacts"
+        },
+        {
+          "id": "relics",
+          "title": "Relics"
+        },
+        {
+          "id": "slots",
+          "title": "Artifact slots"
+        },
+        {
+          "id": "upgrading",
+          "title": "Upgrading"
+        },
+        {
+          "id": "archetypes",
+          "title": "The six archetypes"
+        },
+        {
+          "id": "perks",
+          "title": "Profile perks"
+        },
+        {
+          "id": "browse",
+          "title": "Browse archetypes"
+        }
+      ]
+    },
+    {
+      "path": "resources.html",
+      "title": "Dust, orbs & gold",
+      "sections": [
+        {
+          "id": "overview",
+          "title": "The short version"
+        },
+        {
+          "id": "dust-vs-orbs",
+          "title": "Dust vs orbs"
+        },
+        {
+          "id": "priorities",
+          "title": "What to spend on first"
+        },
+        {
+          "id": "traps",
+          "title": "Two traps"
+        },
+        {
+          "id": "browse",
+          "title": "Every resource"
+        }
+      ]
+    },
+    {
+      "path": "progression.html",
+      "title": "Getting stronger",
+      "sections": [
+        {
+          "id": "card-levels",
+          "title": "Card levels"
+        },
+        {
+          "id": "heroes",
+          "title": "Heroes"
+        },
+        {
+          "id": "ability-points",
+          "title": "Ability points"
+        },
+        {
+          "id": "critical-damage",
+          "title": "Critical damage"
+        },
+        {
+          "id": "expeditions",
+          "title": "Expeditions"
+        },
+        {
+          "id": "legendarity",
+          "title": "Legendarity"
+        },
+        {
+          "id": "talents",
+          "title": "Talents"
+        },
+        {
+          "id": "spells-artifacts",
+          "title": "Spells and artifacts"
+        },
+        {
+          "id": "what-to-level",
+          "title": "What to level first"
+        }
+      ]
+    },
+    {
+      "path": "modes.html",
+      "title": "Where to play",
+      "sections": [
+        {
+          "id": "pvp",
+          "title": "PvP"
+        },
+        {
+          "id": "variants",
+          "title": "PvP variants"
+        },
+        {
+          "id": "arenas",
+          "title": "Arenas"
+        },
+        {
+          "id": "co-op",
+          "title": "Co-op"
+        },
+        {
+          "id": "dungeons",
+          "title": "Chapters & floors"
+        },
+        {
+          "id": "modifiers",
+          "title": "Modifiers & boosts"
+        },
+        {
+          "id": "treasure-maps",
+          "title": "Treasure Maps"
+        },
+        {
+          "id": "clans",
+          "title": "Clans"
+        },
+        {
+          "id": "dragon-rift",
+          "title": "Dragon Rift"
+        },
+        {
+          "id": "tournament",
+          "title": "Clan Tournament"
+        },
+        {
+          "id": "events",
+          "title": "Events"
+        },
+        {
+          "id": "picking",
+          "title": "Picking a mode"
+        }
+      ]
+    },
+    {
+      "path": "glossary.html",
+      "title": "Every term, one sentence",
+      "sections": []
+    }
+  ]
+}

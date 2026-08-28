@@ -12,14 +12,20 @@ Dark type-poster design: Inter variable font with a cursor-reactive kinetic ANTH
 - `modules.html` / `modules.css` / `modules.js` — the Tessel module catalogue
 - `modules.json` — catalogue data. `entries` are reviewed and signed (the bot verifies them against
   `modules.json.sig`); `listings` are submitted but unreviewed and the bot ignores them
-- `rushroyale/` — a plain-English Rush Royale reference (hub, basics, units, items, resources,
+- `rushroyale/` — a plain-English Rush Royale reference (hub, basics, units, spells, resources,
   progression, modes, glossary). **Unlisted and in progress**: nothing on the site links to it,
   it is absent from `sitemap.xml`, and every page carries `noindex`. Reach it at
-  `/rushroyale/`. Content lives in `units.json` / `items.json` / `resources.json` /
-  `glossary.json` and is rendered by `rushroyale.js`, so corrections are JSON edits. The pages
-  reuse `style.css`, `docs.css` and `docs.js` from the root — their links are root-absolute
-  because the pages sit one level down. Entries marked with a hatched edge still need real
-  numbers; none were invented
+  `/rushroyale/`. Content lives in `units.json` / `spells.json` / `resources.json` /
+  `glossary.json` and is rendered by `rushroyale.js`, so corrections are JSON edits.
+  `pages.json` indexes every section heading for the section-wide search (⌘K / Ctrl+K); add to
+  it when you add a section. Entries carrying a **Needs numbers** line still need real figures,
+  and every unit card says whether it was checked in-game or imported from the wiki; none were
+  invented.
+
+  **This section has its own visual identity and does not share the root's.** It loads only
+  `rushroyale.css` and `rushroyale.js` — not `style.css`, `docs.css` or `docs.js` — so it is
+  light/dark aware, uses Manrope rather than Inter, and none of the root's tokens reach it.
+  Restyling the rest of the site will not touch it, and vice versa
 - `style.css` — design tokens at the top, one section per block
 - `script.js` — kinetic hero type, scroll reveals
 - `assets/` — McLaren speedmark PNGs ([icons8](https://icons8.com)), hand-made SVGs (ribbon, grain)
