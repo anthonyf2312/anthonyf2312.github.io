@@ -1,5 +1,5 @@
 {
-  "$comment": "Rush Royale unit reference, rendered by rushroyale.js on units.html. Entries come from two tiers and the difference matters. TIER 1, player-verified: no 'source' field, no 'detail' flag. Transcribed from ability text supplied by a player, so the numbers are real - do not add, round or 'tidy' any figure that did not come from that text. TIER 2, wiki-imported: carries source='fandom-wiki' and sourceRevision, and is flagged detail='stub' so the card renders a 'Needs numbers' line. These were imported from the Fandom wiki, which is community-edited and largely stale (77% of its pages were last touched in 2021-2022); treat every figure in them as unconfirmed until someone checks it in-game. TIER 3, official patch notes: carries source='patch-notes' and sourceRevision set to the update's release date, and is flagged detail='stub' because the notes describe mechanics without giving figures. This tier is more trustworthy than the wiki and less than tier 1 - the developers wrote it, but nobody has checked it against the running game, and where the notes are silent (a faction, a number) the entry says so rather than guessing. When a tier-2 or tier-3 entry is verified, drop 'source', 'sourceRevision' and 'detail'. Fields: name, id (anchor slug), rarity, faction, role (unit type), damage (omit when unstated), summary, abilities (ordered paragraphs), notes, tags (search only). Authored order is alphabetical within a rarity block.",
+  "$comment": "Rush Royale unit reference, rendered by rushroyale.js on units.html. Entries come from two tiers and the difference matters. TIER 1, player-verified: no 'source' field, no 'detail' flag. Transcribed from ability text supplied by a player, so the numbers are real - do not add, round or 'tidy' any figure that did not come from that text. TIER 2, wiki-imported: carries source='fandom-wiki' and sourceRevision, and is flagged detail='stub'. These were imported from the Fandom wiki, which is community-edited and largely stale (77% of its pages were last touched in 2021-2022); treat every figure in them as unconfirmed until someone checks it in-game. TIER 3, official patch notes: carries source='patch-notes' and sourceRevision set to the update's release date, and is flagged detail='stub' because the notes describe mechanics without giving figures. This tier is more trustworthy than the wiki and less than tier 1 - the developers wrote it, but nobody has checked it against the running game, and where the notes are silent (a faction, a number) the entry says so rather than guessing. When a tier-2 or tier-3 entry is verified, drop 'source', 'sourceRevision' and 'detail'. Fields: name, id (anchor slug), rarity, faction, role (unit type), damage (omit when unstated), summary, abilities (ordered paragraphs), notes, tags (search only). Authored order is alphabetical within a rarity block. NOTE (2026-08-29): 'source', 'sourceRevision' and 'detail' are no longer rendered on the cards - where the reference draws its material is now stated once in the site footer instead of on every entry. The fields are kept as editorial metadata so a future editor can still tell the tiers apart.",
   "reviewed": "2026-08-29",
   "entries": [
     {
@@ -11,8 +11,7 @@
       "summary": "Has high attack speed.",
       "notes": [
         "Attacks the first enemy on the path.",
-        "The Fandom wiki unit page (revision 2026-01-06) lists base damage 54, attack interval 0.45s, attack speed increase 24% and hero cooldown 4.5% at maximum card level; at level 1, damage 29 and attack speed increase 10%. Not yet checked in-game.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "The Fandom wiki unit page (revision 2026-01-06) lists base damage 54, attack interval 0.45s, attack speed increase 24% and hero cooldown 4.5% at maximum card level; at level 1, damage 29 and attack speed increase 10%. Not yet checked in-game."
       ],
       "tags": [
         "archer",
@@ -39,8 +38,7 @@
       "role": "Debuff",
       "summary": "Has a chance to stun the target. Chance of subsequent stun is decreased.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "bombardier",
@@ -61,8 +59,7 @@
       "role": "Debuff",
       "summary": "Lowers target's movement speed on every hit.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "cold mage",
@@ -83,8 +80,7 @@
       "role": "Damage",
       "summary": "Deals damage in an area around the target.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "common",
@@ -105,8 +101,7 @@
       "role": "Damage",
       "summary": "The first hit at a target deals increased damage. Damage also grows with merge rank.",
       "notes": [
-        "Attacks a random enemy.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks a random enemy."
       ],
       "tags": [
         "common",
@@ -127,8 +122,7 @@
       "role": "Damage",
       "summary": "Deals lightning damage to the first three targets (100%, 70%, and 30% respectively).",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "common",
@@ -149,8 +143,7 @@
       "role": "Debuff",
       "summary": "Poisons enemies, dealing damage over time. Damage from poison increases with each merge rank.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "common",
@@ -171,8 +164,7 @@
       "role": "Damage",
       "summary": "Damage per strike increases by a random number between 1 and your critical damage value.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "common",
@@ -193,8 +185,7 @@
       "role": "Damage",
       "summary": "Attacks a random target.",
       "notes": [
-        "Attacks a random enemy.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks a random enemy."
       ],
       "tags": [
         "common",
@@ -215,8 +206,7 @@
       "role": "Summon",
       "summary": "Periodically spawns a puddle of acid that deals damage to monsters.",
       "notes": [
-        "Does not attack a target directly.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Does not attack a target directly."
       ],
       "tags": [
         "alchemist",
@@ -237,8 +227,7 @@
       "role": "Support",
       "summary": "Increases attack speed for four neighboring units based on merge rank.",
       "notes": [
-        "Does not attack a target directly.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Does not attack a target directly."
       ],
       "tags": [
         "banner",
@@ -259,8 +248,7 @@
       "role": "Debuff",
       "summary": "Increases damage taken by the target.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "chemist",
@@ -281,8 +269,7 @@
       "role": "Support",
       "summary": "Allows adjacent units to inflict additional damage against monsters.",
       "notes": [
-        "Does not attack a target directly.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Does not attack a target directly."
       ],
       "tags": [
         "grindstone",
@@ -303,8 +290,7 @@
       "role": "Support",
       "summary": "Produces mana every several seconds.",
       "notes": [
-        "Does not attack a target directly.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Does not attack a target directly."
       ],
       "tags": [
         "magic cauldron",
@@ -325,8 +311,7 @@
       "role": "Support",
       "summary": "Gives mana when merged or killed.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "first",
@@ -347,8 +332,7 @@
       "role": "Damage",
       "summary": "Gradually increases damage dealt in 10% increments.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "damage",
@@ -369,8 +353,7 @@
       "role": "Damage",
       "summary": "Deals additional damage to bosses and minibosses. Crazy Shooting is triggered, increasing damage and attack speed.",
       "notes": [
-        "Attacks the enemy with the most health.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the enemy with the most health."
       ],
       "tags": [
         "damage",
@@ -391,8 +374,7 @@
       "role": "Damage",
       "summary": "Increases damage according to the amount of unused mana.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "damage",
@@ -413,8 +395,7 @@
       "role": "Support",
       "summary": "Hurls a projectile that stuns enemies in the area.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "catapult",
@@ -436,8 +417,7 @@
       "notes": [
         "When merging with another unit, the Clown has a chance of copying it. The copy deals reduced damage, in the same way the Harlequin’s does.",
         "When the copy fails, the Clown gives mana instead, then loses a merge rank and is stunned.",
-        "The Clown and the Harlequin do not get along. Put both in one deck and the Clown appears angry, and its chance of copying is 0%.",
-        "From the official patch notes for Update 23.0 (2023-12-18). No figures are given there, so none are recorded here."
+        "The Clown and the Harlequin do not get along. Put both in one deck and the Clown appears angry, and its chance of copying is 0%."
       ],
       "tags": [
         "clown",
@@ -460,8 +440,7 @@
       "role": "Damage",
       "summary": "Has AoE attacks and inflicts additional damage against monsters under control effects.",
       "notes": [
-        "Attacks a random enemy.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks a random enemy."
       ],
       "tags": [
         "cold elemental",
@@ -482,8 +461,7 @@
       "role": "Damage",
       "summary": "With each attack against the target, the damage dealt to it by every Crystalmancer increases.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "crystalmancer",
@@ -504,8 +482,7 @@
       "role": "Debuff",
       "summary": "Periodically throws projectiles at monsters, inflicting venom damage and increasing venom damage in proportion to the number of hits.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "debuff",
@@ -526,8 +503,7 @@
       "role": "Damage",
       "summary": "Damage increased for every Engineer connected to this one.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "damage",
@@ -548,8 +524,7 @@
       "role": "Damage",
       "summary": "Finishes off a monster below a certain amount of health.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "damage",
@@ -570,8 +545,7 @@
       "role": "Damage",
       "summary": "The Gargoyle attacks enemies at odd merge ranks, and sleeps at even merge ranks.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "damage",
@@ -592,8 +566,7 @@
       "role": "Debuff",
       "summary": "Throws seeds that periodically deal damage.",
       "notes": [
-        "Attacks the enemy with the most health.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the enemy with the most health."
       ],
       "tags": [
         "debuff",
@@ -614,8 +587,7 @@
       "role": "Special",
       "summary": "Can be merged with any other unit of the same merge rank.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "dark domain",
@@ -636,8 +608,7 @@
       "role": "Debuff",
       "summary": "Poisons enemies, leaving a cloud that causes damage when they die.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "debuff",
@@ -658,8 +629,7 @@
       "role": "Support",
       "summary": "Can swap positions with any unit of the same merge rank, then become temporarily inactive.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "epic",
@@ -680,8 +650,7 @@
       "role": "Debuff",
       "summary": "Has a chance to teleport an enemy to the start of the map.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "debuff",
@@ -702,8 +671,7 @@
       "role": "Damage",
       "summary": "With an odd number, attack speed is reduced, he attacks a random target, and gains area damage.",
       "notes": [
-        "Attacks a random enemy.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks a random enemy."
       ],
       "tags": [
         "damage",
@@ -724,8 +692,7 @@
       "role": "Damage",
       "summary": "Has a chance to instantly kill the target. Does not affect bosses.",
       "notes": [
-        "Attacks a random enemy.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks a random enemy."
       ],
       "tags": [
         "damage",
@@ -746,8 +713,7 @@
       "role": "Damage",
       "summary": "Hits an extra target with chain lightning for each merge rank.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "damage",
@@ -768,8 +734,7 @@
       "role": "Support",
       "summary": "Bites the target, making it periodically give you mana.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "dark domain",
@@ -790,8 +755,7 @@
       "role": "Damage",
       "summary": "Goes into hurricane mode every few seconds, significantly increasing own attack speed.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "damage",
@@ -917,8 +881,7 @@
       "role": "Damage",
       "summary": "Periodically changes firing phase.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "boreas",
@@ -964,8 +927,7 @@
       "role": "Support",
       "summary": "Lowers (in PvP) or increases (in PvE) the attack speed of the other player's units.",
       "notes": [
-        "Does not attack a target directly.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Does not attack a target directly."
       ],
       "tags": [
         "clock of power",
@@ -987,8 +949,7 @@
       "summary": "The Corsair leaves explosive traps on the battlefield.",
       "notes": [
         "Does not attack a target directly.",
-        "Rebuilt since this text was written: as of 2026-05-25 the unit gained its own talents, including Admirals, Gunpowder Kegs and the Mega Blast, plus three Reincarnations. Treat the description above as historical until it is checked in-game.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Changed on 2026-05-25: the unit gained its own talents, including Admirals, Gunpowder Kegs and the Mega Blast, plus three Reincarnations. The description above predates that change."
       ],
       "tags": [
         "corsair",
@@ -1010,8 +971,7 @@
       "summary": "If there are 1 to 3 cultists nearby, begins attacking additional targets. If there are 4 Cultists nearby, becomes empowered and gains AoE attack.",
       "notes": [
         "Attacks the first enemy on the path.",
-        "Rebuilt since this text was written: as of 2026-04-13 the unit sacrifice now summons a large monster on the enemy field for every second Cultist sacrificed, and Demon form triggers on three adjacent Cultists. Treat the description above as historical until it is checked in-game.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Changed on 2026-04-13: the unit sacrifice now summons a large monster on the enemy field for every second Cultist sacrificed, and Demon form triggers on three adjacent Cultists. The description above predates that change."
       ],
       "tags": [
         "cultist",
@@ -1033,9 +993,8 @@
       "notes": [
         "Its blade speeds up as fury builds, tearing through defences and leaving enemies exposed, with reflected strikes adding further damage.",
         "Introduced as the top prize of the Star Force Day event (4-11 May 2026) rather than in a version update.",
-        "By the end of Season 73 the developers described it as having settled into the meta and leading at almost every progression level, and it was one of five units pre-banned from the July 2026 Rhandum League.",
-        "The patch notes do not state which faction it belongs to, so no faction is recorded here.",
-        "From the official announcement of 2026-05-04. No figures are given there, so none are recorded here."
+        "By the end of Season 73 it had settled into the meta, leading at almost every progression level. It was one of five units pre-banned from the July 2026 Rhandum League.",
+        "No faction is recorded for this unit."
       ],
       "tags": [
         "dark moloch",
@@ -1061,8 +1020,7 @@
       "summary": "Attacks a number of first targets equal to her merge rank number.",
       "notes": [
         "Attacks the first enemy on the path.",
-        "Rebuilt since this text was written: as of 2026-08-21 the unit Demon form now arrives at 35 merge ranks rather than 40, and the unit’s damage was rebuilt twice in 2026. Treat the description above as historical until it is checked in-game.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Changed on 2026-08-21: the unit Demon form now arrives at 35 merge ranks rather than 40, and the unit’s damage was rebuilt twice in 2026. The description above predates that change."
       ],
       "tags": [
         "damage",
@@ -1083,8 +1041,7 @@
       "role": "Special",
       "summary": "Summons a monster to the opponent's side when merging.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "dark domain",
@@ -1105,8 +1062,7 @@
       "role": "Support",
       "summary": "Increases the merging rank of the unit it merges with.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "dryad",
@@ -1128,8 +1084,7 @@
       "summary": "Blue sword increases unit damage, red sword decreases opponent damage.",
       "notes": [
         "Attacks a random enemy.",
-        "Update 21.0 (2023-08-31) reworked this unit substantially — the number of targets was cut, the buff was reduced and the Red Sword’s mechanic was replaced outright. The imported text below predates that rework.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Update 21.0 (2023-08-31) reworked this unit substantially — the number of targets was cut, the buff was reduced and the Red Sword’s mechanic was replaced outright. The imported text below predates that rework."
       ],
       "tags": [
         "enchanted sword",
@@ -1151,8 +1106,7 @@
       "summary": "Stein is always on the path.",
       "notes": [
         "Attacks the first enemy on the path.",
-        "Event unit — available only while its event is running.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Event unit — available only while its event is running."
       ],
       "tags": [
         "damage",
@@ -1176,8 +1130,7 @@
       "role": "Debuff",
       "summary": "Throws a blizzard at opponents every several seconds that slows them all at once.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "dark domain",
@@ -1199,8 +1152,7 @@
       "summary": "Creates a vortex that follows the first target, if it forms a line of three Genies it gains a buff charge, increasing the damage of all Genies and temporarily activating them.",
       "notes": [
         "Attacks the first enemy on the path.",
-        "Rebuilt since this text was written: as of 2026-04-13 the unit charge and Sultan bonuses were substantially rebuilt. Treat the description above as historical until it is checked in-game.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Changed on 2026-04-13: the unit charge and Sultan bonuses were substantially rebuilt. The description above predates that change."
       ],
       "tags": [
         "damage",
@@ -1223,8 +1175,7 @@
       "notes": [
         "Using the mana power-up makes the Gunslinger fire a Ghost Shot at the enemy.",
         "It can also enter Shootout mode, where it fires Ghost Shots by itself but for reduced damage.",
-        "Rebuilt since this text was written: as of 2026-05-13 the unit Shootout mode now activates automatically and lasts through the whole phantom and boss stage, and ricochets are tied to the mana power-up rather than merge rank. Treat the description above as historical until it is checked in-game.",
-        "From the official patch notes for Update 27.0 (2024-10-21). No figures are given there, so none are recorded here."
+        "Changed on 2026-05-13: the unit Shootout mode now activates automatically and lasts through the whole phantom and boss stage, and ricochets are tied to the mana power-up rather than merge rank. The description above predates that change."
       ],
       "tags": [
         "dark domain",
@@ -1247,8 +1198,7 @@
       "role": "Special",
       "summary": "When merged, creates a copy of any unit with the same merge rank.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "dark domain",
@@ -1269,8 +1219,7 @@
       "role": "Support",
       "summary": "Gives an instant kill chance to 4 neighboring units.",
       "notes": [
-        "Does not attack a target directly.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Does not attack a target directly."
       ],
       "tags": [
         "dark domain",
@@ -1292,8 +1241,7 @@
       "summary": "Increases damage against the target with each attack.",
       "notes": [
         "Attacks the first enemy on the path.",
-        "Rebuilt since this text was written: as of 2026-04-13 the unit now deals area damage passively and doubles it when active, with activation at 1, 3, 5 and 7 Inquisitors on the field. Treat the description above as historical until it is checked in-game.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Changed on 2026-04-13: the unit now deals area damage passively and doubles it when active, with activation at 1, 3, 5 and 7 Inquisitors on the field. The description above predates that change."
       ],
       "tags": [
         "damage",
@@ -1314,8 +1262,7 @@
       "role": "Support",
       "summary": "Increases the attack speed of neighboring units.",
       "notes": [
-        "Does not attack a target directly.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Does not attack a target directly."
       ],
       "tags": [
         "kingdom of light",
@@ -1337,8 +1284,7 @@
       "summary": "Kobolds on mines will enter them.",
       "notes": [
         "Attacks the first enemy on the path.",
-        "Event unit — available only while its event is running.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Event unit — available only while its event is running."
       ],
       "tags": [
         "event",
@@ -1360,8 +1306,7 @@
       "role": "Damage",
       "summary": "When merged, drops a meteorite down on enemies.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "damage",
@@ -1382,8 +1327,7 @@
       "role": "Damage",
       "summary": "Periodically causes Earthquakes that slow down and damage monsters in the area.",
       "notes": [
-        "Rebuilt since this text was written: as of 2026-04-13 the unit no longer triggers earthquakes by default; it now attacks the first target, builds Fury on merge, spawn and rank-up, and enters Berserker mode at maximum Fury. Treat the description above as historical until it is checked in-game.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Changed on 2026-04-13: the unit no longer triggers earthquakes by default; it now attacks the first target, builds Fury on merge, spawn and rank-up, and enters Berserker mode at maximum Fury. The description above predates that change."
       ],
       "tags": [
         "damage",
@@ -1404,8 +1348,7 @@
       "summary": "Power-up does not use any mana, but it is limited in time and has a cooldown.",
       "notes": [
         "Attacks the first enemy on the path.",
-        "Rebuilt since this text was written: as of 2026-04-13 the unit Monks in Harmony now always deal area damage, and Nirvana no longer grants it. Treat the description above as historical until it is checked in-game.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Changed on 2026-04-13: the unit Monks in Harmony now always deal area damage, and Nirvana no longer grants it. The description above predates that change."
       ],
       "tags": [
         "damage",
@@ -1428,8 +1371,7 @@
       "notes": [
         "The Phoenix’s abilities need you to interact with the field — the point is to awaken the flame on a Phoenix at a good moment rather than leaving it to fight on its own.",
         "One of the first five units to get Reincarnation, in the same update that introduced it.",
-        "The patch notes list its synergy units as the Harlequin, the Monk and the Witch.",
-        "From the official patch notes for Update 28.0 (2024-12-19). No figures are given there, so none are recorded here."
+        "Synergy units: the Harlequin, the Monk and the Witch."
       ],
       "tags": [
         "phoenix",
@@ -1452,8 +1394,7 @@
       "role": "Damage",
       "summary": "Absorbs other units of same or lower rank gaining a charge. Gets bonus abilities at 1, 5, 9 and 10 charges.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "damage",
@@ -1475,8 +1416,7 @@
       "summary": "Gets new abilities, depending on the number of merges this unit has been part of.",
       "notes": [
         "Attacks the first enemy on the path.",
-        "Rebuilt since this text was written: as of 2026-04-13 the unit damage now scales to 50 parts, and it gained three Reincarnations. Treat the description above as historical until it is checked in-game.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Changed on 2026-04-13: the unit damage now scales to 50 parts, and it gained three Reincarnations. The description above predates that change."
       ],
       "tags": [
         "damage",
@@ -1497,8 +1437,7 @@
       "role": "Support",
       "summary": "Absorbs allied units to increase the merge rank of other units.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "first",
@@ -1519,8 +1458,7 @@
       "role": "Damage",
       "summary": "Damage bonus from gaining treasure.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "damage",
@@ -1541,8 +1479,7 @@
       "role": "Special",
       "summary": "When merged, it stuns a unit and applies an effect that will reduce the merge rank after a delay.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "dark domain",
@@ -1563,8 +1500,7 @@
       "role": "Damage",
       "summary": "The Spirit Master has more Mana power-up levels than other units.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "damage",
@@ -1585,8 +1521,7 @@
       "role": "Debuff",
       "summary": "Creates time control spheres that stop enemies in place.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "debuff",
@@ -1607,8 +1542,7 @@
       "role": "Support",
       "summary": "When merged, summons a random unit to a free tile.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "first",
@@ -1630,8 +1564,7 @@
       "summary": "Receives charges when units in adjacent tiles are merged or increase rank.",
       "notes": [
         "Attacks the first enemy on the path.",
-        "Rebuilt since this text was written: as of 2026-04-13 the unit now takes charges from merges anywhere around it rather than only adjacent tiles, and hits multiple targets even while uncharged. Treat the description above as historical until it is checked in-game.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Changed on 2026-04-13: the unit now takes charges from merges anywhere around it rather than only adjacent tiles, and hits multiple targets even while uncharged. The description above predates that change."
       ],
       "tags": [
         "damage",
@@ -1652,8 +1585,7 @@
       "role": "Debuff",
       "summary": "Periodically throws 2 nets at random points on the field, slowing monsters down and making them take more damage.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "debuff",
@@ -1675,8 +1607,7 @@
       "summary": "Always appears merge rank one.",
       "notes": [
         "Attacks the first enemy on the path.",
-        "Event unit — available only while its event is running.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Event unit — available only while its event is running."
       ],
       "tags": [
         "damage",
@@ -1699,8 +1630,7 @@
       "notes": [
         "When it appears the Truffle gestates, and at the end of that period it turns into a random unit of a higher rank.",
         "Its mana power-up spreads spores. Merging units that are carrying spores returns mana.",
-        "Talents branch at level 9 between Catalyst, which speeds up the growth of all your units, and Cordyceps, which turns the Truffle into Mycelium and creates Toadstool mimics around it.",
-        "From the official patch notes for Update 35.2 (2026-04-16). No figures are given there, so none are recorded here."
+        "Talents branch at level 9 between Catalyst, which speeds up the growth of all your units, and Cordyceps, which turns the Truffle into Mycelium and creates Toadstool mimics around it."
       ],
       "tags": [
         "truffle",
@@ -1724,8 +1654,7 @@
       "summary": "Collects souls from monsters (except summoned ones).",
       "notes": [
         "Attacks the first enemy on the path.",
-        "Event unit — available only while its event is running.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Event unit — available only while its event is running."
       ],
       "tags": [
         "damage",
@@ -1748,8 +1677,7 @@
       "summary": "Appears moon or sun, can be ranked by merging or using Dryad unit.",
       "notes": [
         "Attacks the first enemy on the path.",
-        "Event unit — available only while its event is running.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Event unit — available only while its event is running."
       ],
       "tags": [
         "damage",
@@ -1772,8 +1700,7 @@
         "The Valkyrie has area attacks. Dying or merging earns Runes of Fate, which empower every Valkyrie and unlock further abilities.",
         "A special warrior, the Chosen One, can appear on the field. Losing or merging her summons new allies, and can pass the Chosen One status to another Valkyrie.",
         "The mana power-up raises the rank of a random Valkyrie.",
-        "The patch notes do not state which faction she belongs to, so no faction is recorded here.",
-        "From the official patch notes for Update 34.0 (2025-12-17). No figures are given there, so none are recorded here."
+        "No faction is recorded for this unit."
       ],
       "tags": [
         "valkyrie",
@@ -1794,8 +1721,7 @@
       "role": "Debuff",
       "summary": "When merging, the Witch curses an opponent's unit in PvP and enchants an ally's unit in Co-Op.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Attacks the first enemy on the path."
       ],
       "tags": [
         "debuff",
@@ -1817,8 +1743,7 @@
         "The first Wukong to appear is the genuine one; every Wukong after that is a clone with weaker stats. If the genuine one is lost, the strongest clone takes his place.",
         "Merging clones grants Feat charges, strengthens the genuine Wukong and summons more copies. Clones produced by merging are sent onto the path, where they form an attacking cyclone.",
         "The mana power-up summons new Wukongs and speeds up how fast power accumulates.",
-        "The patch notes do not state which faction he belongs to, so no faction is recorded here.",
-        "From the official patch notes for Update 35.0 (2026-02-19). No figures are given there, so none are recorded here."
+        "No faction is recorded for this unit."
       ],
       "tags": [
         "wukong",

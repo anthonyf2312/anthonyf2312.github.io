@@ -499,14 +499,6 @@
   // rather than in the JSON means a new field shows up by editing one line.
   const TAG_KEYS = ['rarity', 'faction', 'role', 'damage', 'slot', 'kind'];
 
-  /* The three tiers an entry can come from, weakest evidence first. An entry with no 'source'
-     was transcribed from the game itself and needs no caveat — that is the absence of a
-     label, not a label of its own. */
-  const SOURCE_LABELS = {
-    'fandom-wiki': { className: 'rr-source', label: 'Wiki import' },
-    'patch-notes': { className: 'rr-source rr-source-notes', label: 'Official notes' },
-  };
-
   let entries = [];
 
   // field name -> currently selected value, '' meaning "all". Groups AND together.
@@ -548,28 +540,11 @@
       any = true;
     }
 
-    /* Where the entry came from. Three quarters of the roster was imported from a wiki that
-       is years out of date, and a reader deserves to see which entry they are reading before
-       they act on it. Every branch reports fields the file already carries. */
-    const known = SOURCE_LABELS[entry.source];
-    if (known) {
-      const revision = entry.sourceRevision ? ` · ${entry.sourceRevision}` : '';
-      wrap.append(el('span', known.className, known.label + revision));
-      any = true;
-    } else if (entry.detail !== 'stub' && (entry.abilities || entry.summary)) {
-      wrap.append(el('span', 'rr-source rr-source-verified', 'Checked in-game'));
-      any = true;
-    }
+    /* No per-card provenance badge. Where the reference gets its material is stated once in
+       the footer instead of on all eighty cards, and the 'source' / 'detail' fields are kept
+       in the JSON as editorial metadata rather than rendered. */
 
     return any ? wrap : null;
-  }
-
-  /* An entry marked "stub" still needs real numbers. Say so on the card — a reference that
-     looks finished but isn't is worse than one that admits the gap. */
-  function stubNote(entry) {
-    return entry.detail === 'stub'
-      ? el('p', 'rr-stub-note', 'Needs numbers')
-      : null;
   }
 
   // --- the four layouts ---------------------------------------------------------------------
@@ -583,8 +558,6 @@
     if (tags) li.append(tags);
     if (entry.summary) li.append(el('p', 'rr-card-summary', entry.summary));
 
-    const stub = stubNote(entry);
-    if (stub) li.append(stub);
     return li;
   }
 
@@ -608,8 +581,6 @@
       li.append(dl);
     }
 
-    const stub = stubNote(entry);
-    if (stub) li.append(stub);
     return li;
   }
 
@@ -659,8 +630,6 @@
       li.append(box);
     }
 
-    const stub = stubNote(entry);
-    if (stub) li.append(stub);
     return li;
   }
 

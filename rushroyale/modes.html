@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap">
   <!-- This section is deliberately self-contained: it does not load /style.css or
        /docs.css. Inheriting them is what made it look like the rest of the site. -->
-  <link rel="stylesheet" href="rushroyale.css?v=7">
+  <link rel="stylesheet" href="rushroyale.css?v=9">
   <!-- Applies the stored theme before first paint, so a dark-mode reader never gets a
        white flash on navigation. Same idiom as the homepage's js flag. -->
   <script>try{var t=localStorage.getItem('rr-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
@@ -36,6 +36,7 @@
       <a href="progression.html">progression</a>
       <a href="modes.html" aria-current="page">modes</a>
       <a href="glossary.html">glossary</a>
+      <a href="contribute.html">contribute</a>
     </div>
   </nav>
 
@@ -87,25 +88,12 @@
         <h1 class="doc-title">Where<br>to play</h1>
         <p class="doc-lede">The same board and the same five cards, pointed at different
         problems — one opponent, one teammate, or a clan-sized target.</p>
+      <p class="doc-meta">
+        <span>Last reviewed 2026-08-29</span>
+        <span class="doc-meta-dot" aria-hidden="true">·</span>
+        <span class="doc-credit">Helped with Claude Code</span>
+      </p>
       </header>
-
-      <div class="doc-note rr-stamp">
-        <p><b>Unofficial community reference.</b> Not affiliated with My.Games or the Rush Royale team.</p>
-        <p>Rules confirmed by someone who plays the game are stated plainly, numbers and all.
-        Any entry carrying a <b>Needs numbers</b> line is still waiting on figures checked in-game.</p>
-        <p><b>Co-op is sourced from the game's in-game Knowledge Base</b>, recorded
-        <b>2026-08-27</b>. Its dungeon, chapter and floor structure supersedes the Fandom wiki's
-        account, which described a flat run of numbered waves with a boss every tenth — that was
-        from <b>2021-05-24</b> and has been removed rather than left standing beside this one.</p>
-        <p>PvP, clans and events still follow the wiki's pages, last edited <b>2022-11-25</b>,
-        <b>2022-11-25</b> and <b>2022-11-22</b>. Dragon Rift is kept from earlier in-game
-        reporting because the wiki has no page for it.</p>
-        <p><b>The Clan War, the Death Wave and the other competitive modes come from the
-        developers' news archive</b>, read on <b>2026-08-29</b>, across both the rushroyale.my.games feed and the newer market.my.games one that runs to <b>version 37.1</b>. That archive is what showed the
-        four-phase Clan Tournament described here previously had been replaced outright in
-        February 2025 — so that section was rewritten rather than left standing.</p>
-        <p>Last reviewed 2026-08-29.</p>
-      </div>
 
       <section id="pvp">
         <h2>PvP</h2>
@@ -448,12 +436,22 @@
   </div>
 
   <footer class="doc-footer">
-    <a href="index.html">← Rush Royale contents</a>
-    <a href="glossary.html">glossary</a>
-    <a href="/">anthonyf2312.github.io</a>
-    <span>unofficial · work in progress</span>
+    <div class="doc-footer-links">
+      <a href="index.html">← Rush Royale contents</a>
+      <a href="glossary.html">glossary</a>
+      <a href="contribute.html">contribute</a>
+      <a href="/">anthonyf2312.github.io</a>
+    </div>
+    <p class="doc-footer-sources"><b>Where this comes from:</b> the
+      <a href="https://rushroyale.fandom.com/wiki/RushRoyale_Wiki" rel="nofollow noopener">Rush Royale
+      Fandom wiki</a>, the official
+      <a href="https://market.my.games/rush_royale?content=news" rel="nofollow noopener">Rush Royale
+      news</a>, and from playing the game. Something wrong or missing?
+      <a href="contribute.html">Tell us</a>.</p>
+    <p class="doc-footer-legal">Unofficial · work in progress · not affiliated with My.Games or the
+      Rush Royale team.</p>
   </footer>
 
-  <script defer src="rushroyale.js?v=7"></script>
+  <script defer src="rushroyale.js?v=9"></script>
 </body>
 </html>

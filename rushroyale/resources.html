@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap">
   <!-- This section is deliberately self-contained: it does not load /style.css or
        /docs.css. Inheriting them is what made it look like the rest of the site. -->
-  <link rel="stylesheet" href="rushroyale.css?v=7">
+  <link rel="stylesheet" href="rushroyale.css?v=9">
   <!-- Applies the stored theme before first paint, so a dark-mode reader never gets a
        white flash on navigation. Same idiom as the homepage's js flag. -->
   <script>try{var t=localStorage.getItem('rr-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
@@ -36,6 +36,7 @@
       <a href="progression.html">progression</a>
       <a href="modes.html">modes</a>
       <a href="glossary.html">glossary</a>
+      <a href="contribute.html">contribute</a>
     </div>
   </nav>
 
@@ -74,20 +75,12 @@
         <p class="doc-lede">Rush Royale has a lot of currencies and they are easy to mix up.
         Each one below answers the same three questions: what it is, where it comes from,
         what to spend it on.</p>
+      <p class="doc-meta">
+        <span>Last reviewed 2026-08-29</span>
+        <span class="doc-meta-dot" aria-hidden="true">·</span>
+        <span class="doc-credit">Helped with Claude Code</span>
+      </p>
       </header>
-
-      <div class="doc-note rr-stamp">
-        <p><b>Unofficial community reference.</b> Not affiliated with My.Games or the Rush Royale team.</p>
-        <p>Rules confirmed by someone who plays the game are stated plainly, numbers and all.
-        Unverified stat figures — damage values, upgrade costs, drop rates — are left out rather than
-        guessed, because they shift every patch and a wrong number is worse than none. Any entry carrying a
-        <b>Needs numbers</b> line is still waiting on figures checked in-game.</p>
-        <p><b>Celestial Shards, Essence and Perk Fragments are sourced from the game's in-game
-        Knowledge Base</b>, recorded <b>2026-08-27</b>, so they carry no <b>Needs numbers</b> line. Item
-        Fragments have been removed: heroes no longer take craftable equipment, and a hero's own
-        power now comes from <a href="progression.html#ability-points">ability points</a>.</p>
-        <p>Last reviewed 2026-08-29.</p>
-      </div>
 
       <section id="overview">
         <h2>The short version</h2>
@@ -177,12 +170,22 @@
   </div>
 
   <footer class="doc-footer">
-    <a href="index.html">← Rush Royale contents</a>
-    <a href="glossary.html">glossary</a>
-    <a href="/">anthonyf2312.github.io</a>
-    <span>unofficial · work in progress</span>
+    <div class="doc-footer-links">
+      <a href="index.html">← Rush Royale contents</a>
+      <a href="glossary.html">glossary</a>
+      <a href="contribute.html">contribute</a>
+      <a href="/">anthonyf2312.github.io</a>
+    </div>
+    <p class="doc-footer-sources"><b>Where this comes from:</b> the
+      <a href="https://rushroyale.fandom.com/wiki/RushRoyale_Wiki" rel="nofollow noopener">Rush Royale
+      Fandom wiki</a>, the official
+      <a href="https://market.my.games/rush_royale?content=news" rel="nofollow noopener">Rush Royale
+      news</a>, and from playing the game. Something wrong or missing?
+      <a href="contribute.html">Tell us</a>.</p>
+    <p class="doc-footer-legal">Unofficial · work in progress · not affiliated with My.Games or the
+      Rush Royale team.</p>
   </footer>
 
-  <script defer src="rushroyale.js?v=7"></script>
+  <script defer src="rushroyale.js?v=9"></script>
 </body>
 </html>

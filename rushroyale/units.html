@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap">
   <!-- This section is deliberately self-contained: it does not load /style.css or
        /docs.css. Inheriting them is what made it look like the rest of the site. -->
-  <link rel="stylesheet" href="rushroyale.css?v=7">
+  <link rel="stylesheet" href="rushroyale.css?v=9">
   <!-- Applies the stored theme before first paint, so a dark-mode reader never gets a
        white flash on navigation. Same idiom as the homepage's js flag. -->
   <script>try{var t=localStorage.getItem('rr-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
@@ -36,6 +36,7 @@
       <a href="progression.html">progression</a>
       <a href="modes.html">modes</a>
       <a href="glossary.html">glossary</a>
+      <a href="contribute.html">contribute</a>
     </div>
   </nav>
 
@@ -81,67 +82,22 @@
       <header class="doc-hero">
         <p class="doc-eyebrow">RUSH ROYALE · UNITS</p>
         <h1 class="doc-title">What the<br>units do</h1>
-        <p class="doc-lede">The full roster, from three sources: a handful transcribed from
-        real in-game ability text, a few from the developers' own patch notes, and the rest
-        imported from the community wiki and marked as needing checking.</p>
+        <p class="doc-lede">Every unit in the game, filterable by rarity and faction — with what each
+        one actually does on the board.</p>
+      <p class="doc-meta">
+        <span>Last reviewed 2026-08-29</span>
+        <span class="doc-meta-dot" aria-hidden="true">·</span>
+        <span class="doc-credit">Helped with Claude Code</span>
+      </p>
       </header>
 
-      <div class="doc-note rr-stamp">
-        <p><b>Unofficial community reference.</b> Not affiliated with My.Games or the Rush Royale team.</p>
-        <p>Rules confirmed by someone who plays the game are stated plainly, numbers and all.
-        Stat figures are never guessed: they are either transcribed from the game, or attributed
-        to the source that claimed them. Entries still waiting on figures checked in-game carry a
-        <b>Needs numbers</b> line.</p>
-        <p><b>Reincarnation, synergized units and Celestial Shards are sourced from the game's
-        in-game Knowledge Base</b>, recorded <b>2026-08-27</b>. The roster below is not — it is
-        still the wiki import described in the next box.</p>
-        <p>Last reviewed 2026-08-29.</p>
-      </div>
-
       <div class="doc-note doc-warn">
-        <p><strong>Most of this roster is unverified, and every card says which kind it
-        is.</strong> There are three tiers, and the badge on each card tells you which one you
-        are reading:</p>
-        <div class="doc-table-wrap">
-          <table>
-            <thead><tr><th>Badge</th><th>Count</th><th>What it means</th></tr></thead>
-            <tbody>
-              <tr>
-                <td><b>Checked in-game</b></td>
-                <td>5</td>
-                <td>Banshee, Bard, Blade Dancer, Blazey and Bruiser — transcribed from real
-                in-game ability text. The figures are real.</td>
-              </tr>
-              <tr>
-                <td><b>Official notes</b></td>
-                <td>7</td>
-                <td>Taken from the developers' own patch notes, with the update's date. They
-                describe what a unit does but give no figures, so none are quoted.</td>
-              </tr>
-              <tr>
-                <td><b>Wiki import</b></td>
-                <td>68</td>
-                <td>From the <a href="https://rushroyale.fandom.com/wiki/Units"
-                rel="nofollow noopener">Rush Royale Fandom wiki</a>. Weakest of the three.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p>Take the wiki entries as a table of contents, not as fact. That wiki is
-        community-edited and mostly old: roughly three quarters of its pages were last
-        touched in 2021 or 2022, and the roster page it came from gives no stat figures at
-        all — so none are quoted here. Where a wiki page did give numbers, they are attributed
-        to it by revision date rather than stated as this site's own.</p>
-        <p>A check against <strong>82 posts</strong> across both of the developers' news archives
-        found that <strong>56 of these 68 wiki entries have been officially changed since
-        2024</strong>, and <strong>33 of them during 2026 alone</strong>. The wiki text describing
-        them is very likely out of date even where it once was right. Anything still carrying a
-        <b>Needs numbers</b> line is waiting on someone confirming it in-game.</p>
-        <p>Ten entries carry something stronger than that. Where the developers did not tune a
-        unit but <strong>rebuilt how it works</strong> — the Minotaur no longer causing earthquakes
-        by default, the Monk always dealing area damage in Harmony, Tesla drawing charges from
-        merges anywhere around it — the card says so directly, with the date. In those cases the
-        description below is history, not a description of the current unit.</p>
+        <p><strong>Balance changes land constantly, so read any figure below as a starting
+        point rather than as this patch’s truth.</strong> Where a unit was not just tuned but
+        rebuilt — the Minotaur no longer triggering earthquakes by default, the Monk always
+        dealing area damage in Harmony — the card says so with the date it changed.</p>
+        <p>Spotted something out of date? <a href="contribute.html">Tell us</a> — corrections
+        are the single most useful thing anyone can send.</p>
       </div>
 
       <section id="what">
@@ -344,12 +300,22 @@
   </div>
 
   <footer class="doc-footer">
-    <a href="index.html">← Rush Royale contents</a>
-    <a href="glossary.html">glossary</a>
-    <a href="/">anthonyf2312.github.io</a>
-    <span>unofficial · work in progress</span>
+    <div class="doc-footer-links">
+      <a href="index.html">← Rush Royale contents</a>
+      <a href="glossary.html">glossary</a>
+      <a href="contribute.html">contribute</a>
+      <a href="/">anthonyf2312.github.io</a>
+    </div>
+    <p class="doc-footer-sources"><b>Where this comes from:</b> the
+      <a href="https://rushroyale.fandom.com/wiki/RushRoyale_Wiki" rel="nofollow noopener">Rush Royale
+      Fandom wiki</a>, the official
+      <a href="https://market.my.games/rush_royale?content=news" rel="nofollow noopener">Rush Royale
+      news</a>, and from playing the game. Something wrong or missing?
+      <a href="contribute.html">Tell us</a>.</p>
+    <p class="doc-footer-legal">Unofficial · work in progress · not affiliated with My.Games or the
+      Rush Royale team.</p>
   </footer>
 
-  <script defer src="rushroyale.js?v=7"></script>
+  <script defer src="rushroyale.js?v=9"></script>
 </body>
 </html>

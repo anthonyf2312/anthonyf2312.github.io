@@ -283,6 +283,11 @@
       "path": "glossary.html",
       "title": "Every term, one sentence",
       "sections": []
+    },
+    {
+      "path": "contribute.html",
+      "title": "Found something wrong?",
+      "sections": []
     }
   ]
 }

@@ -69,8 +69,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
   --rr-epic: #6D42C0;
   --rr-legendary: #8A5A08;
 
-  /* "Checked in-game" is a state, not a rarity, so it gets its own green. */
-  --rr-verified: #1F7A43;
+  /* Claude's terracotta, darkened here so the credit line clears contrast on paper white. */
+  --rr-claude: #A8482F;
 
   --rr-shadow-sm: 0 1px 2px rgba(13, 17, 23, 0.06), 0 1px 1px rgba(13, 17, 23, 0.04);
   --rr-shadow-md: 0 8px 24px -10px rgba(13, 17, 23, 0.18), 0 2px 6px -2px rgba(13, 17, 23, 0.08);
@@ -139,7 +139,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
     --rr-epic: #A97BFF;
     --rr-legendary: #F2B23C;
 
-    --rr-verified: #5CCB7E;
+    --rr-claude: #D97757;
 
     --rr-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.40), 0 1px 1px rgba(0, 0, 0, 0.24);
     --rr-shadow-md: 0 8px 24px -10px rgba(0, 0, 0, 0.62), 0 2px 6px -2px rgba(0, 0, 0, 0.40);
@@ -174,7 +174,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   --rr-epic: #A97BFF;
   --rr-legendary: #F2B23C;
 
-  --rr-verified: #5CCB7E;
+  --rr-claude: #D97757;
 
   --rr-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.40), 0 1px 1px rgba(0, 0, 0, 0.24);
   --rr-shadow-md: 0 8px 24px -10px rgba(0, 0, 0, 0.62), 0 2px 6px -2px rgba(0, 0, 0, 0.40);
@@ -610,6 +610,21 @@ body > .doc-main { padding-left: var(--rr-pad); padding-right: var(--rr-pad); ma
   color: var(--rr-fg-secondary);
   letter-spacing: -0.012em;
 }
+
+/* Sits under the title in place of the old provenance block: when this was last gone
+   over, and who helped. */
+.doc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rr-space-2);
+  margin-top: var(--rr-space-5);
+  font-size: var(--rr-text-sm);
+  color: var(--rr-fg-muted);
+}
+.doc-meta-dot { color: var(--rr-hairline-strong); }
+.doc-credit { color: var(--rr-claude); font-weight: 600; }
+.doc-credit a { color: inherit; text-underline-offset: 0.2em; }
 
 .doc-main section { scroll-margin-top: calc(var(--rr-nav-h) + var(--rr-space-4)); }
 
@@ -1073,37 +1088,6 @@ body > .doc-main { padding-left: var(--rr-pad); padding-right: var(--rr-pad); ma
 .rr-tag-epic { --rr-rarity: var(--rr-epic); }
 .rr-tag-legendary { --rr-rarity: var(--rr-legendary); }
 
-/* Where a claim came from. Rendered from the data's own source fields — it reports
-   what the file already records and adds nothing to it. */
-.rr-source {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--rr-space-1);
-  font-size: var(--rr-text-xs);
-  font-weight: 600;
-  padding: 0.15rem var(--rr-space-2);
-  border-radius: var(--rr-r-sm);
-  border: 1px solid var(--rr-hairline);
-  color: var(--rr-fg-muted);
-  background: var(--rr-bg-raised);
-  white-space: nowrap;
-}
-/* Three tiers of evidence, ramped by weight rather than by hue: the four rarity colours
-   already sit in this same badge row, so a fourth and fifth hue here would read as rarity.
-   Quietest is the stale wiki, strongest is text checked in the game itself. */
-.rr-source-notes {
-  color: var(--rr-fg);
-  border-color: var(--rr-hairline-strong);
-  background: var(--rr-bg-raised);
-  font-weight: 700;
-}
-
-.rr-source-verified {
-  color: var(--rr-verified);
-  border-color: color-mix(in srgb, var(--rr-verified) 35%, transparent);
-  background: color-mix(in srgb, var(--rr-verified) 12%, var(--rr-bg-elevated));
-}
-
 /* A heading that only applies to one mode says so inline. */
 .rr-scope {
   display: inline-block;
@@ -1133,15 +1117,6 @@ body > .doc-main { padding-left: var(--rr-pad); padding-right: var(--rr-pad); ma
   margin-top: var(--rr-space-3);
 }
 .rr-facts dd { margin: var(--rr-space-1) 0 0; font-size: var(--rr-text-sm); color: var(--rr-fg-secondary); }
-
-/* ---------- stubs ---------- */
-
-.rr-stub-note {
-  font-size: var(--rr-text-xs);
-  font-weight: 600;
-  color: var(--rr-fg-muted);
-  margin: var(--rr-space-1) 0 0;
-}
 
 /* ---------- states ---------- */
 
@@ -1219,9 +1194,8 @@ body > .doc-main { padding-left: var(--rr-pad); padding-right: var(--rr-pad); ma
 
 .doc-footer {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--rr-space-2) var(--rr-space-6);
-  align-items: center;
+  flex-direction: column;
+  gap: var(--rr-space-4);
   padding: var(--rr-space-6) var(--rr-pad) var(--rr-space-10);
   border-top: 1px solid var(--rr-hairline);
   font-size: var(--rr-text-sm);
@@ -1229,12 +1203,37 @@ body > .doc-main { padding-left: var(--rr-pad); padding-right: var(--rr-pad); ma
   max-width: 90rem;
   margin: 0 auto;
 }
+
+.doc-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rr-space-2) var(--rr-space-6);
+  align-items: center;
+}
+
 .doc-footer a {
   color: var(--rr-fg-secondary);
   text-decoration: none;
   transition: color 0.18s var(--rr-ease);
 }
 .doc-footer a:hover { color: var(--rr-accent); }
+
+/* Where the whole reference comes from, said once here instead of on every page and
+   every card. */
+.doc-footer-sources {
+  max-width: 74ch;
+  line-height: 1.7;
+}
+.doc-footer-sources a {
+  color: var(--rr-fg-secondary);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--rr-fg-muted) 45%, transparent);
+  text-underline-offset: 0.2em;
+}
+.doc-footer-sources a:hover { color: var(--rr-accent); text-decoration-color: currentColor; }
+.doc-footer-sources b { color: var(--rr-fg-secondary); font-weight: 700; }
+
+.doc-footer-legal { font-size: var(--rr-text-xs); }
 
 /* ---------- motion ---------- */
 
