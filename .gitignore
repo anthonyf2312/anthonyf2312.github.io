@@ -7,3 +7,8 @@ debug.log
 # Working notes from reading the official news archive. Local only:
 # these summarise My.Games content and are not for publication.
 rushroyale/_research/
+
+# Raw pasted Discord posts. Local only, same reason as _research/:
+# this is My.Games' wording verbatim, not a summary.
+rushroyale/discord updates.md
+rushroyale/discord-updates.md

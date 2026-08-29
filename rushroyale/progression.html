@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap">
   <!-- This section is deliberately self-contained: it does not load /style.css or
        /docs.css. Inheriting them is what made it look like the rest of the site. -->
-  <link rel="stylesheet" href="rushroyale.css?v=5">
+  <link rel="stylesheet" href="rushroyale.css?v=6">
   <!-- Applies the stored theme before first paint, so a dark-mode reader never gets a
        white flash on navigation. Same idiom as the homepage's js flag. -->
   <script>try{var t=localStorage.getItem('rr-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
@@ -133,7 +133,7 @@
 
         <h3 id="hero-roster">Which heroes there are</h3>
         <p>Heroes are graded by rarity like units, but rarity here sets how many fragments a
-        hero needs rather than how strong it is.</p>
+        hero needs rather than how strong it is. There are <strong>15</strong>.</p>
         <div class="doc-table-wrap">
           <table>
             <thead><tr><th>Rarity</th><th>Heroes</th></tr></thead>
@@ -141,7 +141,7 @@
               <tr><td>Common</td><td>Captain, Bestie</td></tr>
               <tr><td>Rare</td><td>Trickster, Jay, Elementalist</td></tr>
               <tr><td>Epic</td><td>Gadget, Mari, Mermaid, Snowflake, Flicker</td></tr>
-              <tr><td>Legendary</td><td>Zeus, Necromancer, Fortuna, Lucia</td></tr>
+              <tr><td>Legendary</td><td>Zeus, Necromancer, Fortuna, Lucia, SIMM-21</td></tr>
             </tbody>
           </table>
         </div>
@@ -154,11 +154,21 @@
         their event runs and cannot be obtained afterwards: <strong>Jake Paul</strong> (2023),
         and <strong>PAC-MAN</strong> and <strong>Ducky</strong> from the arcade crossover in
         March 2026.</p>
-        <div class="doc-note">
-          <p><b>Where this came from.</b> The roster and the level cap are taken from the
-          official patch notes, not from in-game text. The names and rarities are stated there
-          directly; nothing about their abilities is recorded here, because the notes describe
-          changes rather than what each hero currently does.</p>
+        <p><strong>SIMM-21</strong> is the odd one out. It is a defensive hero — its abilities
+        spawn a bot, shield and cleanse your units, and cut the damage bosses deal — and the
+        developers described it in June 2026 as good at protecting a board but weaker overall
+        than the other legendary heroes. It is listed here because it demonstrably exists, but
+        see the note below.</p>
+        <div class="doc-note doc-warn">
+          <p><b>Where this came from, and one gap.</b> The roster and the level cap are taken
+          from the official patch notes, not from in-game text. The names and rarities are stated
+          there directly; nothing about their abilities is recorded here, because the notes
+          describe changes rather than what each hero currently does.</p>
+          <p><b>SIMM-21 has no introduction anywhere.</b> Across all 83 posts in both official
+          news archives it is named exactly once, in a June 2026 balance post that
+          <em>reworks</em> it. Whatever announced it was never published to either feed, so how
+          you obtain it is unknown — treat this entry as evidence the hero exists and nothing
+          more.</p>
         </div>
 
         <h3 id="ability-points">Ability points</h3>
@@ -334,6 +344,6 @@
     <span>unofficial · work in progress</span>
   </footer>
 
-  <script defer src="rushroyale.js?v=5"></script>
+  <script defer src="rushroyale.js?v=6"></script>
 </body>
 </html>

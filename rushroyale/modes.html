@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap">
   <!-- This section is deliberately self-contained: it does not load /style.css or
        /docs.css. Inheriting them is what made it look like the rest of the site. -->
-  <link rel="stylesheet" href="rushroyale.css?v=5">
+  <link rel="stylesheet" href="rushroyale.css?v=6">
   <!-- Applies the stored theme before first paint, so a dark-mode reader never gets a
        white flash on navigation. Same idiom as the homepage's js flag. -->
   <script>try{var t=localStorage.getItem('rr-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
@@ -51,6 +51,7 @@
         <li><a href="#variants">PvP variants</a></li>
         <li><a href="#death-wave">The Death Wave</a></li>
         <li><a href="#newer-modes">Other competitive modes</a></li>
+        <li><a href="#duels">Duels</a></li>
         <li><a href="#arenas">Arenas</a></li>
       </ul>
 
@@ -100,7 +101,7 @@
         <b>2022-11-25</b> and <b>2022-11-22</b>. Dragon Rift is kept from earlier in-game
         reporting because the wiki has no page for it.</p>
         <p><b>The Clan War, the Death Wave and the other competitive modes come from the
-        developers' news archive</b>, read on <b>2026-08-28</b>. That archive is what showed the
+        developers' news archive</b>, read on <b>2026-08-29</b>, across both the rushroyale.my.games feed and the newer market.my.games one that runs to <b>version 37.1</b>. That archive is what showed the
         four-phase Clan Tournament described here previously had been replaced outright in
         February 2025 — so that section was rewritten rather than left standing.</p>
         <p>Last reviewed 2026-08-29.</p>
@@ -180,7 +181,8 @@
       <section id="newer-modes">
         <h2>The other competitive modes</h2>
         <p>Several modes have been added since the pages above were first written. Each is
-        summarised from the official patch notes rather than from in-game text.</p>
+        summarised from the official patch notes rather than from in-game text, and is current to
+        <strong>version 37.1 (August 2026)</strong>.</p>
 
         <h3 id="rhandum-league">Rhandum League</h3>
         <p>The one mode where your collection does not matter at all. Every player is given the
@@ -217,10 +219,28 @@
         <strong>modifier that changes every day</strong>, so decks that worked yesterday may not
         today. Scored in Medals; pays economic and combat perks.</p>
 
+        <h3 id="duels">Duels</h3>
+        <p>For players past <strong>1,500 legendarity or 6,000 trophies</strong>. When you start an
+        ordinary PvP battle the game stops looking for someone merely near your rating, and looks
+        instead for the closest match in actual power who is in the lobby right now. Several
+        candidates get an invitation at once and the first to accept takes the fight — so you do
+        nothing to opt in beyond playing.</p>
+        <p>There is a seasonal quest for taking part, paying <strong>Legend Medals</strong>, and a
+        <strong>Duellist badge</strong> after 50 duels regardless of whether you win them.</p>
+
         <h3 id="challenge-of-hunters">Challenge of Hunters</h3>
-        <p>Previously the Challenge of Seven. A one-hour sprint for a group of 15, scored by
-        <strong>how many of three randomly chosen bosses you kill</strong> — and kills count even
-        in matches you lose. Free to enter.</p>
+        <p>Previously the Challenge of Seven, and reworked again in May 2026. It now runs
+        <strong>48 hours of battles followed by 24 hours off</strong> rather than as a one-hour
+        sprint.</p>
+        <p>Scoring is by bosses killed, but weighted: a <strong>special target pays 3 points</strong>
+        and every other boss pays 1. Only your first few battles each day count towards it — once
+        that quota is spent, further kills score nothing, so there is no advantage in grinding
+        overnight. You choose which mode to hunt in: classic PvP,
+        <a href="#shard-hunting">Shard Hunting</a> or the
+        <a href="#supremacy-tournament">Supremacy Tournament</a>.</p>
+        <p>Lobbies were made deliberately larger, to stop one or two players running away with the
+        leaderboard. Experiment Coins now reach 20th place rather than 12th, and the top 10 get
+        caskets with a good chance of Bonus Orbs.</p>
 
         <h3 id="star-of-the-week">Star of the Week</h3>
         <p>A featured unit rotates weekly, always from one of the factions currently blessed.
@@ -434,6 +454,6 @@
     <span>unofficial · work in progress</span>
   </footer>
 
-  <script defer src="rushroyale.js?v=5"></script>
+  <script defer src="rushroyale.js?v=6"></script>
 </body>
 </html>

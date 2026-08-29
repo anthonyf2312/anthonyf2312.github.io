@@ -234,6 +234,10 @@
           "title": "Other competitive modes"
         },
         {
+          "id": "duels",
+          "title": "Duels"
+        },
+        {
           "id": "arenas",
           "title": "Arenas"
         },

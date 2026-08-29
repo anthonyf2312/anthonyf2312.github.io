@@ -987,6 +987,7 @@
       "summary": "The Corsair leaves explosive traps on the battlefield.",
       "notes": [
         "Does not attack a target directly.",
+        "Rebuilt since this text was written: as of 2026-05-25 the unit gained its own talents, including Admirals, Gunpowder Kegs and the Mega Blast, plus three Reincarnations. Treat the description above as historical until it is checked in-game.",
         "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
       ],
       "tags": [
@@ -1009,6 +1010,7 @@
       "summary": "If there are 1 to 3 cultists nearby, begins attacking additional targets. If there are 4 Cultists nearby, becomes empowered and gains AoE attack.",
       "notes": [
         "Attacks the first enemy on the path.",
+        "Rebuilt since this text was written: as of 2026-04-13 the unit sacrifice now summons a large monster on the enemy field for every second Cultist sacrificed, and Demon form triggers on three adjacent Cultists. Treat the description above as historical until it is checked in-game.",
         "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
       ],
       "tags": [
@@ -1023,6 +1025,34 @@
       "sourceRevision": "2026-08-02"
     },
     {
+      "name": "Dark Moloch",
+      "id": "dark-moloch",
+      "rarity": "Legendary",
+      "role": "Damage",
+      "summary": "A front-line damage unit whose power grows through cycles of sacrifice and rebirth.",
+      "notes": [
+        "Its blade speeds up as fury builds, tearing through defences and leaving enemies exposed, with reflected strikes adding further damage.",
+        "Introduced as the top prize of the Star Force Day event (4-11 May 2026) rather than in a version update.",
+        "By the end of Season 73 the developers described it as having settled into the meta and leading at almost every progression level, and it was one of five units pre-banned from the July 2026 Rhandum League.",
+        "The patch notes do not state which faction it belongs to, so no faction is recorded here.",
+        "From the official announcement of 2026-05-04. No figures are given there, so none are recorded here."
+      ],
+      "tags": [
+        "dark moloch",
+        "moloch",
+        "sacrifice",
+        "rebirth",
+        "blade",
+        "front line",
+        "legendary",
+        "damage",
+        "star force day"
+      ],
+      "detail": "stub",
+      "source": "patch-notes",
+      "sourceRevision": "2026-05-04"
+    },
+    {
       "name": "Demon Hunter",
       "id": "demon-hunter",
       "rarity": "Legendary",
@@ -1031,6 +1061,7 @@
       "summary": "Attacks a number of first targets equal to her merge rank number.",
       "notes": [
         "Attacks the first enemy on the path.",
+        "Rebuilt since this text was written: as of 2026-08-21 the unit Demon form now arrives at 35 merge ranks rather than 40, and the unit’s damage was rebuilt twice in 2026. Treat the description above as historical until it is checked in-game.",
         "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
       ],
       "tags": [
@@ -1168,6 +1199,7 @@
       "summary": "Creates a vortex that follows the first target, if it forms a line of three Genies it gains a buff charge, increasing the damage of all Genies and temporarily activating them.",
       "notes": [
         "Attacks the first enemy on the path.",
+        "Rebuilt since this text was written: as of 2026-04-13 the unit charge and Sultan bonuses were substantially rebuilt. Treat the description above as historical until it is checked in-game.",
         "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
       ],
       "tags": [
@@ -1191,6 +1223,7 @@
       "notes": [
         "Using the mana power-up makes the Gunslinger fire a Ghost Shot at the enemy.",
         "It can also enter Shootout mode, where it fires Ghost Shots by itself but for reduced damage.",
+        "Rebuilt since this text was written: as of 2026-05-13 the unit Shootout mode now activates automatically and lasts through the whole phantom and boss stage, and ricochets are tied to the mana power-up rather than merge rank. Treat the description above as historical until it is checked in-game.",
         "From the official patch notes for Update 27.0 (2024-10-21). No figures are given there, so none are recorded here."
       ],
       "tags": [
@@ -1259,6 +1292,7 @@
       "summary": "Increases damage against the target with each attack.",
       "notes": [
         "Attacks the first enemy on the path.",
+        "Rebuilt since this text was written: as of 2026-04-13 the unit now deals area damage passively and doubles it when active, with activation at 1, 3, 5 and 7 Inquisitors on the field. Treat the description above as historical until it is checked in-game.",
         "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
       ],
       "tags": [
@@ -1348,6 +1382,7 @@
       "role": "Damage",
       "summary": "Periodically causes Earthquakes that slow down and damage monsters in the area.",
       "notes": [
+        "Rebuilt since this text was written: as of 2026-04-13 the unit no longer triggers earthquakes by default; it now attacks the first target, builds Fury on merge, spawn and rank-up, and enters Berserker mode at maximum Fury. Treat the description above as historical until it is checked in-game.",
         "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
       ],
       "tags": [
@@ -1369,6 +1404,7 @@
       "summary": "Power-up does not use any mana, but it is limited in time and has a cooldown.",
       "notes": [
         "Attacks the first enemy on the path.",
+        "Rebuilt since this text was written: as of 2026-04-13 the unit Monks in Harmony now always deal area damage, and Nirvana no longer grants it. Treat the description above as historical until it is checked in-game.",
         "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
       ],
       "tags": [
@@ -1439,6 +1475,7 @@
       "summary": "Gets new abilities, depending on the number of merges this unit has been part of.",
       "notes": [
         "Attacks the first enemy on the path.",
+        "Rebuilt since this text was written: as of 2026-04-13 the unit damage now scales to 50 parts, and it gained three Reincarnations. Treat the description above as historical until it is checked in-game.",
         "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
       ],
       "tags": [
@@ -1593,6 +1630,7 @@
       "summary": "Receives charges when units in adjacent tiles are merged or increase rank.",
       "notes": [
         "Attacks the first enemy on the path.",
+        "Rebuilt since this text was written: as of 2026-04-13 the unit now takes charges from merges anywhere around it rather than only adjacent tiles, and hits multiple targets even while uncharged. Treat the description above as historical until it is checked in-game.",
         "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
       ],
       "tags": [
