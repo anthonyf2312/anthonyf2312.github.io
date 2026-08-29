@@ -242,10 +242,30 @@
             step += 1;
           }
         },
-        { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
+        /* threshold MUST stay 0. A percentage threshold is a share of the element, not of the
+           screen, so anything taller than the viewport can never satisfy it and would sit at
+           opacity 0 forever. The unit list is ~32,000px once 80 cards render; at threshold 0.05
+           it needed 1,625px visible in a 900px window, and simply never appeared. */
+        { rootMargin: '0px 0px -8% 0px', threshold: 0 },
       );
 
+      /* Fading in something taller than the screen is meaningless anyway — you only ever see a
+         sliver of it — so anything that big is shown outright. This also means a section that
+         grows after its content loads can never be left hidden. */
+      const revealOversized = () => {
+        for (const node of targets) {
+          if (node.classList.contains('is-in')) continue;
+          if (node.getBoundingClientRect().height > window.innerHeight) {
+            node.classList.add('is-in');
+            observer.unobserve(node);
+          }
+        }
+      };
+
       for (const node of targets) observer.observe(node);
+      revealOversized();
+      // The browsable pages render their list after a fetch, so re-check once it has landed.
+      window.addEventListener('rr:rendered', revealOversized);
     }
   }
 
@@ -672,6 +692,10 @@
     if (matches.length === 0) {
       grid.append(el('li', 'rr-empty', 'Nothing matches that. Try a shorter word, or clear the filters.'));
     }
+
+    // Tells the reveal pass the page just changed height. Without this the section holding
+    // this list can be left hidden, because it only becomes oversized once cards render.
+    window.dispatchEvent(new CustomEvent('rr:rendered'));
   }
 
   function buildChips() {
