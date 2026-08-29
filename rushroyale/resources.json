@@ -1,5 +1,5 @@
 {
-  "$comment": "Every currency and material in Rush Royale, rendered by rushroyale.js on resources.html. Each entry answers the same three questions in the same order, because that is what people actually come to a resources page for. Fields: name, id (becomes the anchor, so other pages can link straight at #magic-dust), kind (the filter facet), summary, facts (ordered [label, text] pairs), tags, detail. No exchange rates, costs or drop rates are recorded here unless they were confirmed from a public source — add them as you verify them in-game. Celestial Shards, Essence and Perk Fragments come from the game's in-game Knowledge Base (recorded 2026-08-27) and carry no 'detail' flag, because they are not waiting on verification; where that text gives no source for a material, the entry says so rather than guessing. The older entries are still flagged detail='stub'.",
+  "$comment": "Every currency and material in Rush Royale, rendered by rushroyale.js on resources.html. Each entry answers the same three questions in the same order, because that is what people actually come to a resources page for. Fields: name, id (becomes the anchor, so other pages can link straight at #magic-dust), kind (the filter facet), summary, facts (ordered [label, text] pairs), tags, detail. No exchange rates, costs or drop rates are recorded here unless they were confirmed from a public source — add them as you verify them in-game. Celestial Shards, Essence and Perk Fragments come from the game's in-game Knowledge Base (recorded 2026-08-27) and carry no 'detail' flag, because they are not waiting on verification; where that text gives no source for a material, the entry says so rather than guessing. Rune Keys was confirmed against the in-game description on 2026-08-29 and had its flag dropped for the same reason - note that its former 'season pass' and 'Chest of Magic Dust' specifics were wiki-era guesses and were removed rather than kept, because the in-game text does not state them. The older entries are still flagged detail='stub'.",
   "reviewed": "2026-08-27",
   "entries": [
     {
@@ -71,14 +71,13 @@
       "name": "Rune Keys",
       "id": "rune-keys",
       "kind": "Currency",
-      "summary": "The key that opens the Seasonal Items store — most importantly the chest that pays out magic dust.",
+      "summary": "What you spend in the seasonal offer store.",
       "facts": [
-        ["What it is", "A seasonal currency earned by progressing a season, not by playing matches directly."],
-        ["Where it comes from", "Levelling up through the season pass rewards."],
-        ["What to spend it on", "Chests in the Seasonal Items store, including the Chest of Magic Dust."]
+        ["What it is", "A currency spent in the seasonal offer store."],
+        ["Where it comes from", "Not recorded in the in-game text used for this page."],
+        ["What to spend it on", "Purchases in the seasonal offer store."]
       ],
-      "tags": ["rune key", "season pass", "seasonal store"],
-      "detail": "stub"
+      "tags": ["rune key", "seasonal offer store", "currency"]
     },
     {
       "name": "Hero Fragments",

@@ -1,6 +1,6 @@
 {
-  "$comment": "Rush Royale unit reference, rendered by rushroyale.js on units.html. Entries come from two tiers and the difference matters. TIER 1, player-verified: no 'source' field, no 'detail' flag. Transcribed from ability text supplied by a player, so the numbers are real - do not add, round or 'tidy' any figure that did not come from that text. TIER 2, wiki-imported: carries source='fandom-wiki' and sourceRevision, and is flagged detail='stub' so the card renders a 'Needs numbers' line. These were imported from the Fandom wiki, which is community-edited and largely stale (77% of its pages were last touched in 2021-2022); treat every figure in them as unconfirmed until someone checks it in-game. When a tier-2 entry is verified, drop 'source', 'sourceRevision' and 'detail'. Fields: name, id (anchor slug), rarity, faction, role (unit type), damage (omit when unstated), summary, abilities (ordered paragraphs), notes, tags (search only). Authored order is alphabetical within a rarity block.",
-  "reviewed": "2026-08-27",
+  "$comment": "Rush Royale unit reference, rendered by rushroyale.js on units.html. Entries come from two tiers and the difference matters. TIER 1, player-verified: no 'source' field, no 'detail' flag. Transcribed from ability text supplied by a player, so the numbers are real - do not add, round or 'tidy' any figure that did not come from that text. TIER 2, wiki-imported: carries source='fandom-wiki' and sourceRevision, and is flagged detail='stub' so the card renders a 'Needs numbers' line. These were imported from the Fandom wiki, which is community-edited and largely stale (77% of its pages were last touched in 2021-2022); treat every figure in them as unconfirmed until someone checks it in-game. TIER 3, official patch notes: carries source='patch-notes' and sourceRevision set to the update's release date, and is flagged detail='stub' because the notes describe mechanics without giving figures. This tier is more trustworthy than the wiki and less than tier 1 - the developers wrote it, but nobody has checked it against the running game, and where the notes are silent (a faction, a number) the entry says so rather than guessing. When a tier-2 or tier-3 entry is verified, drop 'source', 'sourceRevision' and 'detail'. Fields: name, id (anchor slug), rarity, faction, role (unit type), damage (omit when unstated), summary, abilities (ordered paragraphs), notes, tags (search only). Authored order is alphabetical within a rarity block.",
+  "reviewed": "2026-08-29",
   "entries": [
     {
       "name": "Archer",
@@ -426,6 +426,31 @@
       "detail": "stub",
       "source": "fandom-wiki",
       "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Clown",
+      "id": "clown",
+      "rarity": "Epic",
+      "faction": "Kingdom of Light",
+      "summary": "Copies a unit when it merges — but refuses to work alongside the Harlequin.",
+      "notes": [
+        "When merging with another unit, the Clown has a chance of copying it. The copy deals reduced damage, in the same way the Harlequin’s does.",
+        "When the copy fails, the Clown gives mana instead, then loses a merge rank and is stunned.",
+        "The Clown and the Harlequin do not get along. Put both in one deck and the Clown appears angry, and its chance of copying is 0%.",
+        "From the official patch notes for Update 23.0 (2023-12-18). No figures are given there, so none are recorded here."
+      ],
+      "tags": [
+        "clown",
+        "copy",
+        "harlequin",
+        "merge",
+        "kingdom of light",
+        "epic",
+        "mana"
+      ],
+      "detail": "stub",
+      "source": "patch-notes",
+      "sourceRevision": "2023-12-18"
     },
     {
       "name": "Cold Elemental",
@@ -1064,18 +1089,19 @@
       "sourceRevision": "2026-08-02"
     },
     {
-      "name": "Enchanted Swords",
-      "id": "enchanted-swords",
+      "name": "Enchanted Sword",
+      "id": "enchanted-sword",
       "rarity": "Legendary",
       "faction": "Magic Council",
       "role": "Special",
       "summary": "Blue sword increases unit damage, red sword decreases opponent damage.",
       "notes": [
         "Attacks a random enemy.",
+        "Update 21.0 (2023-08-31) reworked this unit substantially — the number of targets was cut, the buff was reduced and the Red Sword’s mechanic was replaced outright. The imported text below predates that rework.",
         "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
       ],
       "tags": [
-        "enchanted swords",
+        "enchanted sword",
         "legendary",
         "magic council",
         "random",
@@ -1086,7 +1112,7 @@
       "sourceRevision": "2026-08-02"
     },
     {
-      "name": "Franky and Stein",
+      "name": "Franky & Stein",
       "id": "franky-and-stein",
       "rarity": "Legendary",
       "faction": "Technogenic Society",
@@ -1101,9 +1127,11 @@
         "damage",
         "event",
         "first",
-        "franky and stein",
+        "franky & stein",
         "legendary",
-        "technogenic society"
+        "technogenic society",
+        "franky",
+        "stein"
       ],
       "detail": "stub",
       "source": "fandom-wiki",
@@ -1154,28 +1182,29 @@
       "sourceRevision": "2026-08-02"
     },
     {
-      "name": "Gunsinger",
-      "id": "gunsinger",
+      "name": "Gunslinger",
+      "id": "gunslinger",
       "rarity": "Legendary",
       "faction": "Dark Domain",
       "role": "Support",
-      "summary": "Can swap places with units his rank or lower.",
+      "summary": "Swaps places with other units, and fires Ghost Shots at the enemy when you use the mana power-up.",
       "notes": [
-        "Attacks the first enemy on the path.",
-        "Event unit — available only while its event is running.",
-        "Imported from the Rush Royale Fandom wiki roster (revision 2026-08-02). Ability text and figures still need checking in-game."
+        "Using the mana power-up makes the Gunslinger fire a Ghost Shot at the enemy.",
+        "It can also enter Shootout mode, where it fires Ghost Shots by itself but for reduced damage.",
+        "From the official patch notes for Update 27.0 (2024-10-21). No figures are given there, so none are recorded here."
       ],
       "tags": [
         "dark domain",
-        "event",
-        "first",
-        "gunsinger",
+        "gunslinger",
+        "ghost shot",
+        "shootout",
+        "swap",
         "legendary",
         "support"
       ],
       "detail": "stub",
-      "source": "fandom-wiki",
-      "sourceRevision": "2026-08-02"
+      "source": "patch-notes",
+      "sourceRevision": "2024-10-21"
     },
     {
       "name": "Harlequin",
@@ -1352,6 +1381,32 @@
       "detail": "stub",
       "source": "fandom-wiki",
       "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Phoenix",
+      "id": "phoenix",
+      "rarity": "Legendary",
+      "faction": "Forest Alliance",
+      "role": "Damage",
+      "summary": "A damage unit you have to watch. Its flame has to be woken at the right moment rather than left alone.",
+      "notes": [
+        "The Phoenix’s abilities need you to interact with the field — the point is to awaken the flame on a Phoenix at a good moment rather than leaving it to fight on its own.",
+        "One of the first five units to get Reincarnation, in the same update that introduced it.",
+        "The patch notes list its synergy units as the Harlequin, the Monk and the Witch.",
+        "From the official patch notes for Update 28.0 (2024-12-19). No figures are given there, so none are recorded here."
+      ],
+      "tags": [
+        "phoenix",
+        "flame",
+        "fire",
+        "reincarnation",
+        "forest alliance",
+        "legendary",
+        "damage"
+      ],
+      "detail": "stub",
+      "source": "patch-notes",
+      "sourceRevision": "2024-12-19"
     },
     {
       "name": "Riding Hood",
@@ -1598,6 +1653,31 @@
       "sourceRevision": "2026-08-02"
     },
     {
+      "name": "Truffle",
+      "id": "truffle",
+      "rarity": "Legendary",
+      "role": "Support",
+      "summary": "Grows into a random higher-rank unit, then spreads spores that pay mana back when infected units merge.",
+      "notes": [
+        "When it appears the Truffle gestates, and at the end of that period it turns into a random unit of a higher rank.",
+        "Its mana power-up spreads spores. Merging units that are carrying spores returns mana.",
+        "Talents branch at level 9 between Catalyst, which speeds up the growth of all your units, and Cordyceps, which turns the Truffle into Mycelium and creates Toadstool mimics around it.",
+        "From the official patch notes for Update 35.2 (2026-04-16). No figures are given there, so none are recorded here."
+      ],
+      "tags": [
+        "truffle",
+        "spores",
+        "mycelium",
+        "gestation",
+        "support",
+        "legendary",
+        "mana"
+      ],
+      "detail": "stub",
+      "source": "patch-notes",
+      "sourceRevision": "2026-04-16"
+    },
+    {
       "name": "Twilight Ranger",
       "id": "twilight-ranger",
       "rarity": "Legendary",
@@ -1646,6 +1726,29 @@
       "sourceRevision": "2026-08-02"
     },
     {
+      "name": "Valkyrie",
+      "id": "valkyrie",
+      "rarity": "Legendary",
+      "summary": "Attacks an area, and collects Runes of Fate whenever one of her number dies or merges.",
+      "notes": [
+        "The Valkyrie has area attacks. Dying or merging earns Runes of Fate, which empower every Valkyrie and unlock further abilities.",
+        "A special warrior, the Chosen One, can appear on the field. Losing or merging her summons new allies, and can pass the Chosen One status to another Valkyrie.",
+        "The mana power-up raises the rank of a random Valkyrie.",
+        "The patch notes do not state which faction she belongs to, so no faction is recorded here.",
+        "From the official patch notes for Update 34.0 (2025-12-17). No figures are given there, so none are recorded here."
+      ],
+      "tags": [
+        "valkyrie",
+        "runes of fate",
+        "chosen one",
+        "area",
+        "legendary"
+      ],
+      "detail": "stub",
+      "source": "patch-notes",
+      "sourceRevision": "2025-12-17"
+    },
+    {
       "name": "Witch",
       "id": "witch",
       "rarity": "Legendary",
@@ -1666,6 +1769,29 @@
       "detail": "stub",
       "source": "fandom-wiki",
       "sourceRevision": "2026-08-02"
+    },
+    {
+      "name": "Wukong",
+      "id": "wukong",
+      "rarity": "Legendary",
+      "summary": "Only the first one is real. The rest are weaker clones, and merging them is what makes the real one strong.",
+      "notes": [
+        "The first Wukong to appear is the genuine one; every Wukong after that is a clone with weaker stats. If the genuine one is lost, the strongest clone takes his place.",
+        "Merging clones grants Feat charges, strengthens the genuine Wukong and summons more copies. Clones produced by merging are sent onto the path, where they form an attacking cyclone.",
+        "The mana power-up summons new Wukongs and speeds up how fast power accumulates.",
+        "The patch notes do not state which faction he belongs to, so no faction is recorded here.",
+        "From the official patch notes for Update 35.0 (2026-02-19). No figures are given there, so none are recorded here."
+      ],
+      "tags": [
+        "wukong",
+        "clones",
+        "feat charges",
+        "cyclone",
+        "legendary"
+      ],
+      "detail": "stub",
+      "source": "patch-notes",
+      "sourceRevision": "2026-02-19"
     }
   ]
 }

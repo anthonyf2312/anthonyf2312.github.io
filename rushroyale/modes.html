@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap">
   <!-- This section is deliberately self-contained: it does not load /style.css or
        /docs.css. Inheriting them is what made it look like the rest of the site. -->
-  <link rel="stylesheet" href="rushroyale.css?v=4">
+  <link rel="stylesheet" href="rushroyale.css?v=5">
   <!-- Applies the stored theme before first paint, so a dark-mode reader never gets a
        white flash on navigation. Same idiom as the homepage's js flag. -->
   <script>try{var t=localStorage.getItem('rr-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
@@ -49,6 +49,8 @@
       <ul>
         <li><a href="#pvp">PvP</a></li>
         <li><a href="#variants">PvP variants</a></li>
+        <li><a href="#death-wave">The Death Wave</a></li>
+        <li><a href="#newer-modes">Other competitive modes</a></li>
         <li><a href="#arenas">Arenas</a></li>
       </ul>
 
@@ -60,7 +62,7 @@
         <li><a href="#treasure-maps">Treasure Maps</a></li>
         <li><a href="#clans">Clans</a></li>
         <li><a href="#dragon-rift">Dragon Rift</a></li>
-        <li><a href="#tournament">Clan Tournament</a></li>
+        <li><a href="#tournament">Clan War</a></li>
       </ul>
 
       <h2>Weekends</h2>
@@ -89,15 +91,19 @@
       <div class="doc-note rr-stamp">
         <p><b>Unofficial community reference.</b> Not affiliated with My.Games or the Rush Royale team.</p>
         <p>Rules confirmed by someone who plays the game are stated plainly, numbers and all.
-        Entries marked with a hatched edge are still waiting on figures checked in-game.</p>
+        Any entry carrying a <b>Needs numbers</b> line is still waiting on figures checked in-game.</p>
         <p><b>Co-op is sourced from the game's in-game Knowledge Base</b>, recorded
         <b>2026-08-27</b>. Its dungeon, chapter and floor structure supersedes the Fandom wiki's
         account, which described a flat run of numbered waves with a boss every tenth — that was
         from <b>2021-05-24</b> and has been removed rather than left standing beside this one.</p>
         <p>PvP, clans and events still follow the wiki's pages, last edited <b>2022-11-25</b>,
-        <b>2022-11-25</b> and <b>2022-11-22</b>. Dragon Rift and the Clan Tournament are kept from
-        earlier in-game reporting because the wiki has no page for either.</p>
-        <p>Last reviewed 2026-08-27.</p>
+        <b>2022-11-25</b> and <b>2022-11-22</b>. Dragon Rift is kept from earlier in-game
+        reporting because the wiki has no page for it.</p>
+        <p><b>The Clan War, the Death Wave and the other competitive modes come from the
+        developers' news archive</b>, read on <b>2026-08-28</b>. That archive is what showed the
+        four-phase Clan Tournament described here previously had been replaced outright in
+        February 2025 — so that section was rewritten rather than left standing.</p>
+        <p>Last reviewed 2026-08-29.</p>
       </div>
 
       <section id="pvp">
@@ -142,6 +148,83 @@
           <p>If you feel out-collected rather than outplayed in standard PvP, these two
           variants are where a newer account can compete on level terms.</p>
         </div>
+      </section>
+
+      <section id="death-wave">
+        <h2>The Death Wave</h2>
+        <p>The Death Wave exists to stop long matches going on forever. Once it starts, the
+        usual rhythm breaks down:</p>
+        <ul>
+          <li>The <strong>monster phase and the boss phase merge</strong>. Monsters arrive on a
+          fixed interval and bosses join every <strong>30 seconds</strong>, without soaking up
+          the health of whatever is still alive.</li>
+          <li><strong>Nothing crosses to the other side.</strong> Both players get identical
+          monsters, at the same time.</li>
+          <li>Enemies gain <strong>extra armour and resistance to percentage damage</strong> on
+          top of the usual health, and all three keep climbing the longer it runs.</li>
+        </ul>
+        <p>Anything that normally triggers when the last boss of a wave dies now triggers on
+        <em>every</em> boss death, and anything that lasts "during the boss phase" stays active
+        as long as a boss is on the path.</p>
+        <p>It has moved around. It arrived in August 2024 as a permanent part of every
+        competitive PvP mode except the <a href="#rhandum-league">Rhandum League</a>, beginning
+        after <strong>wave 10</strong>. In April 2026 it came back as a <strong>temporary
+        mode</strong> inside classic PvP instead, open from League 1 and starting after
+        <strong>wave 7</strong> — earlier, and with stronger monsters.</p>
+        <div class="doc-note doc-warn">
+          <p>Because it is now a temporary mode rather than a permanent phase, whether you meet
+          it at all depends on what is running. Check in-game before planning a deck around it.</p>
+        </div>
+      </section>
+
+      <section id="newer-modes">
+        <h2>The other competitive modes</h2>
+        <p>Several modes have been added since the pages above were first written. Each is
+        summarised from the official patch notes rather than from in-game text.</p>
+
+        <h3 id="rhandum-league">Rhandum League</h3>
+        <p>The one mode where your collection does not matter at all. Every player is given the
+        same levels — commons and rares at 15, epics at 13, legendaries at 11, rare items at
+        level 10 with no enchantments — and <strong>both players' critical damage is fixed at
+        2,000</strong>. You build <strong>five decks</strong>, your opponent blocks two of them
+        and you block two of theirs. Some units are marked "key" and can only appear in one of
+        your five decks. You keep playing until you run out of attempts.</p>
+
+        <h3 id="shard-hunting">Shard Hunting</h3>
+        <p>Three decks, and each player bans one of the other's before the match. It pays
+        <a href="resources.html#celestial-shards">Celestial Shards</a>, which is the reason to
+        play it. A <strong>PRO mode</strong> for players past 6,000 trophies lets your opponent
+        ban two decks instead of one, and pays triple. Defeats cost a heart, and you get three a
+        day.</p>
+
+        <h3 id="aggrogeddon">Aggrogeddon</h3>
+        <p>A weekend mode that inverts the usual balance: you score <strong>Aggro Points</strong>
+        for inflicting negative effects on your opponent, and reducing an enemy unit's merge rank
+        pays the most. The more points you bank, the nastier their monsters get and the more mana
+        and spells you receive. There are no bosses — only a Villainous Wizard who fires borrowed
+        boss abilities at you every 30 seconds.</p>
+
+        <h3 id="masters-tournament">Masters' Tournament</h3>
+        <p>Runs twice a season from Arena 5, alternating with the Mirror Match. You get
+        <strong>12 pre-built decks</strong>. Units you do not own are played at level 7; units you
+        do own are capped at level 10, so a maxed collection is no advantage. The rewards are
+        <strong>Mastery Badges</strong> — silver for three straight wins with one deck, gold for
+        five — and they sit on your profile.</p>
+
+        <h3 id="supremacy-tournament">Supremacy Tournament</h3>
+        <p>The top-end mode, open only to players who passed <strong>7,600 trophies</strong> the
+        previous season. Seven days, three decks with mutual bans, and a
+        <strong>modifier that changes every day</strong>, so decks that worked yesterday may not
+        today. Scored in Medals; pays economic and combat perks.</p>
+
+        <h3 id="challenge-of-hunters">Challenge of Hunters</h3>
+        <p>Previously the Challenge of Seven. A one-hour sprint for a group of 15, scored by
+        <strong>how many of three randomly chosen bosses you kill</strong> — and kills count even
+        in matches you lose. Free to enter.</p>
+
+        <h3 id="star-of-the-week">Star of the Week</h3>
+        <p>A featured unit rotates weekly, always from one of the factions currently blessed.
+        Wins with it in your deck score points towards a leaderboard.</p>
       </section>
 
       <section id="arenas">
@@ -256,20 +339,36 @@
       </section>
 
       <section id="tournament">
-        <h2>Clan Tournament</h2>
-        <p>The tournament runs in <strong>four phases, one week each</strong>:</p>
-        <ol>
-          <li><strong>Rating week.</strong> Players push for their best possible PvP rating.</li>
-          <li><strong>Division assignment.</strong> Clans are sorted into divisions by their
-          overall rating.</li>
-          <li><strong>Face-to-face.</strong> Within a division, clans meet each other directly.</li>
-          <li><strong>The run continues</strong> through the remaining phase.</li>
-        </ol>
-        <p>Within a tournament week a clan races up to four others along the Road of
-        Challenges by earning glory points.</p>
-        <div class="doc-note doc-warn">
-          <p>The first week is the one people underestimate. Your personal PvP rating that
-          week decides which division your whole clan lands in.</p>
+        <h2>Clan War</h2>
+        <p>The clan event is the <strong>Clan War</strong>. It runs <strong>every other
+        week</strong> after a season starts, and it lives in the Events section rather than in
+        the clan screen. Your clan needs <strong>10 players</strong> to take part.</p>
+        <p>You earn <strong>Glory Points</strong> by completing <strong>clan quests</strong>,
+        which refresh daily. How many points a quest pays scales with your trophy count. Points
+        move your clan's hot air balloon up towards a treasure key; clans that reach the key and
+        get the balloon airborne are paid, and the winner is whichever clan has the most Glory
+        Points once every day has been counted.</p>
+        <p>A clan's <strong>group</strong> — what used to be called its division — decides how
+        many Clan Coins its quests and placings pay out.</p>
+
+        <h3>What changed, and why older guides disagree</h3>
+        <p>This replaced the old <strong>Clan Tournament</strong> in February 2025, and the
+        change was not cosmetic. Daily Battles and Plunder are gone, replaced by the daily clan
+        quests above. Sandals, healing potions, boss defenders and tournament spells were all
+        part of the old structure, and the patch notes say spells and defenders were set aside
+        rather than carried across. If a guide describes a four-phase tournament with a rating
+        week and plundering, it is describing the pre-2025 game.</p>
+
+        <h3>Clan Collection</h3>
+        <p>Placing well in a Clan War also pays <strong>collection items</strong> — there are
+        <strong>8</strong> to gather, and you can trade them with clanmates directly in clan
+        chat. A full set is worth <strong>25 tokens</strong>, spent in the Clan Store.</p>
+
+        <div class="doc-note">
+          <p><b>Where this came from.</b> The Clan War rules above are taken from the official
+          patch notes for updates 28.1 (2025-02-10) and 33.0 (2025-10-30), not from the in-game
+          text — so the shape of the mode is right, but treat any specific figure as unconfirmed
+          until it is checked in-game.</p>
         </div>
       </section>
 
@@ -279,8 +378,17 @@
         <a href="#co-op">co-op</a>, and they live in the fourth tab along the bottom of the
         screen. They run <strong>every weekend</strong> and last <strong>48 hours</strong>.</p>
 
+        <div class="doc-note doc-warn">
+          <p><b>The weekly rotation has changed since this was written.</b> The official patch
+          notes say the <strong>Mirror Match</strong> became the only weekly event format in June
+          2025, with leftover Royal Trials and Rush for Glory tickets converted into it; the
+          <a href="#masters-tournament">Masters' Tournament</a> then joined it in October 2025,
+          the two alternating through a season. The Rush for Glory scoring below has not been
+          rechecked in-game, so treat it as the format's rules rather than as this week's event.</p>
+        </div>
+
         <h3>Rush for Glory</h3>
-        <p>The recurring event format. You are sorted into one of <strong>10 groups</strong> by
+        <p>You are sorted into one of <strong>10 groups</strong> by
         trophy count — past <strong>4,000 trophies</strong> you are always in group 10, the
         highest. You get <strong>10 games</strong> to bank as many Glory Points as you can:</p>
         <div class="doc-table-wrap">
@@ -326,6 +434,6 @@
     <span>unofficial · work in progress</span>
   </footer>
 
-  <script defer src="rushroyale.js?v=4"></script>
+  <script defer src="rushroyale.js?v=5"></script>
 </body>
 </html>

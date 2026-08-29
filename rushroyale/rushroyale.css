@@ -1088,6 +1088,16 @@ body > .doc-main { padding-left: var(--rr-pad); padding-right: var(--rr-pad); ma
   background: var(--rr-bg-raised);
   white-space: nowrap;
 }
+/* Three tiers of evidence, ramped by weight rather than by hue: the four rarity colours
+   already sit in this same badge row, so a fourth and fifth hue here would read as rarity.
+   Quietest is the stale wiki, strongest is text checked in the game itself. */
+.rr-source-notes {
+  color: var(--rr-fg);
+  border-color: var(--rr-hairline-strong);
+  background: var(--rr-bg-raised);
+  font-weight: 700;
+}
+
 .rr-source-verified {
   color: var(--rr-verified);
   border-color: color-mix(in srgb, var(--rr-verified) 35%, transparent);

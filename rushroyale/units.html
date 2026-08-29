@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap">
   <!-- This section is deliberately self-contained: it does not load /style.css or
        /docs.css. Inheriting them is what made it look like the rest of the site. -->
-  <link rel="stylesheet" href="rushroyale.css?v=4">
+  <link rel="stylesheet" href="rushroyale.css?v=5">
   <!-- Applies the stored theme before first paint, so a dark-mode reader never gets a
        white flash on navigation. Same idiom as the homepage's js flag. -->
   <script>try{var t=localStorage.getItem('rr-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
@@ -81,9 +81,9 @@
       <header class="doc-hero">
         <p class="doc-eyebrow">RUSH ROYALE · UNITS</p>
         <h1 class="doc-title">What the<br>units do</h1>
-        <p class="doc-lede">The full roster, from two sources: a handful transcribed from
-        real in-game ability text, and the rest imported from the community wiki and marked
-        as needing checking.</p>
+        <p class="doc-lede">The full roster, from three sources: a handful transcribed from
+        real in-game ability text, a few from the developers' own patch notes, and the rest
+        imported from the community wiki and marked as needing checking.</p>
       </header>
 
       <div class="doc-note rr-stamp">
@@ -95,21 +95,47 @@
         <p><b>Reincarnation, synergized units and Celestial Shards are sourced from the game's
         in-game Knowledge Base</b>, recorded <b>2026-08-27</b>. The roster below is not — it is
         still the wiki import described in the next box.</p>
-        <p>Last reviewed 2026-08-27.</p>
+        <p>Last reviewed 2026-08-29.</p>
       </div>
 
       <div class="doc-note doc-warn">
-        <p><strong>Most of this roster is unverified, and it says so on every card.</strong>
-        Five units — Banshee, Bard, Blade Dancer, Blazey and Bruiser — are transcribed from
-        real in-game ability text. The other 69 were imported from the
-        <a href="https://rushroyale.fandom.com/wiki/Units" rel="nofollow noopener">Rush Royale
-        Fandom wiki</a> and carry a <b>Needs numbers</b> line until someone confirms them
-        in-game.</p>
-        <p>Take the imported entries as a table of contents, not as fact. That wiki is
+        <p><strong>Most of this roster is unverified, and every card says which kind it
+        is.</strong> There are three tiers, and the badge on each card tells you which one you
+        are reading:</p>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Badge</th><th>Count</th><th>What it means</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><b>Checked in-game</b></td>
+                <td>5</td>
+                <td>Banshee, Bard, Blade Dancer, Blazey and Bruiser — transcribed from real
+                in-game ability text. The figures are real.</td>
+              </tr>
+              <tr>
+                <td><b>Official notes</b></td>
+                <td>6</td>
+                <td>Taken from the developers' own patch notes, with the update's date. They
+                describe what a unit does but give no figures, so none are quoted.</td>
+              </tr>
+              <tr>
+                <td><b>Wiki import</b></td>
+                <td>68</td>
+                <td>From the <a href="https://rushroyale.fandom.com/wiki/Units"
+                rel="nofollow noopener">Rush Royale Fandom wiki</a>. Weakest of the three.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Take the wiki entries as a table of contents, not as fact. That wiki is
         community-edited and mostly old: roughly three quarters of its pages were last
         touched in 2021 or 2022, and the roster page it came from gives no stat figures at
         all — so none are quoted here. Where a wiki page did give numbers, they are attributed
         to it by revision date rather than stated as this site's own.</p>
+        <p>A check against the developers' full news archive in August 2026 found that
+        <strong>56 of these units have been officially changed since 2024</strong>, so the wiki
+        text describing them is very likely out of date even where it once was right. Anything
+        still carrying a <b>Needs numbers</b> line is waiting on someone confirming it in-game.</p>
       </div>
 
       <section id="what">
@@ -318,6 +344,6 @@
     <span>unofficial · work in progress</span>
   </footer>
 
-  <script defer src="rushroyale.js?v=4"></script>
+  <script defer src="rushroyale.js?v=5"></script>
 </body>
 </html>

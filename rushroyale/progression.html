@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap">
   <!-- This section is deliberately self-contained: it does not load /style.css or
        /docs.css. Inheriting them is what made it look like the rest of the site. -->
-  <link rel="stylesheet" href="rushroyale.css?v=4">
+  <link rel="stylesheet" href="rushroyale.css?v=5">
   <!-- Applies the stored theme before first paint, so a dark-mode reader never gets a
        white flash on navigation. Same idiom as the homepage's js flag. -->
   <script>try{var t=localStorage.getItem('rr-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
@@ -49,6 +49,7 @@
       <ul>
         <li><a href="#card-levels">Card levels</a></li>
         <li><a href="#heroes">Heroes</a></li>
+        <li><a href="#hero-roster">Which heroes there are</a></li>
         <li><a href="#ability-points">Ability points</a></li>
         <li><a href="#critical-damage">Critical damage</a></li>
         <li><a href="#expeditions">Expeditions</a></li>
@@ -59,6 +60,9 @@
       <ul>
         <li><a href="#talents">Talents</a></li>
         <li><a href="#spells-artifacts">Spells and artifacts</a></li>
+        <li><a href="#pantheon">The Pantheon</a></li>
+        <li><a href="#new-unit-bonuses">Multifaction &amp; Novelty</a></li>
+        <li><a href="#blessings">Faction blessings</a></li>
       </ul>
 
       <h2>Deciding</h2>
@@ -83,7 +87,7 @@
       <div class="doc-note rr-stamp">
         <p><b>Unofficial community reference.</b> Not affiliated with My.Games or the Rush Royale team.</p>
         <p>Rules confirmed by someone who plays the game are stated plainly, numbers and all.
-        Entries marked with a hatched edge are still waiting on figures checked in-game.</p>
+        Any entry carrying a <b>Needs numbers</b> line is still waiting on figures checked in-game.</p>
         <p><b>Heroes and legendarity are sourced from the game's in-game Knowledge Base</b>,
         recorded <b>2026-08-27</b>. Heroes are now developed with <a href="#ability-points">ability
         points</a>, and the wiki's account — a three-hero roster with craftable equipment, last
@@ -91,7 +95,7 @@
         <p>Expeditions still come from the wiki's <i>Expedition</i> page (<b>2026-01-06</b>) and
         critical damage from <i>Critical Damage</i> (<b>2024-06-17</b>). Talents are kept from
         earlier in-game reporting; the wiki has no page for them.</p>
-        <p>Last reviewed 2026-08-27.</p>
+        <p>Last reviewed 2026-08-29.</p>
       </div>
 
       <section id="card-levels">
@@ -122,6 +126,40 @@
         <p>Heroes are summoned with <strong>fragments</strong>, which come from the battle
         pass, the shop, or Hero's Chests. Once summoned they level up, unlocking abilities and
         issuing ability points as they go.</p>
+        <p>The ceiling is <strong>level 100</strong>. It has moved twice: it was 20 for years,
+        went to 80 in October 2024 — with everyone's existing hero levels multiplied by four —
+        and to 100 that December. Some abilities gain an extra effect once you have invested
+        <strong>80 ability points</strong>.</p>
+
+        <h3 id="hero-roster">Which heroes there are</h3>
+        <p>Heroes are graded by rarity like units, but rarity here sets how many fragments a
+        hero needs rather than how strong it is.</p>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Rarity</th><th>Heroes</th></tr></thead>
+            <tbody>
+              <tr><td>Common</td><td>Captain, Bestie</td></tr>
+              <tr><td>Rare</td><td>Trickster, Jay, Elementalist</td></tr>
+              <tr><td>Epic</td><td>Gadget, Mari, Mermaid, Snowflake, Flicker</td></tr>
+              <tr><td>Legendary</td><td>Zeus, Necromancer, Fortuna, Lucia</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Two things worth knowing about that list. The <strong>Captain</strong> is the hero
+        you start with — he took over that role from the Trainer in March 2024, keeping the same
+        abilities. And <strong>Flicker</strong>, the baby dragon, was originally obtainable only
+        through the <a href="modes.html#dragon-rift">Dragon Rift</a>; he has since turned up in
+        epic hero fragments and the Expedition shop.</p>
+        <p>Separately there are <strong>event heroes</strong>, which are only available while
+        their event runs and cannot be obtained afterwards: <strong>Jake Paul</strong> (2023),
+        and <strong>PAC-MAN</strong> and <strong>Ducky</strong> from the arcade crossover in
+        March 2026.</p>
+        <div class="doc-note">
+          <p><b>Where this came from.</b> The roster and the level cap are taken from the
+          official patch notes, not from in-game text. The names and rarities are stated there
+          directly; nothing about their abilities is recorded here, because the notes describe
+          changes rather than what each hero currently does.</p>
+        </div>
 
         <h3 id="ability-points">Ability points</h3>
         <p><strong>Ability points are issued for levelling up your hero</strong>, and they are
@@ -187,6 +225,64 @@
         </div>
         <p>What it unlocks lives on its own page: see
         <a href="spells.html">spells, artifacts &amp; perks</a>.</p>
+        <div class="doc-note doc-warn">
+          <p>One change to watch for. The official patch notes for March 2026 say epic units and
+          heroes were shifted to give <strong>less critical damage and legendarity instead</strong>,
+          and that <strong>Division 7 now unlocks on legendarity rather than critical damage</strong>.
+          If those hold, legendarity has quietly become the more important of the two numbers.</p>
+        </div>
+      </section>
+
+      <section id="pantheon">
+        <h2>The Pantheon and faction bonuses</h2>
+        <p>Three separate bonuses attach to <em>units</em> rather than to your account. They are
+        easy to confuse because they stack on the same new release.</p>
+
+        <h3>The Pantheon</h3>
+        <p>The Pantheon holds <strong>five units, one per faction</strong>, and only
+        <strong>damage-type units</strong> are eligible. Holding a seat grants a permanent damage
+        bonus — the notes put it at <strong>15%</strong>. When a new damage unit of that faction
+        arrives it <strong>takes the seat</strong>, and the unit it displaces loses the bonus.</p>
+        <p>This is the game's way of rotating the meta without nerfing anything: a unit does not
+        get worse, it just stops being the one holding the seat.</p>
+
+        <h3 id="new-unit-bonuses">Multifaction and Novelty</h3>
+        <p>A newly released unit carries two temporary bonuses, and since April 2026 they run on
+        separate clocks:</p>
+        <div class="doc-table-wrap">
+          <table>
+            <thead><tr><th>Bonus</th><th>Lasts</th><th>What it gives</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Multifaction</strong></td>
+                <td>about 1 month</td>
+                <td>Every faction blessing at once, the highest-level faction perks, and entry to
+                every faction quest and leaderboard simultaneously</td>
+              </tr>
+              <tr>
+                <td><strong>Novelty</strong></td>
+                <td>about 2 months</td>
+                <td>10% more damage</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Both expire, and when they do the unit settles back into its own faction. That is why
+        a new legendary can feel dramatically stronger in its first weeks than it does later —
+        the unit did not change, its bonuses ran out.</p>
+
+        <h3 id="blessings">Weekly faction blessings</h3>
+        <p><strong>Two factions</strong> are blessed each week. Units of those factions pay extra
+        rewards for killing bosses, and there is a leaderboard attached that resets on the same
+        cycle. This is the bonus the <a href="modes.html#star-of-the-week">Star of the Week</a>
+        rotates in step with.</p>
+
+        <div class="doc-note">
+          <p><b>Where this came from.</b> This whole section is summarised from the official
+          patch notes for updates 30.0, 34.0, 35.0 and 35.2 rather than from in-game text. The
+          structure is stated there plainly; the two percentages are the only figures given, and
+          neither has been checked in-game.</p>
+        </div>
       </section>
 
       <section id="talents">
@@ -238,6 +334,6 @@
     <span>unofficial · work in progress</span>
   </footer>
 
-  <script defer src="rushroyale.js?v=4"></script>
+  <script defer src="rushroyale.js?v=5"></script>
 </body>
 </html>

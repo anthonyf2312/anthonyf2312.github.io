@@ -168,6 +168,10 @@
           "title": "Heroes"
         },
         {
+          "id": "hero-roster",
+          "title": "Which heroes there are"
+        },
+        {
           "id": "ability-points",
           "title": "Ability points"
         },
@@ -192,6 +196,18 @@
           "title": "Spells and artifacts"
         },
         {
+          "id": "pantheon",
+          "title": "The Pantheon"
+        },
+        {
+          "id": "new-unit-bonuses",
+          "title": "Multifaction & Novelty"
+        },
+        {
+          "id": "blessings",
+          "title": "Faction blessings"
+        },
+        {
           "id": "what-to-level",
           "title": "What to level first"
         }
@@ -208,6 +224,14 @@
         {
           "id": "variants",
           "title": "PvP variants"
+        },
+        {
+          "id": "death-wave",
+          "title": "The Death Wave"
+        },
+        {
+          "id": "newer-modes",
+          "title": "Other competitive modes"
         },
         {
           "id": "arenas",
@@ -239,7 +263,7 @@
         },
         {
           "id": "tournament",
-          "title": "Clan Tournament"
+          "title": "Clan War"
         },
         {
           "id": "events",

@@ -479,6 +479,14 @@
   // rather than in the JSON means a new field shows up by editing one line.
   const TAG_KEYS = ['rarity', 'faction', 'role', 'damage', 'slot', 'kind'];
 
+  /* The three tiers an entry can come from, weakest evidence first. An entry with no 'source'
+     was transcribed from the game itself and needs no caveat — that is the absence of a
+     label, not a label of its own. */
+  const SOURCE_LABELS = {
+    'fandom-wiki': { className: 'rr-source', label: 'Wiki import' },
+    'patch-notes': { className: 'rr-source rr-source-notes', label: 'Official notes' },
+  };
+
   let entries = [];
 
   // field name -> currently selected value, '' meaning "all". Groups AND together.
@@ -522,10 +530,11 @@
 
     /* Where the entry came from. Three quarters of the roster was imported from a wiki that
        is years out of date, and a reader deserves to see which entry they are reading before
-       they act on it. Both branches report fields the file already carries. */
-    if (entry.source === 'fandom-wiki') {
+       they act on it. Every branch reports fields the file already carries. */
+    const known = SOURCE_LABELS[entry.source];
+    if (known) {
       const revision = entry.sourceRevision ? ` · ${entry.sourceRevision}` : '';
-      wrap.append(el('span', 'rr-source', `Wiki import${revision}`));
+      wrap.append(el('span', known.className, known.label + revision));
       any = true;
     } else if (entry.detail !== 'stub' && (entry.abilities || entry.summary)) {
       wrap.append(el('span', 'rr-source rr-source-verified', 'Checked in-game'));

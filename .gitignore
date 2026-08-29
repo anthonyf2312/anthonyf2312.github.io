@@ -3,3 +3,7 @@ debug.log
 # Playwright verification screenshots land in the repo root
 /*.png
 /*.jpeg
+
+# Working notes from reading the official news archive. Local only:
+# these summarise My.Games content and are not for publication.
+rushroyale/_research/
