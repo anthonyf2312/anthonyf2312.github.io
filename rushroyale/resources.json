@@ -1,5 +1,5 @@
 {
-  "$comment": "Every currency and material in Rush Royale, rendered by rushroyale.js on resources.html. Each entry answers the same three questions in the same order, because that is what people actually come to a resources page for. Fields: name, id (becomes the anchor, so other pages can link straight at #magic-dust), kind (the filter facet), summary, facts (ordered [label, text] pairs), tags, detail. No exchange rates, costs or drop rates are recorded here unless they were confirmed from a public source — add them as you verify them in-game. Celestial Shards, Essence and Perk Fragments come from the game's in-game Knowledge Base (recorded 2026-08-27) and carry no 'detail' flag, because they are not waiting on verification; where that text gives no source for a material, the entry says so rather than guessing. Rune Keys was confirmed against the in-game description on 2026-08-29 and had its flag dropped for the same reason - note that its former 'season pass' and 'Chest of Magic Dust' specifics were wiki-era guesses and were removed rather than kept, because the in-game text does not state them. The older entries are still flagged detail='stub'. Gems are called Crystals in game, so the entry carries the game's word and its anchor is #crystals - resources.html and glossary.json both link at it. Experiment Coins, and the Laboratory rooms now named in the Magic Dust and Magic Orbs entries, were described from in-game play on 2026-08-30 and carry no flag; the experiment odds and costs live on resources.html#laboratory rather than being repeated here.",
+  "$comment": "Every currency and material in Rush Royale, rendered by rushroyale.js on resources.html. Each entry answers the same three questions in the same order, because that is what people actually come to a resources page for. Fields: name, id (becomes the anchor, so other pages can link straight at #magic-dust), kind (the filter facet), summary, facts (ordered [label, text] pairs), tags, detail. Chests were deliberately removed on 2026-08-30: a chest is not a resource you collect, it is the container that hands you one of these depending on its type, and resources.html now says that once in prose instead. No exchange rates, costs or drop rates are recorded here unless they were confirmed from a public source - add them as you verify them in-game. Celestial Shards, Essence and Perk Fragments come from the game's in-game Knowledge Base (recorded 2026-08-27); Rune Keys was confirmed against the in-game description on 2026-08-29, and its former 'season pass' and 'Chest of Magic Dust' specifics were wiki-era guesses that were removed rather than kept. Gems are called Crystals in game, so the entry carries the game's word and its anchor is #crystals. The Laboratory rooms named under Magic Dust and Magic Orbs, and the whole of Bonus Orbs, Star Coins, Pages of Secrets, Faction Cores, Hammers, Bells, Clan Coins, Trading Tokens, Legend Medals, Event Tokens, Lucky Tokens, Heroic Tokens and Dragon Coins, were described from in-game play on 2026-08-30 and carry no flag; where that description gave no source for a material, the entry says so rather than guessing. The experiment odds and the Laboratory's rooms live on resources.html#laboratory rather than being repeated here. The oldest entries are still flagged detail='stub'.",
   "reviewed": "2026-08-30",
   "entries": [
     {
@@ -35,7 +35,7 @@
       "summary": "A slow, guaranteed route to a legendary card. It does not expire and there is no cap on how much you can hold, so it is the one resource you can safely just accumulate.",
       "facts": [
         ["What it is", "A material you bank up and trade in. The published exchange rate is 1,000 magic dust for one random legendary card."],
-        ["Where it comes from", "The Chest of Magic Dust in the Seasonal Items store, which costs a rune key; career achievement rewards; and some chests on the season pass reward ladder."],
+        ["Where it comes from", "The Chest of Magic Dust in the Seasonal Items store, which costs a rune key; career achievement rewards; some chests on the season pass reward ladder; and the clan store, at 25 trading tokens for 200 dust."],
         ["What to spend it on", "Nothing but the legendary trade-in, which happens in the Legendary Lab: 1,000 dust for a legendary card. Because it is uncapped and does not expire, there is no reason to rush it — the only decision is when you hit 1,000."]
       ],
       "tags": ["dust", "legendary", "uncapped", "seasonal", "trade in"],
@@ -55,28 +55,64 @@
       "detail": "stub"
     },
     {
-      "name": "Experiment Coins",
-      "id": "experiment-coins",
-      "kind": "Currency",
-      "summary": "A narrow currency with one use, and it is an unusual one: experiments are the closest the game comes to letting you aim at a particular card instead of hoping a chest gives it to you.",
+      "name": "Bonus Orbs",
+      "id": "bonus-orbs",
+      "kind": "Material",
+      "summary": "A magic orb that belongs to one named unit. A bonus orb for Bard takes one magic orb off the price of a Bard level — and you can hold several for the same unit.",
       "facts": [
-        ["What it is", "A special-purpose currency, not interchangeable with gold or crystals."],
-        ["Where it comes from", "The premium part of the season pass, together with magic orbs, and the Challenge of Hunters event, which pays them down to 20th place."],
-        ["What to spend it on", "Experiments in the Laboratory of Experiments, 30 coins each. You nominate five cards you already own — one slot may be a magic orb instead — and each experiment can hand one of those five back: 10%, 20%, 30%, 40%, and the fifth is guaranteed."]
+        ["What it is", "A per-unit discount on levelling, counted in orbs: each one reduces the magic orbs that unit's next level needs by one. They go towards unit levels only, and not towards Reincarnation."],
+        ["Where it comes from", "Spending ordinary orbs to level an event unit creates them, and they then accumulate on legendary units of the same faction — event units excepted. They also turn up in the Lucky Casket, which is a type of chest."],
+        ["What to spend it on", "Levelling the unit they are attached to. They are spent before your ordinary orbs, so a stack of them is a head start on one particular card rather than a free choice."]
       ],
-      "tags": ["experiment", "laboratory", "season pass", "challenge of hunters", "premium"]
+      "tags": ["bonus orb", "orbs", "faction", "event unit", "lucky casket", "upgrade"]
     },
     {
-      "name": "Rune Keys",
-      "id": "rune-keys",
-      "kind": "Currency",
-      "summary": "What you spend in the seasonal offer store.",
+      "name": "Star Coins",
+      "id": "star-coins",
+      "kind": "Material",
+      "summary": "A free level. One coin raises a unit by one level, up to and including 15, with no gold, no card copies and no orbs.",
       "facts": [
-        ["What it is", "A currency spent in the seasonal offer store."],
-        ["Where it comes from", "Not recorded in the in-game text used for this page."],
-        ["What to spend it on", "Purchases in the seasonal offer store."]
+        ["What it is", "A consumable that buys a single unit level outright, valid up to level 15."],
+        ["Where it comes from", "A chance at them among the season pass rewards."],
+        ["What to spend it on", "The level you would otherwise be furthest from affording, which usually means a legendary — that is where copies and orbs both bite. One catch: levelling this way creates no bonus orbs, so spending a coin on an event unit forfeits the bonus orb that levelling it normally would have made."]
       ],
-      "tags": ["rune key", "seasonal offer store", "currency"]
+      "tags": ["star coin", "level", "season pass", "free level"]
+    },
+    {
+      "name": "Pages of Secrets",
+      "id": "pages-of-secrets",
+      "kind": "Material",
+      "summary": "One page per season pass, six pages to a book — and the book instantly levels any card you like.",
+      "facts": [
+        ["What it is", "A collectible page. Six of them combine into the Book of Secrets, which instantly levels up a card of your choice."],
+        ["Where it comes from", "Completing the free tier of the season pass pays one page. That is the whole supply, so a book is six seasons of work."],
+        ["What to spend it on", "Nothing until you hold six. Because the trickle is fixed and unmissable, the only real decision is which card gets the book when it finally lands."]
+      ],
+      "tags": ["page of secrets", "book of secrets", "season pass", "instant level"]
+    },
+    {
+      "name": "Faction Cores",
+      "id": "cores",
+      "kind": "Material",
+      "summary": "The ascension material, and there is one kind per faction — so ascension draws on five separate supplies rather than one shared pool.",
+      "facts": [
+        ["What it is", "Cores come as Forest, Magic, Tech, Light and Dark. Every ascension a unit takes costs cores."],
+        ["Where it comes from", "Not recorded here yet."],
+        ["What to spend it on", "Ascending units. Ascension matters beyond its own bonuses, because Reincarnation needs a unit at the 4th Ascension as well as at level 15."]
+      ],
+      "tags": ["core", "cores", "ascension", "faction", "forest", "magic", "tech", "light", "dark"]
+    },
+    {
+      "name": "Celestial Shards",
+      "id": "celestial-shards",
+      "kind": "Material",
+      "summary": "An extremely rare material left where the celestial rifts have been. It is what lets units gain new abilities through Reincarnation.",
+      "facts": [
+        ["What it is", "Fragments that appear where the celestial rifts have been, carrying the power of transforming matter."],
+        ["Where it comes from", "The Champion Store, the Clan Store, Dragon Rifts, and unique events of the Isle of Rhandum."],
+        ["What to spend it on", "Unlocking new abilities on Reincarnated units. See reincarnation."]
+      ],
+      "tags": ["celestial", "shards", "reincarnation", "rift", "rhandum", "rare"]
     },
     {
       "name": "Hero Fragments",
@@ -90,18 +126,6 @@
       ],
       "tags": ["hero", "expedition", "fragments", "unlock"],
       "detail": "stub"
-    },
-    {
-      "name": "Celestial Shards",
-      "id": "celestial-shards",
-      "kind": "Material",
-      "summary": "An extremely rare material left where the celestial rifts have been. It is what lets units gain new abilities through Reincarnation.",
-      "facts": [
-        ["What it is", "Fragments that appear where the celestial rifts have been, carrying the power of transforming matter."],
-        ["Where it comes from", "The Champion Store, the Clan Store, Dragon Rifts, and unique events of the Isle of Rhandum."],
-        ["What to spend it on", "Unlocking new abilities on Reincarnated units. See reincarnation."]
-      ],
-      "tags": ["celestial", "shards", "reincarnation", "rift", "rhandum", "rare"]
     },
     {
       "name": "Essence",
@@ -128,6 +152,138 @@
       "tags": ["perks", "fragments", "profile", "permanent"]
     },
     {
+      "name": "Hammers",
+      "id": "hammers",
+      "kind": "Material",
+      "summary": "The equipment material. Nothing at the top of the equipment tree gets built or upgraded without them.",
+      "facts": [
+        ["What it is", "The material required to create and upgrade the most powerful equipment."],
+        ["Where it comes from", "Not recorded here yet."],
+        ["What to spend it on", "Crafting and upgrading equipment. Gold covers the ordinary work; hammers are what the strongest pieces additionally ask for."]
+      ],
+      "tags": ["hammer", "equipment", "crafting", "upgrade"]
+    },
+    {
+      "name": "Experiment Coins",
+      "id": "experiment-coins",
+      "kind": "Currency",
+      "summary": "A narrow currency with one use, and it is an unusual one: experiments are the closest the game comes to letting you aim at a particular card instead of hoping a chest gives it to you.",
+      "facts": [
+        ["What it is", "A special-purpose currency, not interchangeable with gold or crystals."],
+        ["Where it comes from", "The premium part of the season pass, together with magic orbs, and the Challenge of Hunters event, which pays them down to 20th place."],
+        ["What to spend it on", "Experiments in the Laboratory of Experiments, 30 coins each. You nominate five cards you already own — one slot may be a magic orb instead — and each experiment can hand one of those five back: 10%, 20%, 30%, 40%, and the fifth is guaranteed."]
+      ],
+      "tags": ["experiment", "laboratory", "season pass", "challenge of hunters", "premium"]
+    },
+    {
+      "name": "Rune Keys",
+      "id": "rune-keys",
+      "kind": "Currency",
+      "summary": "What you spend in the seasonal offer store.",
+      "facts": [
+        ["What it is", "A currency spent in the seasonal offer store."],
+        ["Where it comes from", "Not recorded in the in-game text used for this page."],
+        ["What to spend it on", "Purchases in the seasonal offer store."]
+      ],
+      "tags": ["rune key", "seasonal offer store", "currency"]
+    },
+    {
+      "name": "Bells",
+      "id": "bells",
+      "kind": "Currency",
+      "summary": "The summoning currency. Bells buy the legendary of the week — or, if you would rather, bonus orbs for it.",
+      "facts": [
+        ["What it is", "The currency for Legendary Summoning. A summon gives you the legendary unit of the week; past 500 legendarity you can choose to take a bonus orb for that unit instead."],
+        ["Where it comes from", "Not recorded here yet."],
+        ["What to spend it on", "Summons. A standard summon costs 45 bells and can be repeated as often as you like; the Star of the Week costs 75 and can only be summoned twice. In the last week of a season the summon usually lets you pick the specific card you want, which is when bells are worth most."]
+      ],
+      "tags": ["bell", "bells", "legendary summoning", "star of the week", "bonus orb"]
+    },
+    {
+      "name": "Clan Coins",
+      "id": "clan-coins",
+      "kind": "Currency",
+      "summary": "What Clan War pays, and the clan store is the only place it goes.",
+      "facts": [
+        ["What it is", "The clan store's currency."],
+        ["Where it comes from", "Taking part in Clan War."],
+        ["What to spend it on", "Purchases in the clan store."]
+      ],
+      "tags": ["clan coins", "clan", "clan war", "clan store"]
+    },
+    {
+      "name": "Trading Tokens",
+      "id": "trading-tokens",
+      "kind": "Currency",
+      "summary": "The other clan store currency, and the one you assemble rather than earn: a completed item collection converts into 25 tokens.",
+      "facts": [
+        ["What it is", "A clan store currency that arrives 25 at a time, in exchange for a completed item collection."],
+        ["Where it comes from", "Collection items are given for prize-winning places in Clan War, and clanmates trade them between each other by sending requests in clan chat. Complete the set and it converts to 25 trading tokens."],
+        ["What to spend it on", "The clan store: 25 tokens for 200 magic dust, or 100 tokens for a legendary event card. The event card is four completed collections' worth, so it is the long game."]
+      ],
+      "tags": ["trading tokens", "clan", "clan store", "item collection", "clan war"]
+    },
+    {
+      "name": "Legend Medals",
+      "id": "legend-medals",
+      "kind": "Currency",
+      "summary": "A high-end currency that does not start arriving until you are playing at a high level.",
+      "facts": [
+        ["What it is", "The Legend Store's currency."],
+        ["Where it comes from", "Rewards from 7,000 trophies onwards, or after reaching Division 7. The seasonal quest for taking part in duels pays them too."],
+        ["What to spend it on", "Trading for the rewards in the Legend Store."]
+      ],
+      "tags": ["legend medals", "legend store", "trophies", "division", "duels"]
+    },
+    {
+      "name": "Event Tokens",
+      "id": "event-tokens",
+      "kind": "Currency",
+      "summary": "The regular events' shared currency. It survives the event that paid it, but you cannot hold more than 600.",
+      "facts": [
+        ["What it is", "The currency earned and spent in the regular events — Mirror Match and the Masters' Tournament."],
+        ["Where it comes from", "Playing any regular event."],
+        ["What to spend it on", "The event stores. Tokens do not expire when an event ends, so carrying them into the next one is fine — but the balance is capped at 600, and anything earned above that is lost, so spend down before a big event rather than after it."]
+      ],
+      "tags": ["event tokens", "events", "mirror match", "masters tournament", "cap", "600"]
+    },
+    {
+      "name": "Lucky Tokens",
+      "id": "lucky-tokens",
+      "kind": "Currency",
+      "summary": "A regular event store currency, separate from event tokens.",
+      "facts": [
+        ["What it is", "A currency spent at the regular event store."],
+        ["Where it comes from", "Not recorded here yet."],
+        ["What to spend it on", "Purchases at the regular event store."]
+      ],
+      "tags": ["lucky tokens", "events", "event store"]
+    },
+    {
+      "name": "Heroic Tokens",
+      "id": "heroic-tokens",
+      "kind": "Currency",
+      "summary": "The Hero Tavern's currency, and the only route to the heroic items in the store.",
+      "facts": [
+        ["What it is", "A currency required to buy the unique heroic items in the store."],
+        ["Where it comes from", "Among the rewards of the Hero Tavern event, which is structured like a season pass."],
+        ["What to spend it on", "Unique heroic items in the store — there is nothing else they buy."]
+      ],
+      "tags": ["heroic tokens", "hero tavern", "heroic items", "store", "event"]
+    },
+    {
+      "name": "Dragon Coins",
+      "id": "dragon-coins",
+      "kind": "Currency",
+      "summary": "One coin from one job: completing the Dragon Outpost during a Dragon Rift.",
+      "facts": [
+        ["What it is", "The Dragon Rift event's currency."],
+        ["Where it comes from", "Completing the Dragon Outpost in the Dragon Rift event."],
+        ["What to spend it on", "Exchanged in the primary section of the store."]
+      ],
+      "tags": ["dragon coin", "dragon rift", "outpost", "clan", "event"]
+    },
+    {
       "name": "Trophies",
       "id": "trophies",
       "kind": "Rating",
@@ -135,22 +291,9 @@
       "facts": [
         ["What it is", "Your PvP rating. It goes up when you win and down when you lose."],
         ["Where it comes from", "PvP matches only."],
-        ["What to spend it on", "Nothing. It gates arena progression, and new enemies appear as you climb — the Virus boss from arena 7, the Assassin from arena 9."]
+        ["What to spend it on", "Nothing. It gates arena progression, and new enemies appear as you climb — the Virus boss from arena 7, the Assassin from arena 9. Passing 7,000 also starts paying legend medals."]
       ],
       "tags": ["trophies", "rating", "arena", "pvp", "ranking"],
-      "detail": "stub"
-    },
-    {
-      "name": "Chests",
-      "id": "chests",
-      "kind": "Container",
-      "summary": "The main way cards enter your account. Which chest a card can appear in is most of what rarity actually controls.",
-      "facts": [
-        ["What it is", "Containers holding cards, gold, crystals and materials. Different chests draw from different pools."],
-        ["Where it comes from", "Winning matches, the shop, the season pass ladder, the Seasonal Items store, and events."],
-        ["What to spend it on", "Not spent — opened. Rarer cards appear less often, which is why duplicates of a legendary are the slow part of levelling one."]
-      ],
-      "tags": ["chest", "cards", "drops", "shop"],
       "detail": "stub"
     }
   ]
