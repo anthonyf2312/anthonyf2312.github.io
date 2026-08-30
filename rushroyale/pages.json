@@ -1,6 +1,6 @@
 {
   "$comment": "Index for the section-wide command palette. Generated from the sidebar of each page - every title here is copied verbatim from the page it points at. If you add or rename a section, add it here too, or the palette will not find it.",
-  "reviewed": "2026-08-29",
+  "reviewed": "2026-08-30",
   "pages": [
     {
       "path": "index.html",
@@ -140,6 +140,10 @@
         {
           "id": "dust-vs-orbs",
           "title": "Dust vs orbs"
+        },
+        {
+          "id": "laboratory",
+          "title": "The Laboratory"
         },
         {
           "id": "priorities",

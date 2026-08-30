@@ -1,6 +1,6 @@
 {
-  "$comment": "Every currency and material in Rush Royale, rendered by rushroyale.js on resources.html. Each entry answers the same three questions in the same order, because that is what people actually come to a resources page for. Fields: name, id (becomes the anchor, so other pages can link straight at #magic-dust), kind (the filter facet), summary, facts (ordered [label, text] pairs), tags, detail. No exchange rates, costs or drop rates are recorded here unless they were confirmed from a public source — add them as you verify them in-game. Celestial Shards, Essence and Perk Fragments come from the game's in-game Knowledge Base (recorded 2026-08-27) and carry no 'detail' flag, because they are not waiting on verification; where that text gives no source for a material, the entry says so rather than guessing. Rune Keys was confirmed against the in-game description on 2026-08-29 and had its flag dropped for the same reason - note that its former 'season pass' and 'Chest of Magic Dust' specifics were wiki-era guesses and were removed rather than kept, because the in-game text does not state them. The older entries are still flagged detail='stub'.",
-  "reviewed": "2026-08-27",
+  "$comment": "Every currency and material in Rush Royale, rendered by rushroyale.js on resources.html. Each entry answers the same three questions in the same order, because that is what people actually come to a resources page for. Fields: name, id (becomes the anchor, so other pages can link straight at #magic-dust), kind (the filter facet), summary, facts (ordered [label, text] pairs), tags, detail. No exchange rates, costs or drop rates are recorded here unless they were confirmed from a public source — add them as you verify them in-game. Celestial Shards, Essence and Perk Fragments come from the game's in-game Knowledge Base (recorded 2026-08-27) and carry no 'detail' flag, because they are not waiting on verification; where that text gives no source for a material, the entry says so rather than guessing. Rune Keys was confirmed against the in-game description on 2026-08-29 and had its flag dropped for the same reason - note that its former 'season pass' and 'Chest of Magic Dust' specifics were wiki-era guesses and were removed rather than kept, because the in-game text does not state them. The older entries are still flagged detail='stub'. Gems are called Crystals in game, so the entry carries the game's word and its anchor is #crystals - resources.html and glossary.json both link at it. Experiment Coins, and the Laboratory rooms now named in the Magic Dust and Magic Orbs entries, were described from in-game play on 2026-08-30 and carry no flag; the experiment odds and costs live on resources.html#laboratory rather than being repeated here.",
+  "reviewed": "2026-08-30",
   "entries": [
     {
       "name": "Gold",
@@ -16,16 +16,16 @@
       "detail": "stub"
     },
     {
-      "name": "Gems",
-      "id": "gems",
+      "name": "Crystals",
+      "id": "crystals",
       "kind": "Currency",
-      "summary": "The premium currency, sometimes called crystals. You can earn it without paying, just slowly.",
+      "summary": "The premium currency. The game calls them crystals; gems is the community's word for the same thing. You can earn them without paying, just slowly.",
       "facts": [
-        ["What it is", "The hard currency. Free to earn, or buyable with real money."],
+        ["What it is", "The hard currency, named crystals in game. Free to earn, or buyable with real money."],
         ["Where it comes from", "Career achievements, quests, watching adverts, events, and direct purchase."],
-        ["What to spend it on", "Chests and shop offers. Spending it on chests is usually better value than spending it to rush timers."]
+        ["What to spend it on", "Chests and shop offers. Spending them on chests is usually better value than spending them to rush timers."]
       ],
-      "tags": ["crystals", "premium currency", "hard currency"],
+      "tags": ["crystals", "gems", "premium currency", "hard currency"],
       "detail": "stub"
     },
     {
@@ -36,7 +36,7 @@
       "facts": [
         ["What it is", "A material you bank up and trade in. The published exchange rate is 1,000 magic dust for one random legendary card."],
         ["Where it comes from", "The Chest of Magic Dust in the Seasonal Items store, which costs a rune key; career achievement rewards; and some chests on the season pass reward ladder."],
-        ["What to spend it on", "Nothing but the legendary trade-in at the store. Because it is uncapped and does not expire, there is no reason to rush it — the only decision is when you hit 1,000."]
+        ["What to spend it on", "Nothing but the legendary trade-in, which happens in the Legendary Lab: 1,000 dust for a legendary card. Because it is uncapped and does not expire, there is no reason to rush it — the only decision is when you hit 1,000."]
       ],
       "tags": ["dust", "legendary", "uncapped", "seasonal", "trade in"],
       "detail": "stub"
@@ -48,24 +48,23 @@
       "summary": "The reason legendaries level so much slower than everything else. Duplicate cards alone are not enough — every legendary upgrade wants orbs too.",
       "facts": [
         ["What it is", "An upgrade material used specifically on legendary units. You need both copies of the card and orbs to push a legendary to the next level, at every level."],
-        ["Where it comes from", "The premium track of the season pass, alongside experiment coins, plus other sources in events and the store."],
+        ["Where it comes from", "The premium track of the season pass, alongside experiment coins, plus events and the store. The Laboratory also makes them: the Magic Lab turns legendary cards into an orb, and the Glutton exchange takes a legendary card for either an orb or another card."],
         ["What to spend it on", "Levelling legendary units — nothing else. Because orbs are the bottleneck rather than the cards, spreading them thinly across many legendaries is usually worse than committing to the two or three you actually play."]
       ],
-      "tags": ["magic orbs", "legendary", "upgrade material", "season pass"],
+      "tags": ["magic orbs", "legendary", "upgrade material", "season pass", "laboratory", "glutton"],
       "detail": "stub"
     },
     {
       "name": "Experiment Coins",
       "id": "experiment-coins",
       "kind": "Currency",
-      "summary": "A separate, narrower currency that arrives through the premium season pass.",
+      "summary": "A narrow currency with one use, and it is an unusual one: experiments are the closest the game comes to letting you aim at a particular card instead of hoping a chest gives it to you.",
       "facts": [
-        ["What it is", "A special-purpose currency, not interchangeable with gold or gems."],
-        ["Where it comes from", "The premium part of the season pass, together with magic orbs."],
-        ["What to spend it on", "Its own dedicated shop section rather than general upgrades."]
+        ["What it is", "A special-purpose currency, not interchangeable with gold or crystals."],
+        ["Where it comes from", "The premium part of the season pass, together with magic orbs, and the Challenge of Hunters event, which pays them down to 20th place."],
+        ["What to spend it on", "Experiments in the Laboratory of Experiments, 30 coins each. You nominate five cards you already own — one slot may be a magic orb instead — and each experiment can hand one of those five back: 10%, 20%, 30%, 40%, and the fifth is guaranteed."]
       ],
-      "tags": ["experiment", "season pass", "premium"],
-      "detail": "stub"
+      "tags": ["experiment", "laboratory", "season pass", "challenge of hunters", "premium"]
     },
     {
       "name": "Rune Keys",
@@ -147,7 +146,7 @@
       "kind": "Container",
       "summary": "The main way cards enter your account. Which chest a card can appear in is most of what rarity actually controls.",
       "facts": [
-        ["What it is", "Containers holding cards, gold, gems and materials. Different chests draw from different pools."],
+        ["What it is", "Containers holding cards, gold, crystals and materials. Different chests draw from different pools."],
         ["Where it comes from", "Winning matches, the shop, the season pass ladder, the Seasonal Items store, and events."],
         ["What to spend it on", "Not spent — opened. Rarer cards appear less often, which is why duplicates of a legendary are the slow part of levelling one."]
       ],
