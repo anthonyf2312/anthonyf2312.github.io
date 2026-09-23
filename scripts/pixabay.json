@@ -1,4 +1,6 @@
 [
-  { "slot": "lando-silverstone", "id": 4341625 },
-  { "slot": "rain", "id": 1610019 }
+  {
+    "slot": "rain",
+    "id": 1610019
+  }
 ]

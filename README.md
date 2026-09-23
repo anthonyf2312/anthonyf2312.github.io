@@ -28,7 +28,8 @@ The Sochi 2021 trace (`src/data/sochi.ts`) is Lando Norris's running position at
 
 ## Credits
 
-- Photos: randomwinner and Arcaion on Pixabay
-- McLaren speedmark: [icons8](https://icons8.com)
+- Rain photo: Arcaion on Pixabay
+- Lando Norris's number design: [Ved havet](https://commons.wikimedia.org/wiki/File:Lando_Norris_McLaren_driver_number.svg), CC BY-SA 4.0, recoloured (the adapted SVG in src/components/LandoFour.astro is shared under the same licence)
+- McLaren wordmark and speedmark: Wikimedia Commons (public domain as simple logos, McLaren trademarks; shown on a fan page with no affiliation)
 - Type: [Mona Sans](https://github.com/github/mona-sans) (SIL OFL)
 - Icons: [Lucide](https://lucide.dev) (ISC)

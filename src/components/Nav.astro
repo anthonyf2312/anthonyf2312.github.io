@@ -56,6 +56,34 @@ const links = [
       color 300ms ease;
   }
 
+  /* Reading progress: a papaya hairline along the bar's bottom edge, driven by page scroll. */
+  .nav::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 2px;
+    background: var(--papaya);
+    transform-origin: 0 50%;
+    scale: 0 1;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .nav::after {
+      animation-name: progress;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(root block);
+    }
+  }
+
+  @keyframes progress {
+    to {
+      scale: 1 1;
+    }
+  }
+
   .nav[data-dark] {
     background: rgb(22 22 23 / 0.8);
     border-bottom-color: rgb(255 255 255 / 0.08);
@@ -93,6 +121,7 @@ const links = [
   }
 
   .nav__links a {
+    position: relative;
     display: inline-flex;
     align-items: center;
     min-height: 2.75rem;
@@ -100,6 +129,24 @@ const links = [
     font-size: 0.875rem;
     text-decoration: none;
     transition: color 200ms ease;
+  }
+
+  /* Hover: an underline draws in from the left. */
+  .nav__links a::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0.7rem;
+    left: 0;
+    height: 1px;
+    background: currentColor;
+    transform-origin: 0 50%;
+    scale: 0 1;
+    transition: scale 250ms var(--ease-out);
+  }
+
+  .nav__links a:hover::after {
+    scale: 1 1;
   }
 
   .nav__links a:hover {

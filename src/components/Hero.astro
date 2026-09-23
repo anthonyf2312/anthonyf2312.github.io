@@ -127,6 +127,27 @@ import LinkButton from './LinkButton.astro';
     }
   }
 
+  /* As you scroll past, the hero eases up and dims, handing over to the next section. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .hero__content {
+        animation-name: hero-out;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range: exit 10% exit 95%;
+      }
+    }
+  }
+
+  @keyframes hero-out {
+    to {
+      opacity: 0.1;
+      translate: 0 -3rem;
+      scale: 0.96;
+    }
+  }
+
   @keyframes rise {
     from {
       opacity: 0;

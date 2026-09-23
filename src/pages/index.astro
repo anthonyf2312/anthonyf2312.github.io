@@ -9,10 +9,11 @@ import SochiTrace from '../components/SochiTrace.astro';
 import Swatch from '../components/Swatch.astro';
 import Waves from '../components/Waves.astro';
 import Icon from '../components/Icon.astro';
+import LandoFour from '../components/LandoFour.astro';
+import McLarenWordmark from '../components/McLarenWordmark.astro';
+import Speedmark from '../components/Speedmark.astro';
 import { lapsLed, totalLaps } from '../data/sochi';
 import inskoAvatar from '../assets/insko-avatar.png';
-import speedmark from '../assets/speedmark.png';
-import landoPhoto from '../assets/pixabay/lando-silverstone.jpg';
 import rainPhoto from '../assets/pixabay/rain.jpg';
 import credits from '../assets/pixabay/credits.json';
 
@@ -46,57 +47,57 @@ const soon = [
     <!-- Insko Bot -->
     <section class="dark insko" id="insko" aria-labelledby="insko-title">
       <div class="container insko__grid">
-        <div class="insko__text">
-          <h2 class="headline" id="insko-title">Insko Bot.</h2>
-          <p class="lead insko__lead">
+        <div class="insko__text" data-reveal-group>
+          <h2 class="headline" id="insko-title" data-reveal>Insko Bot.</h2>
+          <p class="lead insko__lead" data-reveal>
             Built for the Insko community. Private, self-hosted, and open to other servers that ask.
           </p>
-          <div class="actions">
+          <div class="actions" data-reveal>
             <LinkButton href="https://inskobot.me/#request-access" external>Request access</LinkButton>
             <a class="text-link" href="https://github.com/anthonyf2312/InskoBot" rel="noopener">
               View on GitHub <Icon name="chevron-right" size={18} />
             </a>
           </div>
-          <p class="insko__next">A public bot is next. <a href="#soon">See what’s coming</a>.</p>
+          <p class="insko__next" data-reveal>A public bot is next. <a href="#soon">See what’s coming</a>.</p>
         </div>
         <!-- The icon crosses the edge between the white statement and the black section. -->
-        <Image
-          class="insko__icon"
-          src={inskoAvatar}
-          alt="Insko Bot's icon: a violet monogram on black."
-          width={288}
-          height={288}
-          densities={[1, 2]}
-        />
+        <div class="insko__icon-wrap" data-reveal="pop">
+          <Image
+            class="insko__icon"
+            src={inskoAvatar}
+            alt="Insko Bot's icon: a violet monogram on black."
+            width={288}
+            height={288}
+            densities={[1, 2]}
+          />
+        </div>
       </div>
     </section>
 
     <!-- Formula 1 -->
     <section class="dark f1" id="f1" aria-labelledby="f1-title">
       <div class="f1__stage">
-        <div class="f1__head">
-          <h2 class="headline" id="f1-title">Papaya, since Sochi.</h2>
-          <p class="lead f1__lead">Formula 1 is my weekend. McLaren, and Lando Norris in particular.</p>
+        <div class="f1__head" data-reveal-group>
+          <h2 class="headline" id="f1-title" data-reveal>Papaya, since Sochi.</h2>
+          <p class="lead f1__lead" data-reveal>Formula 1 is my weekend. McLaren, and Lando Norris in particular.</p>
         </div>
 
-        <!-- The car drives in from the right and runs off the edge of the screen. -->
+        <!-- A dark tile that runs off the right edge. It wipes in, then Lando's 4 assembles stripe by stripe. -->
         <figure class="f1__photo">
-          <div class="f1__frame">
-            <Picture
-              src={landoPhoto}
-              formats={['avif', 'webp']}
-              widths={[640, 960, 1280]}
-              sizes="(max-width: 48rem) 100vw, 60vw"
-              alt="Lando Norris's papaya and blue McLaren on track at Silverstone."
-            />
+          <div class="f1__card" data-reveal="panel">
+            <McLarenWordmark class="f1__wordmark" />
+            <LandoFour class="f1__four" />
+            <p class="f1__driver">Lando Norris</p>
           </div>
           <figcaption class="f1__caption">
-            Silverstone, 2019. Photo by <a href={credit['lando-silverstone'].pageURL}>{credit['lando-silverstone'].user}</a>{' '}
-            on Pixabay.
+            Number design by{' '}
+            <a href="https://commons.wikimedia.org/wiki/File:Lando_Norris_McLaren_driver_number.svg">Ved havet</a>,{' '}
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, recoloured. McLaren marks
+            belong to McLaren.
           </figcaption>
         </figure>
 
-        <p class="lead f1__pick">
+        <p class="lead f1__pick" data-reveal>
           I picked my driver at Sochi in 2021. His first pole, and he led {lapsLed} of the {totalLaps} laps.
         </p>
       </div>
@@ -107,7 +108,7 @@ const soon = [
     <!-- The rain: a tall panel off the left edge, drifting down as you scroll. -->
     <section class="grey rain" aria-labelledby="rain-title">
       <div class="rain__stage">
-        <div class="rain__panel">
+        <div class="rain__panel" data-reveal="wipe-left">
           <Picture
             src={rainPhoto}
             formats={['avif', 'webp']}
@@ -116,31 +117,26 @@ const soon = [
             alt="Raindrops on a window against a pale grey sky."
           />
         </div>
-        <div class="rain__text">
-          <h2 class="headline" id="rain-title">Then the rain came.</h2>
-          <p class="lead">
+        <div class="rain__text" data-reveal-group>
+          <h2 class="headline" id="rain-title" data-reveal>Then the rain came.</h2>
+          <p class="lead" data-reveal>
             With a few laps left he stayed out on slicks, went off at turn 5, and his first win went with it. He
             finished seventh. That was the day I started supporting him.
           </p>
-          <p class="fine">Photo by <a href={credit.rain.pageURL}>{credit.rain.user}</a> on Pixabay.</p>
+          <p class="fine" data-reveal>Photo by <a href={credit.rain.pageURL}>{credit.rain.user}</a> on Pixabay.</p>
         </div>
       </div>
     </section>
 
     <section class="worst" aria-label="Why Lando">
-      <div class="container worst__grid">
-        <blockquote class="worst__quote">
+      <div class="container worst__grid" data-reveal-group>
+        <blockquote class="worst__quote" data-reveal>
           <p>Backing someone on their worst day beats joining on their best.</p>
         </blockquote>
-        <Image
-          class="worst__mark"
-          src={speedmark}
-          alt="McLaren speedmark"
-          width={224}
-          height={224}
-          densities={[1, 2]}
-        />
-        <p class="worst__sign">Lando Norris, car 4. Since Russia, 2021.</p>
+        <div class="worst__mark" data-reveal="sweep">
+          <Speedmark />
+        </div>
+        <p class="worst__sign" data-reveal>Lando Norris, car 4. Since Russia, 2021.</p>
       </div>
     </section>
 
@@ -148,12 +144,12 @@ const soon = [
 
     <!-- MS -->
     <section class="ms" id="ms" aria-labelledby="ms-title">
-      <div class="container ms__inner">
-        <h2 class="headline" id="ms-title">And yes, I have MS.</h2>
-        <p class="lead ms__lead">Relapsing-remitting multiple sclerosis. Not a secret, not a tragedy, not the whole story.</p>
+      <div class="container ms__inner" data-reveal-group>
+        <h2 class="headline" id="ms-title" data-reveal>And yes, I have MS.</h2>
+        <p class="lead ms__lead" data-reveal>Relapsing-remitting multiple sclerosis. Not a secret, not a tragedy, not the whole story.</p>
         <Waves />
-        <p class="lead ms__lead">It comes in waves: a relapse, then remission. It changes my pace, not my direction.</p>
-        <p class="body ms__keep">If you’ve just been diagnosed and you’re reading this: keep building.</p>
+        <p class="lead ms__lead" data-reveal>It comes in waves: a relapse, then remission. It changes my pace, not my direction.</p>
+        <p class="body ms__keep" data-reveal>If you’ve just been diagnosed and you’re reading this: keep building.</p>
         <a
           class="text-link"
           href="https://www.mssociety.org.uk/about-ms/types-of-ms/relapsing-remitting-ms"
@@ -167,16 +163,16 @@ const soon = [
     <!-- Coming soon -->
     <section class="grey soon" id="soon" aria-labelledby="soon-title">
       <div class="container">
-        <div class="soon__head">
-          <h2 class="headline" id="soon-title">Coming soon.</h2>
-          <p class="lead soon__lead">
+        <div class="soon__head" data-reveal-group>
+          <h2 class="headline" id="soon-title" data-reveal>Coming soon.</h2>
+          <p class="lead soon__lead" data-reveal>
             A public bot is on the way. It gets its own Discord server when it launches, and its code goes on GitHub.
           </p>
         </div>
-        <ul class="soon__list">
+        <ul class="soon__list" data-reveal-group>
           {
             soon.map((item) => (
-              <li class="soon__item">
+              <li class="soon__item" data-reveal>
                 <p class="soon__name">{item.title}</p>
                 <p class="soon__text">{item.text}</p>
               </li>
@@ -190,9 +186,11 @@ const soon = [
   <footer class="grey footer">
     <div class="container footer__inner">
       <p class="fine">
-        Photos from Pixabay by <a href={credit['lando-silverstone'].userURL}>{credit['lando-silverstone'].user}</a>{' '}
-        and <a href={credit.rain.userURL}>{credit.rain.user}</a>. McLaren speedmark by{' '}
-        <a href="https://icons8.com">icons8</a>. Lap positions from the <a href="https://api.jolpi.ca/">Jolpica F1 API</a>.
+        Rain photo from Pixabay by <a href={credit.rain.userURL}>{credit.rain.user}</a>. Lando Norris's number
+        design by <a href="https://commons.wikimedia.org/wiki/User:Ved_havet">Ved havet</a>,{' '}
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, recoloured. The McLaren wordmark
+        and speedmark are McLaren trademarks, shown on a fan page with no affiliation. Lap positions from the{' '}
+        <a href="https://api.jolpi.ca/">Jolpica F1 API</a>.
       </p>
       <p class="fine">© 2026 Anthony.</p>
     </div>
@@ -244,14 +242,18 @@ const soon = [
     color: var(--on-dark);
   }
 
-  .insko :global(.insko__icon) {
+  .insko__icon-wrap {
     --icon: clamp(11rem, 24vw, 18rem);
     position: relative;
     z-index: 1;
     justify-self: end;
     width: var(--icon);
-    height: var(--icon);
     margin-top: calc(-1 * var(--section-y) - var(--icon) * 0.45);
+  }
+
+  .insko :global(.insko__icon) {
+    width: 100%;
+    height: auto;
     border-radius: 22.5%;
     box-shadow: 0 0 0 1px rgb(255 255 255 / 0.14);
   }
@@ -291,17 +293,89 @@ const soon = [
     margin-top: var(--s12);
   }
 
-  .f1__frame {
+  /* The team tile: wordmark top left, Lando's 4 large on the right, his name bottom left. */
+  .f1__card {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    aspect-ratio: 4 / 3;
+    padding: clamp(1.5rem, 3.4vw, 3rem);
     overflow: hidden;
     border-radius: var(--radius) 0 0 var(--radius);
+    background: #161617;
   }
 
-  .f1__frame :global(img) {
-    width: 100%;
+  .f1__card :global(.f1__wordmark) {
+    width: clamp(8rem, 15vw, 12rem);
     height: auto;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    object-position: 46% 62%;
+    color: var(--on-dark);
+  }
+
+  .f1__card :global(.f1__four) {
+    position: absolute;
+    right: clamp(3rem, 16%, 12rem);
+    bottom: 13%;
+    height: 70%;
+    width: auto;
+    color: var(--papaya);
+  }
+
+  .f1__driver {
+    grid-row: 3;
+    position: relative;
+    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    font-weight: 650;
+    letter-spacing: -0.025em;
+  }
+
+  /*
+    The focal moment. Once the tile has wiped in from the right, the 4's twenty stripes streak in
+    from the left, bottom to top, like speed lines settling into a number.
+  */
+  :global(.js) .f1__card :global(.f1__four polygon) {
+    transform-box: fill-box;
+    transform-origin: 0 50%;
+    opacity: 0;
+    translate: -45% 0;
+    scale: 0.15 1;
+    transition:
+      opacity 300ms ease,
+      translate 800ms var(--ease-out),
+      scale 800ms var(--ease-out);
+    transition-delay: calc(450ms + var(--i) * 32ms);
+  }
+
+  :global(.js) .f1__card.is-in :global(.f1__four polygon) {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1 1;
+  }
+
+  :global(.js) .f1__card :global(.f1__wordmark),
+  :global(.js) .f1__card .f1__driver {
+    opacity: 0;
+    translate: 0 0.75rem;
+    transition:
+      opacity 600ms ease,
+      translate 800ms var(--ease-out);
+    transition-delay: 1100ms;
+  }
+
+  :global(.js) .f1__card.is-in :global(.f1__wordmark),
+  :global(.js) .f1__card.is-in .f1__driver {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.js) .f1__card :global(.f1__four polygon),
+    :global(.js) .f1__card :global(.f1__wordmark),
+    :global(.js) .f1__card .f1__driver {
+      translate: 0 0;
+      scale: 1 1;
+      transition: opacity 400ms ease;
+      transition-delay: 200ms;
+    }
   }
 
   .f1__caption {
@@ -323,29 +397,6 @@ const soon = [
     color: inherit;
   }
 
-  /* The car drives in: the frame slides left while it unclips from the right. */
-  @supports (animation-timeline: view()) {
-    @media (prefers-reduced-motion: no-preference) {
-      .f1__frame {
-        animation-name: drive-in;
-        animation-timing-function: linear;
-        animation-fill-mode: both;
-        animation-timeline: view();
-        animation-range: entry 10% cover 45%;
-      }
-    }
-  }
-
-  @keyframes drive-in {
-    from {
-      translate: 14% 0;
-      clip-path: inset(0 0 0 35% round var(--radius) 0 0 var(--radius));
-    }
-    to {
-      translate: 0 0;
-      clip-path: inset(0 0 0 0 round var(--radius) 0 0 var(--radius));
-    }
-  }
 
   /* The rain: a tall panel bleeding off the left edge, the copy on the right. */
   .rain {
@@ -439,10 +490,15 @@ const soon = [
     text-wrap: balance;
   }
 
-  .worst :global(.worst__mark) {
+  .worst__mark {
     grid-column: 2;
     grid-row: 1 / 3;
-    width: clamp(8rem, 18vw, 14rem);
+    width: clamp(9rem, 20vw, 16rem);
+    color: var(--papaya);
+  }
+
+  .worst__mark :global(svg) {
+    width: 100%;
     height: auto;
   }
 
@@ -458,7 +514,7 @@ const soon = [
       gap: var(--s4);
     }
 
-    .insko :global(.insko__icon) {
+    .insko__icon-wrap {
       --icon: 9rem;
       order: -1;
     }
@@ -503,7 +559,7 @@ const soon = [
       grid-template-columns: minmax(0, 1fr);
     }
 
-    .worst :global(.worst__mark) {
+    .worst__mark {
       grid-column: 1;
       grid-row: auto;
       justify-self: end;
