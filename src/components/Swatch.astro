@@ -1,0 +1,59 @@
+---
+// The page's one drenched moment: the two oranges, edge to edge, carrying the coincidence line.
+---
+
+<section class="swatch" aria-labelledby="swatch-line">
+  <div class="swatch__halves" aria-hidden="true">
+    <div class="swatch__half swatch__half--papaya"><span>McLaren papaya</span></div>
+    <div class="swatch__half swatch__half--ribbon"><span>MS ribbon orange</span></div>
+  </div>
+  <p class="swatch__line container" id="swatch-line">
+    yes, papaya and the MS ribbon are nearly the same orange. coincidence. keeping it.
+  </p>
+</section>
+
+<style>
+  .swatch {
+    position: relative;
+    display: grid;
+    align-items: center;
+    min-height: clamp(26rem, 70vh, 40rem);
+    isolation: isolate;
+  }
+
+  .swatch__halves {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .swatch__half {
+    display: flex;
+    align-items: flex-end;
+    padding: var(--s3) var(--gutter);
+    color: var(--ink);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .swatch__half--papaya {
+    background: var(--papaya);
+  }
+
+  .swatch__half--ribbon {
+    justify-content: flex-end;
+    background: var(--ribbon);
+  }
+
+  .swatch__line {
+    max-width: 20ch;
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    font-weight: 650;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    text-align: center;
+    text-wrap: balance;
+  }
+</style>

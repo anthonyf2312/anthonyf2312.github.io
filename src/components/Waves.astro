@@ -1,0 +1,88 @@
+---
+// Relapse and remission: the line rises and settles, but never turns back.
+// An illustration, not data.
+---
+
+<figure
+  class="waves"
+  role="img"
+  aria-label="A papaya line moving left to right. It rises in relapses of different sizes and settles in remission, and it keeps going."
+>
+  <svg viewBox="0 0 600 140" aria-hidden="true">
+    <line class="waves__base" x1="0" x2="566" y1="100" y2="100" vector-effect="non-scaling-stroke"></line>
+    <g class="waves__line">
+      <path
+        d="M0 100 H68 C84 100 90 38 106 38 C122 38 128 100 144 100 H228 C238 100 244 72 255 72 C266 72 272 100 282 100 H368 C384 100 391 26 408 26 C425 26 432 100 448 100 H562"
+        vector-effect="non-scaling-stroke"></path>
+      <path d="M550 90 L564 100 L550 110" vector-effect="non-scaling-stroke"></path>
+    </g>
+  </svg>
+  <span class="waves__label" style="left: 17.7%; top: 27%">relapse</span>
+  <span class="waves__label waves__label--below" style="left: 31%; top: 71.4%">remission</span>
+  <span class="waves__label" style="left: 68%; top: 18.6%">relapse</span>
+  <span class="waves__label waves__label--below" style="left: 84%; top: 71.4%">remission</span>
+</figure>
+
+<style>
+  .waves {
+    position: relative;
+    width: 100%;
+    max-width: 52rem;
+    margin-inline: auto;
+    padding-block: var(--s4) var(--s3);
+  }
+
+  .waves svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .waves__base {
+    stroke: var(--hair);
+    stroke-width: 1;
+    stroke-dasharray: 3 6;
+  }
+
+  .waves__line path {
+    fill: none;
+    stroke: var(--papaya);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .waves__label {
+    position: absolute;
+    translate: -50% calc(-100% - 0.625rem);
+    color: var(--ink-2);
+    font-size: 0.875rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .waves__label--below {
+    translate: -50% 0.875rem;
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .waves__line {
+        animation-name: draw;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range: entry 50% cover 55%;
+      }
+    }
+  }
+
+  @keyframes draw {
+    from {
+      clip-path: inset(-20% 100% -20% -2%);
+    }
+    to {
+      clip-path: inset(-20% -2% -20% -2%);
+    }
+  }
+</style>

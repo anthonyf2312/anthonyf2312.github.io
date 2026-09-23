@@ -1,0 +1,20 @@
+# Secrets: the Pixabay key lives here and never leaves this machine
+.env
+.env.*
+
+# Build output and dependencies
+node_modules/
+dist/
+.astro/
+
+# Impeccable working files (screenshots, mocks, decision page payloads)
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/decision/
+.impeccable/questions/
+.impeccable/hook.cache.json
+.impeccable/config.local.json
+
+# OS
+.DS_Store
+Thumbs.db

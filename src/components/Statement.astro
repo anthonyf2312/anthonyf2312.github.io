@@ -1,0 +1,47 @@
+---
+// A large statement whose words light up as it scrolls through the viewport.
+interface Props {
+  text: string;
+}
+
+const words = Astro.props.text.split(' ');
+const step = 42 / words.length;
+---
+
+<p class="statement" style={`--step: ${step.toFixed(3)}%`}>
+  {words.map((word, i) => <span style={`--i: ${i}`}>{word} </span>)}
+</p>
+
+<style>
+  .statement {
+    max-width: 24ch;
+    font-size: clamp(2rem, 4.6vw, 3.5rem);
+    font-weight: 650;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+    text-wrap: pretty;
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .statement {
+        view-timeline: --statement block;
+      }
+
+      .statement span {
+        animation-name: light;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: --statement;
+        animation-range: cover calc(18% + var(--i) * var(--step)) cover calc(24% + var(--i) * var(--step));
+      }
+    }
+  }
+
+  /* Unlit words stay at 3:1 against white, which large text needs. */
+  @keyframes light {
+    from {
+      color: #8e8e93;
+    }
+  }
+</style>

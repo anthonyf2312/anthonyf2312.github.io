@@ -1,0 +1,40 @@
+---
+interface Props {
+  href: string;
+  external?: boolean;
+}
+
+const { href, external = false } = Astro.props;
+---
+
+<a class="pill" href={href} rel={external ? 'noopener' : undefined}>
+  <slot />
+</a>
+
+<style>
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0 1.375rem;
+    border-radius: 980px;
+    background: var(--papaya);
+    color: var(--ink);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    transition:
+      background-color 200ms ease,
+      scale 200ms var(--ease-out);
+  }
+
+  .pill:hover {
+    background: #ff9022;
+  }
+
+  .pill:active {
+    scale: 0.97;
+  }
+</style>

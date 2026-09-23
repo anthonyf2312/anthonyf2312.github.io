@@ -1,0 +1,108 @@
+---
+const links = [
+  { href: '/#insko', label: 'Insko Bot' },
+  { href: '/#f1', label: 'Formula 1' },
+  { href: '/#ms', label: 'MS' },
+];
+---
+
+<header class="nav">
+  <nav class="nav__inner" aria-label="Main">
+    <a class="nav__name" href="/">Anthony</a>
+    <ul class="nav__links">
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  // Over the black sections the bar turns dark, the way Apple's does, instead of greying out.
+  const nav = document.querySelector<HTMLElement>('.nav');
+  const darkSections = document.querySelectorAll('.dark');
+  if (nav && darkSections.length) {
+    const under = new Set<Element>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) under.add(entry.target);
+          else under.delete(entry.target);
+        }
+        nav.toggleAttribute('data-dark', under.size > 0);
+      },
+      { rootMargin: '0px 0px -95% 0px' },
+    );
+    darkSections.forEach((section) => observer.observe(section));
+  }
+</script>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgb(251 251 253 / 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgb(0 0 0 / 0.08);
+    transition:
+      background-color 300ms ease,
+      border-color 300ms ease,
+      color 300ms ease;
+  }
+
+  .nav[data-dark] {
+    background: rgb(22 22 23 / 0.8);
+    border-bottom-color: rgb(255 255 255 / 0.08);
+    color: var(--on-dark);
+  }
+
+  .nav[data-dark] .nav__links a {
+    color: rgb(245 245 247 / 0.8);
+  }
+
+  .nav[data-dark] .nav__links a:hover {
+    color: var(--on-dark);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s3);
+    width: min(100% - 2 * var(--gutter), var(--container));
+    height: 3rem;
+    margin-inline: auto;
+  }
+
+  .nav__name {
+    font-size: 1.0625rem;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+
+  .nav__links {
+    display: flex;
+    gap: clamp(1rem, 3vw, 2.25rem);
+  }
+
+  .nav__links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: rgb(29 29 31 / 0.8);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .nav__links a:hover {
+    color: var(--ink);
+  }
+</style>

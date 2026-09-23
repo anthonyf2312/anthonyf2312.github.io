@@ -1,0 +1,265 @@
+---
+// Pinned while it draws: Lando's running position at Sochi 2021, lap by lap (Jolpica F1 API).
+import { grid, positions, lapsLed, totalLaps } from '../data/sochi';
+
+const rows = 8;
+const points = [`0,${grid - 1}`, ...positions.map((p, i) => `${i + 1},${p - 1}`)].join(' ');
+const x = (lap: number) => `${(lap / totalLaps) * 100}%`;
+const y = (pos: number) => `${((pos - 1) / (rows - 1)) * 100}%`;
+const at = (lap: number) => (lap / totalLaps).toFixed(3);
+const finish = positions[positions.length - 1];
+
+const labels = [
+  { lap: 0, pos: 1, text: 'Pole', place: 'above' },
+  { lap: 13, pos: 1, text: 'Leads from lap 13', place: 'above' },
+  { lap: 28.6, pos: 4, text: 'Pit stop, lap 28', place: 'below' },
+  { lap: 37, pos: 1, text: 'Back in front, lap 37', place: 'above', optional: true },
+];
+---
+
+<div class="sochi">
+  <div class="sochi__sticky">
+    <div class="sochi__frame container">
+      <div class="sochi__head">
+        <p class="sochi__title">Lando Norris, Russian Grand Prix</p>
+        <p class="sochi__sub">Sochi, 26 September 2021. Running position, lap by lap.</p>
+      </div>
+
+      <figure class="trace">
+        <div class="trace__plot">
+          <svg class="trace__grid" viewBox={`0 0 ${totalLaps} ${rows - 1}`} preserveAspectRatio="none" aria-hidden="true">
+            {
+              Array.from({ length: rows }, (_, i) => (
+                <line x1="0" x2={totalLaps} y1={i} y2={i} vector-effect="non-scaling-stroke" />
+              ))
+            }
+          </svg>
+          <svg class="trace__line" viewBox={`0 0 ${totalLaps} ${rows - 1}`} preserveAspectRatio="none" aria-hidden="true">
+            <polyline points={points} vector-effect="non-scaling-stroke" />
+          </svg>
+
+          {
+            Array.from({ length: rows }, (_, i) => (
+              <span class="trace__axis" style={`top: ${y(i + 1)}`} aria-hidden="true">
+                P{i + 1}
+              </span>
+            ))
+          }
+
+          {
+            labels.map((label) => (
+              <span
+                class:list={['trace__label', `trace__label--${label.place}`, { 'trace__label--optional': label.optional }]}
+                style={`left: ${x(label.lap)}; top: ${y(label.pos)}; --at: ${at(label.lap)}`}
+                aria-hidden="true"
+              >
+                {label.text}
+              </span>
+            ))
+          }
+          <span
+            class="trace__label trace__label--rain"
+            style={`right: calc(100% - ${x(50.2)}); top: ${y(5.5)}; --at: ${at(51)}`}
+            aria-hidden="true"
+          >
+            Rain, lap 51. Still on slicks.
+          </span>
+          <span class="trace__dot" style={`left: ${x(totalLaps)}; top: ${y(finish)}; --at: 1`} aria-hidden="true"></span>
+          <span
+            class="trace__label trace__label--end"
+            style={`left: ${x(totalLaps)}; top: ${y(finish)}; --at: 1`}
+            aria-hidden="true"
+          >
+            P{finish}
+          </span>
+        </div>
+        <div class="trace__laps" aria-hidden="true"><span>Lap 1</span><span>Lap {totalLaps}</span></div>
+        <figcaption class="visually-hidden">
+          From pole he ran second behind Sainz until lap 13, then led. After his pit stop on lap 28 he dropped to
+          fourth, was back in front by lap 37 and led to lap 50: {lapsLed} of {totalLaps} laps in all. The rain came, he
+          stayed out on slick tyres, lost the lead on lap 51 and finished seventh.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
+<style>
+  .sochi__sticky {
+    display: grid;
+    align-items: center;
+    padding-block: var(--s8);
+  }
+
+  .sochi__frame {
+    display: grid;
+    gap: var(--s6);
+  }
+
+  .sochi__title {
+    text-wrap: balance;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-weight: 650;
+    letter-spacing: -0.025em;
+  }
+
+  .sochi__sub {
+    margin-top: 0.25rem;
+    color: var(--on-dark-2);
+  }
+
+  .trace {
+    padding: 2rem 3rem 0 2.5rem;
+  }
+
+  .trace__plot {
+    position: relative;
+    height: clamp(13rem, 34vw, 22rem);
+  }
+
+  .trace__grid,
+  .trace__line {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .trace__grid line {
+    stroke: var(--hair-dark);
+    stroke-width: 1;
+  }
+
+  .trace__line polyline {
+    fill: none;
+    stroke: var(--papaya);
+    stroke-width: 3;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  .trace__dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 -6px;
+    border-radius: 50%;
+    background: var(--papaya);
+    box-shadow: 0 0 0 4px var(--black);
+  }
+
+  .trace__axis,
+  .trace__label {
+    position: absolute;
+    font-size: 0.8125rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .trace__axis {
+    right: calc(100% + 0.875rem);
+    translate: 0 -50%;
+    color: var(--on-dark-2);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .trace__label {
+    color: var(--on-dark);
+    font-weight: 560;
+  }
+
+  .trace__label--above {
+    translate: 0 calc(-100% - 0.625rem);
+  }
+
+  .trace__label--below {
+    translate: 0 0.75rem;
+  }
+
+  .trace__label--rain {
+    translate: 0 -50%;
+    color: var(--papaya-on-dark);
+  }
+
+  .trace__label--end {
+    translate: 0.875rem -50%;
+    color: var(--papaya-on-dark);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .trace__laps {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--s2);
+    color: var(--on-dark-2);
+    font-size: 0.8125rem;
+  }
+
+  @media (max-width: 40rem) {
+    .trace {
+      padding: 2rem 2.25rem 0 2rem;
+    }
+
+    .trace__axis:nth-of-type(even) {
+      visibility: hidden;
+    }
+
+    .trace__label {
+      font-size: 0.75rem;
+    }
+
+    .trace__label--optional {
+      display: none;
+    }
+  }
+
+  /* Pinned scroll: the section is tall, the chart sticks, and the line draws as you scroll through it. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .sochi {
+        height: 240vh;
+        view-timeline: --sochi block;
+      }
+
+      .sochi__sticky {
+        position: sticky;
+        top: 3rem;
+        min-height: calc(100vh - 3rem);
+      }
+
+      .trace__line {
+        animation-name: draw;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: --sochi;
+        animation-range: contain 8% contain 78%;
+      }
+
+      .trace__label,
+      .trace__dot {
+        animation-name: appear;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: --sochi;
+        animation-range: contain calc(8% + var(--at) * 70%) contain calc(11% + var(--at) * 70%);
+      }
+    }
+  }
+
+  @keyframes draw {
+    from {
+      clip-path: inset(-10% 100% -10% -2%);
+    }
+    to {
+      clip-path: inset(-10% -2% -10% -2%);
+    }
+  }
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+    }
+  }
+</style>

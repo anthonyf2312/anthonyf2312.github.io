@@ -1,0 +1,468 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-23T11:20:02.544Z",
+  "title": "Design System: Anthony",
+  "extensions": {
+    "colorMeta": {
+      "white": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(25% 0.000 0.0)",
+          "oklch(35% 0.000 0.0)",
+          "oklch(45% 0.000 0.0)",
+          "oklch(58% 0.000 0.0)",
+          "oklch(70% 0.000 0.0)",
+          "oklch(82% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "grey": {
+        "role": "neutral",
+        "displayName": "Apple Grey",
+        "canonical": "#f5f5f7",
+        "oklch": "oklch(97.1% 0.003 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.003 0.0)",
+          "oklch(25% 0.003 0.0)",
+          "oklch(35% 0.003 0.0)",
+          "oklch(45% 0.003 0.0)",
+          "oklch(58% 0.003 0.0)",
+          "oklch(70% 0.003 0.0)",
+          "oklch(82% 0.003 0.0)",
+          "oklch(95% 0.003 0.0)"
+        ]
+      },
+      "black": {
+        "role": "neutral",
+        "displayName": "True Black",
+        "canonical": "#000000",
+        "oklch": "oklch(0.0% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(25% 0.000 0.0)",
+          "oklch(35% 0.000 0.0)",
+          "oklch(45% 0.000 0.0)",
+          "oklch(58% 0.000 0.0)",
+          "oklch(70% 0.000 0.0)",
+          "oklch(82% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1d1d1f",
+        "oklch": "oklch(23.2% 0.004 286.1)",
+        "tonalRamp": [
+          "oklch(15% 0.004 286.1)",
+          "oklch(25% 0.004 286.1)",
+          "oklch(35% 0.004 286.1)",
+          "oklch(45% 0.004 286.1)",
+          "oklch(58% 0.004 286.1)",
+          "oklch(70% 0.004 286.1)",
+          "oklch(82% 0.004 286.1)",
+          "oklch(95% 0.004 286.1)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Secondary",
+        "canonical": "#6e6e73",
+        "oklch": "oklch(54.0% 0.008 286.1)",
+        "tonalRamp": [
+          "oklch(15% 0.008 286.1)",
+          "oklch(25% 0.008 286.1)",
+          "oklch(35% 0.008 286.1)",
+          "oklch(45% 0.008 286.1)",
+          "oklch(58% 0.008 286.1)",
+          "oklch(70% 0.008 286.1)",
+          "oklch(82% 0.008 286.1)",
+          "oklch(95% 0.008 286.1)"
+        ]
+      },
+      "on-dark": {
+        "role": "neutral",
+        "displayName": "On-Dark",
+        "canonical": "#f5f5f7",
+        "oklch": "oklch(97.1% 0.003 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.003 0.0)",
+          "oklch(25% 0.003 0.0)",
+          "oklch(35% 0.003 0.0)",
+          "oklch(45% 0.003 0.0)",
+          "oklch(58% 0.003 0.0)",
+          "oklch(70% 0.003 0.0)",
+          "oklch(82% 0.003 0.0)",
+          "oklch(95% 0.003 0.0)"
+        ]
+      },
+      "on-dark-2": {
+        "role": "neutral",
+        "displayName": "On-Dark Secondary",
+        "canonical": "#a1a1a6",
+        "oklch": "oklch(71.1% 0.007 286.2)",
+        "tonalRamp": [
+          "oklch(15% 0.007 286.2)",
+          "oklch(25% 0.007 286.2)",
+          "oklch(35% 0.007 286.2)",
+          "oklch(45% 0.007 286.2)",
+          "oklch(58% 0.007 286.2)",
+          "oklch(70% 0.007 286.2)",
+          "oklch(82% 0.007 286.2)",
+          "oklch(95% 0.007 286.2)"
+        ]
+      },
+      "hair": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#d2d2d7",
+        "oklch": "oklch(86.5% 0.007 286.3)",
+        "tonalRamp": [
+          "oklch(15% 0.007 286.3)",
+          "oklch(25% 0.007 286.3)",
+          "oklch(35% 0.007 286.3)",
+          "oklch(45% 0.007 286.3)",
+          "oklch(58% 0.007 286.3)",
+          "oklch(70% 0.007 286.3)",
+          "oklch(82% 0.007 286.3)",
+          "oklch(95% 0.007 286.3)"
+        ]
+      },
+      "hair-dark": {
+        "role": "neutral",
+        "displayName": "Hairline Dark",
+        "canonical": "#2c2c2e",
+        "oklch": "oklch(29.4% 0.004 286.2)",
+        "tonalRamp": [
+          "oklch(15% 0.004 286.2)",
+          "oklch(25% 0.004 286.2)",
+          "oklch(35% 0.004 286.2)",
+          "oklch(45% 0.004 286.2)",
+          "oklch(58% 0.004 286.2)",
+          "oklch(70% 0.004 286.2)",
+          "oklch(82% 0.004 286.2)",
+          "oklch(95% 0.004 286.2)"
+        ]
+      },
+      "papaya": {
+        "role": "primary",
+        "displayName": "Papaya",
+        "canonical": "#ff8000",
+        "oklch": "oklch(73.2% 0.186 53.0)",
+        "tonalRamp": [
+          "oklch(15% 0.186 53.0)",
+          "oklch(25% 0.186 53.0)",
+          "oklch(35% 0.186 53.0)",
+          "oklch(45% 0.186 53.0)",
+          "oklch(58% 0.186 53.0)",
+          "oklch(70% 0.186 53.0)",
+          "oklch(82% 0.186 53.0)",
+          "oklch(95% 0.060 53.0)"
+        ]
+      },
+      "papaya-text": {
+        "role": "primary",
+        "displayName": "Burnt Papaya",
+        "canonical": "#a94f00",
+        "oklch": "oklch(53.2% 0.139 50.8)",
+        "tonalRamp": [
+          "oklch(15% 0.139 50.8)",
+          "oklch(25% 0.139 50.8)",
+          "oklch(35% 0.139 50.8)",
+          "oklch(45% 0.139 50.8)",
+          "oklch(58% 0.139 50.8)",
+          "oklch(70% 0.139 50.8)",
+          "oklch(82% 0.139 50.8)",
+          "oklch(95% 0.060 50.8)"
+        ]
+      },
+      "papaya-on-dark": {
+        "role": "primary",
+        "displayName": "Lit Papaya",
+        "canonical": "#ff9a3d",
+        "oklch": "oklch(77.6% 0.159 59.0)",
+        "tonalRamp": [
+          "oklch(15% 0.159 59.0)",
+          "oklch(25% 0.159 59.0)",
+          "oklch(35% 0.159 59.0)",
+          "oklch(45% 0.159 59.0)",
+          "oklch(58% 0.159 59.0)",
+          "oklch(70% 0.159 59.0)",
+          "oklch(82% 0.159 59.0)",
+          "oklch(95% 0.060 59.0)"
+        ]
+      },
+      "ribbon": {
+        "role": "secondary",
+        "displayName": "Ribbon Orange",
+        "canonical": "#f7862b",
+        "oklch": "oklch(73.2% 0.168 53.8)",
+        "tonalRamp": [
+          "oklch(15% 0.168 53.8)",
+          "oklch(25% 0.168 53.8)",
+          "oklch(35% 0.168 53.8)",
+          "oklch(45% 0.168 53.8)",
+          "oklch(58% 0.168 53.8)",
+          "oklch(70% 0.168 53.8)",
+          "oklch(82% 0.168 53.8)",
+          "oklch(95% 0.060 53.8)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The hero name only; the 404 title uses the same treatment one step down."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "One short declarative per section."
+      },
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "Standalone large lines: the scroll-lit statement, the quote, the swatch line."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Hairline list names and chart titles."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "The sentence under a headline, 28 to 38ch, usually secondary colour."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text; base size 1.0625rem."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Nav links, chart axis and annotations, wave labels, swatch names. Sentence case."
+      },
+      "fine": {
+        "displayName": "Fine",
+        "purpose": "Photo credits and footer, secondary colour."
+      }
+    },
+    "shadows": [
+      {
+        "name": "icon-edge",
+        "value": "0 0 0 1px rgb(255 255 255 / 0.14)",
+        "purpose": "Hairline ring so a dark app icon reads on black."
+      },
+      {
+        "name": "knockout-ring",
+        "value": "0 0 0 4px #000000",
+        "purpose": "Separates the trace finish dot from gridlines."
+      },
+      {
+        "name": "nav-material",
+        "value": "backdrop-filter: saturate(180%) blur(20px); background: rgb(251 251 253 / 0.72) | dark: rgb(22 22 23 / 0.8)",
+        "purpose": "Translucent global nav; the only material effect in the system."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 2px solid #ff8000; outline-offset: 3px; border-radius: 6px",
+        "purpose": "Every focusable element."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Entrances (hero rise, 1100ms, 120ms stagger) and pill press (200ms)."
+      },
+      {
+        "name": "ease-colour",
+        "value": "200ms ease / 300ms ease",
+        "purpose": "Hover colour changes (200ms) and nav light/dark cross-fade (300ms)."
+      },
+      {
+        "name": "scroll-linear",
+        "value": "linear, animation-fill-mode: both, on view() or a named view-timeline",
+        "purpose": "All scroll-driven animation: statement word-lighting, photo open, pinned trace draw, wave draw."
+      },
+      {
+        "name": "scroll-longhands",
+        "value": "animation-name / animation-timing-function / animation-fill-mode / animation-timeline / animation-range as separate declarations",
+        "purpose": "Required. The build's CSS minifier folds animation-timeline into the animation shorthand and Chrome then drops the whole declaration. Never use the shorthand for scroll-driven animation."
+      },
+      {
+        "name": "scroll-gate",
+        "value": "@supports (animation-timeline: view()) and @media (prefers-reduced-motion: no-preference)",
+        "purpose": "Every scroll-linked animation sits inside both; keyframes are from-only so the resting state is the finished state."
+      },
+      {
+        "name": "pin",
+        "value": "section height 240vh; sticky top 3rem; min-height calc(100vh - 3rem); animation-range contain 8% to contain 78%",
+        "purpose": "Pinned chart draw (Sochi trace)."
+      },
+      {
+        "name": "ambient-drift",
+        "value": "22s / 26s / 30s ease-in-out infinite alternate, transform only",
+        "purpose": "Hero gradient blobs; the only looping motion, gated on reduced motion."
+      },
+      {
+        "name": "view-transition",
+        "value": "@view-transition { navigation: auto }",
+        "purpose": "Cross-document page navigation."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "36rem",
+        "purpose": "Hero band shortens; hairline list stacks."
+      },
+      {
+        "name": "chart",
+        "value": "40rem",
+        "purpose": "Trace thins axis labels, drops optional annotations."
+      }
+    ],
+    "imagery": {
+      "source": "Pixabay, via scripts/fetch-pixabay.mjs with IDs in scripts/pixabay.json; key from local .env only.",
+      "storage": "Committed to src/assets/pixabay/ with credits.json; never hotlinked.",
+      "delivery": "Astro Picture, avif + webp, widths 640/960/1280.",
+      "maxSourceWidth": "1280px (standard Pixabay key largeImageURL)",
+      "credit": "Under each photo (fine type) and again in the footer."
+    }
+  },
+  "components": [
+    {
+      "name": "Pill Button",
+      "kind": "button",
+      "refersTo": "button-pill",
+      "description": "The primary action: a papaya pill with ink text, one per action row, on any ground.",
+      "html": "<a class=\"ds-pill\" href=\"#\">Meet Insko Bot</a>",
+      "css": ":host{--white:#fff;--grey:#f5f5f7;--black:#000;--ink:#1d1d1f;--ink-2:#6e6e73;--on-dark:#f5f5f7;--on-dark-2:#a1a1a6;--hair:#d2d2d7;--hair-dark:#2c2c2e;--papaya:#ff8000;--papaya-text:#a94f00;--papaya-on-dark:#ff9a3d;--ribbon:#f7862b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-pill { font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: 0 1.375rem; border-radius: 980px; background: var(--papaya); color: var(--ink); font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.01em; text-decoration: none; transition: background-color 200ms ease, scale 200ms var(--ease-out); } .ds-pill:hover { background: #ff9022; } .ds-pill:active { scale: 0.97; } .ds-pill:focus-visible { outline: 2px solid var(--papaya); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Link with Chevron",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "The secondary action beside a pill: burnt papaya on light, lit papaya on black, underline on hover.",
+      "html": "<div class=\"ds-row\"><a class=\"ds-text-link\" href=\"#\">Request access <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 18 6-6-6-6\"/></svg></a></div><div class=\"ds-row ds-row--dark\"><a class=\"ds-text-link\" href=\"#\">View on GitHub <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 18 6-6-6-6\"/></svg></a></div>",
+      "css": ":host{--white:#fff;--grey:#f5f5f7;--black:#000;--ink:#1d1d1f;--ink-2:#6e6e73;--on-dark:#f5f5f7;--on-dark-2:#a1a1a6;--hair:#d2d2d7;--hair-dark:#2c2c2e;--papaya:#ff8000;--papaya-text:#a94f00;--papaya-on-dark:#ff9a3d;--ribbon:#f7862b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-row { font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 1rem 1.5rem; background: var(--white); } .ds-row--dark { background: var(--black); } .ds-text-link { display: inline-flex; align-items: center; gap: 0.2em; min-height: 2.75rem; color: var(--papaya-text); font-size: 1.0625rem; font-weight: 560; text-decoration: none; text-underline-offset: 0.2em; text-decoration-thickness: 1px; } .ds-row--dark .ds-text-link { color: var(--papaya-on-dark); } .ds-text-link:hover { text-decoration: underline; } .ds-text-link:focus-visible { outline: 2px solid var(--papaya); outline-offset: 3px; border-radius: 6px; }"
+    },
+    {
+      "name": "Global Nav",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Sticky translucent blurred bar; turns dark (data-dark) while a .dark section is beneath it.",
+      "html": "<div class=\"ds-stage\"><header class=\"ds-nav\"><nav class=\"ds-nav__inner\"><a class=\"ds-nav__name\" href=\"#\">Anthony</a><ul class=\"ds-nav__links\"><li><a href=\"#\">Insko Bot</a></li><li><a href=\"#\">Formula 1</a></li><li><a href=\"#\">MS</a></li></ul></nav></header><header class=\"ds-nav\" data-dark><nav class=\"ds-nav__inner\"><a class=\"ds-nav__name\" href=\"#\">Anthony</a><ul class=\"ds-nav__links\"><li><a href=\"#\">Insko Bot</a></li><li><a href=\"#\">Formula 1</a></li><li><a href=\"#\">MS</a></li></ul></nav></header></div>",
+      "css": ":host{--white:#fff;--grey:#f5f5f7;--black:#000;--ink:#1d1d1f;--ink-2:#6e6e73;--on-dark:#f5f5f7;--on-dark-2:#a1a1a6;--hair:#d2d2d7;--hair-dark:#2c2c2e;--papaya:#ff8000;--papaya-text:#a94f00;--papaya-on-dark:#ff9a3d;--ribbon:#f7862b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-stage { font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; display: grid; gap: 1rem; padding: 1rem; background: linear-gradient(90deg, var(--grey), var(--black)); } .ds-nav { background: rgb(251 251 253 / 0.72); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgb(0 0 0 / 0.08); color: var(--ink); transition: background-color 300ms ease, border-color 300ms ease, color 300ms ease; } .ds-nav[data-dark] { background: rgb(22 22 23 / 0.8); border-bottom-color: rgb(255 255 255 / 0.08); color: var(--on-dark); } .ds-nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 3rem; padding: 0 1.25rem; } .ds-nav__name { color: inherit; font-size: 1.0625rem; font-weight: 650; letter-spacing: -0.02em; text-decoration: none; } .ds-nav__links { display: flex; gap: clamp(1rem, 3vw, 2.25rem); margin: 0; padding: 0; list-style: none; } .ds-nav__links a { display: inline-flex; align-items: center; min-height: 2.75rem; color: rgb(29 29 31 / 0.8); font-size: 0.875rem; text-decoration: none; transition: color 200ms ease; } .ds-nav__links a:hover { color: var(--ink); } .ds-nav[data-dark] .ds-nav__links a { color: rgb(245 245 247 / 0.8); } .ds-nav[data-dark] .ds-nav__links a:hover { color: var(--on-dark); } .ds-nav a:focus-visible { outline: 2px solid var(--papaya); outline-offset: 3px; border-radius: 6px; }"
+    },
+    {
+      "name": "Hairline List",
+      "kind": "custom",
+      "refersTo": "hairline-list-item",
+      "description": "Short lists as hairline-ruled rows instead of a card grid: title-size name, secondary text.",
+      "html": "<ul class=\"ds-list\"><li class=\"ds-list__item\"><p class=\"ds-list__name\">A public bot</p><p class=\"ds-list__text\">For any server, not just Insko.</p></li><li class=\"ds-list__item\"><p class=\"ds-list__name\">Discord server</p><p class=\"ds-list__text\">Opens when the public bot does.</p></li><li class=\"ds-list__item\"><p class=\"ds-list__name\">GitHub</p><p class=\"ds-list__text\">The public bot’s code, in the open.</p></li></ul>",
+      "css": ":host{--white:#fff;--grey:#f5f5f7;--black:#000;--ink:#1d1d1f;--ink-2:#6e6e73;--on-dark:#f5f5f7;--on-dark-2:#a1a1a6;--hair:#d2d2d7;--hair-dark:#2c2c2e;--papaya:#ff8000;--papaya-text:#a94f00;--papaya-on-dark:#ff9a3d;--ribbon:#f7862b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-list { font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; max-width: 48rem; margin: 0 auto; padding: 0 1.5rem; list-style: none; background: var(--grey); color: var(--ink); } .ds-list__item { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); align-items: baseline; gap: 0.5rem 2rem; padding-block: 1.5rem; border-bottom: 1px solid var(--hair); } .ds-list__item:first-child { border-top: 1px solid var(--hair); } .ds-list p { margin: 0; } .ds-list__name { font-size: clamp(1.375rem, 2.4vw, 1.75rem); font-weight: 650; letter-spacing: -0.025em; } .ds-list__text { color: var(--ink-2); font-size: 1.0625rem; } @media (max-width: 36rem) { .ds-list__item { grid-template-columns: minmax(0, 1fr); } }"
+    },
+    {
+      "name": "Scroll-lit Statement",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "One large line whose words light from #8e8e93 to ink as it crosses the viewport; longhand, gated, finished at rest.",
+      "html": "<p class=\"ds-statement\" style=\"--step: 3%\"><span style=\"--i:0\">Weekends </span><span style=\"--i:1\">are </span><span style=\"--i:2\">for </span><span style=\"--i:3\">Formula </span><span style=\"--i:4\">1. </span><span style=\"--i:5\">And </span><span style=\"--i:6\">I </span><span style=\"--i:7\">have </span><span style=\"--i:8\">MS.</span></p>",
+      "css": ":host{--white:#fff;--grey:#f5f5f7;--black:#000;--ink:#1d1d1f;--ink-2:#6e6e73;--on-dark:#f5f5f7;--on-dark-2:#a1a1a6;--hair:#d2d2d7;--hair-dark:#2c2c2e;--papaya:#ff8000;--papaya-text:#a94f00;--papaya-on-dark:#ff9a3d;--ribbon:#f7862b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-statement { font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; max-width: 24ch; margin: 0; color: var(--ink); font-size: clamp(2rem, 4.6vw, 3.5rem); font-weight: 650; line-height: 1.12; letter-spacing: -0.035em; text-wrap: pretty; } @supports (animation-timeline: view()) { @media (prefers-reduced-motion: no-preference) { .ds-statement { view-timeline: --ds-statement block; } .ds-statement span { animation-name: ds-light; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: --ds-statement; animation-range: cover calc(18% + var(--i) * var(--step)) cover calc(24% + var(--i) * var(--step)); } } } @keyframes ds-light { from { color: #8e8e93; } }"
+    },
+    {
+      "name": "Pinned Trace (static frame)",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The signature data chart on black: hair-dark grid, 3px papaya polyline, lit-papaya finish label, knockout-ring dot. In the build it pins for 240vh and draws via clip-path.",
+      "html": "<figure class=\"ds-trace\"><p class=\"ds-trace__title\">Lando Norris, Russian Grand Prix</p><p class=\"ds-trace__sub\">Running position, lap by lap.</p><div class=\"ds-trace__plot\"><svg viewBox=\"0 0 53 7\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><g class=\"ds-trace__grid\"><line x1=\"0\" x2=\"53\" y1=\"0\" y2=\"0\" vector-effect=\"non-scaling-stroke\"/><line x1=\"0\" x2=\"53\" y1=\"2\" y2=\"2\" vector-effect=\"non-scaling-stroke\"/><line x1=\"0\" x2=\"53\" y1=\"4\" y2=\"4\" vector-effect=\"non-scaling-stroke\"/><line x1=\"0\" x2=\"53\" y1=\"6\" y2=\"6\" vector-effect=\"non-scaling-stroke\"/></g><polyline class=\"ds-trace__line\" points=\"0,0 1,1 12,1 13,0 28,0 29,3 36,1 37,0 50,0 51,4 53,6\" vector-effect=\"non-scaling-stroke\"/></svg><span class=\"ds-trace__dot\"></span><span class=\"ds-trace__end\">P7</span></div></figure>",
+      "css": ":host{--white:#fff;--grey:#f5f5f7;--black:#000;--ink:#1d1d1f;--ink-2:#6e6e73;--on-dark:#f5f5f7;--on-dark-2:#a1a1a6;--hair:#d2d2d7;--hair-dark:#2c2c2e;--papaya:#ff8000;--papaya-text:#a94f00;--papaya-on-dark:#ff9a3d;--ribbon:#f7862b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-trace { font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; margin: 0; padding: 2rem 3rem 2rem 2rem; background: var(--black); color: var(--on-dark); } .ds-trace p { margin: 0; } .ds-trace__title { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 650; letter-spacing: -0.025em; } .ds-trace__sub { margin-top: 0.25rem; color: var(--on-dark-2); } .ds-trace__plot { position: relative; height: 12rem; margin-top: 2rem; } .ds-trace__plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; } .ds-trace__grid line { stroke: var(--hair-dark); stroke-width: 1; } .ds-trace__line { fill: none; stroke: var(--papaya); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; } .ds-trace__dot { position: absolute; left: 100%; top: 100%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--papaya); box-shadow: 0 0 0 4px var(--black); } .ds-trace__end { position: absolute; left: 100%; top: 100%; translate: 0.875rem -50%; color: var(--papaya-on-dark); font-size: 1rem; font-weight: 700; line-height: 1; }"
+    },
+    {
+      "name": "Swatch Band",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The single drenched moment: papaya and ribbon orange edge to edge, a statement line across both. Used once.",
+      "html": "<section class=\"ds-swatch\"><div class=\"ds-swatch__halves\" aria-hidden=\"true\"><div class=\"ds-swatch__half ds-swatch__half--papaya\"><span>McLaren papaya</span></div><div class=\"ds-swatch__half ds-swatch__half--ribbon\"><span>MS ribbon orange</span></div></div><p class=\"ds-swatch__line\">coincidence. keeping it.</p></section>",
+      "css": ":host{--white:#fff;--grey:#f5f5f7;--black:#000;--ink:#1d1d1f;--ink-2:#6e6e73;--on-dark:#f5f5f7;--on-dark-2:#a1a1a6;--hair:#d2d2d7;--hair-dark:#2c2c2e;--papaya:#ff8000;--papaya-text:#a94f00;--papaya-on-dark:#ff9a3d;--ribbon:#f7862b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-swatch { font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; position: relative; display: grid; align-items: center; min-height: 18rem; isolation: isolate; color: var(--ink); } .ds-swatch__halves { position: absolute; inset: 0; z-index: -1; display: grid; grid-template-columns: 1fr 1fr; } .ds-swatch__half { display: flex; align-items: flex-end; padding: 1.5rem; font-size: 0.875rem; font-weight: 600; } .ds-swatch__half--papaya { background: var(--papaya); } .ds-swatch__half--ribbon { justify-content: flex-end; background: var(--ribbon); } .ds-swatch__line { max-width: 20ch; margin: 0 auto; font-size: clamp(2rem, 5vw, 3.75rem); font-weight: 650; line-height: 1.08; letter-spacing: -0.035em; text-align: center; text-wrap: balance; }"
+    },
+    {
+      "name": "Photo Frame",
+      "kind": "card",
+      "refersTo": "media-frame",
+      "description": "Real photograph in a 28px-radius frame that opens from scale 0.8 / 44px radius on scroll; credited beneath.",
+      "html": "<figure class=\"ds-photo\"><div class=\"ds-photo__frame\"><div class=\"ds-photo__img\" role=\"img\" aria-label=\"Photograph placeholder\"></div></div><figcaption class=\"ds-photo__credit\">Silverstone, 2019. Photo by <a href=\"#\">randomwinner</a> on Pixabay.</figcaption></figure>",
+      "css": ":host{--white:#fff;--grey:#f5f5f7;--black:#000;--ink:#1d1d1f;--ink-2:#6e6e73;--on-dark:#f5f5f7;--on-dark-2:#a1a1a6;--hair:#d2d2d7;--hair-dark:#2c2c2e;--papaya:#ff8000;--papaya-text:#a94f00;--papaya-on-dark:#ff9a3d;--ribbon:#f7862b;--ease-out:cubic-bezier(0.16,1,0.3,1);} .ds-photo { font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; margin: 0; padding: 2rem 1.25rem; background: var(--black); } .ds-photo__frame { overflow: hidden; border-radius: 28px; } .ds-photo__img { aspect-ratio: 1280 / 735; background: linear-gradient(135deg, #2c2c2e, #ff8000 60%, #1d1d1f); } .ds-photo__credit { margin-top: 1rem; color: #86868b; font-size: 0.8125rem; text-align: center; } .ds-photo__credit a { color: inherit; } @supports (animation-timeline: view()) { @media (prefers-reduced-motion: no-preference) { .ds-photo__frame { animation-name: ds-open; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: view(); animation-range: entry 0% cover 45%; } } } @keyframes ds-open { from { scale: 0.8; border-radius: 44px; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Product Page",
+    "overview": "A personal page built the way Apple builds a product page, with Stripe's finish: one idea per section, big confident type, real media, and scroll moments that carry the story. Every section is a full-width band on one of three grounds (white, Apple grey, true black), with content centred inside a 1080px column. Density is low on purpose. A section holds a headline, a lead, and at most one piece of media or one pair of actions.\n\nPapaya is the only colour that isn't a neutral. It appears as the pill button, the text links, the drawn lines (the Sochi trace, the MS wave), the hero's drifting gradient band, and the full-bleed swatch band. Everything else is ink on paper or paper on black. Depth comes from the ground changing, not from shadows.\n\nMotion is scroll-driven CSS. It lights words, opens a photo, and draws lines as you scroll. Reduced motion and browsers without `animation-timeline` get the finished state, never an empty one.",
+    "keyCharacteristics": [
+      "Three section grounds: white, Apple grey, black. The nav follows them.",
+      "One accent, papaya, used for actions and drawn lines.",
+      "Mona Sans only, weights 500 to 700, with tight tracking on display sizes.",
+      "Centred, single-column sections with generous vertical padding.",
+      "Real photographs in 28px-rounded frames or full-bleed bands, always credited.",
+      "Scroll-driven CSS motion whose resting state is the finished state."
+    ],
+    "rules": [
+      {
+        "name": "The One Orange Rule",
+        "body": "Papaya is the only accent. It marks things you can act on, and lines that tell the story. Nothing decorative is papaya except the hero band and the swatch band, and each appears once.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Grounds Rule",
+        "body": "Every section sits on #ffffff, #f5f5f7 or #000000. Ground changes are the section breaks; no borders, cards or tinted panels stand in for them. The one exception is a photo band, where the photograph is the ground.",
+        "section": "colors"
+      },
+      {
+        "name": "The Papaya-As-Text Rule",
+        "body": "Text in papaya uses #a94f00 on light grounds and #ff9a3d on black. Raw #ff8000 is for fills and strokes only.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Mona Sans only. Hierarchy comes from size, weight (500, 560, 600, 650, 700) and tracking, never from a second typeface.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight Display Rule",
+        "body": "The bigger the type, the tighter the tracking: -0.04em at display, -0.035em at headline and statement, -0.025em at title, about -0.01em at body.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence Case Rule",
+        "body": "No uppercase, no letter-spaced small labels, and no small line above a headline. A headline introduces itself.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Shadow Rule",
+        "body": "Nothing floats. If something needs separating, change the ground, add a 1px hairline, or use a zero-offset ring.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do put every section on #ffffff, #f5f5f7 or #000000, and add the `.dark` class to black sections so the nav turns dark over them.",
+      "Do pair one papaya pill with one chevron text link in a centred action row.",
+      "Do use #a94f00 for papaya text on light grounds and #ff9a3d on black.",
+      "Do write scroll-driven animations as longhands inside `@supports (animation-timeline: view())` and `prefers-reduced-motion: no-preference`, with the finished state as the default.",
+      "Do source photographs from Pixabay through `scripts/fetch-pixabay.mjs` (IDs in `scripts/pixabay.json`). Commit them to `src/assets/pixabay/`, serve them through Astro's `Picture` (avif and webp at 640, 960 and 1280 widths), and credit each one both under the image and in the footer from `credits.json`.",
+      "Do keep images at or below the 1280px the standard Pixabay key returns. Size frames and `sizes` attributes so a 1280px source is not stretched past it.",
+      "Do keep tap targets at 2.75rem or more, and give every drawn chart a prose equivalent for screen readers."
+    ],
+    "donts": [
+      "Don't use drop shadows, cards or tinted panels. Separate with the ground, a 1px hairline or a zero-offset ring.",
+      "Don't add a second accent colour. Ribbon orange lives only in the swatch band.",
+      "Don't use raw #ff8000 for small text on white or grey.",
+      "Don't use the `animation` shorthand for a scroll-driven animation.",
+      "Don't hotlink Pixabay images or ship the API key. The key stays in `.env`.",
+      "Don't set labels in uppercase or tracked small caps, and don't put a small label line above a headline.",
+      "Don't repeat the hero gradient band or the swatch band. Each is used once.",
+      "Don't introduce a second typeface or an icon font. Icons are inline Lucide SVGs."
+    ]
+  }
+}
