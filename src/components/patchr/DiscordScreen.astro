@@ -1,0 +1,72 @@
+---
+// A Discord channel, drawn as a product shot. Discord's own greys live only inside this frame.
+// Everything inside is sized in em, so the whole screen scales from one font-size.
+import PatchrIcon from './PatchrIcon.astro';
+
+interface Props {
+  channel: string;
+  kind?: 'text' | 'announcement';
+  follow?: boolean;
+  class?: string;
+  label: string;
+}
+
+const { channel, kind = 'text', follow = false, class: className, label } = Astro.props;
+---
+
+<figure class:list={['screen', className]} aria-label={label}>
+  <div class="screen__bar" aria-hidden="true">
+    <PatchrIcon name={kind === 'announcement' ? 'megaphone' : 'hash'} size={20} class="screen__icon" />
+    <span class="screen__channel">{channel}</span>
+    {follow && <span class="screen__follow">Follow</span>}
+  </div>
+  <div class="screen__body">
+    <slot />
+  </div>
+</figure>
+
+<style>
+  .screen {
+    --screen-font: clamp(0.8125rem, 1.25vw, 1rem);
+    position: relative;
+    overflow: hidden;
+    background: var(--dc-bg);
+    color: var(--dc-text);
+    font-size: var(--screen-font);
+    line-height: 1.375;
+    letter-spacing: 0;
+  }
+
+  .screen__bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    height: 3em;
+    padding-inline: 1em;
+    border-bottom: 1px solid rgb(0 0 0 / 0.28);
+    color: var(--dc-head);
+    font-weight: 600;
+  }
+
+  .screen__bar :global(.screen__icon) {
+    width: 1.25em;
+    height: 1.25em;
+    color: var(--dc-muted);
+  }
+
+  .screen__follow {
+    margin-left: auto;
+    padding: 0.35em 0.9em;
+    border-radius: 0.5em;
+    background: var(--dc-blurple);
+    color: #fff;
+    font-size: 0.875em;
+    font-weight: 600;
+  }
+
+  .screen__body {
+    display: grid;
+    gap: 1.25em;
+    padding: 1.25em 1em 1.5em;
+  }
+</style>

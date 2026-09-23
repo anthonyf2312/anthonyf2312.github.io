@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-23T11:20:02.544Z",
+  "generatedAt": "2026-09-23T19:01:39.097Z",
   "title": "Design System: Anthony",
   "extensions": {
     "colorMeta": {
@@ -464,5 +464,736 @@
       "Don't repeat the hero gradient band or the swatch band. Each is used once.",
       "Don't introduce a second typeface or an icon font. Icons are inline Lucide SVGs."
     ]
+  },
+  "patchr": {
+    "scope": [
+      "src/pages/patchr/**",
+      "src/layouts/PatchrBase.astro",
+      "src/layouts/PatchrLegal.astro",
+      "src/components/patchr/**",
+      "src/components/PatchrMark.astro",
+      "src/styles/patchr.css"
+    ],
+    "title": "Design System: Patchr site (/patchr/)",
+    "note": "A second, separate visual world. Its frontmatter tokens are the patchr- keys in DESIGN.md. The top-level extensions, components and narrative belong to the personal site and do not apply here; the shared reveal system (src/styles/reveal.css, src/scripts/reveal.ts) is the only shared code.",
+    "extensions": {
+      "colorMeta": {
+        "patchr-deep": {
+          "role": "neutral",
+          "displayName": "Deep Ink",
+          "canonical": "#0e0c1a",
+          "oklch": "oklch(16.5% 0.029 289.4)",
+          "tonalRamp": [
+            "oklch(15% 0.029 289.4)",
+            "oklch(25% 0.029 289.4)",
+            "oklch(35% 0.029 289.4)",
+            "oklch(45% 0.029 289.4)",
+            "oklch(58% 0.029 289.4)",
+            "oklch(70% 0.029 289.4)",
+            "oklch(82% 0.029 289.4)",
+            "oklch(95% 0.029 289.4)"
+          ],
+          "purpose": "Default page ground (hero, How it works, footer) and the nav glass tint."
+        },
+        "patchr-ink": {
+          "role": "neutral",
+          "displayName": "Patchr Ink",
+          "canonical": "#17142b",
+          "oklch": "oklch(20.8% 0.045 287.8)",
+          "tonalRamp": [
+            "oklch(15% 0.045 287.8)",
+            "oklch(25% 0.045 287.8)",
+            "oklch(35% 0.045 287.8)",
+            "oklch(45% 0.045 287.8)",
+            "oklch(58% 0.045 287.8)",
+            "oklch(70% 0.045 287.8)",
+            "oklch(82% 0.045 287.8)",
+            "oklch(95% 0.045 287.8)"
+          ],
+          "purpose": "Text on light grounds and on pink; phone menu panel; the ink button on the pink band."
+        },
+        "patchr-mist": {
+          "role": "neutral",
+          "displayName": "Mist",
+          "canonical": "#f4f2fa",
+          "oklch": "oklch(96.5% 0.011 297.6)",
+          "tonalRamp": [
+            "oklch(15% 0.011 297.6)",
+            "oklch(25% 0.011 297.6)",
+            "oklch(35% 0.011 297.6)",
+            "oklch(45% 0.011 297.6)",
+            "oklch(58% 0.011 297.6)",
+            "oklch(70% 0.011 297.6)",
+            "oklch(82% 0.011 297.6)",
+            "oklch(95% 0.011 297.6)"
+          ],
+          "purpose": "Quiet light ground alternating with white; legal pages; light nav glass."
+        },
+        "patchr-white": {
+          "role": "neutral",
+          "displayName": "White",
+          "canonical": "#ffffff",
+          "oklch": "oklch(100.0% 0.000 0.0)",
+          "tonalRamp": [
+            "oklch(15% 0.000 0.0)",
+            "oklch(25% 0.000 0.0)",
+            "oklch(35% 0.000 0.0)",
+            "oklch(45% 0.000 0.0)",
+            "oklch(58% 0.000 0.0)",
+            "oklch(70% 0.000 0.0)",
+            "oklch(82% 0.000 0.0)",
+            "oklch(95% 0.000 0.0)"
+          ],
+          "purpose": "Light ground, and primary text on dark."
+        },
+        "patchr-haze": {
+          "role": "neutral",
+          "displayName": "Haze",
+          "canonical": "#bdb7d9",
+          "oklch": "oklch(79.5% 0.048 293.4)",
+          "tonalRamp": [
+            "oklch(15% 0.048 293.4)",
+            "oklch(25% 0.048 293.4)",
+            "oklch(35% 0.048 293.4)",
+            "oklch(45% 0.048 293.4)",
+            "oklch(58% 0.048 293.4)",
+            "oklch(70% 0.048 293.4)",
+            "oklch(82% 0.048 293.4)",
+            "oklch(95% 0.048 293.4)"
+          ],
+          "purpose": "Secondary text on dark."
+        },
+        "patchr-muted": {
+          "role": "neutral",
+          "displayName": "Muted",
+          "canonical": "#6b6785",
+          "oklch": "oklch(52.9% 0.047 290.8)",
+          "tonalRamp": [
+            "oklch(15% 0.047 290.8)",
+            "oklch(25% 0.047 290.8)",
+            "oklch(35% 0.047 290.8)",
+            "oklch(45% 0.047 290.8)",
+            "oklch(58% 0.047 290.8)",
+            "oklch(70% 0.047 290.8)",
+            "oklch(82% 0.047 290.8)",
+            "oklch(95% 0.047 290.8)"
+          ],
+          "purpose": "Secondary text on light."
+        },
+        "patchr-line-light": {
+          "role": "neutral",
+          "displayName": "Line Light",
+          "canonical": "#e2deef",
+          "oklch": "oklch(90.9% 0.023 296.7)",
+          "tonalRamp": [
+            "oklch(15% 0.023 296.7)",
+            "oklch(25% 0.023 296.7)",
+            "oklch(35% 0.023 296.7)",
+            "oklch(45% 0.023 296.7)",
+            "oklch(58% 0.023 296.7)",
+            "oklch(70% 0.023 296.7)",
+            "oklch(82% 0.023 296.7)",
+            "oklch(95% 0.023 296.7)"
+          ],
+          "purpose": "1px hairlines on light grounds."
+        },
+        "patchr-line-dark": {
+          "role": "neutral",
+          "displayName": "Line Dark",
+          "canonical": "rgb(189 183 217 / 0.14)",
+          "oklch": "oklch(79.5% 0.048 293.4)",
+          "tonalRamp": [
+            "oklch(15% 0.048 293.4)",
+            "oklch(25% 0.048 293.4)",
+            "oklch(35% 0.048 293.4)",
+            "oklch(45% 0.048 293.4)",
+            "oklch(58% 0.048 293.4)",
+            "oklch(70% 0.048 293.4)",
+            "oklch(82% 0.048 293.4)",
+            "oklch(95% 0.048 293.4)"
+          ],
+          "purpose": "1px hairlines on dark grounds (haze at 14%)."
+        },
+        "patchr-pink": {
+          "role": "primary",
+          "displayName": "Patchr Pink",
+          "canonical": "#ff5e8a",
+          "oklch": "oklch(70.3% 0.198 7.0)",
+          "tonalRamp": [
+            "oklch(15% 0.198 7.0)",
+            "oklch(25% 0.198 7.0)",
+            "oklch(35% 0.198 7.0)",
+            "oklch(45% 0.198 7.0)",
+            "oklch(58% 0.198 7.0)",
+            "oklch(70% 0.198 7.0)",
+            "oklch(82% 0.198 7.0)",
+            "oklch(95% 0.060 7.0)"
+          ],
+          "purpose": "The one action colour and the newest change: pill fills, Soon tag, CTA band, flow lines, progress line, focus, selection, links on dark."
+        },
+        "patchr-pink-hover": {
+          "role": "primary",
+          "displayName": "Pink Hover",
+          "canonical": "#ff779c",
+          "oklch": "oklch(73.9% 0.169 5.0)",
+          "tonalRamp": [
+            "oklch(15% 0.169 5.0)",
+            "oklch(25% 0.169 5.0)",
+            "oklch(35% 0.169 5.0)",
+            "oklch(45% 0.169 5.0)",
+            "oklch(58% 0.169 5.0)",
+            "oklch(70% 0.169 5.0)",
+            "oklch(82% 0.169 5.0)",
+            "oklch(95% 0.060 5.0)"
+          ],
+          "purpose": "Hover state of the pink pill."
+        },
+        "patchr-pink-text": {
+          "role": "primary",
+          "displayName": "Deep Pink",
+          "canonical": "#c81e57",
+          "oklch": "oklch(54.4% 0.202 8.9)",
+          "tonalRamp": [
+            "oklch(15% 0.202 8.9)",
+            "oklch(25% 0.202 8.9)",
+            "oklch(35% 0.202 8.9)",
+            "oklch(45% 0.202 8.9)",
+            "oklch(58% 0.202 8.9)",
+            "oklch(70% 0.202 8.9)",
+            "oklch(82% 0.202 8.9)",
+            "oklch(95% 0.060 8.9)"
+          ],
+          "purpose": "Pink as text and small icons on white and mist (about 5:1 on mist)."
+        },
+        "patchr-pink-soft": {
+          "role": "primary",
+          "displayName": "Pink Blush",
+          "canonical": "#ffb3c7",
+          "oklch": "oklch(84.4% 0.092 2.0)",
+          "tonalRamp": [
+            "oklch(15% 0.092 2.0)",
+            "oklch(25% 0.092 2.0)",
+            "oklch(35% 0.092 2.0)",
+            "oklch(45% 0.092 2.0)",
+            "oklch(58% 0.092 2.0)",
+            "oklch(70% 0.092 2.0)",
+            "oklch(82% 0.092 2.0)",
+            "oklch(95% 0.060 2.0)"
+          ],
+          "purpose": "Text on the 14% pink tint on dark (disabled Add to Discord, slash-command chips)."
+        },
+        "patchr-mint": {
+          "role": "tertiary",
+          "displayName": "Fix Mint",
+          "canonical": "#3ddc97",
+          "oklch": "oklch(79.7% 0.164 159.7)",
+          "tonalRamp": [
+            "oklch(15% 0.164 159.7)",
+            "oklch(25% 0.164 159.7)",
+            "oklch(35% 0.164 159.7)",
+            "oklch(45% 0.164 159.7)",
+            "oklch(58% 0.164 159.7)",
+            "oklch(70% 0.164 159.7)",
+            "oklch(82% 0.164 159.7)",
+            "oklch(95% 0.060 159.7)"
+          ],
+          "purpose": "Fix badge only (inside the badge image)."
+        },
+        "patchr-lilac": {
+          "role": "tertiary",
+          "displayName": "Change Lilac",
+          "canonical": "#8b7cff",
+          "oklch": "oklch(66.3% 0.188 285.3)",
+          "tonalRamp": [
+            "oklch(15% 0.188 285.3)",
+            "oklch(25% 0.188 285.3)",
+            "oklch(35% 0.188 285.3)",
+            "oklch(45% 0.188 285.3)",
+            "oklch(58% 0.188 285.3)",
+            "oklch(70% 0.188 285.3)",
+            "oklch(82% 0.188 285.3)",
+            "oklch(95% 0.060 285.3)"
+          ],
+          "purpose": "Change badge only (inside the badge image)."
+        },
+        "patchr-dc-bg": {
+          "role": "neutral",
+          "displayName": "Discord Channel",
+          "canonical": "#313338",
+          "oklch": "oklch(32.1% 0.009 268.4)",
+          "tonalRamp": [
+            "oklch(15% 0.009 268.4)",
+            "oklch(25% 0.009 268.4)",
+            "oklch(35% 0.009 268.4)",
+            "oklch(45% 0.009 268.4)",
+            "oklch(58% 0.009 268.4)",
+            "oklch(70% 0.009 268.4)",
+            "oklch(82% 0.009 268.4)",
+            "oklch(95% 0.009 268.4)"
+          ],
+          "purpose": "Discord screen ground. Product shots only."
+        },
+        "patchr-dc-surface": {
+          "role": "neutral",
+          "displayName": "Discord Surface",
+          "canonical": "#2b2d31",
+          "oklch": "oklch(29.7% 0.008 264.4)",
+          "tonalRamp": [
+            "oklch(15% 0.008 264.4)",
+            "oklch(25% 0.008 264.4)",
+            "oklch(35% 0.008 264.4)",
+            "oklch(45% 0.008 264.4)",
+            "oklch(58% 0.008 264.4)",
+            "oklch(70% 0.008 264.4)",
+            "oklch(82% 0.008 264.4)",
+            "oklch(95% 0.008 264.4)"
+          ],
+          "purpose": "Post container, slash menu. Product shots only."
+        },
+        "patchr-dc-deep": {
+          "role": "neutral",
+          "displayName": "Discord Deep",
+          "canonical": "#1e1f22",
+          "oklch": "oklch(23.9% 0.006 271.2)",
+          "tonalRamp": [
+            "oklch(15% 0.006 271.2)",
+            "oklch(25% 0.006 271.2)",
+            "oklch(35% 0.006 271.2)",
+            "oklch(45% 0.006 271.2)",
+            "oklch(58% 0.006 271.2)",
+            "oklch(70% 0.006 271.2)",
+            "oklch(82% 0.006 271.2)",
+            "oklch(95% 0.006 271.2)"
+          ],
+          "purpose": "Inputs and inline code. Product shots only."
+        },
+        "patchr-dc-text": {
+          "role": "neutral",
+          "displayName": "Discord Text",
+          "canonical": "#dbdee1",
+          "oklch": "oklch(89.9% 0.005 247.9)",
+          "tonalRamp": [
+            "oklch(15% 0.005 247.9)",
+            "oklch(25% 0.005 247.9)",
+            "oklch(35% 0.005 247.9)",
+            "oklch(45% 0.005 247.9)",
+            "oklch(58% 0.005 247.9)",
+            "oklch(70% 0.005 247.9)",
+            "oklch(82% 0.005 247.9)",
+            "oklch(95% 0.005 247.9)"
+          ],
+          "purpose": "Message text. Product shots only."
+        },
+        "patchr-dc-head": {
+          "role": "neutral",
+          "displayName": "Discord Heading",
+          "canonical": "#f2f3f5",
+          "oklch": "oklch(96.4% 0.003 264.5)",
+          "tonalRamp": [
+            "oklch(15% 0.003 264.5)",
+            "oklch(25% 0.003 264.5)",
+            "oklch(35% 0.003 264.5)",
+            "oklch(45% 0.003 264.5)",
+            "oklch(58% 0.003 264.5)",
+            "oklch(70% 0.003 264.5)",
+            "oklch(82% 0.003 264.5)",
+            "oklch(95% 0.003 264.5)"
+          ],
+          "purpose": "Names, titles, labels. Product shots only."
+        },
+        "patchr-dc-muted": {
+          "role": "neutral",
+          "displayName": "Discord Muted",
+          "canonical": "#949ba4",
+          "oklch": "oklch(68.7% 0.015 254.6)",
+          "tonalRamp": [
+            "oklch(15% 0.015 254.6)",
+            "oklch(25% 0.015 254.6)",
+            "oklch(35% 0.015 254.6)",
+            "oklch(45% 0.015 254.6)",
+            "oklch(58% 0.015 254.6)",
+            "oklch(70% 0.015 254.6)",
+            "oklch(82% 0.015 254.6)",
+            "oklch(95% 0.015 254.6)"
+          ],
+          "purpose": "Timestamps, meta lines, icons. Product shots only."
+        },
+        "patchr-dc-link": {
+          "role": "neutral",
+          "displayName": "Discord Link",
+          "canonical": "#00a8fc",
+          "oklch": "oklch(70.1% 0.166 242.0)",
+          "tonalRamp": [
+            "oklch(15% 0.166 242.0)",
+            "oklch(25% 0.166 242.0)",
+            "oklch(35% 0.166 242.0)",
+            "oklch(45% 0.166 242.0)",
+            "oklch(58% 0.166 242.0)",
+            "oklch(70% 0.166 242.0)",
+            "oklch(82% 0.166 242.0)",
+            "oklch(95% 0.060 242.0)"
+          ],
+          "purpose": "Project line and link text. Product shots only."
+        },
+        "patchr-dc-blurple": {
+          "role": "neutral",
+          "displayName": "Discord Blurple",
+          "canonical": "#5865f2",
+          "oklch": "oklch(57.7% 0.209 273.9)",
+          "tonalRamp": [
+            "oklch(15% 0.209 273.9)",
+            "oklch(25% 0.209 273.9)",
+            "oklch(35% 0.209 273.9)",
+            "oklch(45% 0.209 273.9)",
+            "oklch(58% 0.209 273.9)",
+            "oklch(70% 0.209 273.9)",
+            "oklch(82% 0.209 273.9)",
+            "oklch(95% 0.060 273.9)"
+          ],
+          "purpose": "APP tag, Follow, primary modal buttons. Product shots only."
+        },
+        "patchr-dc-sep": {
+          "role": "neutral",
+          "displayName": "Discord Separator",
+          "canonical": "#3f4147",
+          "oklch": "oklch(37.6% 0.011 271.1)",
+          "tonalRamp": [
+            "oklch(15% 0.011 271.1)",
+            "oklch(25% 0.011 271.1)",
+            "oklch(35% 0.011 271.1)",
+            "oklch(45% 0.011 271.1)",
+            "oklch(58% 0.011 271.1)",
+            "oklch(70% 0.011 271.1)",
+            "oklch(82% 0.011 271.1)",
+            "oklch(95% 0.011 271.1)"
+          ],
+          "purpose": "Post divider. Product shots only."
+        },
+        "patchr-dc-button": {
+          "role": "neutral",
+          "displayName": "Discord Button",
+          "canonical": "#4e5058",
+          "oklch": "oklch(43.2% 0.013 274.6)",
+          "tonalRamp": [
+            "oklch(15% 0.013 274.6)",
+            "oklch(25% 0.013 274.6)",
+            "oklch(35% 0.013 274.6)",
+            "oklch(45% 0.013 274.6)",
+            "oklch(58% 0.013 274.6)",
+            "oklch(70% 0.013 274.6)",
+            "oklch(82% 0.013 274.6)",
+            "oklch(95% 0.013 274.6)"
+          ],
+          "purpose": "Grey link buttons. Product shots only."
+        }
+      },
+      "typographyMeta": {
+        "patchr-display": {
+          "displayName": "Display",
+          "purpose": "The hero line only."
+        },
+        "patchr-figure": {
+          "displayName": "Figure",
+          "purpose": "Big limit numbers in Good to know, tabular."
+        },
+        "patchr-headline": {
+          "displayName": "Headline",
+          "purpose": "One per section; legal titles one step down."
+        },
+        "patchr-title": {
+          "displayName": "Title",
+          "purpose": "FAQ questions, spec names, How it works points."
+        },
+        "patchr-lead": {
+          "displayName": "Lead",
+          "purpose": "The sentence under a headline, secondary colour."
+        },
+        "patchr-body": {
+          "displayName": "Body",
+          "purpose": "Running text; .body opens to 1.6, legal to 1.65."
+        },
+        "patchr-label": {
+          "displayName": "Label",
+          "purpose": "Nav links, facts strip, footer links. Sentence case."
+        },
+        "patchr-button": {
+          "displayName": "Button",
+          "purpose": "Pill labels."
+        },
+        "patchr-fine": {
+          "displayName": "Fine",
+          "purpose": "Example captions, hero note, footer line."
+        },
+        "patchr-mono": {
+          "displayName": "Mono",
+          "purpose": "Slash-command chips and Markdown samples."
+        }
+      },
+      "shadows": [
+        {
+          "name": "floating-modal",
+          "value": "0 0 0 1px rgb(255 255 255 / 0.06), 0 1.5rem 3rem -0.5rem rgb(14 12 26 / 0.45)",
+          "purpose": "The /patch form floating across its screen edge (rotated 2deg)."
+        },
+        {
+          "name": "menu-panel",
+          "value": "0 0 0 1px rgb(255 255 255 / 0.08), 0 1rem 2rem -0.5rem rgb(0 0 0 / 0.5)",
+          "purpose": "The phone nav menu panel."
+        },
+        {
+          "name": "hub-glow",
+          "value": "filter: drop-shadow(0 0.75rem 1.5rem rgb(255 94 138 / 0.25))",
+          "purpose": "The Patchr mark at the centre of How it works. Used once."
+        },
+        {
+          "name": "soon-ring",
+          "value": "inset 0 0 0 1px rgb(255 94 138 / 0.32) | light: inset 0 0 0 1px rgb(200 30 87 / 0.28) | on pink: inset 0 0 0 1px rgb(23 20 43 / 0.3)",
+          "purpose": "Edge of the disabled Add to Discord pill."
+        },
+        {
+          "name": "post-edge",
+          "value": "inset 0 0 0 1px rgb(255 255 255 / 0.04)",
+          "purpose": "Edge of the Patch card container inside a Discord screen."
+        },
+        {
+          "name": "nav-material",
+          "value": "backdrop-filter: saturate(180%) blur(20px); background: rgb(14 12 26 / 0.72) | light: rgb(244 242 250 / 0.78)",
+          "purpose": "Translucent nav that follows the ground beneath it."
+        },
+        {
+          "name": "focus-ring",
+          "value": "outline: 2px solid #ff5e8a; outline-offset: 3px; border-radius: 8px",
+          "purpose": "Every focusable element."
+        }
+      ],
+      "motion": [
+        {
+          "name": "ease-out",
+          "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+          "purpose": "Entrances, presses, reveals, draws."
+        },
+        {
+          "name": "hero-rise",
+          "value": "1100ms ease-out, from opacity 0 and translate 0 1.25rem; stagger 120 / 240 / 320ms",
+          "purpose": "Hero copy on load."
+        },
+        {
+          "name": "hero-tile",
+          "value": "arrive 1600ms ease-out 150ms from scale 0.9 + blur 12px; float 7s ease-in-out infinite alternate, ±1.2% and ±1.2deg",
+          "purpose": "The 3D tile settles, then floats. The only looping motion besides the composer caret."
+        },
+        {
+          "name": "hero-out",
+          "value": "view() exit 5% to exit 90%, to opacity 0.25 and translate 0 -2.5rem; longhands",
+          "purpose": "Hero hands over to the first feature as it scrolls out."
+        },
+        {
+          "name": "post-stagger",
+          "value": "opacity 600ms, translate 0.5em 800ms, delays 450 / 520 / 590 / 660 / 780ms after the screen reveals",
+          "purpose": "The newest post writes itself once its screen has wiped in."
+        },
+        {
+          "name": "flow-draw",
+          "value": "stroke-dashoffset from 1 (pathLength 1) on view-timeline --flow; in: entry 60% to contain 25%; out: contain 20% to contain 45%; longhands",
+          "purpose": "Pink lines draw into and out of the Patchr mark."
+        },
+        {
+          "name": "mark-write",
+          "value": "scale 700ms ease-out; stem 250ms delay, white bars 450ms, pink bar 720ms over 950ms",
+          "purpose": "The hub mark writes its changelog lines, the newest (pink) last."
+        },
+        {
+          "name": "reading-progress",
+          "value": "scale 0 to 1 on scroll(root block); longhands",
+          "purpose": "2px pink line under the nav."
+        },
+        {
+          "name": "faq-open",
+          "value": "interpolate-size: allow-keywords; ::details-content height 400ms ease-out; plus icon rotate 45deg 300ms",
+          "purpose": "FAQ answers open smoothly."
+        },
+        {
+          "name": "reveals",
+          "value": "shared data-reveal system with Patchr --radius 24px: panel (right screens), wipe-left (left screen), pop (modal, hub, CTA mark); groups stagger 90ms, capped at 5",
+          "purpose": "One-time entrances."
+        },
+        {
+          "name": "scroll-longhands",
+          "value": "animation-name / animation-timing-function / animation-fill-mode / animation-timeline / animation-range as separate declarations",
+          "purpose": "Required. Astro's CSS minifier folds animation-timeline into the animation shorthand and Chrome then drops the whole declaration."
+        },
+        {
+          "name": "scroll-gate",
+          "value": "@supports (animation-timeline: view() | scroll()) and @media (prefers-reduced-motion: no-preference)",
+          "purpose": "Finished state at rest; reduced motion fades only, shows posts and mark complete, no float or caret."
+        },
+        {
+          "name": "view-transition",
+          "value": "@view-transition { navigation: auto }",
+          "purpose": "Cross-document navigation between Patchr pages."
+        }
+      ],
+      "breakpoints": [
+        {
+          "name": "stack",
+          "value": "52rem",
+          "purpose": "Hero, rows, specs and FAQ stack; nav links move into the menu; flow becomes a column."
+        },
+        {
+          "name": "nav-glyph",
+          "value": "26rem",
+          "purpose": "Nav Add to Discord shows only the Discord glyph and the Soon tag."
+        },
+        {
+          "name": "how-two-col",
+          "value": "68rem",
+          "purpose": "How it works points in two columns between 52rem and 68rem."
+        },
+        {
+          "name": "footer",
+          "value": "48rem / 30rem",
+          "purpose": "Footer regrids to three, then two columns."
+        }
+      ]
+    },
+    "components": [
+      {
+        "name": "Add to Discord (Soon)",
+        "kind": "button",
+        "refersTo": "patchr-button-soon",
+        "description": "Disabled pre-launch invite: pink-tinted pill with a pink Soon tag, not focusable or clickable. Deep pink on light grounds; ink-tinted on the pink band.",
+        "html": "<div class=\"ds-stage\"><span class=\"ds-btn ds-soon\" role=\"link\" aria-disabled=\"true\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z\"/></svg><span>Add to Discord</span><span class=\"ds-tag\" aria-hidden=\"true\">Soon</span></span></div><div class=\"ds-stage ds-stage--light\"><span class=\"ds-btn ds-soon\" role=\"link\" aria-disabled=\"true\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z\"/></svg><span>Add to Discord</span><span class=\"ds-tag\" aria-hidden=\"true\">Soon</span></span></div>",
+        "css": ":host{--deep:#0e0c1a;--ink:#17142b;--mist:#f4f2fa;--white:#fff;--on-dark:#fff;--haze:#bdb7d9;--muted:#6b6785;--pink:#ff5e8a;--pink-hover:#ff779c;--pink-text:#c81e57;--line-dark:rgb(189 183 217 / 0.14);--line-light:#e2deef;--dc-bg:#313338;--dc-surface:#2b2d31;--dc-deep:#1e1f22;--dc-text:#dbdee1;--dc-head:#f2f3f5;--dc-muted:#949ba4;--dc-link:#00a8fc;--dc-sep:#3f4147;--dc-button:#4e5058;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:'Inter Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--mono:ui-monospace,'SF Mono','Cascadia Mono',Consolas,monospace;} .ds-btn{font-family:var(--font);display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;min-height:3rem;padding:0 1.375rem;border-radius:980px;font-size:1rem;font-weight:650;letter-spacing:-0.012em;line-height:1;text-decoration:none;white-space:nowrap;border:0;transition:background-color 200ms ease,border-color 200ms ease,color 200ms ease,scale 200ms var(--ease-out);} .ds-btn:active{scale:0.97;} .ds-btn:focus-visible{outline:2px solid var(--pink);outline-offset:3px;} .ds-stage{padding:1.25rem;background:var(--deep);} .ds-stage--light{background:var(--mist);} .ds-soon{background:rgb(255 94 138 / 0.14);box-shadow:inset 0 0 0 1px rgb(255 94 138 / 0.32);color:#ffb3c7;cursor:not-allowed;} .ds-soon:active{scale:1;} .ds-stage--light .ds-soon{background:rgb(255 94 138 / 0.12);box-shadow:inset 0 0 0 1px rgb(200 30 87 / 0.28);color:var(--pink-text);} .ds-tag{padding:0.3rem 0.55rem;border-radius:980px;background:var(--pink);color:var(--ink);font-size:0.6875rem;font-weight:750;letter-spacing:0;}"
+      },
+      {
+        "name": "Pink Pill",
+        "kind": "button",
+        "refersTo": "patchr-button-pink",
+        "description": "The live primary action (at launch): pink fill, ink text, never white.",
+        "html": "<div class=\"ds-stage\"><a class=\"ds-btn ds-pink\" href=\"#\">Add to Discord</a></div>",
+        "css": ":host{--deep:#0e0c1a;--ink:#17142b;--mist:#f4f2fa;--white:#fff;--on-dark:#fff;--haze:#bdb7d9;--muted:#6b6785;--pink:#ff5e8a;--pink-hover:#ff779c;--pink-text:#c81e57;--line-dark:rgb(189 183 217 / 0.14);--line-light:#e2deef;--dc-bg:#313338;--dc-surface:#2b2d31;--dc-deep:#1e1f22;--dc-text:#dbdee1;--dc-head:#f2f3f5;--dc-muted:#949ba4;--dc-link:#00a8fc;--dc-sep:#3f4147;--dc-button:#4e5058;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:'Inter Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--mono:ui-monospace,'SF Mono','Cascadia Mono',Consolas,monospace;} .ds-btn{font-family:var(--font);display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;min-height:3rem;padding:0 1.375rem;border-radius:980px;font-size:1rem;font-weight:650;letter-spacing:-0.012em;line-height:1;text-decoration:none;white-space:nowrap;border:0;transition:background-color 200ms ease,border-color 200ms ease,color 200ms ease,scale 200ms var(--ease-out);} .ds-btn:active{scale:0.97;} .ds-btn:focus-visible{outline:2px solid var(--pink);outline-offset:3px;} .ds-stage{padding:1.25rem;background:var(--deep);} .ds-pink{background:var(--pink);color:var(--ink);} .ds-pink:hover{background:var(--pink-hover);}"
+      },
+      {
+        "name": "Ghost Pill",
+        "kind": "button",
+        "refersTo": "patchr-button-ghost",
+        "description": "Secondary action beside the invite (View code): a 1px outline, on dark and on light.",
+        "html": "<div class=\"ds-stage\"><a class=\"ds-btn ds-ghost\" href=\"#\">View code</a></div><div class=\"ds-stage ds-stage--light\"><a class=\"ds-btn ds-ghost\" href=\"#\">View code</a></div>",
+        "css": ":host{--deep:#0e0c1a;--ink:#17142b;--mist:#f4f2fa;--white:#fff;--on-dark:#fff;--haze:#bdb7d9;--muted:#6b6785;--pink:#ff5e8a;--pink-hover:#ff779c;--pink-text:#c81e57;--line-dark:rgb(189 183 217 / 0.14);--line-light:#e2deef;--dc-bg:#313338;--dc-surface:#2b2d31;--dc-deep:#1e1f22;--dc-text:#dbdee1;--dc-head:#f2f3f5;--dc-muted:#949ba4;--dc-link:#00a8fc;--dc-sep:#3f4147;--dc-button:#4e5058;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:'Inter Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--mono:ui-monospace,'SF Mono','Cascadia Mono',Consolas,monospace;} .ds-btn{font-family:var(--font);display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;min-height:3rem;padding:0 1.375rem;border-radius:980px;font-size:1rem;font-weight:650;letter-spacing:-0.012em;line-height:1;text-decoration:none;white-space:nowrap;border:0;transition:background-color 200ms ease,border-color 200ms ease,color 200ms ease,scale 200ms var(--ease-out);} .ds-btn:active{scale:0.97;} .ds-btn:focus-visible{outline:2px solid var(--pink);outline-offset:3px;} .ds-stage{padding:1.25rem;background:var(--deep);} .ds-stage--light{background:var(--white);} .ds-ghost{border:1px solid rgb(255 255 255 / 0.22);color:var(--white);} .ds-ghost:hover{border-color:rgb(255 255 255 / 0.5);background:rgb(255 255 255 / 0.06);} .ds-stage--light .ds-ghost{border-color:rgb(23 20 43 / 0.2);color:var(--ink);} .ds-stage--light .ds-ghost:hover{border-color:rgb(23 20 43 / 0.45);background:rgb(23 20 43 / 0.04);}"
+      },
+      {
+        "name": "Text Link and Command Chip",
+        "kind": "chip",
+        "refersTo": "patchr-command-chip",
+        "description": "Pink text link (deep pink on light) with a drawn underline, and a slash command set as Discord shows it.",
+        "html": "<div class=\"ds-stage\"><a class=\"ds-link\" href=\"#\">Read the privacy policy <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 18 6-6-6-6\"/></svg></a><span class=\"ds-cmd\">/feed add github</span></div><div class=\"ds-stage ds-stage--light\"><a class=\"ds-link\" href=\"#\">Read the privacy policy <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 18 6-6-6-6\"/></svg></a><span class=\"ds-cmd\">/patch</span></div>",
+        "css": ":host{--deep:#0e0c1a;--ink:#17142b;--mist:#f4f2fa;--white:#fff;--on-dark:#fff;--haze:#bdb7d9;--muted:#6b6785;--pink:#ff5e8a;--pink-hover:#ff779c;--pink-text:#c81e57;--line-dark:rgb(189 183 217 / 0.14);--line-light:#e2deef;--dc-bg:#313338;--dc-surface:#2b2d31;--dc-deep:#1e1f22;--dc-text:#dbdee1;--dc-head:#f2f3f5;--dc-muted:#949ba4;--dc-link:#00a8fc;--dc-sep:#3f4147;--dc-button:#4e5058;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:'Inter Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--mono:ui-monospace,'SF Mono','Cascadia Mono',Consolas,monospace;} .ds-stage{display:flex;align-items:center;gap:1.5rem;padding:1rem 1.25rem;background:var(--deep);color:var(--white);font-family:var(--font);font-size:1.0625rem;} .ds-stage--light{background:var(--mist);color:var(--ink);} .ds-link{display:inline-flex;align-items:center;gap:0.25em;min-height:2.75rem;color:var(--pink);font-weight:620;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 calc(100% - 0.6rem) / 0 1px no-repeat;transition:background-size 300ms var(--ease-out);} .ds-link:hover{background-size:calc(100% - 1.3em) 1px;} .ds-link svg{transition:translate 200ms var(--ease-out);} .ds-link:hover svg{translate:2px -2px;} .ds-link:focus-visible{outline:2px solid var(--pink);outline-offset:3px;border-radius:8px;} .ds-stage--light .ds-link{color:var(--pink-text);} .ds-cmd{padding:0.1em 0.45em;border-radius:6px;background:rgb(255 94 138 / 0.14);color:#ffb3c7;font-family:var(--mono);font-size:0.9em;font-weight:500;white-space:nowrap;} .ds-stage--light .ds-cmd{background:rgb(200 30 87 / 0.08);color:var(--pink-text);}"
+      },
+      {
+        "name": "Patchr Nav",
+        "kind": "nav",
+        "refersTo": "patchr-nav",
+        "description": "Sticky deep-ink glass bar with a pink reading-progress line; turns to mist glass over .light sections.",
+        "html": "<div class=\"ds-wrap\"><header class=\"ds-nav\"><nav class=\"ds-nav__in\"><span class=\"ds-logo\">patchr</span><ul><li><a href=\"#\">Features</a></li><li><a href=\"#\">How it works</a></li><li><a href=\"#\">Commands</a></li><li><a href=\"#\">FAQ</a></li></ul></nav></header><header class=\"ds-nav\" data-light><nav class=\"ds-nav__in\"><span class=\"ds-logo\">patchr</span><ul><li><a href=\"#\">Features</a></li><li><a href=\"#\">How it works</a></li><li><a href=\"#\">Commands</a></li><li><a href=\"#\">FAQ</a></li></ul></nav></header></div>",
+        "css": ":host{--deep:#0e0c1a;--ink:#17142b;--mist:#f4f2fa;--white:#fff;--on-dark:#fff;--haze:#bdb7d9;--muted:#6b6785;--pink:#ff5e8a;--pink-hover:#ff779c;--pink-text:#c81e57;--line-dark:rgb(189 183 217 / 0.14);--line-light:#e2deef;--dc-bg:#313338;--dc-surface:#2b2d31;--dc-deep:#1e1f22;--dc-text:#dbdee1;--dc-head:#f2f3f5;--dc-muted:#949ba4;--dc-link:#00a8fc;--dc-sep:#3f4147;--dc-button:#4e5058;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:'Inter Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--mono:ui-monospace,'SF Mono','Cascadia Mono',Consolas,monospace;} .ds-wrap{display:grid;gap:1rem;padding:1rem;background:linear-gradient(90deg,var(--deep),var(--mist));font-family:var(--font);} .ds-nav{position:relative;background:rgb(14 12 26 / 0.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgb(255 255 255 / 0.08);color:var(--white);transition:background-color 300ms ease,color 300ms ease;} .ds-nav::after{content:\"\";position:absolute;left:0;bottom:-1px;height:2px;width:40%;background:var(--pink);} .ds-nav[data-light]{background:rgb(244 242 250 / 0.78);border-bottom-color:rgb(23 20 43 / 0.08);color:var(--ink);} .ds-nav__in{display:flex;align-items:center;gap:2rem;height:3.75rem;padding:0 1.25rem;} .ds-logo{margin-right:auto;font-size:1.375rem;font-weight:800;letter-spacing:-0.04em;} .ds-nav ul{display:flex;gap:clamp(1rem,2.4vw,2rem);margin:0;padding:0;list-style:none;} .ds-nav a{display:inline-flex;align-items:center;min-height:2.75rem;color:rgb(255 255 255 / 0.72);font-size:0.9375rem;font-weight:500;text-decoration:none;transition:color 200ms ease;} .ds-nav a:hover{color:var(--white);} .ds-nav[data-light] a{color:rgb(23 20 43 / 0.72);} .ds-nav[data-light] a:hover{color:var(--ink);} .ds-nav a:focus-visible{outline:2px solid var(--pink);outline-offset:3px;border-radius:8px;}"
+      },
+      {
+        "name": "Discord Screen with Patch Card",
+        "kind": "custom",
+        "refersTo": "patchr-discord-screen",
+        "description": "Product shot: a Discord channel in Discord's greys, bleeding off the right edge (24px on the inner corners only), holding a Patchr post with its 4px pink accent_color stripe.",
+        "html": "<div class=\"ds-row\"><figure class=\"ds-screen\"><div class=\"ds-bar\"># releases</div><div class=\"ds-body\"><div class=\"ds-pc\"><p class=\"ds-sub ds-proj\">aurora-ui</p><p class=\"ds-title\">v2.4.0 · Dark mode, finally</p><hr class=\"ds-sep\"/><p class=\"ds-h\">Features</p><ul><li>Dark mode for every component</li><li>Tooltips can place themselves</li></ul><p class=\"ds-sub\">Released 23 September 2026 · by @mira-dev</p><div class=\"ds-btns\"><span class=\"ds-dcbtn\">View on GitHub</span><span class=\"ds-dcbtn\">Full changelog</span></div></div></div></figure></div>",
+        "css": ":host{--deep:#0e0c1a;--ink:#17142b;--mist:#f4f2fa;--white:#fff;--on-dark:#fff;--haze:#bdb7d9;--muted:#6b6785;--pink:#ff5e8a;--pink-hover:#ff779c;--pink-text:#c81e57;--line-dark:rgb(189 183 217 / 0.14);--line-light:#e2deef;--dc-bg:#313338;--dc-surface:#2b2d31;--dc-deep:#1e1f22;--dc-text:#dbdee1;--dc-head:#f2f3f5;--dc-muted:#949ba4;--dc-link:#00a8fc;--dc-sep:#3f4147;--dc-button:#4e5058;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:'Inter Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--mono:ui-monospace,'SF Mono','Cascadia Mono',Consolas,monospace;} .ds-row{padding:1.5rem 0 1.5rem 1.5rem;background:var(--white);overflow-x:clip;font-family:var(--font);} .ds-screen{margin:0;border-radius:24px 0 0 24px;overflow:hidden;background:var(--dc-bg);color:var(--dc-text);font-size:0.9375rem;line-height:1.375;} .ds-bar{display:flex;align-items:center;height:3em;padding-inline:1em;border-bottom:1px solid rgb(0 0 0 / 0.28);color:var(--dc-head);font-weight:600;} .ds-body{padding:1.25em 1em 1.5em;} .ds-pc{position:relative;display:grid;gap:0.25em;max-width:32em;padding:1em 1em 1em 1.25em;overflow:hidden;border-radius:0.5em;background:var(--dc-surface);box-shadow:inset 0 0 0 1px rgb(255 255 255 / 0.04);} .ds-pc::before{content:\"\";position:absolute;inset:0 auto 0 0;width:0.25em;background:var(--pink);} .ds-pc p{margin:0;} .ds-sub{color:var(--dc-muted);font-size:0.8125em;} .ds-proj{color:var(--dc-link);} .ds-title{color:var(--dc-head);font-size:1.25em;font-weight:700;} .ds-sep{height:1px;margin:0.5em 0;border:0;background:var(--dc-sep);} .ds-h{color:var(--dc-head);font-weight:700;} .ds-pc ul{margin:0;padding-left:1.15em;} .ds-btns{display:flex;gap:0.5em;margin-top:0.6em;} .ds-dcbtn{display:inline-flex;align-items:center;height:2em;padding:0 0.9em;border-radius:0.5em;background:var(--dc-button);color:#fff;font-size:0.875em;font-weight:500;}"
+      },
+      {
+        "name": "Spec Row",
+        "kind": "custom",
+        "refersTo": "patchr-spec-row",
+        "description": "Good to know: a Figure-size number with a deep-pink unit, beside its title and sentence, ruled by hairlines on mist.",
+        "html": "<dl class=\"ds-specs\"><div class=\"ds-row\"><dt><span class=\"ds-num\">3,500</span> <span class=\"ds-unit\">characters</span></dt><dd><span class=\"ds-t\">Per note</span><span class=\"ds-b\">Room for a full changelog in one post.</span></dd></div></dl>",
+        "css": ":host{--deep:#0e0c1a;--ink:#17142b;--mist:#f4f2fa;--white:#fff;--on-dark:#fff;--haze:#bdb7d9;--muted:#6b6785;--pink:#ff5e8a;--pink-hover:#ff779c;--pink-text:#c81e57;--line-dark:rgb(189 183 217 / 0.14);--line-light:#e2deef;--dc-bg:#313338;--dc-surface:#2b2d31;--dc-deep:#1e1f22;--dc-text:#dbdee1;--dc-head:#f2f3f5;--dc-muted:#949ba4;--dc-link:#00a8fc;--dc-sep:#3f4147;--dc-button:#4e5058;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:'Inter Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--mono:ui-monospace,'SF Mono','Cascadia Mono',Consolas,monospace;} .ds-specs{margin:0;padding:0 1.5rem;background:var(--mist);color:var(--ink);font-family:var(--font);border-top:1px solid var(--line-light);} .ds-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);align-items:center;gap:1rem 3rem;padding-block:2rem;border-bottom:1px solid var(--line-light);} .ds-row dt{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 0.6rem;} .ds-num{font-size:clamp(3.5rem,8vw,6.5rem);font-weight:800;font-variant-numeric:tabular-nums;line-height:0.95;letter-spacing:-0.04em;} .ds-unit{color:var(--pink-text);font-size:clamp(1.0625rem,1.6vw,1.375rem);font-weight:700;} .ds-row dd{display:grid;gap:0.35rem;margin:0;} .ds-t{font-size:clamp(1.25rem,2vw,1.5rem);font-weight:700;letter-spacing:-0.022em;} .ds-b{color:var(--muted);}"
+      },
+      {
+        "name": "CTA Band",
+        "kind": "custom",
+        "refersTo": "patchr-cta-band",
+        "description": "The page's one drenched moment: a pink band, an ink headline, the ink-tinted Soon pill and the ink View code pill.",
+        "html": "<section class=\"ds-cta\"><h2>Ship the update. Patchr posts the notes.</h2><div class=\"ds-actions\"><span class=\"ds-btn ds-soon\" role=\"link\" aria-disabled=\"true\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z\"/></svg><span>Add to Discord</span><span class=\"ds-tag\" aria-hidden=\"true\">Soon</span></span><a class=\"ds-btn ds-ink\" href=\"#\">View code</a></div></section>",
+        "css": ":host{--deep:#0e0c1a;--ink:#17142b;--mist:#f4f2fa;--white:#fff;--on-dark:#fff;--haze:#bdb7d9;--muted:#6b6785;--pink:#ff5e8a;--pink-hover:#ff779c;--pink-text:#c81e57;--line-dark:rgb(189 183 217 / 0.14);--line-light:#e2deef;--dc-bg:#313338;--dc-surface:#2b2d31;--dc-deep:#1e1f22;--dc-text:#dbdee1;--dc-head:#f2f3f5;--dc-muted:#949ba4;--dc-link:#00a8fc;--dc-sep:#3f4147;--dc-button:#4e5058;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:'Inter Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--mono:ui-monospace,'SF Mono','Cascadia Mono',Consolas,monospace;} .ds-btn{font-family:var(--font);display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;min-height:3rem;padding:0 1.375rem;border-radius:980px;font-size:1rem;font-weight:650;letter-spacing:-0.012em;line-height:1;text-decoration:none;white-space:nowrap;border:0;transition:background-color 200ms ease,border-color 200ms ease,color 200ms ease,scale 200ms var(--ease-out);} .ds-btn:active{scale:0.97;} .ds-btn:focus-visible{outline:2px solid var(--pink);outline-offset:3px;} .ds-cta{display:grid;justify-items:center;gap:2rem;padding:4rem 1.5rem;background:var(--pink);color:var(--ink);text-align:center;font-family:var(--font);} .ds-cta h2{max-width:16ch;margin:0;font-size:clamp(2.25rem,4.8vw,3.875rem);font-weight:800;line-height:1.04;letter-spacing:-0.035em;text-wrap:balance;} .ds-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;} .ds-soon{background:rgb(23 20 43 / 0.08);box-shadow:inset 0 0 0 1px rgb(23 20 43 / 0.3);color:var(--ink);cursor:not-allowed;} .ds-soon:active{scale:1;} .ds-tag{padding:0.3rem 0.55rem;border-radius:980px;background:var(--ink);color:var(--pink);font-size:0.6875rem;font-weight:750;} .ds-ink{background:var(--ink);color:var(--white);} .ds-ink:hover{background:#2a2546;} .ds-cta .ds-btn:focus-visible{outline-color:var(--ink);}"
+      }
+    ],
+    "narrative": {
+      "northStar": "The Bot Page, Finished",
+      "overview": "This is the Discord-bot landing page that server owners already know from MEE6, YAGPDB and Carl.gg: a hero with Add to Discord, feature rows proven by Discord product shots, how it works, limits, commands, FAQ, one drenched call-to-action band, and a legal footer. It is built with the personal site's Apple and Stripe finish, in Patchr's own brand kit (`brand/BRAND.md`). The page starts dark, because visitors arrive from Discord's dark UI. It opens on deep ink, moves through light white and mist feature sections, returns to deep ink for How it works, and ends on the pink band.\n\nThe proof is the product itself. Every feature is shown as a Discord screen drawn in HTML, using the layout and strings of Patchr's real renderer. The screens bleed off the viewport edge, opposite the copy. Discord's own greys stay inside those product shots, the way a phone keeps its own screen colours inside a product photo. Pink is the one action colour, and in the brand it means *the newest change*.",
+      "keyCharacteristics": [
+        "Deep ink for dark sections, white or mist for light ones. The nav follows the ground beneath it.",
+        "One accent, pink, used for actions, the newest change and drawn lines. Ink text sits on it.",
+        "Inter Variable only: 800 for display and headlines with tight tracking, 500 for leads.",
+        "Discord product shots that bleed off alternating viewport edges, rounded only on their inner corners.",
+        "Add to Discord is shown disabled with a Soon tag until launch.",
+        "One-time reveals, a floating 3D hero tile, and scroll-drawn pink lines, all with a finished resting state."
+      ],
+      "rules": [
+        {
+          "name": "The Ink-On-Pink Rule",
+          "body": "Pink is the one action colour. Whatever sits on pink is set in Patchr Ink, never white. White on pink is under 3:1, and ink on pink is above 6:1.",
+          "section": "colors"
+        },
+        {
+          "name": "The Deep-Pink Text Rule",
+          "body": "Pink as text on white or mist uses patchr-pink-text. Raw pink is for fills, strokes and text on dark.",
+          "section": "colors"
+        },
+        {
+          "name": "The Badge-Only Rule",
+          "body": "Mint and lilac exist only in the Fix and Change badges. They are never a text colour, fill or accent on the page.",
+          "section": "colors"
+        },
+        {
+          "name": "The Screen-Colours Rule",
+          "body": "Discord's greys, and the colours of the GitHub release card, appear only inside product shots of those UIs. That means the Discord screens, the /patch modal floating off the second screen, and the source and output cards in How it works. Around them the page stays in Patchr's own palette.",
+          "section": "colors"
+        },
+        {
+          "name": "The One Family Rule",
+          "body": "Inter only (plus system mono for commands). Hierarchy comes from size, weight (500, 550, 560, 600, 620, 650, 700, 750, 800) and tracking.",
+          "section": "typography"
+        },
+        {
+          "name": "The Sentence Case Rule",
+          "body": "No uppercase labels and no small line above a headline. The one uppercase string is Discord's own APP tag, inside a product shot.",
+          "section": "typography"
+        },
+        {
+          "name": "The Floating Layer Rule",
+          "body": "Only a layer that floats over other content gets a soft shadow, and it always comes with a 1px ring. Everything at rest is flat.",
+          "section": "elevation"
+        },
+        {
+          "name": "The One Drench Rule",
+          "body": "The pink band is the page's one drenched moment: full-bleed pink, ink text, the Patchr mark popping in, a centred headline (max 16ch), and the Add to Discord and ink View code pair. Text selection inverts to ink with pink text. It appears once, just before the footer.",
+          "section": "components"
+        }
+      ],
+      "dos": [
+        "Do put dark sections on patchr-deep, and light sections on white or mist with `.light` (and `.mist`), so the nav follows the ground.",
+        "Do set ink text on pink, Deep Pink for pink text on light grounds, and raw pink only for fills, strokes and text on dark.",
+        "Do show Add to Discord as the disabled pill with a Soon tag until launch, keeping the glyph and tag in the nav on narrow phones.",
+        "Do prove features with Discord screens built from Patchr's real renderer layout and strings, bleeding off the edge opposite the copy, rounded only on the inner corners, and captioned as examples.",
+        "Do open external links in a new tab with a visually hidden \"(opens in a new tab)\".",
+        "Do write scroll-driven animation as longhands inside both gates, with the finished state as the default.",
+        "Do keep tap targets at 2.75rem or more."
+      ],
+      "donts": [
+        "Don't put white text on pink.",
+        "Don't use mint or lilac outside the Fix and Change badges, or Discord's greys outside a product shot.",
+        "Don't bring the personal site's papaya or Mona Sans onto /patchr/, or Patchr's pink and Inter onto the personal pages.",
+        "Don't add a second drenched band. The pink CTA band appears once.",
+        "Don't add side stripes to cards. The Patch card's accent stripe is the one exception, because it reproduces Discord.",
+        "Don't give resting surfaces a drop shadow. Only floating layers get one, always with a 1px ring.",
+        "Don't use uppercase or tracked labels, or a small line above a headline.",
+        "Don't recolour the Patchr mark's bars or set the wordmark in another font."
+      ]
+    }
   }
 }

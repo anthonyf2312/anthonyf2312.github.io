@@ -12,7 +12,7 @@ Astro, built and deployed by GitHub Actions to GitHub Pages (user choice). Node 
 
 ## Users
 
-Primary: Discord community owners deciding whether to trust Anthony with their server, now through Insko Bot (access by request) or later through the public bot he is building. They usually arrive from a link shared inside Discord, often from Discord's dark UI.
+Primary: Discord community owners deciding whether to trust Anthony with their server, now through Insko Bot (access by request) or later through Patchr, the public bot he is building. They usually arrive from a link shared inside Discord, often from Discord's dark UI.
 
 Secondary, confirmed through the content rather than as targets: F1 fans, and people newly diagnosed with MS who find the page and need to see someone with MS who keeps building.
 
@@ -28,11 +28,13 @@ He builds Discord bots for communities that take themselves seriously: moderatio
 
 - Links to the site get shared in Discord, which unfurls them as embeds (og tags, theme-color).
 - Insko Bot: a private, self-hosted Discord bot built for Insko's community, where servers can request access. Site: https://inskobot.me. Repo (README, changelog, terms, privacy): https://github.com/anthonyf2312/InskoBot. The user asked that the home page not list its features.
-- A public bot is planned. Its Discord server is "coming soon".
+- Patchr is the public bot: it posts patch notes to Discord, from GitHub releases or written by hand. It isn't live yet, so the home page shows it as coming soon, with no invite link. Its Discord server opens, and its code (github.com/anthonyf2312/patchr, MIT) goes public, at launch. Brand kit: brand/ in this repo (copied from the Patchr project).
+- Patchr has its own site at /patchr/ (plus /patchr/privacy/ and /patchr/terms/, copied word for word from the Patchr repo's PRIVACY.md and TERMS.md). It acts as its own website: its own brand, nav, favicon and link preview, and no links back to the personal pages. The home page's hero leads with "Meet Patchr" (to /patchr/) and "View code" (to the Patchr repo). Until launch its Add to Discord button is shown disabled with a "Soon" tag; at launch it becomes the invite link.
 
 ## Capabilities and Constraints
 
-- Sections: intro/about, Insko Bot, F1 ("Off the clock": McLaren, Lando Norris, since Sochi 2021), MS.
+- Sections: intro/about, Insko Bot, F1 ("Off the clock": McLaren, Lando Norris, since Sochi 2021), MS, Patchr (coming soon, linking to /patchr/).
+- External links (GitHub, inskobot.me, anything off-site) open in a new tab. The user's standing preference (2026-09-23).
 - Contact: GitHub and Discord, both shown as "coming soon" (not live links).
 - Imagery from Pixabay via the user's API key (kept in local `.env`, never committed or shipped). Images are downloaded and committed, never hotlinked.
 - Everything from the previous site is removed: Tessel docs and catalogue, the Rush Royale guide, all old history. The home page does not mention Tessel.
@@ -45,6 +47,7 @@ He builds Discord bots for communities that take themselves seriously: moderatio
 - Voice: dry, direct, a little wry. Short sentences. The user's own lines to keep in spirit: "Backing someone on their worst day beats joining on their best." "It changes my pace, not my direction." "Keep building."
 - Must not feel: sentimental about MS, busy or over-animated, like a generic dev portfolio, or like a cheesy fan site.
 - Visual bar (user's standing preference, 2026-09-23): Apple product pages first, with Stripe's polish. Mixed light and dark sections. The user rejected a Discord-channel ("doc style") concept in favour of this.
+- Patchr site (2026-09-23): the Discord-bot landing page of MEE6, YAGPDB and Carl.gg (the user's named references), finished like the personal site. It uses Patchr's own brand kit (deep ink, mist, pink, Inter), not the personal site's papaya and Mona Sans. Discord screens are product shots; their Discord greys stay inside the screen.
 
 ## Evidence on Hand
 

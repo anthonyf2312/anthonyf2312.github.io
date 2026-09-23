@@ -1,0 +1,315 @@
+---
+import PatchrLogo from './PatchrLogo.astro';
+import PatchrIcon from './PatchrIcon.astro';
+import AddToDiscord from './AddToDiscord.astro';
+
+interface Props {
+  /** On the home page the section links are same-page anchors; elsewhere they lead back to it. */
+  onHome?: boolean;
+}
+
+const { onHome = false } = Astro.props;
+const base = onHome ? '' : '/patchr/';
+const links = [
+  { href: `${base}#features`, label: 'Features' },
+  { href: `${base}#how`, label: 'How it works' },
+  { href: `${base}#commands`, label: 'Commands' },
+  { href: `${base}#faq`, label: 'FAQ' },
+];
+---
+
+<header class="nav" data-nav>
+  <nav class="nav__inner" aria-label="Main">
+    <a class="nav__logo" href="/patchr/" aria-label="Patchr home">
+      <PatchrLogo class="nav__logo-svg" label="Patchr" />
+    </a>
+    <ul class="nav__links">
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+    <AddToDiscord small class="nav__cta" />
+
+    <!-- Phones: the section links move into a small menu. -->
+    <details class="nav__menu" data-nav-menu>
+      <summary aria-label="Menu">
+        <PatchrIcon name="menu" size={22} />
+      </summary>
+      <ul class="nav__menu-panel">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))
+        }
+        <li>
+          <a href="https://github.com/anthonyf2312/patchr" target="_blank" rel="noopener">
+            View code <PatchrIcon name="external" size={14} /><span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+        </li>
+      </ul>
+    </details>
+  </nav>
+</header>
+
+<script>
+  // The bar follows the ground under it: dark by default, light over .light sections.
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+  const lightSections = document.querySelectorAll('.light');
+  if (nav && lightSections.length) {
+    const under = new Set<Element>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) under.add(entry.target);
+          else under.delete(entry.target);
+        }
+        nav.toggleAttribute('data-light', under.size > 0);
+      },
+      { rootMargin: '0px 0px -95% 0px' },
+    );
+    lightSections.forEach((section) => observer.observe(section));
+  }
+
+  // The phone menu closes when a link is chosen, when you tap outside it, or on Escape.
+  const menu = document.querySelector<HTMLDetailsElement>('[data-nav-menu]');
+  if (menu) {
+    menu.addEventListener('click', (event) => {
+      if ((event.target as Element).closest('a')) menu.open = false;
+    });
+    document.addEventListener('click', (event) => {
+      if (menu.open && !menu.contains(event.target as Node)) menu.open = false;
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary')?.focus();
+      }
+    });
+  }
+</script>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgb(14 12 26 / 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgb(255 255 255 / 0.08);
+    color: var(--on-dark);
+    transition:
+      background-color 300ms ease,
+      border-color 300ms ease,
+      color 300ms ease;
+  }
+
+  /* Reading progress: a pink hairline along the bar's bottom edge, driven by page scroll. */
+  .nav::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 2px;
+    background: var(--pink);
+    transform-origin: 0 50%;
+    scale: 0 1;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .nav::after {
+      animation-name: progress;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(root block);
+    }
+  }
+
+  @keyframes progress {
+    to {
+      scale: 1 1;
+    }
+  }
+
+  .nav[data-light] {
+    background: rgb(244 242 250 / 0.78);
+    border-bottom-color: rgb(23 20 43 / 0.08);
+    color: var(--ink);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--s4);
+    width: min(100% - 2 * var(--gutter), var(--container));
+    height: var(--nav-h);
+    margin-inline: auto;
+  }
+
+  .nav__logo {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    margin-right: auto;
+  }
+
+  .nav__logo :global(.nav__logo-svg) {
+    width: auto;
+    height: 1.75rem;
+  }
+
+  /* The ink tile would vanish into the deep-ink bar, so it gets a hairline edge. */
+  .nav__logo :global(.logo__tile) {
+    stroke: rgb(189 183 217 / 0.35);
+    stroke-width: 4;
+    paint-order: stroke;
+  }
+
+  .nav[data-light] .nav__logo :global(.logo__tile) {
+    stroke: none;
+  }
+
+  .nav__links {
+    display: flex;
+    gap: clamp(1rem, 2.4vw, 2rem);
+  }
+
+  .nav__links a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: rgb(255 255 255 / 0.72);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .nav__links a::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0.7rem;
+    left: 0;
+    height: 1px;
+    background: currentColor;
+    transform-origin: 0 50%;
+    scale: 0 1;
+    transition: scale 250ms var(--ease-out);
+  }
+
+  .nav__links a:hover {
+    color: var(--on-dark);
+  }
+
+  .nav__links a:hover::after {
+    scale: 1 1;
+  }
+
+  .nav[data-light] .nav__links a {
+    color: rgb(23 20 43 / 0.72);
+  }
+
+  .nav[data-light] .nav__links a:hover {
+    color: var(--ink);
+  }
+
+  .nav[data-light] :global(.nav__cta) {
+    background: rgb(255 94 138 / 0.12);
+    box-shadow: inset 0 0 0 1px rgb(200 30 87 / 0.28);
+    color: var(--pink-text);
+  }
+
+  .nav__menu {
+    display: none;
+    position: relative;
+  }
+
+  .nav__menu summary {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-right: -0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .nav__menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nav__menu-panel {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: -0.5rem;
+    display: grid;
+    min-width: 13rem;
+    padding: 0.5rem;
+    border-radius: 16px;
+    background: var(--ink);
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 0.08),
+      0 1rem 2rem -0.5rem rgb(0 0 0 / 0.5);
+    color: var(--on-dark);
+  }
+
+  .nav__menu-panel a {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    min-height: 2.75rem;
+    padding: 0 0.75rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 550;
+    text-decoration: none;
+  }
+
+  .nav__menu-panel a:hover {
+    background: rgb(255 255 255 / 0.06);
+  }
+
+  /* Phones: the section links move into the menu; the invite stays in the bar. */
+  @media (max-width: 52rem) {
+    .nav__links {
+      display: none;
+    }
+
+    .nav__inner {
+      gap: var(--s2);
+    }
+
+    .nav__menu {
+      display: block;
+    }
+  }
+
+  /*
+    Narrow phones: the bar's invite shrinks to the Discord glyph and its Soon tag, so it still says the bot
+    isn't out yet. The words stay for screen readers.
+  */
+  @media (max-width: 26rem) {
+    .nav :global(.nav__cta .soon-label) {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .nav :global(.nav__cta) {
+      padding-inline: 0.75rem 0.5rem;
+    }
+  }
+</style>

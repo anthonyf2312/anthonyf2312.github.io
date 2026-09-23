@@ -1,0 +1,29 @@
+---
+// Patchr's change badges, uploaded to Discord as application emojis and added to note headings
+// ("Features" gets New, "Bug Fixes" gets Fix, "Improvements" gets Change). From brand/export/embeds/.
+import { Image } from 'astro:assets';
+import newBadge from '../../assets/patchr/badge-new-128.png';
+import fixBadge from '../../assets/patchr/badge-fix-128.png';
+import changeBadge from '../../assets/patchr/badge-change-128.png';
+
+interface Props {
+  kind: 'new' | 'fix' | 'change';
+  size?: number;
+  class?: string;
+}
+
+const { kind, size = 22, class: className } = Astro.props;
+const src = { new: newBadge, fix: fixBadge, change: changeBadge }[kind];
+---
+
+<Image class:list={['badge', className]} src={src} alt="" width={size} height={size} densities={[1, 2, 3]} />
+
+<style>
+  .badge {
+    display: inline-block;
+    width: 1.375em;
+    height: 1.375em;
+    margin-right: 0.3em;
+    vertical-align: -0.3em;
+  }
+</style>

@@ -1,0 +1,73 @@
+---
+// One message from the Patchr bot: avatar, name, the APP tag Discord puts on bots, and a timestamp.
+import { Image } from 'astro:assets';
+import avatar from '../../assets/patchr/patchr-avatar-1024.png';
+
+interface Props {
+  time: string;
+  class?: string;
+}
+
+const { time, class: className } = Astro.props;
+---
+
+<div class:list={['msg', className]}>
+  <Image class="msg__avatar" src={avatar} alt="" width={40} height={40} densities={[1, 2]} />
+  <div class="msg__main">
+    <p class="msg__head">
+      <span class="msg__name">Patchr</span>
+      <span class="msg__app">APP</span>
+      <span class="msg__time">{time}</span>
+    </p>
+    <slot />
+  </div>
+</div>
+
+<style>
+  .msg {
+    display: grid;
+    grid-template-columns: 2.5em minmax(0, 1fr);
+    gap: 1em;
+    align-items: start;
+  }
+
+  .msg :global(.msg__avatar) {
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+  }
+
+  .msg__main {
+    display: grid;
+    gap: 0.25em;
+    min-width: 0;
+  }
+
+  .msg__head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.4em;
+  }
+
+  .msg__name {
+    color: var(--dc-head);
+    font-weight: 600;
+  }
+
+  .msg__app {
+    padding: 0.1em 0.3em;
+    border-radius: 0.25em;
+    background: var(--dc-blurple);
+    color: #fff;
+    font-size: 0.625em;
+    font-weight: 700;
+    line-height: 1.3;
+    translate: 0 -0.1em;
+  }
+
+  .msg__time {
+    color: var(--dc-muted);
+    font-size: 0.75em;
+  }
+</style>

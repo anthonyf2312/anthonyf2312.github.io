@@ -1,6 +1,8 @@
 # anthonyf2312.github.io
 
-Anthony's personal site: Discord bots (Insko Bot), Formula 1, and MS. Live at [anthonyf2312.github.io](https://anthonyf2312.github.io).
+Anthony's personal site: Discord bots (Insko Bot, and Patchr, coming soon), Formula 1, and MS. Live at [anthonyf2312.github.io](https://anthonyf2312.github.io).
+
+It also hosts [Patchr's own site](https://anthonyf2312.github.io/patchr/) at `/patchr/`, with its privacy policy and terms. Patchr's pages have their own layout (`src/layouts/PatchrBase.astro`), styles (`src/styles/patchr.css`) and components (`src/components/patchr/`), built from the brand kit in `brand/`.
 
 Built with [Astro](https://astro.build) and deployed to GitHub Pages by GitHub Actions on every push to `main`.
 
@@ -31,5 +33,10 @@ The Sochi 2021 trace (`src/data/sochi.ts`) is Lando Norris's running position at
 - Rain photo: Arcaion on Pixabay
 - LN4 logo: Lando Norris's mark, supplied by the site owner (src/components/LandoLogo.astro)
 - McLaren wordmark and speedmark: Wikimedia Commons (public domain as simple logos, McLaren trademarks; shown on a fan page with no affiliation)
-- Type: [Mona Sans](https://github.com/github/mona-sans) (SIL OFL)
-- Icons: [Lucide](https://lucide.dev) (ISC)
+- Type: [Mona Sans](https://github.com/github/mona-sans) (SIL OFL); Patchr's pages use [Inter](https://rsms.me/inter/) (SIL OFL)
+- Icons: [Lucide](https://lucide.dev) (ISC); Discord and GitHub glyphs from [Simple Icons](https://simpleicons.org) (CC0)
+- Patchr's logo, 3D renders and badges: the Patchr brand kit in `brand/` (rendered from `brand/Patchr_Brand.blend`)
+
+## Patchr's policies
+
+`src/data/patchr/privacy.md` and `terms.md` are copies of `PRIVACY.md` and `TERMS.md` from the Patchr repo. Change them there first, then copy them here. The only difference is that the terms' two repo-relative links point at `/patchr/privacy/` and the LICENSE on GitHub.

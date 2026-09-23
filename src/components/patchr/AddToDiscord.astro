@@ -1,0 +1,24 @@
+---
+// Add to Discord, before launch. Patchr isn't live yet, so this is a disabled link: it looks like the
+// real invite button, says "Soon", and can't be clicked. At launch it becomes an <a> to the invite URL.
+import PatchrIcon from './PatchrIcon.astro';
+
+interface Props {
+  small?: boolean;
+  class?: string;
+}
+
+const { small = false, class: className } = Astro.props;
+---
+
+<span
+  class:list={['btn', 'btn--soon', small && 'btn--sm', className]}
+  role="link"
+  aria-disabled="true"
+  title="Patchr launches soon"
+>
+  <PatchrIcon name="discord" size={small ? 16 : 20} />
+  <span class="soon-label">Add to Discord</span>
+  <span class="soon-tag" aria-hidden="true">Soon</span>
+  <span class="visually-hidden">(coming soon, not available yet)</span>
+</span>

@@ -1,0 +1,63 @@
+---
+// Patchr's own site shell. It shares nothing visible with the personal site: its own fonts, colours,
+// favicon, link preview and nav. Only the reveal system (src/scripts/reveal.ts) is shared code.
+import '../styles/patchr.css';
+import PatchrNav from '../components/patchr/PatchrNav.astro';
+import PatchrFooter from '../components/patchr/PatchrFooter.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  onHome?: boolean;
+}
+
+const { title, description, path = '/patchr/', onHome = false } = Astro.props;
+const url = new URL(path, Astro.site);
+const ogImage = new URL('/patchr/og-image-1200x630.png', Astro.site);
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+    <link rel="icon" href="/patchr/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/patchr/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/patchr/apple-touch-icon-180.png" />
+    <link rel="manifest" href="/patchr/site.webmanifest" />
+
+    <!-- Discord reads these when the link is shared: theme-color paints the embed's side stripe pink. -->
+    <meta name="theme-color" content="#FF5E8A" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Patchr" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Patchr. Patch notes, posted beautifully." />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Reveals only hide content once JS is running, so a failed script never leaves the page blank. -->
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <PatchrNav onHome={onHome} />
+    <main id="main">
+      <slot />
+    </main>
+    <PatchrFooter />
+
+    <script>
+      import '../scripts/reveal';
+    </script>
+  </body>
+</html>

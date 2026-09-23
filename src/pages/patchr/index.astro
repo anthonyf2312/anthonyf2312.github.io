@@ -1,0 +1,1714 @@
+---
+import { Image, Picture } from 'astro:assets';
+import PatchrBase from '../../layouts/PatchrBase.astro';
+import AddToDiscord from '../../components/patchr/AddToDiscord.astro';
+import PatchrIcon from '../../components/patchr/PatchrIcon.astro';
+import DiscordScreen from '../../components/patchr/DiscordScreen.astro';
+import DiscordMessage from '../../components/patchr/DiscordMessage.astro';
+import PatchCard from '../../components/patchr/PatchCard.astro';
+import Badge from '../../components/patchr/Badge.astro';
+import PatchrMark from '../../components/PatchrMark.astro';
+import heroTile from '../../assets/patchr/hero-3d-bg.png';
+import avatar from '../../assets/patchr/patchr-avatar-1024.png';
+
+const repo = 'https://github.com/anthonyf2312/patchr';
+
+// Every fact on this page comes from Patchr's README, listing copy, strings and policies.
+const facts = ['Free to use', 'Open source, MIT', 'No privileged intents', 'For any project, not only GitHub'];
+
+const how = [
+  {
+    title: 'Polling, not webhooks.',
+    text: 'A webhook sent while a bot restarts is lost. Patchr keeps its place and catches up after any downtime.',
+  },
+  {
+    title: 'Exactly once.',
+    text: 'Each post is claimed before it’s sent, so a crash halfway through can’t post it twice.',
+  },
+  {
+    title: 'Safe by default.',
+    text: 'Release text can never ping anyone. Private repos are refused, and drafts never post.',
+  },
+  {
+    title: 'Light on GitHub.',
+    text: 'One check per repo, however many servers follow it. Checks that find nothing new don’t count against GitHub’s limit.',
+  },
+];
+
+const limits = [
+  {
+    num: '3',
+    unit: 'minutes',
+    title: 'Between checks on an active repo.',
+    text: 'After a month without a release it checks every 6 minutes, and after six months every 15.',
+  },
+  {
+    num: '3,500',
+    unit: 'characters',
+    title: 'In a custom note.',
+    text: 'A Discord message holds 4,000, and the post’s header and footer use the rest.',
+  },
+  { num: '25', unit: 'feeds', title: 'Per server.', text: 'Each one can post to its own channel.' },
+  {
+    num: '3',
+    unit: 'permissions',
+    title: 'In the channel it posts to.',
+    text: 'View Channel, Send Messages and Embed Links. If it loses one, the feed pauses and /feed list tells you why.',
+  },
+  {
+    num: '0',
+    unit: 'privileged intents',
+    title: 'Nothing to read.',
+    text: 'Patchr never asks Discord for your messages, member list or DMs. It only follows public repos.',
+  },
+];
+
+// The slash commands, as Discord's autocomplete lists them (required options after the name).
+const commands = [
+  { name: '/feed add github', opts: 'repo channel', desc: 'Post new releases from a public GitHub repo' },
+  { name: '/feed list', opts: '', desc: 'Show this server’s feeds, and any that need attention' },
+  { name: '/feed edit', opts: 'feed', desc: 'Change a feed, or resume a paused one' },
+  { name: '/feed remove', opts: 'feed', desc: 'Stop posting from a feed' },
+  { name: '/patch', opts: '', desc: 'Write patch notes in a form, preview them, then post' },
+  { name: '/settings', opts: '', desc: 'Server defaults for /patch and announcement publishing' },
+  { name: '/help', opts: '', desc: 'How Patchr works, and its limits' },
+];
+
+const faqs = [
+  {
+    q: 'When does Patchr launch?',
+    a: 'Soon. It’s being finished now. When it’s ready, the Add to Discord button on this page goes live, and so does Patchr’s own Discord server.',
+  },
+  {
+    q: 'Is it free?',
+    a: 'Yes. Patchr is a free bot, and its code is open source under the MIT licence.',
+  },
+  {
+    q: 'Does Patchr read my server’s messages?',
+    a: 'No. It doesn’t ask Discord for any privileged intents, so it can’t see your messages, member list or direct messages. Everything it does store is listed in the privacy policy.',
+    link: { href: '/patchr/privacy/', label: 'Read the privacy policy' },
+  },
+  {
+    q: 'Can it follow private repos?',
+    a: 'No, only public ones. Private repos are refused, even if its GitHub token could read them.',
+  },
+  {
+    q: 'Who can post patch notes?',
+    a: 'By default, members with Manage Server. To let another role post, go to Server Settings → Integrations → Patchr. Patchr only posts where that person could post themselves, and only pings roles they could mention.',
+  },
+  {
+    q: 'What happens to my data if I remove Patchr?',
+    a: 'Everything it stored for your server is deleted: settings, feeds, post records and drafts. Posts it already made stay in your channels until you delete them.',
+  },
+  {
+    q: 'Can I run my own copy?',
+    a: 'Yes. Patchr is open source, and your copy works exactly like the public one. It runs with Docker, or with Node and no database server at all.',
+  },
+];
+---
+
+<PatchrBase
+  title="Patchr: patch notes, posted beautifully"
+  description="Patchr posts clean, formatted patch notes to your Discord server, either automatically from GitHub releases or written by you for any project."
+  onHome
+>
+  <!-- Hero: the promise on the left, the glossy tile floating on the right. -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero__grid">
+      <div class="hero__text">
+        <h1 class="display hero__title" id="hero-title">Patch notes, posted beautifully.</h1>
+        <p class="lead dim hero__lead">
+          Patchr turns your releases into clean, readable Discord posts. Straight from GitHub, or written by you for any
+          project.
+        </p>
+        <div class="actions hero__actions">
+          <AddToDiscord />
+          <a class="btn btn--ghost" href={repo} target="_blank" rel="noopener">
+            <PatchrIcon name="github" size={18} />
+            View code<span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+        </div>
+        <p class="fine dim hero__note">Patchr is almost ready. The invite opens at launch.</p>
+      </div>
+      <div class="hero__art">
+        <div class="hero__float">
+          <Picture
+            class="hero__tile"
+            src={heroTile}
+            formats={['avif', 'webp']}
+            widths={[800, 1200, 1600, 2400]}
+            sizes="(max-width: 52rem) 185vw, 1300px"
+            alt="The Patchr icon as a glossy 3D tile: a P built from changelog lines, the newest line in pink."
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <ul class="facts">
+        {
+          facts.map((fact) => (
+            <li>
+              <PatchrIcon name="check" size={16} />
+              {fact}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Feature 1: GitHub releases. Copy left, the Discord screen bleeding off the right edge. -->
+  <section class="light row row--right" id="features" aria-labelledby="gh-title">
+    <div class="row__stage">
+      <div class="row__text" data-reveal-group>
+        <h2 class="headline" id="gh-title" data-reveal>Releases, posted for you.</h2>
+        <p class="lead dim" data-reveal>
+          Connect a public GitHub repo and Patchr posts each new release to the channel you pick, usually within a few
+          minutes.
+        </p>
+        <ul class="points" data-reveal>
+          <li><PatchrIcon name="check" size={18} />Markdown, headings and lists come through properly formatted.</li>
+          <li><PatchrIcon name="check" size={18} />Headings like Features and Bug Fixes get their own badges.</li>
+          <li><PatchrIcon name="check" size={18} />Watch several repos, each with its own channel. Pre-releases in or out.</li>
+          <li><PatchrIcon name="check" size={18} />Edit the release on GitHub and the post updates to match.</li>
+        </ul>
+        <p class="row__cmd" data-reveal><span class="cmd">/feed add github</span></p>
+      </div>
+      <div class="row__shot" data-reveal="panel">
+        <DiscordScreen channel="releases" label="Example: Patchr posting a GitHub release in a Discord channel">
+          <DiscordMessage time="Today at 14:02">
+            <PatchCard
+              project="aurora-ui"
+              version="v2.4.0"
+              title="Dark mode, finally"
+              date="23 September 2026"
+              author="mira-dev"
+              buttons={['View on GitHub', 'Full changelog']}
+            >
+              <p class="pc-h"><Badge kind="new" />Features</p>
+              <ul>
+                <li>Dark mode for every component, following the system setting</li>
+                <li>Tooltips can place themselves with <code>placement="auto"</code></li>
+              </ul>
+              <p class="pc-h"><Badge kind="fix" />Bug Fixes</p>
+              <ul>
+                <li>Dropdowns no longer close when you scroll inside them</li>
+                <li>Focus rings show in Safari again</li>
+              </ul>
+            </PatchCard>
+          </DiscordMessage>
+        </DiscordScreen>
+      </div>
+      <p class="row__caption fine dim">Example post. aurora-ui is a made-up project.</p>
+    </div>
+  </section>
+
+  <!-- Feature 2: /patch. The screen bleeds off the left edge; the form floats across its inner edge. -->
+  <section class="light mist row row--left" aria-labelledby="patch-title">
+    <div class="row__stage">
+      <div class="row__text" data-reveal-group>
+        <h2 class="headline" id="patch-title" data-reveal>Not on GitHub? Write it yourself.</h2>
+        <p class="lead dim" data-reveal>
+          Game servers, modpacks, websites and hobby projects get the same treatment. Fill in a form, check the private
+          preview, and post.
+        </p>
+        <ul class="points" data-reveal>
+          <li><PatchrIcon name="check" size={18} />It looks just as good as an automated post.</li>
+          <li><PatchrIcon name="check" size={18} />Discord markdown works, up to 3,500 characters.</li>
+          <li><PatchrIcon name="check" size={18} />Spotted a typo later? Right-click the post, then Apps → Edit patch note.</li>
+        </ul>
+        <p class="row__cmd" data-reveal><span class="cmd">/patch</span></p>
+      </div>
+      <div class="row__shot" data-reveal="wipe-left">
+        <DiscordScreen channel="patch-notes" label="Example: the private preview Patchr shows before a /patch note is posted">
+          <DiscordMessage time="Today at 19:40">
+            <p class="preview-note">Preview. Only you can see this. It will post to <span class="channel-ref">#patch-notes</span>.</p>
+            <PatchCard project="Emberfall SMP" version="Season 3" title="The Nether update" verb="Posted" date="23 September 2026" author="ash">
+              <p class="pc-h"><Badge kind="new" />New</p>
+              <ul>
+                <li>The Nether is open. Bring fire resistance.</li>
+                <li>Piglin bartering at spawn</li>
+              </ul>
+              <p class="pc-h"><Badge kind="change" />Changes</p>
+              <ul>
+                <li>Elytra now only drop in End cities</li>
+              </ul>
+              <p class="pc-h"><Badge kind="fix" />Fixes</p>
+              <ul>
+                <li>Villagers stop vanishing in unloaded chunks</li>
+              </ul>
+            </PatchCard>
+            <div class="preview-actions">
+              <span class="dc-btn dc-btn--primary">Post</span>
+              <span class="dc-btn">Edit</span>
+              <span class="dc-btn">Cancel</span>
+              <span class="dc-btn">Ping @Updates: on</span>
+            </div>
+            <p class="ephemeral"><PatchrIcon name="eye" size={16} />Only you can see this · <span class="ephemeral__link">Dismiss message</span></p>
+          </DiscordMessage>
+        </DiscordScreen>
+      </div>
+
+      <!-- The /patch form, drawn as Discord's modal, crossing the screen's inner edge. It sits outside the
+           screen's wipe so the clip never cuts it off. -->
+      <div class="modal-wrap" data-reveal="pop">
+        <div class="modal" aria-hidden="true">
+          <p class="modal__title">New patch note <PatchrIcon name="x" size={18} /></p>
+          <p class="modal__label">Version</p>
+          <p class="modal__input">Season 3</p>
+          <p class="modal__label">Title</p>
+          <p class="modal__input">The Nether update</p>
+          <p class="modal__label">Notes</p>
+          <p class="modal__input modal__input--area">### New<br />- The Nether is open. Bring fire resistance.<br />- Piglin bartering at spawn</p>
+          <p class="modal__foot"><span>Cancel</span><span class="dc-btn dc-btn--primary">Submit</span></p>
+        </div>
+      </div>
+      <p class="row__caption fine dim">Example post. Emberfall SMP is a made-up server.</p>
+    </div>
+  </section>
+
+  <!-- Feature 3: announcements. Copy left, an announcement channel bleeding right. -->
+  <section class="light row row--right" aria-labelledby="announce-title">
+    <div class="row__stage">
+      <div class="row__text" data-reveal-group>
+        <h2 class="headline" id="announce-title" data-reveal>Built for announcements.</h2>
+        <p class="lead dim" data-reveal>
+          Ping a role people opt into, not everyone. In announcement channels Patchr publishes each post, so servers that
+          follow yours get it too.
+        </p>
+        <ul class="points" data-reveal>
+          <li><PatchrIcon name="check" size={18} />Every post has the same layout, so your history is easy to scroll back through.</li>
+          <li><PatchrIcon name="check" size={18} />Only the role you chose can be pinged. Release text never pings anyone.</li>
+          <li><PatchrIcon name="check" size={18} />Patchr only posts where you could post yourself.</li>
+        </ul>
+        <p class="row__cmd" data-reveal><span class="cmd">/settings</span></p>
+      </div>
+      <div class="row__shot" data-reveal="panel">
+        <DiscordScreen
+          channel="announcements"
+          kind="announcement"
+          follow
+          class="history"
+          label="Example: an announcement channel where every Patchr post has the same layout, the newest one pinging an opt-in role"
+        >
+          <DiscordMessage time="Last Friday at 18:15" class="history__old">
+            <PatchCard project="Kiln Modpack" version="4.0.2" title="Hotfix" verb="Posted" date="18 September 2026" author="brick">
+              <p class="pc-h"><Badge kind="fix" />Fixes</p>
+              <ul>
+                <li>Servers no longer crash when a furnace minecart unloads</li>
+              </ul>
+            </PatchCard>
+          </DiscordMessage>
+          <DiscordMessage time="Today at 17:00">
+            <PatchCard
+              project="Kiln Modpack"
+              version="4.1.0"
+              title="Performance pass"
+              verb="Posted"
+              date="23 September 2026"
+              author="brick"
+              ping="Updates"
+            >
+              <p class="pc-h"><Badge kind="change" />Improvements</p>
+              <ul>
+                <li>Chunks load about twice as fast on first join</li>
+                <li>Memory use down on 4 GB servers</li>
+              </ul>
+              <p class="pc-h"><Badge kind="new" />Added</p>
+              <ul>
+                <li>Create: Copper Age, with a starter quest line</li>
+              </ul>
+            </PatchCard>
+          </DiscordMessage>
+        </DiscordScreen>
+      </div>
+      <p class="row__caption fine dim">Example posts. Kiln Modpack is a made-up project.</p>
+    </div>
+  </section>
+
+  <!-- How it works: two sources draw pink lines into the tile, and one post comes out. -->
+  <section class="how" id="how" aria-labelledby="how-title">
+    <div class="container how__head" data-reveal-group>
+      <h2 class="headline" id="how-title" data-reveal>Two ways in. One way out.</h2>
+      <p class="lead dim" data-reveal>
+        A GitHub release and a note from /patch become the same thing inside Patchr, and go through the same renderer.
+        That’s why they look alike.
+      </p>
+    </div>
+
+    <div class="container">
+      <figure class="flow">
+        <svg class="flow__lines" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+          <!-- Endpoints are the measured middles of each node's card (in thousandths of the stage). -->
+          <path class="flow__line flow__line--in" d="M 300 203 C 390 203, 350 500, 440 500" pathLength="1" />
+          <path class="flow__line flow__line--in" d="M 300 727 C 390 727, 350 500, 440 500" pathLength="1" />
+          <path class="flow__line flow__line--out" d="M 560 500 C 630 500, 630 469, 700 469" pathLength="1" />
+        </svg>
+
+        <div class="flow__node flow__node--gh" aria-hidden="true" data-reveal>
+          <div class="gh">
+            <p class="gh__tag"><PatchrIcon name="tag" size={14} />v2.4.0 <span class="gh__latest">Latest</span></p>
+            <p class="gh__title">Dark mode, finally</p>
+            <p class="gh__md">## Features<br />- Dark mode for every component<br />## Bug Fixes<br />- Focus rings show in Safari again</p>
+          </div>
+          <p class="flow__label">A GitHub release</p>
+        </div>
+
+        <div class="flow__node flow__node--patch" aria-hidden="true" data-reveal>
+          <div class="mini-modal">
+            <p class="mini-modal__title">New patch note</p>
+            <p class="mini-modal__label">Version</p>
+            <p class="mini-modal__input">Season 3</p>
+            <p class="mini-modal__label">Notes</p>
+            <p class="mini-modal__input">### New<br />- The Nether is open.</p>
+          </div>
+          <p class="flow__label">A note from /patch</p>
+        </div>
+
+        <div class="flow__node flow__node--hub" aria-hidden="true" data-reveal="pop">
+          <PatchrMark class="flow__mark" />
+          <p class="flow__label">One PatchNote, one renderer</p>
+        </div>
+
+        <div class="flow__node flow__node--out" aria-hidden="true" data-reveal>
+          <div class="flow__posts">
+            <PatchCard project="aurora-ui" version="v2.4.0" title="Dark mode, finally" date="23 September 2026" compact>
+              <p class="pc-h"><Badge kind="new" />Features</p>
+              <ul><li>Dark mode for every component</li></ul>
+            </PatchCard>
+            <PatchCard project="Emberfall SMP" version="Season 3" title="The Nether update" verb="Posted" date="23 September 2026" compact>
+              <p class="pc-h"><Badge kind="new" />New</p>
+              <ul><li>The Nether is open.</li></ul>
+            </PatchCard>
+          </div>
+          <p class="flow__label">The same post, every time</p>
+        </div>
+
+        <figcaption class="visually-hidden">
+          A GitHub release and a note written with /patch both become one PatchNote inside Patchr. It goes through one
+          renderer, so both come out as the same kind of Discord post.
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="container">
+      <ul class="how__points" data-reveal-group>
+        {
+          how.map((point) => (
+            <li data-reveal>
+              <p class="title">{point.title}</p>
+              <p class="body dim">{point.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Good to know: the limits in big numbers, each with the sentence that explains it. -->
+  <section class="light mist limits" aria-labelledby="limits-title">
+    <div class="container">
+      <div class="section-head" data-reveal-group>
+        <h2 class="headline" id="limits-title" data-reveal>Good to know.</h2>
+        <p class="lead dim" data-reveal>The limits, stated plainly. No surprises after you add it.</p>
+      </div>
+      <dl class="specs" data-reveal-group>
+        {
+          limits.map((row) => (
+            <div class="specs__row" data-reveal>
+              <dt class="specs__figure">
+                <span class="specs__num">{row.num}</span>
+                <span class="specs__unit">{row.unit}</span>
+              </dt>
+              <dd class="specs__text">
+                <span class="title">{row.title}</span>
+                <span class="body dim">{row.text}</span>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- Commands: Discord's slash-command menu, drawn as a product shot like the feature rows. -->
+  <section class="light row row--right commands" id="commands" aria-labelledby="commands-title">
+    <div class="row__stage">
+      <div class="row__text" data-reveal-group>
+        <h2 class="headline" id="commands-title" data-reveal>Four commands. And one right-click.</h2>
+        <p class="lead dim" data-reveal>
+          Type a slash and Patchr’s whole interface is there. To fix a note you posted, right-click it, then
+          Apps → Edit patch note.
+        </p>
+        <p class="body dim" data-reveal>
+          By default only members with Manage Server can use /patch, /feed and /settings. To let another role post
+          notes, go to Server Settings → Integrations → Patchr.
+        </p>
+      </div>
+      <div class="row__shot" data-reveal="panel">
+        <DiscordScreen channel="general" class="slash" label="Patchr's slash commands, as Discord lists them when you type a slash">
+          <div class="slash__menu">
+            <p class="slash__app">
+              <Image class="slash__app-icon" src={avatar} alt="" width={20} height={20} densities={[1, 2]} />
+              Patchr
+            </p>
+            <ul class="slash__list">
+              {
+                commands.map((command, i) => (
+                  <li class:list={['slash__row', i === 0 && 'is-selected']}>
+                    <span class="slash__name">
+                      {command.name}
+                      {command.opts && <span class="slash__opts"> {command.opts}</span>}
+                    </span>
+                    <span class="slash__desc">{command.desc}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="composer" aria-hidden="true">
+            <span class="composer__add"><PatchrIcon name="plus" size={16} /></span>
+            <span class="composer__text">/<span class="composer__caret"></span></span>
+          </div>
+        </DiscordScreen>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="light mist faq" id="faq" aria-labelledby="faq-title">
+    <div class="container faq__inner">
+      <div class="section-head" data-reveal-group>
+        <h2 class="headline" id="faq-title" data-reveal>Questions.</h2>
+        <p class="lead dim" data-reveal>The ones server owners ask first.</p>
+      </div>
+      <div class="faq__list" data-reveal-group>
+        {
+          faqs.map((item) => (
+            <details class="faq__item" data-reveal>
+              <summary>
+                <span class="title">{item.q}</span>
+                <PatchrIcon name="plus" size={22} class="faq__icon" />
+              </summary>
+              <div class="faq__answer">
+                <p class="body dim">{item.a}</p>
+                {item.link && (
+                  <a class="text-link" href={item.link.href}>
+                    {item.link.label} <PatchrIcon name="chevron-right" size={18} />
+                  </a>
+                )}
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- The one drenched moment: a pink band with the last call to action. -->
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="container cta__inner" data-reveal-group>
+      <div class="cta__mark-wrap" data-reveal="pop">
+        <PatchrMark class="cta__mark" />
+      </div>
+      <h2 class="headline cta__title" id="cta-title" data-reveal>Ship the update. Patchr posts the notes.</h2>
+      <div class="actions cta__actions" data-reveal>
+        <AddToDiscord class="cta__soon" />
+        <a class="btn btn--ink" href={repo} target="_blank" rel="noopener">
+          <PatchrIcon name="github" size={18} />
+          View code<span class="visually-hidden"> (opens in a new tab)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</PatchrBase>
+
+<style>
+  /* ---------- Hero ---------- */
+
+  .hero {
+    position: relative;
+    padding-top: clamp(3rem, 7vw, 6rem);
+    overflow: clip;
+    isolation: isolate;
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    align-items: center;
+    gap: var(--s4);
+  }
+
+  .hero__text {
+    display: grid;
+    justify-items: start;
+    gap: var(--s3);
+  }
+
+  .hero__title {
+    max-width: 11ch;
+  }
+
+  .hero__lead {
+    max-width: 30ch;
+  }
+
+  .hero__actions {
+    margin-top: var(--s1);
+  }
+
+  .hero__note {
+    margin-top: calc(var(--s1) * -1);
+  }
+
+  /*
+    The render is the brand kit's studio shot: the tile in a violet pool of light. It is drawn much wider
+    than its column and pushed toward the right edge of the screen, and its backdrop is masked into the
+    page's deep ink, so the studio light becomes the hero's glow.
+  */
+  .hero__art {
+    position: relative;
+    aspect-ratio: 1;
+  }
+
+  .hero__float {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250%;
+    translate: -46% -55%;
+    pointer-events: none;
+  }
+
+  .hero__float :global(img) {
+    width: 100%;
+    height: auto;
+    mask-image: radial-gradient(ellipse 44% 50% at 50.5% 56%, #000 58%, transparent 100%);
+  }
+
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s1) var(--s4);
+    margin-top: clamp(2rem, 5vw, 4rem);
+    padding-block: var(--s3) var(--s6);
+    border-top: 1px solid var(--line-dark);
+    color: var(--haze);
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  .facts li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .facts :global(svg) {
+    color: var(--pink);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__text > * {
+      animation: rise 1100ms var(--ease-out) backwards;
+    }
+
+    .hero__text > :nth-child(2) {
+      animation-delay: 120ms;
+    }
+
+    .hero__text > :nth-child(3) {
+      animation-delay: 240ms;
+    }
+
+    .hero__text > :nth-child(4) {
+      animation-delay: 320ms;
+    }
+
+    /* The tile arrives out of focus and settles, then floats. */
+    .hero__art {
+      animation: arrive 1600ms var(--ease-out) 150ms backwards;
+    }
+
+    .hero__float :global(picture) {
+      display: block;
+      animation: float 7s ease-in-out infinite alternate;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      translate: 0 1.25rem;
+    }
+  }
+
+  @keyframes arrive {
+    from {
+      opacity: 0;
+      scale: 0.9;
+      filter: blur(12px);
+    }
+  }
+
+  @keyframes float {
+    from {
+      translate: 0 -1.2%;
+      rotate: -1.2deg;
+    }
+    to {
+      translate: 0 1.2%;
+      rotate: 1.2deg;
+    }
+  }
+
+  /* As you scroll past, the tile lifts away and the copy dims, handing over to the first feature. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .hero__grid {
+        animation-name: hero-out;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range: exit 5% exit 90%;
+      }
+    }
+  }
+
+  @keyframes hero-out {
+    to {
+      opacity: 0.25;
+      translate: 0 -2.5rem;
+    }
+  }
+
+  @media (max-width: 52rem) {
+    .hero__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero__art {
+      order: -1;
+      width: min(100%, 24rem);
+      aspect-ratio: 1.2;
+      justify-self: center;
+    }
+
+    .hero__float {
+      width: 185%;
+      translate: -50.5% -55%;
+    }
+  }
+
+  /* ---------- Feature rows ---------- */
+
+  .row {
+    padding-block: var(--section-y);
+    overflow-x: clip;
+  }
+
+  /* The copy holds the container; the screen runs from its grid line to the viewport edge. */
+  .row__stage {
+    --text: 27rem;
+    display: grid;
+    align-items: center;
+  }
+
+  .row--right .row__stage {
+    grid-template-columns:
+      [full-start] minmax(var(--gutter), 1fr)
+      [text-start] minmax(0, var(--text))
+      [text-end] var(--s8)
+      [shot-start] minmax(0, calc(var(--container) - var(--text) - var(--s8)))
+      minmax(var(--gutter), 1fr) [full-end];
+  }
+
+  .row--left .row__stage {
+    grid-template-columns:
+      [full-start] minmax(var(--gutter), 1fr)
+      minmax(0, calc(var(--container) - var(--text) - var(--s8))) [shot-end]
+      var(--s8)
+      [text-start] minmax(0, var(--text))
+      [text-end] minmax(var(--gutter), 1fr) [full-end];
+  }
+
+  .row__text {
+    grid-column: text;
+    grid-row: 1;
+    display: grid;
+    justify-items: start;
+    gap: var(--s3);
+  }
+
+  .row__shot {
+    position: relative;
+    grid-row: 1;
+  }
+
+  .row--right .row__shot {
+    grid-column: shot-start / full-end;
+  }
+
+  .row--left .row__shot {
+    grid-column: full-start / shot-end;
+  }
+
+  .row__shot :global(.screen) {
+    min-height: 100%;
+  }
+
+  .row--right .row__shot :global(.screen) {
+    border-radius: var(--radius) 0 0 var(--radius);
+  }
+
+  /* On the left-bleeding screen the messages sit toward its inner edge, clear of the floating form. */
+  .row--left .row__shot :global(.screen) {
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .row--left .row__shot :global(.screen__body) {
+    justify-items: end;
+    padding-right: 19rem;
+  }
+
+  .row--left .row__shot :global(.screen__body > *) {
+    width: min(100%, 36em);
+  }
+
+  .row__caption {
+    grid-row: 2;
+    margin-top: var(--s2);
+  }
+
+  .row--right .row__caption {
+    grid-column: shot-start / full-end;
+  }
+
+  .row--left .row__caption {
+    grid-column: 2 / shot-end;
+    justify-self: end;
+  }
+
+  .points {
+    display: grid;
+    gap: var(--s1);
+    margin-top: var(--s1);
+  }
+
+  .points li {
+    display: grid;
+    grid-template-columns: 1.125rem minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: start;
+    font-size: 1.0625rem;
+    line-height: 1.5;
+  }
+
+  .points :global(svg) {
+    margin-top: 0.2rem;
+    color: var(--pink-text);
+  }
+
+  .row__cmd {
+    margin-top: var(--s1);
+    font-size: 1.0625rem;
+  }
+
+  /* The newest post writes itself once its screen has wiped in: title first, then the notes. */
+  :global(.js) .row__shot :global(.pc > *) {
+    opacity: 0;
+    translate: 0 0.5em;
+    transition:
+      opacity 600ms var(--ease-out),
+      translate 800ms var(--ease-out);
+  }
+
+  :global(.js) .row__shot.is-in :global(.pc > *) {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  :global(.js) .row__shot.is-in :global(.pc > :nth-child(1)) {
+    transition-delay: 450ms;
+  }
+
+  :global(.js) .row__shot.is-in :global(.pc > :nth-child(2)) {
+    transition-delay: 520ms;
+  }
+
+  :global(.js) .row__shot.is-in :global(.pc > :nth-child(3)) {
+    transition-delay: 590ms;
+  }
+
+  :global(.js) .row__shot.is-in :global(.pc > :nth-child(4)) {
+    transition-delay: 660ms;
+  }
+
+  :global(.js) .row__shot.is-in :global(.pc > :nth-child(n + 5)) {
+    transition-delay: 780ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.js) .row__shot :global(.pc > *) {
+      opacity: 1;
+      translate: 0 0;
+      transition: none;
+    }
+  }
+
+  /* The /patch preview: Patchr's own preview line, its buttons, and Discord's "only you" note. */
+  .preview-note {
+    margin-bottom: 0.35em;
+    color: var(--dc-muted);
+    font-size: 0.8125em;
+  }
+
+  .channel-ref {
+    padding: 0 0.15em;
+    border-radius: 0.2em;
+    background: rgb(88 101 242 / 0.3);
+    color: #c9cdfb;
+    font-weight: 500;
+  }
+
+  .preview-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 0.6em;
+  }
+
+  .dc-btn {
+    display: inline-flex;
+    align-items: center;
+    height: 2em;
+    padding: 0 0.9em;
+    border-radius: 0.5em;
+    background: var(--dc-button);
+    color: #fff;
+    font-size: 0.875em;
+    font-weight: 500;
+  }
+
+  .dc-btn--primary {
+    background: var(--dc-blurple);
+  }
+
+  .ephemeral {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    margin-top: 0.4em;
+    color: var(--dc-muted);
+    font-size: 0.75em;
+  }
+
+  .ephemeral__link {
+    color: var(--dc-link);
+  }
+
+  /* Discord's modal, floating across the screen's inner edge toward the copy. */
+  .modal-wrap {
+    position: relative;
+    z-index: 1;
+    grid-column: full-start / shot-end;
+    grid-row: 1;
+    align-self: center;
+    justify-self: end;
+    width: min(21rem, 42%);
+    margin-right: -3rem;
+  }
+
+  .modal {
+    padding: 1.25em;
+    border-radius: 0.75em;
+    background: var(--dc-bg);
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 0.06),
+      0 1.5rem 3rem -0.5rem rgb(14 12 26 / 0.45);
+    color: var(--dc-text);
+    font-size: clamp(0.75rem, 1.05vw, 0.9375rem);
+    line-height: 1.35;
+    transform: rotate(2deg);
+  }
+
+  .modal__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    color: var(--dc-head);
+    font-size: 1.25em;
+    font-weight: 700;
+  }
+
+  .modal__title :global(svg) {
+    color: var(--dc-muted);
+  }
+
+  .modal__label {
+    margin: 0.75em 0 0.4em;
+    color: var(--dc-head);
+    font-size: 0.875em;
+    font-weight: 600;
+  }
+
+  .modal__input {
+    padding: 0.6em 0.75em;
+    border-radius: 0.4em;
+    background: var(--dc-deep);
+  }
+
+  .modal__input--area {
+    min-height: 5.5em;
+    font-family: var(--mono);
+    font-size: 0.875em;
+  }
+
+  .modal__foot {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.25em;
+    margin-top: 1.25em;
+    font-size: 0.875em;
+  }
+
+  /* An older post fades out at the top, so the channel reads as a history. */
+  .history :global(.screen__body) {
+    mask-image: linear-gradient(to bottom, transparent 0, #000 7.5em);
+  }
+
+  .history :global(.history__old) {
+    margin-top: -3.5em;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 52rem) {
+    .row__stage,
+    .row--right .row__stage,
+    .row--left .row__stage {
+      grid-template-columns:
+        [full-start] var(--gutter)
+        [text-start shot-start] minmax(0, 1fr)
+        [text-end shot-end] var(--gutter) [full-end];
+    }
+
+    .row__text {
+      grid-row: 1;
+    }
+
+    .row__shot {
+      grid-row: 2;
+      margin-top: var(--s6);
+    }
+
+    .row__caption {
+      grid-row: 3;
+    }
+
+    .row--right .row__caption,
+    .row--left .row__caption {
+      grid-column: text;
+      justify-self: start;
+    }
+
+    .row--right .row__shot :global(.screen) {
+      padding-right: 0;
+    }
+
+    .row--left .row__shot {
+      grid-column: full-start / shot-end;
+    }
+
+    .row--left .row__shot :global(.screen__body) {
+      justify-items: stretch;
+      padding-right: 1em;
+      padding-bottom: 5.5rem;
+    }
+
+    /* On phones the form overlaps the bottom of the screen, where the extra padding leaves room. */
+    .modal-wrap {
+      grid-column: text;
+      grid-row: 3;
+      justify-self: end;
+      width: min(100% - 1.5rem, 20rem);
+      margin: -4.5rem 0 0;
+    }
+
+    .row--left .row__caption {
+      grid-row: 4;
+    }
+  }
+
+  /* ---------- How it works ---------- */
+
+  .how {
+    padding-block: var(--section-y);
+    background: var(--deep);
+    overflow-x: clip;
+  }
+
+  .how__head {
+    display: grid;
+    justify-items: center;
+    gap: var(--s3);
+    text-align: center;
+  }
+
+  .how__head .lead {
+    max-width: 38ch;
+  }
+
+  /* A fixed-ratio stage: nodes sit at set percentages, so the SVG lines meet them exactly. */
+  .flow {
+    position: relative;
+    container-type: inline-size;
+    aspect-ratio: 1000 / 440;
+    margin-top: var(--s12);
+  }
+
+  .flow__lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .flow__line {
+    fill: none;
+    stroke: var(--pink);
+    stroke-width: 3;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .flow__node {
+    position: absolute;
+    display: grid;
+    align-content: start;
+    gap: 0.75em;
+    font-size: clamp(0.625rem, 1.2cqi, 0.875rem);
+  }
+
+  .flow__node--gh {
+    top: 4%;
+    left: 0;
+    width: 30%;
+  }
+
+  .flow__node--patch {
+    top: 54%;
+    left: 0;
+    width: 30%;
+  }
+
+  /*
+    Centred on the stage's middle line with transform, not translate: the reveal system owns translate,
+    and would pull the node back off the line the moment it revealed.
+  */
+  .flow__node--hub {
+    top: 50%;
+    left: 44%;
+    width: 12%;
+    transform: translateY(-50%);
+  }
+
+  .flow__node--out {
+    top: 50%;
+    left: 70%;
+    width: 30%;
+    transform: translateY(-50%);
+  }
+
+  .flow__label {
+    color: var(--haze);
+    font-size: 1em;
+    font-weight: 600;
+  }
+
+  .flow__node--hub .flow__label {
+    position: absolute;
+    top: calc(100% + 1em);
+    left: 50%;
+    width: 14em;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .flow__node :global(.flow__mark) {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0.75rem 1.5rem rgb(255 94 138 / 0.25));
+  }
+
+  /* A GitHub release, in GitHub's own dark colours. */
+  .gh {
+    display: grid;
+    gap: 0.5em;
+    padding: 1.1em 1.2em;
+    border-radius: 0.6em;
+    background: #0d1117;
+    box-shadow: inset 0 0 0 1px #30363d;
+    color: #e6edf3;
+  }
+
+  .gh__tag {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    color: #9198a1;
+    font-size: 0.875em;
+  }
+
+  .gh__latest {
+    padding: 0 0.6em;
+    border-radius: 2em;
+    box-shadow: inset 0 0 0 1px #238636;
+    color: #3fb950;
+    font-size: 0.875em;
+    font-weight: 600;
+  }
+
+  .gh__title {
+    font-size: 1.375em;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+  }
+
+  .gh__md {
+    color: #9198a1;
+    font-family: var(--mono);
+    font-size: 0.875em;
+    line-height: 1.5;
+  }
+
+  .mini-modal {
+    display: grid;
+    gap: 0.35em;
+    padding: 1.1em 1.2em;
+    border-radius: 0.6em;
+    background: var(--dc-bg);
+    color: var(--dc-text);
+  }
+
+  .mini-modal__title {
+    margin-bottom: 0.2em;
+    color: var(--dc-head);
+    font-size: 1.125em;
+    font-weight: 700;
+  }
+
+  .mini-modal__label {
+    color: var(--dc-head);
+    font-size: 0.8125em;
+    font-weight: 600;
+  }
+
+  .mini-modal__input {
+    padding: 0.45em 0.6em;
+    border-radius: 0.35em;
+    background: var(--dc-deep);
+    font-size: 0.875em;
+  }
+
+  .flow__posts {
+    display: grid;
+    gap: 0.75em;
+    padding: 1em;
+    border-radius: 0.6em;
+    background: var(--dc-bg);
+    color: var(--dc-text);
+    line-height: 1.35;
+  }
+
+  .flow__posts :global(.pc) {
+    font-size: 0.9em;
+  }
+
+  /* The lines draw themselves as the diagram scrolls into view: in from both sources, then out. */
+  .flow__line {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .flow__line--in {
+        animation-name: draw;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: --flow;
+        animation-range: entry 60% contain 25%;
+      }
+
+      .flow__line--out {
+        animation-name: draw;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: --flow;
+        animation-range: contain 20% contain 45%;
+      }
+
+      .flow {
+        view-timeline-name: --flow;
+      }
+    }
+  }
+
+  @keyframes draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+  }
+
+  /* Once the hub has popped in, its changelog lines write themselves, the pink one last. */
+  :global(.js) .flow__node--hub :global(.mark__stem),
+  :global(.js) .flow__node--hub :global(.mark__bar) {
+    transform-box: fill-box;
+    transition: scale 700ms var(--ease-out);
+  }
+
+  :global(.js) .flow__node--hub :global(.mark__stem) {
+    transform-origin: 50% 0;
+    scale: 1 0;
+    transition-delay: 250ms;
+  }
+
+  :global(.js) .flow__node--hub :global(.mark__bar) {
+    transform-origin: 0 50%;
+    scale: 0 1;
+    transition-delay: 450ms;
+  }
+
+  :global(.js) .flow__node--hub :global(.mark__bar--new) {
+    transition-duration: 950ms;
+    transition-delay: 720ms;
+  }
+
+  :global(.js) .flow__node--hub.is-in :global(.mark__stem),
+  :global(.js) .flow__node--hub.is-in :global(.mark__bar) {
+    scale: 1 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.js) .flow__node--hub :global(.mark__stem),
+    :global(.js) .flow__node--hub :global(.mark__bar) {
+      scale: 1 1;
+      transition: none;
+    }
+  }
+
+  .how__points {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--s4);
+    margin-top: var(--s12);
+  }
+
+  .how__points li {
+    display: grid;
+    align-content: start;
+    gap: var(--s1);
+    padding-top: var(--s3);
+    border-top: 1px solid var(--line-dark);
+  }
+
+  /* Phones: the stage becomes a column, joined by one pink line down the middle. */
+  @media (max-width: 52rem) {
+    .flow {
+      display: grid;
+      justify-items: center;
+      gap: var(--s6);
+      aspect-ratio: auto;
+      margin-top: var(--s8);
+    }
+
+    .flow::before {
+      content: '';
+      position: absolute;
+      top: 2rem;
+      bottom: 2rem;
+      left: 50%;
+      width: 3px;
+      margin-left: -1.5px;
+      border-radius: 3px;
+      background: var(--pink);
+    }
+
+    .flow__lines {
+      display: none;
+    }
+
+    .flow__node,
+    .flow__node--gh,
+    .flow__node--patch,
+    .flow__node--hub,
+    .flow__node--out {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: min(100%, 22rem);
+      transform: none;
+      font-size: 0.8125rem;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .flow__node--hub .flow__label {
+      position: static;
+      width: auto;
+      transform: none;
+    }
+
+    .flow__node > :first-child {
+      width: 100%;
+      text-align: left;
+    }
+
+    .flow__node--hub {
+      width: 8rem;
+    }
+
+    .flow__node--hub > :first-child {
+      width: 100%;
+    }
+
+    .flow__label {
+      padding: 0.25em 0.75em;
+      border-radius: 2em;
+      background: var(--deep);
+    }
+
+    .how__points {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--s3);
+    }
+  }
+
+  @media (min-width: 52.01rem) and (max-width: 68rem) {
+    .how__points {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  /* ---------- Good to know, Commands, FAQ ---------- */
+
+  .limits,
+  .faq {
+    padding-block: var(--section-y);
+  }
+
+  .section-head {
+    display: grid;
+    gap: var(--s3);
+    max-width: 40rem;
+  }
+
+  /* Good to know: each limit's number at display size, its sentence beside it. */
+  .specs {
+    margin-top: var(--s8);
+    border-top: 1px solid var(--line-light);
+  }
+
+  .specs__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    align-items: center;
+    gap: var(--s2) var(--s6);
+    padding-block: var(--s4);
+    border-bottom: 1px solid var(--line-light);
+  }
+
+  .specs__figure {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.6rem;
+  }
+
+  .specs__num {
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+
+  .specs__unit {
+    color: var(--pink-text);
+    font-size: clamp(1.0625rem, 1.6vw, 1.375rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+
+  .specs__text {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  /* Commands: a wider copy column, so the longest heading on the page holds to three lines. */
+  .commands .row__stage {
+    --text: 33rem;
+  }
+
+  /* Discord's slash menu, above the message box with a slash just typed. */
+  .slash :global(.screen__body) {
+    align-content: end;
+    min-height: 100%;
+    padding-top: 2.5em;
+  }
+
+  .slash__menu {
+    max-width: 38em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    background: var(--dc-surface);
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.25);
+  }
+
+  .slash__app {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.4em 0.5em 0.6em;
+    color: var(--dc-muted);
+    font-size: 0.8125em;
+    font-weight: 600;
+  }
+
+  .slash__menu :global(.slash__app-icon) {
+    width: 1.25em;
+    height: 1.25em;
+    border-radius: 50%;
+  }
+
+  .slash__list {
+    display: grid;
+    gap: 0.1em;
+  }
+
+  .slash__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.15em 1.5em;
+    padding: 0.55em 0.6em;
+    border-radius: 0.3em;
+  }
+
+  .slash__row.is-selected {
+    background: #404249;
+  }
+
+  .slash__name {
+    color: var(--dc-head);
+    font-weight: 600;
+  }
+
+  .slash__opts {
+    color: var(--dc-muted);
+    font-weight: 400;
+  }
+
+  .slash__desc {
+    color: var(--dc-muted);
+    font-size: 0.875em;
+  }
+
+  .composer {
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    max-width: 38em;
+    margin-top: 0.5em;
+    padding: 0.7em 1em;
+    border-radius: 0.5em;
+    background: #383a40;
+  }
+
+  .composer__add {
+    display: grid;
+    place-items: center;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: #b5bac1;
+    color: #383a40;
+  }
+
+  .composer__text {
+    color: var(--dc-head);
+  }
+
+  .composer__caret {
+    display: inline-block;
+    width: 1px;
+    height: 1.1em;
+    margin-left: 1px;
+    background: var(--dc-head);
+    vertical-align: -0.2em;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .composer__caret {
+      animation: blink 1.1s steps(1) infinite;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .faq__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--s8);
+    align-items: start;
+  }
+
+  .faq__list {
+    border-top: 1px solid var(--line-light);
+  }
+
+  .faq__item {
+    border-bottom: 1px solid var(--line-light);
+  }
+
+  .faq__item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s3);
+    min-height: 2.75rem;
+    padding-block: var(--s3);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__item summary :global(.faq__icon) {
+    flex: none;
+    color: var(--pink-text);
+    transition: rotate 300ms var(--ease-out);
+  }
+
+  .faq__item[open] summary :global(.faq__icon) {
+    rotate: 45deg;
+  }
+
+  .faq__item summary:hover .title {
+    color: var(--pink-text);
+  }
+
+  .faq__answer {
+    display: grid;
+    justify-items: start;
+    gap: var(--s1);
+    max-width: 38rem;
+    padding-bottom: var(--s3);
+  }
+
+  /* Where supported, answers open smoothly instead of snapping. */
+  @supports (interpolate-size: allow-keywords) {
+    .faq__item {
+      interpolate-size: allow-keywords;
+    }
+
+    .faq__item::details-content {
+      height: 0;
+      overflow: clip;
+      transition:
+        height 400ms var(--ease-out),
+        content-visibility 400ms allow-discrete;
+    }
+
+    .faq__item[open]::details-content {
+      height: auto;
+    }
+  }
+
+  @media (max-width: 52rem) {
+    .specs__row {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--s1);
+      padding-block: var(--s3);
+    }
+
+    .slash__row {
+      display: grid;
+    }
+
+    .faq__inner {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--s6);
+    }
+  }
+
+  /* ---------- The pink band ---------- */
+
+  .cta {
+    padding-block: clamp(5rem, 11vw, 8.5rem);
+    background: var(--pink);
+    color: var(--ink);
+  }
+
+  .cta__inner {
+    display: grid;
+    justify-items: center;
+    gap: var(--s4);
+    text-align: center;
+  }
+
+  .cta__mark-wrap {
+    width: clamp(5rem, 9vw, 6.5rem);
+  }
+
+  .cta :global(.cta__mark) {
+    width: 100%;
+    height: auto;
+  }
+
+  .cta__title {
+    max-width: 16ch;
+  }
+
+  .cta__actions {
+    justify-content: center;
+  }
+
+  .cta :global(.cta__soon) {
+    background: rgb(23 20 43 / 0.08);
+    box-shadow: inset 0 0 0 1px rgb(23 20 43 / 0.3);
+    color: var(--ink);
+  }
+
+  .cta :global(.cta__soon .soon-tag) {
+    background: var(--ink);
+    color: var(--pink);
+  }
+
+  .btn--ink {
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .btn--ink:hover {
+    background: #2a2546;
+  }
+
+  .cta ::selection {
+    background: var(--ink);
+    color: var(--pink);
+  }
+</style>

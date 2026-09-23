@@ -1,0 +1,110 @@
+---
+// Patchr's policy pages: the Markdown from the Patchr repo, set for reading on a light ground.
+import PatchrBase from './PatchrBase.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+}
+
+const { title, description, path } = Astro.props;
+---
+
+<PatchrBase title={title} description={description} path={path}>
+  <article class="light mist legal">
+    <div class="container legal__inner">
+      <slot />
+    </div>
+  </article>
+</PatchrBase>
+
+<script>
+  // The policies are Markdown, which can't set a link target, so links that leave the site
+  // get one here: they open in a new tab and say so to screen readers.
+  document.querySelectorAll<HTMLAnchorElement>('.legal a[href^="http"]').forEach((link) => {
+    link.target = '_blank';
+    link.rel = 'noopener';
+    const note = document.createElement('span');
+    note.className = 'visually-hidden';
+    note.textContent = ' (opens in a new tab)';
+    link.append(note);
+  });
+</script>
+
+<style>
+  .legal {
+    padding-block: clamp(3.5rem, 8vw, 6rem) var(--section-y);
+  }
+
+  .legal__inner {
+    max-width: 44rem;
+  }
+
+  .legal :global(h1) {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  /* The "Last updated" line right under the title. */
+  .legal :global(h1 + p) {
+    margin-top: var(--s2);
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  .legal :global(h2) {
+    margin-top: var(--s8);
+    font-size: clamp(1.375rem, 2.4vw, 1.75rem);
+    font-weight: 750;
+    letter-spacing: -0.022em;
+  }
+
+  .legal :global(p),
+  .legal :global(ul),
+  .legal :global(ol) {
+    margin-top: var(--s2);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  .legal :global(h1 + p + p) {
+    margin-top: var(--s6);
+  }
+
+  .legal :global(ul) {
+    display: grid;
+    gap: var(--s1);
+    padding-left: 1.25rem;
+    list-style: disc;
+  }
+
+  .legal :global(ol) {
+    display: grid;
+    gap: var(--s2);
+    padding-left: 1.5rem;
+    list-style: decimal;
+  }
+
+  .legal :global(li::marker) {
+    color: var(--pink-text);
+    font-weight: 700;
+  }
+
+  .legal :global(strong) {
+    font-weight: 650;
+  }
+
+  .legal :global(a) {
+    color: var(--pink-text);
+    font-weight: 560;
+  }
+
+  .legal :global(a:hover) {
+    text-decoration-thickness: 2px;
+  }
+</style>

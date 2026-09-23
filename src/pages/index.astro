@@ -12,6 +12,7 @@ import Icon from '../components/Icon.astro';
 import LandoLogo from '../components/LandoLogo.astro';
 import McLarenWordmark from '../components/McLarenWordmark.astro';
 import Speedmark from '../components/Speedmark.astro';
+import PatchrMark from '../components/PatchrMark.astro';
 import { lapsLed, totalLaps } from '../data/sochi';
 import inskoAvatar from '../assets/insko-avatar.png';
 import rainPhoto from '../assets/pixabay/rain.jpg';
@@ -19,10 +20,11 @@ import credits from '../assets/pixabay/credits.json';
 
 const credit = Object.fromEntries(credits.map((c) => [c.slot, c]));
 
-const soon = [
-  { title: 'A public bot', text: 'For any server, not just Insko.' },
-  { title: 'Discord server', text: 'Opens when the public bot does.' },
-  { title: 'GitHub', text: 'The public bot’s code, in the open.' },
+const patchr = [
+  { title: 'GitHub releases', text: 'Posted to your channel within minutes of going out.' },
+  { title: 'Your own notes', text: 'For projects that don’t live on GitHub. Write, preview, post.' },
+  { title: 'Discord server', text: 'Opens when Patchr does.' },
+  { title: 'Source code', text: 'Open source on GitHub, from day one.' },
 ];
 ---
 
@@ -54,11 +56,11 @@ const soon = [
           </p>
           <div class="actions" data-reveal>
             <LinkButton href="https://inskobot.me/#request-access" external>Request access</LinkButton>
-            <a class="text-link" href="https://github.com/anthonyf2312/InskoBot" rel="noopener">
-              View on GitHub <Icon name="chevron-right" size={18} />
+            <a class="text-link" href="https://github.com/anthonyf2312/InskoBot" target="_blank" rel="noopener">
+              View on GitHub <Icon name="external" size={16} /><span class="visually-hidden"> (opens in a new tab)</span>
             </a>
           </div>
-          <p class="insko__next" data-reveal>A public bot is next. <a href="#soon">See what’s coming</a>.</p>
+          <p class="insko__next" data-reveal>Next up: Patchr, a bot for any server. <a href="#patchr">See what’s coming</a>.</p>
         </div>
         <!-- The icon crosses the edge between the white statement and the black section. -->
         <div class="insko__icon-wrap" data-reveal="pop">
@@ -118,7 +120,9 @@ const soon = [
             With a few laps left he stayed out on slicks, went off at turn 5, and his first win went with it. He
             finished seventh. That was the day I started supporting him.
           </p>
-          <p class="fine" data-reveal>Photo by <a href={credit.rain.pageURL}>{credit.rain.user}</a> on Pixabay.</p>
+          <p class="fine" data-reveal>
+            Photo by <a href={credit.rain.pageURL} target="_blank" rel="noopener">{credit.rain.user}</a> on Pixabay.
+          </p>
         </div>
       </div>
     </section>
@@ -148,28 +152,38 @@ const soon = [
         <a
           class="text-link"
           href="https://www.mssociety.org.uk/about-ms/types-of-ms/relapsing-remitting-ms"
+          target="_blank"
           rel="noopener"
         >
-          What is RRMS? <Icon name="external" size={16} />
+          What is RRMS? <Icon name="external" size={16} /><span class="visually-hidden"> (opens in a new tab)</span>
         </a>
       </div>
     </section>
 
-    <!-- Coming soon -->
-    <section class="grey soon" id="soon" aria-labelledby="soon-title">
-      <div class="container">
-        <div class="soon__head" data-reveal-group>
-          <h2 class="headline" id="soon-title" data-reveal>Coming soon.</h2>
-          <p class="lead soon__lead" data-reveal>
-            A public bot is on the way. It gets its own Discord server when it launches, and its code goes on GitHub.
-          </p>
+    <!-- Patchr, coming soon. The mark sits centred and crosses up into the white MS section above. -->
+    <section class="grey patchr" id="patchr" aria-labelledby="patchr-title">
+      <div class="container patchr__inner" data-reveal-group>
+        <div class="patchr__mark-wrap" data-reveal="pop">
+          <PatchrMark class="patchr__mark" />
         </div>
-        <ul class="soon__list" data-reveal-group>
+        <h2 class="headline" id="patchr-title" data-reveal>Patchr.</h2>
+        <p class="lead patchr__lead" data-reveal>
+          Patch notes, posted beautifully. It’s my public bot, and it’s coming soon.
+        </p>
+        <div class="actions patchr__actions" data-reveal>
+          <LinkButton href="/patchr/">Meet Patchr</LinkButton>
+          <a class="text-link" href="https://github.com/anthonyf2312/patchr" target="_blank" rel="noopener">
+            View code <Icon name="external" size={16} /><span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+        </div>
+      </div>
+      <div class="container">
+        <ul class="patchr__list" data-reveal-group>
           {
-            soon.map((item) => (
-              <li class="soon__item" data-reveal>
-                <p class="soon__name">{item.title}</p>
-                <p class="soon__text">{item.text}</p>
+            patchr.map((item) => (
+              <li class="patchr__item" data-reveal>
+                <p class="patchr__name">{item.title}</p>
+                <p class="patchr__text">{item.text}</p>
               </li>
             ))
           }
@@ -181,10 +195,10 @@ const soon = [
   <footer class="grey footer">
     <div class="container footer__inner">
       <p class="fine">
-        Rain photo from Pixabay by <a href={credit.rain.userURL}>{credit.rain.user}</a>. The LN4 logo is Lando
-        Norris's, and the McLaren wordmark and speedmark are McLaren trademarks, shown on a fan page with no
-        affiliation. Lap positions from the{' '}
-        <a href="https://api.jolpi.ca/">Jolpica F1 API</a>.
+        Rain photo from Pixabay by <a href={credit.rain.userURL} target="_blank" rel="noopener">{credit.rain.user}</a>.
+        The LN4 logo is Lando Norris's, and the McLaren wordmark and speedmark are McLaren trademarks, shown on a fan
+        page with no affiliation. Lap positions from the{' '}
+        <a href="https://api.jolpi.ca/" target="_blank" rel="noopener">Jolpica F1 API</a>.
       </p>
       <p class="fine">© 2026 Anthony.</p>
     </div>
@@ -593,30 +607,95 @@ const soon = [
     margin-top: calc(var(--s1) * -1);
   }
 
-  /* Coming soon */
-  .soon {
-    padding-block: var(--section-y) var(--s16);
+  /* Patchr: the page's resolution, a quiet centred stack. The mark crosses up into the MS section. */
+  /* No top padding: the mark itself opens the section, straddling the edge with the white MS section. */
+  .patchr {
+    padding-block: 0 var(--s16);
   }
 
-  .soon__head {
+  .patchr__inner {
     display: grid;
     justify-items: center;
     gap: var(--s3);
     text-align: center;
   }
 
-  .soon__lead {
-    max-width: 34ch;
+  .patchr__mark-wrap {
+    --mark: clamp(6.5rem, 13vw, 9rem);
+    position: relative;
+    z-index: 1;
+    width: var(--mark);
+    /* Half the mark rises into the section above, so its centre sits exactly on the edge. */
+    margin-top: calc(var(--mark) / -2);
+    margin-bottom: var(--s4);
+  }
+
+  .patchr :global(.patchr__mark) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /*
+    The authored moment: once the tile has popped in, its changelog lines write themselves. The stem
+    drops, the white bars draw out, and the pink one (the newest change) arrives last.
+  */
+  :global(.js) .patchr__mark-wrap :global(.mark__stem),
+  :global(.js) .patchr__mark-wrap :global(.mark__bar) {
+    transform-box: fill-box;
+    transition: scale 700ms var(--ease-out);
+  }
+
+  :global(.js) .patchr__mark-wrap :global(.mark__stem) {
+    transform-origin: 50% 0;
+    scale: 1 0;
+    transition-delay: 250ms;
+  }
+
+  :global(.js) .patchr__mark-wrap :global(.mark__bar) {
+    transform-origin: 0 50%;
+    scale: 0 1;
+    transition-delay: 450ms;
+  }
+
+  :global(.js) .patchr__mark-wrap :global(.mark__bar:last-of-type) {
+    transition-delay: 560ms;
+  }
+
+  :global(.js) .patchr__mark-wrap :global(.mark__bar--new) {
+    transition-duration: 950ms;
+    transition-delay: 720ms;
+  }
+
+  :global(.js) .patchr__mark-wrap.is-in :global(.mark__stem),
+  :global(.js) .patchr__mark-wrap.is-in :global(.mark__bar) {
+    scale: 1 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.js) .patchr__mark-wrap :global(.mark__stem),
+    :global(.js) .patchr__mark-wrap :global(.mark__bar) {
+      scale: 1 1;
+      transition: none;
+    }
+  }
+
+  .patchr__lead {
+    max-width: 30ch;
     color: var(--ink-2);
   }
 
-  .soon__list {
+  .patchr__actions {
+    margin-top: var(--s1);
+  }
+
+  .patchr__list {
     max-width: 48rem;
     margin: var(--s12) auto 0;
     border-top: 1px solid var(--hair);
   }
 
-  .soon__item {
+  .patchr__item {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
     align-items: baseline;
@@ -625,19 +704,19 @@ const soon = [
     border-bottom: 1px solid var(--hair);
   }
 
-  .soon__name {
+  .patchr__name {
     font-size: clamp(1.375rem, 2.4vw, 1.75rem);
     font-weight: 650;
     letter-spacing: -0.025em;
   }
 
-  .soon__text {
+  .patchr__text {
     color: var(--ink-2);
     font-size: 1.0625rem;
   }
 
   @media (max-width: 36rem) {
-    .soon__item {
+    .patchr__item {
       grid-template-columns: minmax(0, 1fr);
     }
   }

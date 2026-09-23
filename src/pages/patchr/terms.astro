@@ -1,0 +1,14 @@
+---
+import PatchrLegal from '../../layouts/PatchrLegal.astro';
+// Copied word for word from the Patchr repo's TERMS.md, with its two repo-relative links
+// (PRIVACY.md, LICENSE) pointed at pages that exist here. Change it there first, then copy it here.
+import { Content } from '../../data/patchr/terms.md';
+---
+
+<PatchrLegal
+  title="Terms of service · Patchr"
+  description="The terms for using the public Patchr bot."
+  path="/patchr/terms/"
+>
+  <Content />
+</PatchrLegal>

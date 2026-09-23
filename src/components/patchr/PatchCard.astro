@@ -1,0 +1,192 @@
+---
+// A Patchr post, laid out the way Patchr's renderCard builds it (src/core/render/card.ts in the bot):
+// an optional role ping, then one pink-accented container holding the project, "version · title",
+// a divider, the notes, a footer line with the Patchr mark, and link buttons.
+import PatchrMark from '../PatchrMark.astro';
+import PatchrIcon from './PatchrIcon.astro';
+
+interface Props {
+  project: string;
+  version: string;
+  title?: string;
+  verb?: 'Released' | 'Posted';
+  date: string;
+  author?: string;
+  buttons?: string[];
+  ping?: string;
+  compact?: boolean;
+  class?: string;
+}
+
+const {
+  project,
+  version,
+  title,
+  verb = 'Released',
+  date,
+  author,
+  buttons = [],
+  ping,
+  compact = false,
+  class: className,
+} = Astro.props;
+---
+
+{ping && <p class="pc-ping"><span class="pc-mention">@{ping}</span></p>}
+<div class:list={['pc', compact && 'pc--compact', className]}>
+  <p class="pc__sub pc__project">{project}</p>
+  <p class="pc__title">{version}{title && <span> · {title}</span>}</p>
+  <hr class="pc__sep" />
+  <div class="pc__body">
+    <slot />
+  </div>
+  <p class="pc__sub pc__footer">
+    <PatchrMark class="pc__mark" />
+    <span>{verb} {date}{author && <> · by <span class="pc__author">@{author}</span></>}</span>
+  </p>
+  {
+    buttons.length > 0 && (
+      <div class="pc__buttons">
+        {buttons.map((label) => (
+          <span class="pc__button">
+            {label}
+            <PatchrIcon name="external" size={14} />
+          </span>
+        ))}
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .pc-ping {
+    margin-bottom: 0.25em;
+  }
+
+  .pc-mention {
+    padding: 0 0.15em;
+    border-radius: 0.2em;
+    background: rgb(88 101 242 / 0.3);
+    color: #c9cdfb;
+    font-weight: 500;
+  }
+
+  /* The container. Its accent is Patchr pink, the colour every post carries. */
+  .pc {
+    position: relative;
+    display: grid;
+    gap: 0.25em;
+    max-width: 32em;
+    padding: 1em 1em 1em 1.25em;
+    overflow: hidden;
+    border-radius: 0.5em;
+    background: var(--dc-surface);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.04);
+  }
+
+  .pc::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0.25em;
+    background: var(--pink);
+  }
+
+  .pc__sub {
+    color: var(--dc-muted);
+    font-size: 0.8125em;
+    line-height: 1.3;
+  }
+
+  .pc__project {
+    color: var(--dc-link);
+  }
+
+  .pc__title {
+    color: var(--dc-head);
+    font-size: 1.25em;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .pc__sep {
+    height: 1px;
+    margin: 0.5em 0;
+    border: 0;
+    background: var(--dc-sep);
+  }
+
+  .pc__body {
+    display: grid;
+    gap: 0.35em;
+  }
+
+  .pc__body :global(.pc-h) {
+    margin-top: 0.35em;
+    color: var(--dc-head);
+    font-weight: 700;
+  }
+
+  .pc__body :global(.pc-h:first-child) {
+    margin-top: 0;
+  }
+
+  .pc__body :global(ul) {
+    display: grid;
+    gap: 0.15em;
+    padding-left: 1.15em;
+    list-style: disc;
+  }
+
+  .pc__body :global(li::marker) {
+    color: var(--dc-muted);
+  }
+
+  .pc__body :global(code) {
+    padding: 0.1em 0.25em;
+    border-radius: 0.25em;
+    background: var(--dc-deep);
+    font-size: 0.85em;
+  }
+
+  .pc__footer {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    margin-top: 0.6em;
+  }
+
+  .pc__footer :global(.pc__mark) {
+    width: 1.3em;
+    height: 1.3em;
+    flex: none;
+  }
+
+  .pc__author {
+    color: var(--dc-text);
+  }
+
+  .pc__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 0.6em;
+  }
+
+  .pc__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    height: 2em;
+    padding: 0 0.9em;
+    border-radius: 0.5em;
+    background: var(--dc-button);
+    color: #fff;
+    font-size: 0.875em;
+    font-weight: 500;
+  }
+
+  .pc--compact {
+    font-size: 0.875em;
+  }
+</style>

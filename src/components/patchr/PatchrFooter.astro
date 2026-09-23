@@ -1,0 +1,152 @@
+---
+import PatchrLogo from './PatchrLogo.astro';
+import PatchrIcon from './PatchrIcon.astro';
+
+const columns = [
+  {
+    title: 'Patchr',
+    links: [
+      { href: '/patchr/#features', label: 'Features' },
+      { href: '/patchr/#commands', label: 'Commands' },
+      { href: '/patchr/#faq', label: 'FAQ' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { href: '/patchr/privacy/', label: 'Privacy policy' },
+      { href: '/patchr/terms/', label: 'Terms of service' },
+    ],
+  },
+];
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a class="footer__logo" href="/patchr/" aria-label="Patchr home">
+        <PatchrLogo class="footer__logo-svg" />
+      </a>
+      <p class="footer__tagline">Patch notes, posted beautifully.</p>
+    </div>
+
+    {
+      columns.map((column) => (
+        <nav class="footer__col" aria-label={column.title}>
+          <p class="footer__title">{column.title}</p>
+          <ul>
+            {column.links.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))
+    }
+
+    <nav class="footer__col" aria-label="Source">
+      <p class="footer__title">Source</p>
+      <ul>
+        <li>
+          <a href="https://github.com/anthonyf2312/patchr" target="_blank" rel="noopener">
+            GitHub <PatchrIcon name="external" size={14} /><span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/anthonyf2312/patchr/blob/main/LICENSE" target="_blank" rel="noopener">
+            MIT licence <PatchrIcon name="external" size={14} /><span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <p class="footer__fine">
+      © 2026 Patchr. Not affiliated with Discord or GitHub. Discord is a trademark of Discord Inc.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--line-dark);
+    background: var(--deep);
+    color: var(--haze);
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
+    gap: var(--s6) var(--s4);
+    padding-block: var(--s8) var(--s6);
+  }
+
+  .footer__logo {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    color: var(--on-dark);
+  }
+
+  .footer__logo :global(.footer__logo-svg) {
+    width: auto;
+    height: 1.75rem;
+  }
+
+  .footer__logo :global(.logo__tile) {
+    stroke: rgb(189 183 217 / 0.35);
+    stroke-width: 4;
+    paint-order: stroke;
+  }
+
+  .footer__tagline {
+    margin-top: var(--s1);
+    font-size: 0.9375rem;
+  }
+
+  .footer__title {
+    margin-bottom: var(--s1);
+    color: var(--on-dark);
+    font-size: 0.875rem;
+    font-weight: 650;
+  }
+
+  .footer__col a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    min-height: 2.75rem;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .footer__col a:hover {
+    color: var(--on-dark);
+    text-decoration: underline;
+  }
+
+  .footer__fine {
+    grid-column: 1 / -1;
+    padding-top: var(--s3);
+    border-top: 1px solid var(--line-dark);
+    color: #8e89a8;
+    font-size: 0.8125rem;
+  }
+
+  @media (max-width: 48rem) {
+    .footer__inner {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .footer__brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 30rem) {
+    .footer__inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

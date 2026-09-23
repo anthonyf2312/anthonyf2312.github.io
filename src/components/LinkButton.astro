@@ -7,8 +7,9 @@ interface Props {
 const { href, external = false } = Astro.props;
 ---
 
-<a class="pill" href={href} rel={external ? 'noopener' : undefined}>
-  <slot />
+<!-- External destinations open in a new tab, and say so to screen readers. -->
+<a class="pill" href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
+  <slot />{external && <span class="visually-hidden"> (opens in a new tab)</span>}
 </a>
 
 <style>
