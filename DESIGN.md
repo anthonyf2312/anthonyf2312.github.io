@@ -97,8 +97,8 @@ components:
     textColor: "{colors.on-dark}"
     height: "3rem"
   media-frame:
-    rounded: "{rounded.media}"
-    width: "min(100% - 2 * var(--gutter), 1180px)"
+    rounded: "{rounded.media} on the inner corners only; the bled edge is square"
+    width: "from its grid line to the viewport edge"
   hairline-list-item:
     textColor: "{colors.ink}"
     padding: "1.5rem 0"
@@ -114,7 +114,7 @@ A personal page built the way Apple builds a product page, with Stripe's finish:
 
 Papaya is the only colour that isn't a neutral. It appears as the pill button, the text links, the drawn lines (the Sochi trace, the MS wave), the hero's drifting gradient band, and the full-bleed swatch band. Everything else is ink on paper or paper on black. Depth comes from the ground changing, not from shadows.
 
-Motion is scroll-driven CSS. It lights words, opens a photo, and draws lines as you scroll. Reduced motion and browsers without `animation-timeline` get the finished state, never an empty one.
+Motion is scroll-driven CSS. It lights words, drives the car in, drifts the rain, and draws lines as you scroll. Reduced motion and browsers without `animation-timeline` get the finished state, never an empty one.
 
 **Key Characteristics:**
 - Three section grounds: white, Apple grey, black. The nav follows them.
@@ -179,9 +179,20 @@ Apple's neutrals with one McLaren orange: the palette is almost entirely greysca
 
 ## Layout
 
-Single centred column. Content sits in `.container`: min(100% minus two gutters, 1080px), with a fluid gutter of clamp(1.25rem, 5vw, 3rem). Media can break wider: the F1 photo frame is up to 1180px, and photo bands and the swatch band run full-bleed.
+Content sits in `.container`: min(100% minus two gutters, 1080px), with a fluid gutter of clamp(1.25rem, 5vw, 3rem).
 
-Sections are centred stacks (grid, justify-items centre, text centred) with a 1.5rem gap. Vertical padding comes from one fluid token, section-y (clamp(6rem, 13vw, 10rem)). Spacing uses a 0.5rem-based scale (0.5, 1, 1.5, 2, 3, 4, 6, 8rem). Rhythm inside a section is 1.5rem between headline, lead and actions, with 2 to 3rem before secondary notes and 6rem before lists or media.
+**Nothing Stays In Its Box.** Images never sit as centred boxes. Each one breaks a boundary tied to its story beat, and the copy alternates sides, so the page zigzags:
+- The hero headline crosses the gradient band's slanted edge.
+- The Insko icon sits right and crosses up from the black section into the white one above: a negative top margin of section-y plus 45% of the icon.
+- The F1 photo holds the right-hand grid line and bleeds off the right edge of the viewport, with the copy in a 24rem left column.
+- Rain washes over the right end of the pinned Sochi chart.
+- The rain panel bleeds off the left edge, with the copy in a 26rem right column.
+- The speedmark sits large to the right of a left-aligned quote.
+- The swatch band runs full-bleed.
+
+Bleeding stages use named grid lines (`full-start` / `text` / `photo-start` / `full-end`) so the image column runs to the viewport edge while the text stays on the container. Sections after the swatch (MS, Coming soon) return to quiet centred stacks as the page's resolution. On phones every split stacks: headline, then the bleeding image, then the rest.
+
+Centred sections are stacks (grid, justify-items centre, text centred) with a 1.5rem gap. Vertical padding comes from one fluid token, section-y (clamp(6rem, 13vw, 10rem)). Spacing uses a 0.5rem-based scale (0.5, 1, 1.5, 2, 3, 4, 6, 8rem). Rhythm inside a section is 1.5rem between headline, lead and actions, with 2 to 3rem before secondary notes and 6rem before lists or media.
 
 Actions sit in a centred, wrapping row: pill first, text link second, 1rem by 2rem gap.
 
@@ -200,7 +211,7 @@ Flat. There are no drop shadows anywhere. Depth comes from the ground changing (
 
 ## Shapes
 
-Three curves. Media frames use a 28px radius, and the F1 photo opens from 44px at 80% scale to 28px at full size. Actions are full pills (980px). The app icon uses a squircle-like 27%. Focus rings are rounded to 6px. Everything else (sections, bands, lists) is square and edge to edge. Lists are separated by 1px hairlines, not boxed. Drawn lines use 3px round-capped, round-joined strokes.
+Three curves. Media frames use a 28px radius on the corners that face the page. Corners that bleed off the viewport are square. Actions are full pills (980px). The app icon uses a squircle-like 27%. Focus rings are rounded to 6px. Everything else (sections, bands, lists) is square and edge to edge. Lists are separated by 1px hairlines, not boxed. Drawn lines use 3px round-capped, round-joined strokes.
 
 ## Components
 
@@ -235,8 +246,9 @@ One large sentence whose words light up in order as it crosses the viewport. It 
 A data chart that pins while it draws. The section is 240vh tall; the chart sticks under the nav (top 3rem, min-height 100vh minus 3rem). On black, it has 1px hair-dark gridlines, P1 to P8 axis labels in on-dark secondary with tabular numbers, and a 3px papaya polyline revealed by an animated `clip-path` inset. Annotations fade in at the lap they describe: white 560-weight labels, lit papaya for the rain and the finish. A papaya dot with a 4px black knockout ring marks the finish. A visually hidden figcaption carries the full story in prose. The data is real (Jolpica lap positions).
 
 ### Photo frame and photo band
-- **Frame:** up to 1180px wide, 28px radius, overflow clipped, image cover-fitted. On scroll it opens from scale 0.8 and 44px radius. A centred 0.8125rem credit sits beneath.
-- **Band:** a full-bleed photo as the section ground (min-height clamp(30rem, 90vh, 52rem)), with a white gradient wash (0.15 to 0.55 alpha) so ink text stays legible. The credit is set in the corner as fine print.
+- **Bleeding frame (F1):** runs from `photo-start` to the right viewport edge, 4:3 cover crop, with a 28px radius on the left corners only. It "drives in" on scroll: it slides from translate 14% while unclipping from a 35% left inset, over entry 10% to cover 45%. The parent section uses `overflow-x: clip`, not `hidden`, so the drive-in can't widen the page and the pinned trace inside stays sticky. A left-aligned 0.8125rem credit sits beneath.
+- **Bleeding panel (rain):** runs from the left viewport edge to `panel-end`, min(42rem, 78vh) tall on a grey section, with a 28px radius on the right corners only. The image is 118% tall and drifts down 15% across the panel's view range, like falling rain. On phones it is 4:3.
+- **Chart rain:** the same rain photo is inverted, grayscaled and crushed toward black, so its drops read as light specks. It sits behind the pinned chart at 0.55 opacity, masked to the right 40% of the chart. It fades in over contain 64% to 76%, just before lap 51.
 
 ### Swatch band
 The page's one drenched moment: full-bleed, split 50/50 papaya and ribbon orange, with each half's name in small 600-weight ink at its outer bottom corner. A Statement-size line in ink is centred across both halves. It appears once.

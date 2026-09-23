@@ -45,54 +45,58 @@ const soon = [
 
     <!-- Insko Bot -->
     <section class="dark insko" id="insko" aria-labelledby="insko-title">
-      <div class="container insko__inner">
+      <div class="container insko__grid">
+        <div class="insko__text">
+          <h2 class="headline" id="insko-title">Insko Bot.</h2>
+          <p class="lead insko__lead">
+            Built for the Insko community. Private, self-hosted, and open to other servers that ask.
+          </p>
+          <div class="actions">
+            <LinkButton href="https://inskobot.me/#request-access" external>Request access</LinkButton>
+            <a class="text-link" href="https://github.com/anthonyf2312/InskoBot" rel="noopener">
+              View on GitHub <Icon name="chevron-right" size={18} />
+            </a>
+          </div>
+          <p class="insko__next">A public bot is next. <a href="#soon">See what’s coming</a>.</p>
+        </div>
+        <!-- The icon crosses the edge between the white statement and the black section. -->
         <Image
           class="insko__icon"
           src={inskoAvatar}
           alt="Insko Bot's icon: a violet monogram on black."
-          width={120}
-          height={120}
+          width={288}
+          height={288}
           densities={[1, 2]}
         />
-        <h2 class="headline" id="insko-title">Insko Bot.</h2>
-        <p class="lead insko__lead">
-          Built for the Insko community. Private, self-hosted, and open to other servers that ask.
-        </p>
-        <div class="actions">
-          <LinkButton href="https://inskobot.me/#request-access" external>Request access</LinkButton>
-          <a class="text-link" href="https://github.com/anthonyf2312/InskoBot" rel="noopener">
-            View on GitHub <Icon name="chevron-right" size={18} />
-          </a>
-        </div>
-        <p class="insko__next">A public bot is next. <a href="#soon">See what’s coming</a>.</p>
       </div>
     </section>
 
     <!-- Formula 1 -->
     <section class="dark f1" id="f1" aria-labelledby="f1-title">
-      <div class="container f1__intro">
-        <h2 class="headline" id="f1-title">Papaya, since Sochi.</h2>
-        <p class="lead f1__lead">Formula 1 is my weekend. McLaren, and Lando Norris in particular.</p>
-      </div>
-
-      <figure class="f1__photo">
-        <div class="f1__frame">
-          <Picture
-            src={landoPhoto}
-            formats={['avif', 'webp']}
-            widths={[640, 960, 1280]}
-            sizes="(max-width: 1180px) 100vw, 1180px"
-            alt="Lando Norris's papaya and blue McLaren on track at Silverstone."
-          />
+      <div class="f1__stage">
+        <div class="f1__head">
+          <h2 class="headline" id="f1-title">Papaya, since Sochi.</h2>
+          <p class="lead f1__lead">Formula 1 is my weekend. McLaren, and Lando Norris in particular.</p>
         </div>
-        <figcaption class="container f1__caption">
-          Silverstone, 2019. Photo by <a href={credit['lando-silverstone'].pageURL}>{credit['lando-silverstone'].user}</a>{' '}
-          on Pixabay.
-        </figcaption>
-      </figure>
 
-      <div class="container f1__pick">
-        <p class="lead">
+        <!-- The car drives in from the right and runs off the edge of the screen. -->
+        <figure class="f1__photo">
+          <div class="f1__frame">
+            <Picture
+              src={landoPhoto}
+              formats={['avif', 'webp']}
+              widths={[640, 960, 1280]}
+              sizes="(max-width: 48rem) 100vw, 60vw"
+              alt="Lando Norris's papaya and blue McLaren on track at Silverstone."
+            />
+          </div>
+          <figcaption class="f1__caption">
+            Silverstone, 2019. Photo by <a href={credit['lando-silverstone'].pageURL}>{credit['lando-silverstone'].user}</a>{' '}
+            on Pixabay.
+          </figcaption>
+        </figure>
+
+        <p class="lead f1__pick">
           I picked my driver at Sochi in 2021. His first pole, and he led {lapsLed} of the {totalLaps} laps.
         </p>
       </div>
@@ -100,37 +104,43 @@ const soon = [
       <SochiTrace />
     </section>
 
-    <!-- The rain -->
-    <section class="rain" aria-labelledby="rain-title">
-      <Picture
-        class="rain__photo"
-        src={rainPhoto}
-        formats={['avif', 'webp']}
-        widths={[640, 960, 1280]}
-        sizes="100vw"
-        alt=""
-      />
-      <div class="container rain__text">
-        <h2 class="headline" id="rain-title">Then the rain came.</h2>
-        <p class="lead">
-          With a few laps left he stayed out on slicks, went off at turn 5, and his first win went with it. He finished
-          seventh. That was the day I started supporting him.
-        </p>
+    <!-- The rain: a tall panel off the left edge, drifting down as you scroll. -->
+    <section class="grey rain" aria-labelledby="rain-title">
+      <div class="rain__stage">
+        <div class="rain__panel">
+          <Picture
+            src={rainPhoto}
+            formats={['avif', 'webp']}
+            widths={[640, 960, 1280]}
+            sizes="(max-width: 48rem) 100vw, 50vw"
+            alt="Raindrops on a window against a pale grey sky."
+          />
+        </div>
+        <div class="rain__text">
+          <h2 class="headline" id="rain-title">Then the rain came.</h2>
+          <p class="lead">
+            With a few laps left he stayed out on slicks, went off at turn 5, and his first win went with it. He
+            finished seventh. That was the day I started supporting him.
+          </p>
+          <p class="fine">Photo by <a href={credit.rain.pageURL}>{credit.rain.user}</a> on Pixabay.</p>
+        </div>
       </div>
-      <p class="rain__credit fine">
-        Photo by <a href={credit.rain.pageURL}>{credit.rain.user}</a> on Pixabay.
-      </p>
     </section>
 
     <section class="worst" aria-label="Why Lando">
-      <div class="container worst__inner">
+      <div class="container worst__grid">
         <blockquote class="worst__quote">
           <p>Backing someone on their worst day beats joining on their best.</p>
         </blockquote>
-        <p class="worst__sign">
-          <Image src={speedmark} alt="McLaren speedmark" width={36} height={36} densities={[1, 2]} />
-          <span>Lando Norris, car 4. Since Russia, 2021.</span>
-        </p>
+        <Image
+          class="worst__mark"
+          src={speedmark}
+          alt="McLaren speedmark"
+          width={224}
+          height={224}
+          densities={[1, 2]}
+        />
+        <p class="worst__sign">Lando Norris, car 4. Since Russia, 2021.</p>
       </div>
     </section>
 
@@ -195,37 +205,37 @@ const soon = [
     padding-block: var(--section-y);
   }
 
-  /* Insko Bot */
+  /* Insko Bot: copy on the left, the icon large on the right, crossing up into the white section above. */
   .insko {
+    position: relative;
     padding-block: var(--section-y);
   }
 
-  .insko__inner {
+  .insko__grid {
     display: grid;
-    justify-items: center;
-    gap: var(--s3);
-    text-align: center;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: start;
+    gap: var(--s8);
   }
 
-  .insko :global(.insko__icon) {
-    width: 7.5rem;
-    height: 7.5rem;
-    margin-bottom: var(--s2);
-    border-radius: 27%;
-    box-shadow: 0 0 0 1px rgb(255 255 255 / 0.14);
+  .insko__text {
+    display: grid;
+    justify-items: start;
+    gap: var(--s3);
   }
 
   .insko__lead {
-    max-width: 30ch;
+    max-width: 26ch;
     color: var(--on-dark-2);
   }
 
   .insko .actions {
-    margin-top: var(--s2);
+    justify-content: flex-start;
+    margin-top: var(--s1);
   }
 
   .insko__next {
-    margin-top: var(--s6);
+    margin-top: var(--s4);
     color: var(--on-dark-2);
     font-size: 0.9375rem;
   }
@@ -234,145 +244,194 @@ const soon = [
     color: var(--on-dark);
   }
 
-  /* Formula 1 */
-  .f1 {
-    padding-top: var(--s8);
+  .insko :global(.insko__icon) {
+    --icon: clamp(11rem, 24vw, 18rem);
+    position: relative;
+    z-index: 1;
+    justify-self: end;
+    width: var(--icon);
+    height: var(--icon);
+    margin-top: calc(-1 * var(--section-y) - var(--icon) * 0.45);
+    border-radius: 22.5%;
+    box-shadow: 0 0 0 1px rgb(255 255 255 / 0.14);
   }
 
-  .f1__intro {
+  /* Formula 1: the copy holds the left column; the photo bleeds off the right edge of the screen. */
+  .f1 {
+    padding-top: var(--section-y);
+    /* clip, not hidden: the drive-in may not widen the page, and the pinned trace inside must stay sticky. */
+    overflow-x: clip;
+  }
+
+  .f1__stage {
     display: grid;
-    justify-items: center;
+    grid-template-columns:
+      [full-start] minmax(var(--gutter), 1fr)
+      [text-start] minmax(0, 24rem)
+      [text-end] var(--s8)
+      [photo-start] minmax(0, calc(var(--container) - 24rem - var(--s8)))
+      minmax(var(--gutter), 1fr) [full-end];
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .f1__head {
+    grid-column: text;
+    grid-row: 1;
+    display: grid;
     gap: var(--s3);
-    text-align: center;
   }
 
   .f1__lead {
-    max-width: 28ch;
     color: var(--on-dark-2);
   }
 
   .f1__photo {
+    grid-column: photo-start / full-end;
+    grid-row: 1 / 4;
     margin-top: var(--s12);
   }
 
   .f1__frame {
-    width: min(100% - 2 * var(--gutter), 1180px);
-    margin-inline: auto;
     overflow: hidden;
-    border-radius: var(--radius);
+    border-radius: var(--radius) 0 0 var(--radius);
   }
 
   .f1__frame :global(img) {
     width: 100%;
     height: auto;
-    aspect-ratio: 1280 / 735;
+    aspect-ratio: 4 / 3;
     object-fit: cover;
+    object-position: 46% 62%;
   }
 
   .f1__caption {
     margin-top: var(--s2);
     color: #86868b;
     font-size: 0.8125rem;
-    text-align: center;
+  }
+
+  .f1__pick {
+    grid-column: text;
+    grid-row: 3;
+    align-self: end;
+    margin-bottom: var(--s6);
   }
 
   .f1__caption a,
-  .rain__credit a,
+  .rain a,
   .footer a {
     color: inherit;
   }
 
-  .f1__pick {
-    padding-top: var(--s16);
-    text-align: center;
-  }
-
-  .f1__pick .lead {
-    max-width: 30ch;
-    margin-inline: auto;
-  }
-
-  /* The photo grows to full width as it scrolls in, the way Apple opens a product shot. */
+  /* The car drives in: the frame slides left while it unclips from the right. */
   @supports (animation-timeline: view()) {
     @media (prefers-reduced-motion: no-preference) {
       .f1__frame {
-        animation-name: open;
+        animation-name: drive-in;
         animation-timing-function: linear;
         animation-fill-mode: both;
         animation-timeline: view();
-        animation-range: entry 0% cover 45%;
+        animation-range: entry 10% cover 45%;
       }
     }
   }
 
-  @keyframes open {
+  @keyframes drive-in {
     from {
-      scale: 0.8;
-      border-radius: 44px;
+      translate: 14% 0;
+      clip-path: inset(0 0 0 35% round var(--radius) 0 0 var(--radius));
+    }
+    to {
+      translate: 0 0;
+      clip-path: inset(0 0 0 0 round var(--radius) 0 0 var(--radius));
     }
   }
 
-  /* The rain */
+  /* The rain: a tall panel bleeding off the left edge, the copy on the right. */
   .rain {
-    position: relative;
-    display: grid;
-    align-items: center;
-    min-height: clamp(30rem, 90vh, 52rem);
+    padding-block: var(--section-y);
     overflow: hidden;
-    isolation: isolate;
+  }
+
+  .rain__stage {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(var(--gutter), 1fr)
+      [panel-end-inner] minmax(0, calc(var(--container) - 26rem - var(--s8)))
+      [panel-end] var(--s8)
+      [text-start] minmax(0, 26rem)
+      [text-end] minmax(var(--gutter), 1fr) [full-end];
+    align-items: center;
+  }
+
+  .rain__panel {
+    grid-column: full-start / panel-end;
+    grid-row: 1;
+    height: min(42rem, 78vh);
+    overflow: hidden;
+    border-radius: 0 var(--radius) var(--radius) 0;
     background: #d9dcdc;
   }
 
-  .rain :global(.rain__photo),
-  .rain :global(.rain__photo img) {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    width: 100%;
+  .rain__panel :global(picture) {
+    display: block;
     height: 100%;
+  }
+
+  .rain__panel :global(img) {
+    width: 100%;
+    height: 118%;
     object-fit: cover;
   }
 
-  .rain::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(rgb(255 255 255 / 0.15), rgb(255 255 255 / 0.55));
-  }
-
   .rain__text {
+    grid-column: text;
+    grid-row: 1;
     display: grid;
-    justify-items: center;
     gap: var(--s3);
-    text-align: center;
   }
 
-  .rain__text .lead {
-    max-width: 32ch;
+  .rain__text .fine {
+    margin-top: var(--s2);
   }
 
-  .rain__credit {
-    position: absolute;
-    right: var(--gutter);
-    bottom: var(--s2);
-    color: var(--ink);
+  /* The drops drift downward as you scroll, as if still falling. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .rain__panel :global(img) {
+        animation-name: fall;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 100%;
+      }
+    }
   }
 
-  /* Worst day */
+  @keyframes fall {
+    from {
+      translate: 0 -15%;
+    }
+    to {
+      translate: 0 0;
+    }
+  }
+
+  /* Worst day: the quote on the left, the speedmark sweeping in large on the right. */
   .worst {
     padding-block: var(--section-y);
+    overflow: hidden;
   }
 
-  .worst__inner {
+  .worst__grid {
     display: grid;
-    justify-items: center;
-    gap: var(--s3);
-    text-align: center;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--s2) var(--s8);
   }
 
   .worst__quote p {
-    max-width: 18ch;
+    max-width: 16ch;
     font-size: clamp(2.25rem, 5.4vw, 4rem);
     font-weight: 650;
     line-height: 1.06;
@@ -380,13 +439,77 @@ const soon = [
     text-wrap: balance;
   }
 
+  .worst :global(.worst__mark) {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    width: clamp(8rem, 18vw, 14rem);
+    height: auto;
+  }
+
   .worst__sign {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-top: var(--s3);
+    grid-column: 1;
     color: var(--ink-2);
     font-size: 0.9375rem;
+  }
+
+  @media (max-width: 48rem) {
+    .insko__grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--s4);
+    }
+
+    .insko :global(.insko__icon) {
+      --icon: 9rem;
+      order: -1;
+    }
+
+    .f1__stage {
+      grid-template-columns:
+        [full-start] var(--gutter)
+        [text-start photo-start] minmax(0, 1fr)
+        [text-end] var(--gutter) [full-end];
+      grid-template-rows: auto;
+    }
+
+    .f1__photo {
+      grid-row: 2;
+      margin-top: var(--s8);
+    }
+
+    .f1__pick {
+      grid-row: 3;
+      margin: var(--s8) 0 0;
+    }
+
+    .rain__stage {
+      grid-template-columns:
+        [full-start] var(--gutter)
+        [text-start] minmax(0, 1fr)
+        [panel-end text-end] var(--gutter) [full-end];
+    }
+
+    .rain__panel {
+      grid-column: full-start / panel-end;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      margin-bottom: var(--s6);
+    }
+
+    .rain__text {
+      grid-row: 2;
+    }
+
+    .worst__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .worst :global(.worst__mark) {
+      grid-column: 1;
+      grid-row: auto;
+      justify-self: end;
+      order: -1;
+      width: 7rem;
+    }
   }
 
   /* MS */

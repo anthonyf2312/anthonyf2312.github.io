@@ -1,5 +1,7 @@
 ---
 // Pinned while it draws: Lando's running position at Sochi 2021, lap by lap (Jolpica F1 API).
+import { Picture } from 'astro:assets';
+import rainPhoto from '../assets/pixabay/rain.jpg';
 import { grid, positions, lapsLed, totalLaps } from '../data/sochi';
 
 const rows = 8;
@@ -19,6 +21,10 @@ const labels = [
 
 <div class="sochi">
   <div class="sochi__sticky">
+    <!-- The rain arrives on the chart at the end of the race, as inverted droplets on black. -->
+    <div class="sochi__rain" aria-hidden="true">
+      <Picture src={rainPhoto} formats={['avif', 'webp']} widths={[960, 1280]} sizes="100vw" alt="" />
+    </div>
     <div class="sochi__frame container">
       <div class="sochi__head">
         <p class="sochi__title">Lando Norris, Russian Grand Prix</p>
@@ -86,9 +92,33 @@ const labels = [
 
 <style>
   .sochi__sticky {
+    position: relative;
     display: grid;
     align-items: center;
     padding-block: var(--s8);
+    isolation: isolate;
+  }
+
+  /* Inverted and crushed to black, the photo's drops read as light specks, only at the race's end. */
+  .sochi__rain {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0.55;
+    mask-image: linear-gradient(to right, transparent 40%, #000 82%);
+  }
+
+  .sochi__rain :global(picture),
+  .sochi__rain :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .sochi__rain :global(img) {
+    filter: grayscale(1) invert(1) contrast(2.2) brightness(0.75);
   }
 
   .sochi__frame {
@@ -244,6 +274,15 @@ const labels = [
         animation-fill-mode: both;
         animation-timeline: --sochi;
         animation-range: contain calc(8% + var(--at) * 70%) contain calc(11% + var(--at) * 70%);
+      }
+
+      /* The line reaches lap 48 at about 71% of the pin; the rain comes in just before lap 51. */
+      .sochi__rain {
+        animation-name: appear;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: --sochi;
+        animation-range: contain 64% contain 76%;
       }
     }
   }
