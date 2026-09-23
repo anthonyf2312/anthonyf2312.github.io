@@ -1,6 +1,6 @@
 # anthonyf2312.github.io
 
-Anthony's personal site: Discord bots (Insko Bot, and Patchr, coming soon), Formula 1, and MS. Live at [anthonyf2312.github.io](https://anthonyf2312.github.io).
+Anthony's personal site: Discord bots (Insko Bot and Patchr), Formula 1, and MS. Live at [anthonyf2312.github.io](https://anthonyf2312.github.io).
 
 It also hosts [Patchr's own site](https://anthonyf2312.github.io/patchr/) at `/patchr/`, with its privacy policy and terms. Patchr's pages have their own layout (`src/layouts/PatchrBase.astro`), styles (`src/styles/patchr.css`) and components (`src/components/patchr/`), built from the brand kit in `brand/`.
 

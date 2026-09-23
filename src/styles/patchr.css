@@ -316,35 +316,25 @@ code {
   background: rgb(23 20 43 / 0.04);
 }
 
-/*
-  Add to Discord, before launch: a pink-tinted pill that is plainly not live yet. It is not a link
-  or a button, so it can't be clicked or focused; the "Soon" tag and the hidden text say why.
-*/
-.btn--soon {
-  background: rgb(255 94 138 / 0.14);
-  box-shadow: inset 0 0 0 1px rgb(255 94 138 / 0.32);
-  color: #ffb3c7;
-  cursor: not-allowed;
+/* Ink: the primary pill on the pink band, where a pink pill would vanish. */
+.btn--ink {
+  background: var(--ink);
+  color: var(--white);
 }
 
-.btn--soon:active {
-  scale: 1;
+.btn--ink:hover {
+  background: #2a2546;
 }
 
-.light .btn--soon {
-  background: rgb(255 94 138 / 0.12);
-  box-shadow: inset 0 0 0 1px rgb(200 30 87 / 0.28);
-  color: var(--pink-text);
-}
-
-.soon-tag {
-  padding: 0.3rem 0.55rem;
-  border-radius: 980px;
-  background: var(--pink);
+/* Outline in ink, the secondary action on the pink band. */
+.btn--ink-ghost {
+  border: 1px solid rgb(23 20 43 / 0.35);
   color: var(--ink);
-  font-size: 0.6875rem;
-  font-weight: 750;
-  letter-spacing: 0;
+}
+
+.btn--ink-ghost:hover {
+  border-color: var(--ink);
+  background: rgb(23 20 43 / 0.06);
 }
 
 .btn--sm {

@@ -1,6 +1,7 @@
 ---
 import PatchrLogo from './PatchrLogo.astro';
 import PatchrIcon from './PatchrIcon.astro';
+import { repo, support } from '../../data/patchr/links';
 
 const columns = [
   {
@@ -45,16 +46,21 @@ const columns = [
       ))
     }
 
-    <nav class="footer__col" aria-label="Source">
-      <p class="footer__title">Source</p>
+    <nav class="footer__col" aria-label="Community">
+      <p class="footer__title">Community</p>
       <ul>
         <li>
-          <a href="https://github.com/anthonyf2312/patchr" target="_blank" rel="noopener">
+          <a href={support} target="_blank" rel="noopener">
+            Support server <PatchrIcon name="external" size={14} /><span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+        </li>
+        <li>
+          <a href={repo} target="_blank" rel="noopener">
             GitHub <PatchrIcon name="external" size={14} /><span class="visually-hidden"> (opens in a new tab)</span>
           </a>
         </li>
         <li>
-          <a href="https://github.com/anthonyf2312/patchr/blob/main/LICENSE" target="_blank" rel="noopener">
+          <a href={`${repo}/blob/main/LICENSE`} target="_blank" rel="noopener">
             MIT licence <PatchrIcon name="external" size={14} /><span class="visually-hidden"> (opens in a new tab)</span>
           </a>
         </li>

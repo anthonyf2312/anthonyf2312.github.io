@@ -2,6 +2,7 @@
 import PatchrLogo from './PatchrLogo.astro';
 import PatchrIcon from './PatchrIcon.astro';
 import AddToDiscord from './AddToDiscord.astro';
+import { repo, support } from '../../data/patchr/links';
 
 interface Props {
   /** On the home page the section links are same-page anchors; elsewhere they lead back to it. */
@@ -31,6 +32,11 @@ const links = [
           </li>
         ))
       }
+      <li>
+        <a href={support} target="_blank" rel="noopener">
+          Support <PatchrIcon name="external" size={13} /><span class="visually-hidden"> (opens in a new tab)</span>
+        </a>
+      </li>
     </ul>
     <AddToDiscord small class="nav__cta" />
 
@@ -48,7 +54,12 @@ const links = [
           ))
         }
         <li>
-          <a href="https://github.com/anthonyf2312/patchr" target="_blank" rel="noopener">
+          <a href={support} target="_blank" rel="noopener">
+            Support server <PatchrIcon name="external" size={14} /><span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+        </li>
+        <li>
+          <a href={repo} target="_blank" rel="noopener">
             View code <PatchrIcon name="external" size={14} /><span class="visually-hidden"> (opens in a new tab)</span>
           </a>
         </li>
@@ -222,10 +233,9 @@ const links = [
     color: var(--ink);
   }
 
-  .nav[data-light] :global(.nav__cta) {
-    background: rgb(255 94 138 / 0.12);
-    box-shadow: inset 0 0 0 1px rgb(200 30 87 / 0.28);
-    color: var(--pink-text);
+  .nav__links :global(svg) {
+    margin-left: 0.2em;
+    opacity: 0.7;
   }
 
   .nav__menu {
@@ -294,22 +304,15 @@ const links = [
     }
   }
 
-  /*
-    Narrow phones: the bar's invite shrinks to the Discord glyph and its Soon tag, so it still says the bot
-    isn't out yet. The words stay for screen readers.
-  */
-  @media (max-width: 26rem) {
-    .nav :global(.nav__cta .soon-label) {
+  /* Narrow phones: the bar's invite reads "Add" beside the Discord glyph. The full words stay for screen readers. */
+  @media (max-width: 24rem) {
+    .nav :global(.nav__cta .invite-label-rest) {
       position: absolute;
       width: 1px;
       height: 1px;
       overflow: hidden;
       clip-path: inset(50%);
       white-space: nowrap;
-    }
-
-    .nav :global(.nav__cta) {
-      padding-inline: 0.75rem 0.5rem;
     }
   }
 </style>

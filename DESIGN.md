@@ -209,24 +209,12 @@ components:
     height: "3rem"
   patchr-button-pink-hover:
     backgroundColor: "{colors.patchr-pink-hover}"
-  patchr-button-soon:
-    backgroundColor: "rgb(255 94 138 / 0.14)"
-    textColor: "{colors.patchr-pink-soft}"
+  patchr-button-ink-ghost:
+    textColor: "{colors.patchr-ink}"
     typography: "{typography.patchr-button}"
     rounded: "{rounded.patchr-pill}"
     padding: "0 1.375rem"
     height: "3rem"
-  patchr-button-soon-light:
-    backgroundColor: "rgb(255 94 138 / 0.12)"
-    textColor: "{colors.patchr-pink-text}"
-  patchr-button-soon-on-pink:
-    backgroundColor: "rgb(23 20 43 / 0.08)"
-    textColor: "{colors.patchr-ink}"
-  patchr-soon-tag:
-    backgroundColor: "{colors.patchr-pink}"
-    textColor: "{colors.patchr-ink}"
-    rounded: "{rounded.patchr-pill}"
-    padding: "0.3rem 0.55rem"
   patchr-button-ghost:
     textColor: "{colors.patchr-white}"
     typography: "{typography.patchr-button}"
@@ -508,7 +496,7 @@ The proof is the product itself. Every feature is shown as a Discord screen draw
 - One accent, pink, used for actions, the newest change and drawn lines. Ink text sits on it.
 - Inter Variable only: 800 for display and headlines with tight tracking, 500 for leads.
 - Discord product shots that bleed off alternating viewport edges, rounded only on their inner corners.
-- Add to Discord is shown disabled with a Soon tag until launch.
+- Add to Discord is the live pink pill, opening Patchr's invite in a new tab, with the support server beside it.
 - One-time reveals, a floating 3D hero tile, and scroll-drawn pink lines, all with a finished resting state.
 
 ## Colors
@@ -516,9 +504,9 @@ The proof is the product itself. Every feature is shown as a Discord screen draw
 Violet-tinted inks and a lavender mist, with one hot pink. The palette comes straight from the brand kit.
 
 ### Primary
-- **Patchr Pink** (patchr-pink): the action colour and the newest change. It fills the pill buttons, the Soon tag and the CTA band. It is also the stroke of the How it works flow lines, the reading-progress line, focus rings, text selection, the check icons on dark, and text links on dark. The `theme-color` is pink too, so Discord paints a shared link's embed stripe pink. It hovers to patchr-pink-hover.
+- **Patchr Pink** (patchr-pink): the action colour and the newest change. It fills the pill buttons (Add to Discord) and the CTA band. It is also the stroke of the How it works flow lines, the reading-progress line, focus rings, text selection, the check icons on dark, and text links on dark. The `theme-color` is pink too, so Discord paints a shared link's embed stripe pink. It hovers to patchr-pink-hover.
 - **Deep Pink** (patchr-pink-text): pink as text or small icons on white and mist. Used for text links, slash-command chips, check icons, FAQ plus icons and hovers, spec units, legal links and list markers. About 5:1 on mist.
-- **Pink Blush** (patchr-pink-soft): text on the translucent pink tint on dark grounds: the disabled Add to Discord pill and slash-command chips.
+- **Pink Blush** (patchr-pink-soft): text on the translucent pink tint on dark grounds, used for slash-command chips.
 
 ### Tertiary
 - **Fix Mint** (patchr-mint) and **Change Lilac** (patchr-lilac): the colours of the Fix and Change badges. They appear only inside those badge images, the brand kit's PNGs that Patchr uploads to Discord as emojis. No CSS on the page uses them.
@@ -588,7 +576,7 @@ Mostly flat, with depth from ground changes, the translucent blurred nav, and th
 - **Floating modal** (`box-shadow: 0 0 0 1px rgb(255 255 255 / 0.06), 0 1.5rem 3rem -0.5rem rgb(14 12 26 / 0.45)`): the /patch form crossing its screen's edge, tilted 2deg.
 - **Menu panel** (`box-shadow: 0 0 0 1px rgb(255 255 255 / 0.08), 0 1rem 2rem -0.5rem rgb(0 0 0 / 0.5)`): the phone nav menu.
 - **Hub glow** (`filter: drop-shadow(0 0.75rem 1.5rem rgb(255 94 138 / 0.25))`): the Patchr mark at the centre of How it works. Used once.
-- **Edge rings** (inset or zero-offset 1px rings): the disabled pill (pink at 32%, or deep pink at 28% on light), the post container (white at 4%), and the slash menu (black at 25%).
+- **Edge rings** (inset or zero-offset 1px rings): the post container (white at 4%) and the slash menu (black at 25%).
 - **Nav glass** (`backdrop-filter: saturate(180%) blur(20px)`): deep ink at 72%, or mist at 78% over light sections, with a 1px rule.
 
 ### Named Rules
@@ -603,15 +591,15 @@ Actions are full pills (patchr-pill). Discord screens use patchr-screen on the c
 ### Buttons
 Pills, one filled action per row, and the secondary action beside it outlined.
 - **Shape:** full pill, 3rem tall (2.5rem for the small nav version), with a gap of 0.6rem between glyph and label.
-- **Primary (patchr-button-pink):** pink fill, ink text. It hovers to patchr-pink-hover, and presses to 0.97 on --ease-out. Before launch no live pill uses it (the skip link carries the same pink-and-ink pairing), and Add to Discord uses the disabled variant below.
+- **Primary (patchr-button-pink):** pink fill, ink text. It hovers to patchr-pink-hover, and presses to 0.97 on --ease-out. Used for Add to Discord.
 - **Ghost (patchr-button-ghost):** a 1px white border at 22% on dark (ink at 20% on light). On hover the border strengthens and a faint fill appears. Used for View code.
-- **Ink (patchr-button-ink):** used only on the pink band, where a pink button would vanish. Ink fill, white text, hovering to #2a2546.
+- **Ink (patchr-button-ink) and Ink Ghost (patchr-button-ink-ghost):** used only on the pink band, where pink buttons would vanish. Ink fill with white text for Add to Discord, hovering to #2a2546. An ink outline at 35% for Join the support server.
 - **Focus:** a 2px pink outline with a 3px offset, rounded to 8px.
 
-### Add to Discord, before launch (signature)
-- **Style (patchr-button-soon):** a pink-tinted pill with an inset pink ring and Pink Blush text, holding the Discord glyph, "Add to Discord" and a Soon tag (patchr-soon-tag: pink fill, ink text, 0.6875rem at 750). On light grounds and over light sections in the nav it switches to deep-pink text. On the pink band it becomes ink-tinted with an ink ring, and the tag turns ink with pink text.
-- **Behaviour:** it is a `span` with `role="link"` and `aria-disabled="true"`, and a visually hidden "(coming soon, not available yet)". It can't be focused or clicked, and it has no press scale. At launch it becomes a real link to the invite.
-- **Narrow phones (under 26rem):** the nav version shows only the Discord glyph and the Soon tag. The label stays for screen readers.
+### Add to Discord (signature)
+- **Style:** the primary pink pill holding the Discord glyph and "Add to Discord" (src/components/patchr/AddToDiscord.astro, `tone="ink"` on the pink band). It appears in the nav (small), the hero and the pink band.
+- **Behaviour:** a real link to Patchr's invite (src/data/patchr/links.ts, which also holds the support server and repo URLs). It opens in a new tab and says so to screen readers.
+- **Narrow phones (under 24rem):** the nav version reads "Add" beside the glyph. The full label stays for screen readers.
 
 ### Text link
 Pink on dark and Deep Pink on light, weight 620, with a 2.75rem tap height. On hover a 1px underline draws in from the left (300ms), and the chevron or external glyph nudges 2px.
@@ -668,7 +656,7 @@ Inline SVG only. The stroke icons are Lucide. The Discord and GitHub glyphs are 
 ### Do:
 - **Do** put dark sections on patchr-deep, and light sections on white or mist with `.light` (and `.mist`), so the nav follows the ground.
 - **Do** set ink text on pink, Deep Pink for pink text on light grounds, and raw pink only for fills, strokes and text on dark.
-- **Do** show Add to Discord as the disabled pill with a Soon tag until launch, keeping the glyph and tag in the nav on narrow phones.
+- **Do** lead every action row with Add to Discord, and link the support server wherever help is offered. Take all three Patchr URLs from src/data/patchr/links.ts.
 - **Do** prove features with Discord screens built from Patchr's real renderer layout and strings, bleeding off the edge opposite the copy, rounded only on the inner corners, and captioned as examples.
 - **Do** open external links in a new tab with a visually hidden "(opens in a new tab)".
 - **Do** write scroll-driven animation as longhands inside both gates, with the finished state as the default.

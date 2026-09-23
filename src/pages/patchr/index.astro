@@ -11,7 +11,7 @@ import PatchrMark from '../../components/PatchrMark.astro';
 import heroTile from '../../assets/patchr/hero-3d-bg.png';
 import avatar from '../../assets/patchr/patchr-avatar-1024.png';
 
-const repo = 'https://github.com/anthonyf2312/patchr';
+import { repo, support } from '../../data/patchr/links';
 
 // Every fact on this page comes from Patchr's README, listing copy, strings and policies.
 const facts = ['Free to use', 'Open source, MIT', 'No privileged intents', 'For any project, not only GitHub'];
@@ -76,8 +76,9 @@ const commands = [
 
 const faqs = [
   {
-    q: 'When does Patchr launch?',
-    a: 'Soon. It’s being finished now. When it’s ready, the Add to Discord button on this page goes live, and so does Patchr’s own Discord server.',
+    q: 'Where do I get help?',
+    a: 'In Patchr’s support server, where its own patch notes are posted too. Bugs and feature requests can also go on GitHub.',
+    link: { href: support, label: 'Join the support server', external: true },
   },
   {
     q: 'Is it free?',
@@ -128,7 +129,10 @@ const faqs = [
             View code<span class="visually-hidden"> (opens in a new tab)</span>
           </a>
         </div>
-        <p class="fine dim hero__note">Patchr is almost ready. The invite opens at launch.</p>
+        <p class="fine dim hero__note">
+          Patchr 1.0 is out. Questions?{' '}
+          <a href={support} target="_blank" rel="noopener">Ask in the support server<span class="visually-hidden"> (opens in a new tab)</span></a>.
+        </p>
       </div>
       <div class="hero__art">
         <div class="hero__float">
@@ -494,11 +498,17 @@ const faqs = [
               </summary>
               <div class="faq__answer">
                 <p class="body dim">{item.a}</p>
-                {item.link && (
-                  <a class="text-link" href={item.link.href}>
-                    {item.link.label} <PatchrIcon name="chevron-right" size={18} />
-                  </a>
-                )}
+                {item.link &&
+                  (item.link.external ? (
+                    <a class="text-link" href={item.link.href} target="_blank" rel="noopener">
+                      {item.link.label} <PatchrIcon name="external" size={16} />
+                      <span class="visually-hidden"> (opens in a new tab)</span>
+                    </a>
+                  ) : (
+                    <a class="text-link" href={item.link.href}>
+                      {item.link.label} <PatchrIcon name="chevron-right" size={18} />
+                    </a>
+                  ))}
               </div>
             </details>
           ))
@@ -515,10 +525,9 @@ const faqs = [
       </div>
       <h2 class="headline cta__title" id="cta-title" data-reveal>Ship the update. Patchr posts the notes.</h2>
       <div class="actions cta__actions" data-reveal>
-        <AddToDiscord class="cta__soon" />
-        <a class="btn btn--ink" href={repo} target="_blank" rel="noopener">
-          <PatchrIcon name="github" size={18} />
-          View code<span class="visually-hidden"> (opens in a new tab)</span>
+        <AddToDiscord tone="ink" />
+        <a class="btn btn--ink-ghost" href={support} target="_blank" rel="noopener">
+          Join the support server<span class="visually-hidden"> (opens in a new tab)</span>
         </a>
       </div>
     </div>
@@ -1685,26 +1694,6 @@ const faqs = [
 
   .cta__actions {
     justify-content: center;
-  }
-
-  .cta :global(.cta__soon) {
-    background: rgb(23 20 43 / 0.08);
-    box-shadow: inset 0 0 0 1px rgb(23 20 43 / 0.3);
-    color: var(--ink);
-  }
-
-  .cta :global(.cta__soon .soon-tag) {
-    background: var(--ink);
-    color: var(--pink);
-  }
-
-  .btn--ink {
-    background: var(--ink);
-    color: var(--white);
-  }
-
-  .btn--ink:hover {
-    background: #2a2546;
   }
 
   .cta ::selection {

@@ -28,12 +28,12 @@ He builds Discord bots for communities that take themselves seriously: moderatio
 
 - Links to the site get shared in Discord, which unfurls them as embeds (og tags, theme-color).
 - Insko Bot: a private, self-hosted Discord bot built for Insko's community, where servers can request access. Site: https://inskobot.me. Repo (README, changelog, terms, privacy): https://github.com/anthonyf2312/InskoBot. The user asked that the home page not list its features.
-- Patchr is the public bot: it posts patch notes to Discord, from GitHub releases or written by hand. It isn't live yet, so the home page shows it as coming soon, with no invite link. Its Discord server opens, and its code (github.com/anthonyf2312/patchr, MIT) goes public, at launch. Brand kit: brand/ in this repo (copied from the Patchr project).
-- Patchr has its own site at /patchr/ (plus /patchr/privacy/ and /patchr/terms/, copied word for word from the Patchr repo's PRIVACY.md and TERMS.md). It acts as its own website: its own brand, nav, favicon and link preview, and no links back to the personal pages. The home page's hero leads with "Meet Patchr" (to /patchr/) and "View code" (to the Patchr repo). Until launch its Add to Discord button is shown disabled with a "Soon" tag; at launch it becomes the invite link.
+- Patchr is the public bot: it posts patch notes to Discord, from GitHub releases or written by hand. Version 1.0 is live (2026-09-23). The invite, support server (discord.gg/hsWvqgs9eG) and code (github.com/anthonyf2312/patchr, MIT) are all public; the site keeps these three URLs in src/data/patchr/links.ts. Brand kit: brand/ in this repo (copied from the Patchr project).
+- Patchr has its own site at /patchr/ (plus /patchr/privacy/ and /patchr/terms/, copied word for word from the Patchr repo's PRIVACY.md and TERMS.md; re-copy when they change). It acts as its own website: its own brand, nav, favicon and link preview, and no links back to the personal pages. Add to Discord opens the invite; the support server is linked in the nav, hero, FAQ, pink band and footer. The home page's hero leads with "Meet Patchr" (to /patchr/) and "View code" (to the Patchr repo).
 
 ## Capabilities and Constraints
 
-- Sections: intro/about, Insko Bot, F1 ("Off the clock": McLaren, Lando Norris, since Sochi 2021), MS, Patchr (coming soon, linking to /patchr/).
+- Sections: intro/about, Insko Bot, F1 ("Off the clock": McLaren, Lando Norris, since Sochi 2021), MS, Patchr (out now, linking to /patchr/).
 - External links (GitHub, inskobot.me, anything off-site) open in a new tab. The user's standing preference (2026-09-23).
 - Contact: GitHub and Discord, both shown as "coming soon" (not live links).
 - Imagery from Pixabay via the user's API key (kept in local `.env`, never committed or shipped). Images are downloaded and committed, never hotlinked.

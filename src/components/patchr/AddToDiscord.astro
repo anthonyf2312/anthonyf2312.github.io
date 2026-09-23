@@ -1,24 +1,25 @@
 ---
-// Add to Discord, before launch. Patchr isn't live yet, so this is a disabled link: it looks like the
-// real invite button, says "Soon", and can't be clicked. At launch it becomes an <a> to the invite URL.
+// Add to Discord: the public Patchr invite. It leaves the site, so it opens in a new tab.
+// tone="ink" is for the pink band, where a pink pill would vanish.
 import PatchrIcon from './PatchrIcon.astro';
+import { invite } from '../../data/patchr/links';
 
 interface Props {
   small?: boolean;
+  tone?: 'pink' | 'ink';
   class?: string;
 }
 
-const { small = false, class: className } = Astro.props;
+const { small = false, tone = 'pink', class: className } = Astro.props;
 ---
 
-<span
-  class:list={['btn', 'btn--soon', small && 'btn--sm', className]}
-  role="link"
-  aria-disabled="true"
-  title="Patchr launches soon"
+<a
+  class:list={['btn', tone === 'ink' ? 'btn--ink' : 'btn--pink', small && 'btn--sm', className]}
+  href={invite}
+  target="_blank"
+  rel="noopener"
 >
   <PatchrIcon name="discord" size={small ? 16 : 20} />
-  <span class="soon-label">Add to Discord</span>
-  <span class="soon-tag" aria-hidden="true">Soon</span>
-  <span class="visually-hidden">(coming soon, not available yet)</span>
-</span>
+  <span class="invite-label">Add<span class="invite-label-rest"> to Discord</span></span>
+  <span class="visually-hidden">(opens in a new tab)</span>
+</a>
