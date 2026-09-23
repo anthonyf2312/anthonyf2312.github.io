@@ -21,6 +21,8 @@
   --papaya-text: #a94f00;
   --papaya-on-dark: #ff9a3d;
   --ribbon: #f7862b;
+  /* Lando Norris's brand volt: only inside his LN4 mark, never as a page accent. */
+  --lando-volt: #d2ff00;
 
   --font: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 

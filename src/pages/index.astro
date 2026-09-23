@@ -9,7 +9,7 @@ import SochiTrace from '../components/SochiTrace.astro';
 import Swatch from '../components/Swatch.astro';
 import Waves from '../components/Waves.astro';
 import Icon from '../components/Icon.astro';
-import LandoFour from '../components/LandoFour.astro';
+import LandoLogo from '../components/LandoLogo.astro';
 import McLarenWordmark from '../components/McLarenWordmark.astro';
 import Speedmark from '../components/Speedmark.astro';
 import { lapsLed, totalLaps } from '../data/sochi';
@@ -82,19 +82,14 @@ const soon = [
           <p class="lead f1__lead" data-reveal>Formula 1 is my weekend. McLaren, and Lando Norris in particular.</p>
         </div>
 
-        <!-- A dark tile that runs off the right edge. It wipes in, then Lando's 4 assembles stripe by stripe. -->
+        <!-- A dark tile that runs off the right edge. It wipes in, then the two halves of Lando's LN4 logo slide together. -->
         <figure class="f1__photo">
           <div class="f1__card" data-reveal="panel">
             <McLarenWordmark class="f1__wordmark" />
-            <LandoFour class="f1__four" />
+            <LandoLogo class="f1__ln" />
             <p class="f1__driver">Lando Norris</p>
           </div>
-          <figcaption class="f1__caption">
-            Number design by{' '}
-            <a href="https://commons.wikimedia.org/wiki/File:Lando_Norris_McLaren_driver_number.svg">Ved havet</a>,{' '}
-            <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, recoloured. McLaren marks
-            belong to McLaren.
-          </figcaption>
+          <figcaption class="f1__caption">The LN4 logo belongs to Lando Norris. McLaren marks belong to McLaren.</figcaption>
         </figure>
 
         <p class="lead f1__pick" data-reveal>
@@ -186,10 +181,9 @@ const soon = [
   <footer class="grey footer">
     <div class="container footer__inner">
       <p class="fine">
-        Rain photo from Pixabay by <a href={credit.rain.userURL}>{credit.rain.user}</a>. Lando Norris's number
-        design by <a href="https://commons.wikimedia.org/wiki/User:Ved_havet">Ved havet</a>,{' '}
-        <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, recoloured. The McLaren wordmark
-        and speedmark are McLaren trademarks, shown on a fan page with no affiliation. Lap positions from the{' '}
+        Rain photo from Pixabay by <a href={credit.rain.userURL}>{credit.rain.user}</a>. The LN4 logo is Lando
+        Norris's, and the McLaren wordmark and speedmark are McLaren trademarks, shown on a fan page with no
+        affiliation. Lap positions from the{' '}
         <a href="https://api.jolpi.ca/">Jolpica F1 API</a>.
       </p>
       <p class="fine">© 2026 Anthony.</p>
@@ -311,13 +305,14 @@ const soon = [
     color: var(--on-dark);
   }
 
-  .f1__card :global(.f1__four) {
+  .f1__card :global(.f1__ln) {
     position: absolute;
-    right: clamp(3rem, 16%, 12rem);
-    bottom: 13%;
-    height: 70%;
+    right: clamp(2.5rem, 13%, 10rem);
+    bottom: 14%;
+    height: 66%;
     width: auto;
-    color: var(--papaya);
+    overflow: visible;
+    color: var(--lando-volt);
   }
 
   .f1__driver {
@@ -329,26 +324,31 @@ const soon = [
   }
 
   /*
-    The focal moment. Once the tile has wiped in from the right, the 4's twenty stripes streak in
-    from the left, bottom to top, like speed lines settling into a number.
+    The focal moment. Once the tile has wiped in from the right, the two halves of the LN4 logo slide
+    in along its slant from opposite corners (the L up from the bottom left, the 4 down from the top
+    right) and lock together.
   */
-  :global(.js) .f1__card :global(.f1__four polygon) {
+  :global(.js) .f1__card :global(.ln__part) {
     transform-box: fill-box;
-    transform-origin: 0 50%;
     opacity: 0;
-    translate: -45% 0;
-    scale: 0.15 1;
     transition:
-      opacity 300ms ease,
-      translate 800ms var(--ease-out),
-      scale 800ms var(--ease-out);
-    transition-delay: calc(450ms + var(--i) * 32ms);
+      opacity 500ms ease,
+      translate 1100ms var(--ease-out);
+    transition-delay: 500ms;
   }
 
-  :global(.js) .f1__card.is-in :global(.f1__four polygon) {
+  :global(.js) .f1__card :global(.ln__l) {
+    translate: -7% 26%;
+  }
+
+  :global(.js) .f1__card :global(.ln__4) {
+    translate: 7% -26%;
+    transition-delay: 600ms;
+  }
+
+  :global(.js) .f1__card.is-in :global(.ln__part) {
     opacity: 1;
     translate: 0 0;
-    scale: 1 1;
   }
 
   :global(.js) .f1__card :global(.f1__wordmark),
@@ -358,7 +358,7 @@ const soon = [
     transition:
       opacity 600ms ease,
       translate 800ms var(--ease-out);
-    transition-delay: 1100ms;
+    transition-delay: 1150ms;
   }
 
   :global(.js) .f1__card.is-in :global(.f1__wordmark),
@@ -368,11 +368,10 @@ const soon = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    :global(.js) .f1__card :global(.f1__four polygon),
+    :global(.js) .f1__card :global(.ln__part),
     :global(.js) .f1__card :global(.f1__wordmark),
     :global(.js) .f1__card .f1__driver {
       translate: 0 0;
-      scale: 1 1;
       transition: opacity 400ms ease;
       transition-delay: 200ms;
     }

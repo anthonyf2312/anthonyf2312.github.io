@@ -40,7 +40,7 @@ He builds Discord bots for communities that take themselves seriously: moderatio
 
 ## Brand Commitments
 
-- Keep the McLaren speedmark. It is now the vector from Wikimedia Commons (a McLaren trademark). The user also asked for McLaren and Lando branding in place of a car photo (2026-09-23): the McLaren wordmark plus Lando's striped number 4 (Ved havet, CC BY-SA 4.0).
+- Keep the McLaren speedmark. It is now the vector from Wikimedia Commons (a McLaren trademark). The user also asked for McLaren and Lando branding in place of a car photo (2026-09-23): the McLaren wordmark plus Lando's LN4 logo, which the user supplied as SVG and PNG (2026-09-23), shown in its own volt #d2ff00. An earlier striped number 4 from Commons was wrong and has been removed.
 - Papaya (McLaren) and the MS awareness ribbon are nearly the same orange. The user's own line: "coincidence. keeping it."
 - Voice: dry, direct, a little wry. Short sentences. The user's own lines to keep in spirit: "Backing someone on their worst day beats joining on their best." "It changes my pace, not my direction." "Keep building."
 - Must not feel: sentimental about MS, busy or over-animated, like a generic dev portfolio, or like a cheesy fan site.
@@ -50,7 +50,7 @@ He builds Discord bots for communities that take themselves seriously: moderatio
 
 - User-written copy for the intro, F1 and MS sections (rough, allowed to be tightened).
 - Insko Bot: inskobot.me (live), public repo README, banner at `public/banner.png` in that repo.
-- McLaren speedmark and 2026 wordmark as vectors (Wikimedia Commons), and Lando Norris's McLaren number design (Wikimedia Commons, CC BY-SA 4.0), in src/components/.
+- McLaren speedmark and 2026 wordmark as vectors (Wikimedia Commons), and Lando Norris's LN4 logo (supplied by the user), in src/components/.
 - No testimonials, server counts or user numbers. Don't invent any.
 
 ## Product Principles

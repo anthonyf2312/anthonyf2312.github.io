@@ -12,6 +12,7 @@ colors:
   hair: "#d2d2d7"
   hair-dark: "#2c2c2e"
   tile: "#161617"
+  lando-volt: "#d2ff00"
   papaya: "#ff8000"
   papaya-text: "#a94f00"
   papaya-on-dark: "#ff9a3d"
@@ -115,14 +116,14 @@ A personal page built the way Apple builds a product page, with Stripe's finish:
 
 Papaya is the only colour that isn't a neutral. It appears as the pill button, the text links, the drawn lines (the Sochi trace, the MS wave), the hero's drifting gradient band, and the full-bleed swatch band. Everything else is ink on paper or paper on black. Depth comes from the ground changing, not from shadows.
 
-Motion has two layers. The first is one-time reveals as things enter view: text rises and sharpens, the team tile wipes in and Lando's 4 assembles stripe by stripe, and the speedmark sweeps in. The second is scroll-driven CSS: it lights words, drifts the rain, draws lines, eases the hero away, and fills a reading-progress line under the nav. Reduced motion and browsers without `animation-timeline` get the finished state, never an empty one.
+Motion has two layers. The first is one-time reveals as things enter view: text rises and sharpens, the team tile wipes in and the two halves of Lando's LN4 logo slide together, and the speedmark sweeps in. The second is scroll-driven CSS: it lights words, drifts the rain, draws lines, eases the hero away, and fills a reading-progress line under the nav. Reduced motion and browsers without `animation-timeline` get the finished state, never an empty one.
 
 **Key Characteristics:**
 - Three section grounds: white, Apple grey, black. The nav follows them.
 - One accent, papaya, used for actions and drawn lines.
 - Mona Sans only, weights 500 to 700, with tight tracking on display sizes.
 - Images break the grid: they bleed off a viewport edge or cross a section edge, and the copy alternates sides. The quiet sections near the end are centred.
-- Real media only: the rain photograph (Pixabay), and McLaren and Lando marks as vectors (Wikimedia Commons), always credited.
+- Real media only: the rain photograph (Pixabay), McLaren marks as vectors (Wikimedia Commons), and Lando's LN4 logo (supplied by the owner). All credited.
 - One-time reveals plus scroll-driven CSS, whose resting state is always the finished state.
 
 ## Colors
@@ -147,6 +148,7 @@ Apple's neutrals with one McLaren orange: the palette is almost entirely greysca
 - **Hairline** (#d2d2d7): 1px dividers on light grounds (the hairline list, the footer rule, the wave baseline).
 - **Hairline Dark** (#2c2c2e): 1px gridlines on black (the Sochi trace grid).
 - **Tile** (#161617): a raised dark surface on black. Used for the McLaren / LN4 team tile, so it reads as an object rather than a hole.
+- **Lando Volt** (#d2ff00): Lando Norris's brand colour. It appears only inside his LN4 mark, the same way the Insko icon keeps its own violet. It is never a page accent, text colour or fill.
 
 ### Named Rules
 **The One Orange Rule.** Papaya is the only accent. It marks things you can act on, and lines that tell the story. Nothing decorative is papaya except the hero band and the swatch band, and each appears once.
@@ -248,7 +250,7 @@ One large sentence whose words light up in order as it crosses the viewport. It 
 A data chart that pins while it draws. The section is 240vh tall; the chart sticks under the nav (top 3rem, min-height 100vh minus 3rem). On black, it has 1px hair-dark gridlines, P1 to P8 axis labels in on-dark secondary with tabular numbers, and a 3px papaya polyline revealed by an animated `clip-path` inset. Annotations fade in at the lap they describe: white 560-weight labels, lit papaya for the rain and the finish. A papaya dot with a 4px black knockout ring marks the finish. A visually hidden figcaption carries the full story in prose. The data is real (Jolpica lap positions).
 
 ### Photo frame and photo band
-- **Team tile (F1, signature):** a 4:3 Tile-coloured (#161617) panel. It runs from `photo-start` to the right viewport edge, with a 28px radius on the left corners only. It holds the McLaren wordmark (top left, on-dark, papaya speedmark), Lando's striped number 4 in papaya (70% of the height, anchored right), and "Lando Norris" (bottom left, 650). It wipes in from the right edge (clip-path). Then the 4's twenty stripes streak in from the left, bottom to top, 32ms apart: each scales from 0.15 to 1 horizontally from its left edge while sliding 45%. The wordmark and name follow at 1.1s. The parent section keeps `overflow-x: clip`, not `hidden`, so motion can't widen the page and the pinned trace stays sticky. The logo credits sit beneath as a left-aligned 0.8125rem caption.
+- **Team tile (F1, signature):** a 4:3 Tile-coloured (#161617) panel. It runs from `photo-start` to the right viewport edge, with a 28px radius on the left corners only. It holds the McLaren wordmark (top left, on-dark, papaya speedmark), Lando's LN4 logo in Lando Volt (66% of the height, anchored right), and "Lando Norris" (bottom left, 650). It wipes in from the right edge (clip-path). Then the logo's two interlocking pieces slide in along its slant and lock: the L up from the bottom left (translate -7% 26%), and the 4 down from the top right (7% -26%) 100ms later, over 1.1s. The wordmark and name follow at 1.15s. The parent section keeps `overflow-x: clip`, not `hidden`, so motion can't widen the page and the pinned trace stays sticky. The logo credits sit beneath as a left-aligned 0.8125rem caption.
 - **Bleeding panel (rain):** runs from the left viewport edge to `panel-end`, min(42rem, 78vh) tall on a grey section, with a 28px radius on the right corners only. The image is 118% tall and drifts down 15% across the panel's view range, like falling rain. On phones it is 4:3.
 - **Chart rain:** the same rain photo is inverted, grayscaled and crushed toward black, so its drops read as light specks. It sits behind the pinned chart at 0.55 opacity, masked to the right 40% of the chart. It fades in over contain 64% to 76%, just before lap 51.
 
@@ -283,7 +285,7 @@ An illustrative SVG (not data): a 3px papaya path that rises for relapses and se
 - **Do** use #a94f00 for papaya text on light grounds and #ff9a3d on black.
 - **Do** write scroll-driven animations as longhands inside `@supports (animation-timeline: view())` and `prefers-reduced-motion: no-preference`, with the finished state as the default.
 - **Do** source photographs from Pixabay through `scripts/fetch-pixabay.mjs` (IDs in `scripts/pixabay.json`). Commit them to `src/assets/pixabay/`, serve them through Astro's `Picture` (avif and webp at 640, 960 and 1280 widths), and credit each one both under the image and in the footer from `credits.json`.
-- **Do** take team and driver marks from Wikimedia Commons as SVG, inline them as Astro components that colour through `currentColor`, and record their licence in the component. Say on the page that McLaren marks belong to McLaren. Lando's number design is CC BY-SA 4.0, so credit Ved havet and keep the adapted SVG under the same licence.
+- **Do** inline team and driver marks as SVG Astro components that colour through `currentColor`, and record where each came from in the component. The McLaren marks come from Wikimedia Commons; the LN4 logo was supplied by the owner. Say on the page who each mark belongs to. Use the exact path data from the source file, never retyped by hand.
 - **Do** keep images at or below the 1280px the standard Pixabay key returns. Size frames and `sizes` attributes so a 1280px source is not stretched past it.
 - **Do** keep tap targets at 2.75rem or more, and give every drawn chart a prose equivalent for screen readers.
 
