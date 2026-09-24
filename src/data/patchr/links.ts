@@ -1,4 +1,4 @@
-// Patchr's public links, in one place. Patchr 1.0 is live.
+// Patchr's public links, in one place. Its version lives in release.ts.
 
 /** Adds the public Patchr bot to a server: guild install, bot + slash commands, View Channel / Send Messages / Embed Links. */
 export const invite =

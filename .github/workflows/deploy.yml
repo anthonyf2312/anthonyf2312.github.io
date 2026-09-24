@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Rebuild daily so the Patchr version baked into the HTML follows its latest release.
+  schedule:
+    - cron: '17 6 * * *'
 
 permissions:
   contents: read
@@ -22,6 +25,9 @@ jobs:
         uses: actions/checkout@v7
       - name: Install, build, and upload the site
         uses: withastro/action@v6
+        env:
+          # Lets the build read Patchr's latest release without the anonymous rate limit.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
     needs: build

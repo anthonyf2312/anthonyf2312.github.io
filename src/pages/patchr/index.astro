@@ -7,6 +7,7 @@ import DiscordScreen from '../../components/patchr/DiscordScreen.astro';
 import DiscordMessage from '../../components/patchr/DiscordMessage.astro';
 import PatchCard from '../../components/patchr/PatchCard.astro';
 import Badge from '../../components/patchr/Badge.astro';
+import PatchrVersion from '../../components/patchr/PatchrVersion.astro';
 import PatchrMark from '../../components/PatchrMark.astro';
 import heroTile from '../../assets/patchr/hero-3d-bg.png';
 import avatar from '../../assets/patchr/patchr-avatar-1024.png';
@@ -130,7 +131,7 @@ const faqs = [
           </a>
         </div>
         <p class="fine dim hero__note">
-          Patchr 1.0 is out. Questions?{' '}
+          Patchr <PatchrVersion /> is out. Questions?{' '}
           <a href={support} target="_blank" rel="noopener">Ask in the support server<span class="visually-hidden"> (opens in a new tab)</span></a>.
         </p>
       </div>

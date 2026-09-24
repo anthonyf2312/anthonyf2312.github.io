@@ -1,0 +1,40 @@
+---
+// Patchr's version number, baked in at build time and refreshed from GitHub in the browser.
+import { version } from '../../data/patchr/release';
+---
+
+<span data-patchr-version>{version}</span>
+
+<script>
+  const api = 'https://api.github.com/repos/anthonyf2312/patchr/releases/latest';
+  const cacheKey = 'patchr-version';
+  const nodes = document.querySelectorAll<HTMLElement>('[data-patchr-version]');
+
+  // Same rule as formatVersion in release.ts: "v1.1.0" → "1.1", "v1.2.3" → "1.2.3".
+  const format = (tag: string) => tag.replace(/^v/i, '').replace(/^(\d+\.\d+)\.0$/, '$1');
+  const show = (v: string) => nodes.forEach((n) => (n.textContent = v));
+
+  async function refresh() {
+    let cached: string | null = null;
+    try {
+      cached = sessionStorage.getItem(cacheKey);
+    } catch {}
+    if (cached) return show(cached);
+
+    try {
+      const res = await fetch(api, { headers: { Accept: 'application/vnd.github+json' } });
+      if (!res.ok) return;
+      const { tag_name } = await res.json();
+      if (!tag_name) return;
+      const v = format(tag_name);
+      show(v);
+      try {
+        sessionStorage.setItem(cacheKey, v);
+      } catch {}
+    } catch {
+      // Offline or rate-limited: the build-time version stays.
+    }
+  }
+
+  if (nodes.length) refresh();
+</script>

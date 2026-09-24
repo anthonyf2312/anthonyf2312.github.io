@@ -13,6 +13,7 @@ import LandoLogo from '../components/LandoLogo.astro';
 import McLarenWordmark from '../components/McLarenWordmark.astro';
 import Speedmark from '../components/Speedmark.astro';
 import PatchrMark from '../components/PatchrMark.astro';
+import PatchrVersion from '../components/patchr/PatchrVersion.astro';
 import { lapsLed, totalLaps } from '../data/sochi';
 import inskoAvatar from '../assets/insko-avatar.png';
 import rainPhoto from '../assets/pixabay/rain.jpg';
@@ -168,7 +169,7 @@ const patchr = [
         </div>
         <h2 class="headline" id="patchr-title" data-reveal>Patchr.</h2>
         <p class="lead patchr__lead" data-reveal>
-          Patch notes, posted beautifully. It’s my public bot, and version 1.0 is out now.
+          Patch notes, posted beautifully. It’s my public bot, and version <PatchrVersion /> is out now.
         </p>
         <div class="actions patchr__actions" data-reveal>
           <LinkButton href="/patchr/">Meet Patchr</LinkButton>
