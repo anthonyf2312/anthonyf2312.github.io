@@ -13,6 +13,7 @@ import heroTile from '../../assets/patchr/hero-3d-bg.png';
 import avatar from '../../assets/patchr/patchr-avatar-1024.png';
 
 import { repo, support } from '../../data/patchr/links';
+import { servers } from '../../data/patchr/stats';
 
 // Every fact on this page comes from Patchr's README, listing copy, strings and policies.
 const facts = ['Free to use', 'Open source, MIT', 'No privileged intents', 'For any project, not only GitHub'];
@@ -131,7 +132,7 @@ const faqs = [
           </a>
         </div>
         <p class="fine dim hero__note">
-          Patchr <PatchrVersion /> is out. Questions?{' '}
+          Patchr <PatchrVersion /> is out{servers && ` and running in ${servers}`}. Questions?{' '}
           <a href={support} target="_blank" rel="noopener">Ask in the support server<span class="visually-hidden"> (opens in a new tab)</span></a>.
         </p>
       </div>

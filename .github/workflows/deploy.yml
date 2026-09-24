@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  # Rebuild daily so the Patchr version baked into the HTML follows its latest release.
+  # Rebuild daily so the Patchr version and server count baked into the HTML stay current.
   schedule:
     - cron: '17 6 * * *'
 
@@ -28,6 +28,8 @@ jobs:
         env:
           # Lets the build read Patchr's latest release without the anonymous rate limit.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Lets the build ask Discord how many servers Patchr is in. Never sent to the browser.
+          PATCHR_BOT_TOKEN: ${{ secrets.PATCHR_BOT_TOKEN }}
 
   deploy:
     needs: build
