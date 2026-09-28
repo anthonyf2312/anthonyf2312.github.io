@@ -1,0 +1,32 @@
+---
+import { invite, support } from '../../data/patchr/links';
+import ExternalLink from '../ExternalLink.astro';
+import Icon from '../Icon.astro';
+import ThemeToggle from '../ThemeToggle.astro';
+import Wordmark from './Wordmark.astro';
+
+interface Props {
+  isHome?: boolean;
+}
+
+const { isHome = false } = Astro.props;
+const base = isHome ? '' : '/patchr/';
+---
+
+<header class="nav" data-nav>
+  <div class="container nav__inner">
+    <a class="nav__brand" href={isHome ? '#top' : '/patchr/'} aria-label="Patchr home"><Wordmark /></a>
+    <nav aria-label="Sections" class="nav__sections">
+      <ul class="nav__links" role="list">
+        <li><a href={`${base}#features`}>Features</a></li>
+        <li><a href={`${base}#commands`}>Commands</a></li>
+        <li><a href={`${base}#faq`}>FAQ</a></li>
+        <li><ExternalLink href={support}>Support server</ExternalLink></li>
+      </ul>
+    </nav>
+    <ThemeToggle storageKey="patchr-theme" />
+    <ExternalLink class="btn btn--small nav__cta" href={invite} arrow={false}>
+      <Icon name="discord" />Add to Discord
+    </ExternalLink>
+  </div>
+</header>

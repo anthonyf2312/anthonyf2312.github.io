@@ -1,0 +1,47 @@
+---
+import ExternalLink from '../ExternalLink.astro';
+import credits from '../../assets/photos/credits.json';
+
+const year = new Date().getFullYear();
+
+// Each photo is credited with a link to its Commons page, grouped by photographer and licence.
+const labels: Record<string, string> = { hero: 'kerb', profile: 'side view', helmet: 'helmet', austria: 'Sochi background' };
+const groups = new Map<string, { author: string; license: string; licenseUrl: string; photos: { label: string; url: string }[] }>();
+for (const c of credits) {
+  const key = `${c.author}|${c.license}`;
+  if (!groups.has(key)) groups.set(key, { author: c.author, license: c.license, licenseUrl: c.licenseUrl, photos: [] });
+  groups.get(key)!.photos.push({ label: labels[c.slot] ?? c.slot, url: c.pageUrl });
+}
+const list = (n: number, i: number) => (i < n - 2 ? ', ' : i === n - 2 ? ' and ' : '');
+---
+
+<footer class="footer">
+  <div class="container footer__row">
+    <nav aria-label="Footer">
+      <ul class="footer__links" role="list">
+        <li><ExternalLink href="https://github.com/anthonyf2312">GitHub</ExternalLink></li>
+        <li><a href="/patchr/">Patchr</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+      </ul>
+    </nav>
+    <p class="footer__fine">
+      © {year} Anthony. Not affiliated with McLaren or Lando Norris. Photos via Wikimedia Commons:{' '}
+      {
+        [...groups.values()].map((g, gi, all) => (
+          <>
+            {g.photos.map((photo, i) => (
+              <>
+                <ExternalLink href={photo.url} arrow={false}>
+                  {photo.label}
+                </ExternalLink>
+                {list(g.photos.length, i)}
+              </>
+            ))}{' '}
+            by {g.author} (<ExternalLink href={g.licenseUrl} arrow={false}>{g.license}</ExternalLink>)
+            {gi < all.length - 1 ? '; ' : '.'}
+          </>
+        ))
+      }
+    </p>
+  </div>
+</footer>

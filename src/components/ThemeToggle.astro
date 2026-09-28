@@ -1,0 +1,16 @@
+---
+// The sun/moon switch. It shows the sun in dark mode and the moon in light mode; theme.ts does the switching.
+import Icon from './Icon.astro';
+
+interface Props {
+  /** Where this site remembers the choice. Each site keeps its own. */
+  storageKey: string;
+}
+
+const { storageKey } = Astro.props;
+---
+
+<button class="theme-toggle" type="button" data-theme-toggle data-storage-key={storageKey} aria-label="Dark mode" aria-pressed="false">
+  <Icon name="sun" class="icon--sun" />
+  <Icon name="moon" class="icon--moon" />
+</button>

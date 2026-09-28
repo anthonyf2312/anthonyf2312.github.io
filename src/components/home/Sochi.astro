@@ -1,0 +1,49 @@
+---
+// Sochi 2021, told the way Patchr's "Set it up once" works: a picture stays put while the steps scroll past
+// it (steps.ts). Here the picture is a McLaren photo with a giant position counter and lap bar that follow
+// the step you're on, and the rain arrives for the last two (race.ts).
+// Positions come from src/data/sochi.ts (Jolpica F1 API); the moments are from the Wikipedia race report.
+import { Picture } from 'astro:assets';
+import photo from '../../assets/photos/austria.jpg';
+import { grid, positions, totalLaps } from '../../data/sochi';
+
+const at = (lap: number) => (lap === 0 ? grid : positions[lap - 1]);
+const steps = [
+  { lap: 0, title: 'Pole position.', text: 'Lando starts on pole for the first time in his career.' },
+  { lap: 13, title: 'Into the lead.', text: 'Carlos Sainz gets past at the start. On lap 13, Lando takes the lead back at turn 12.' },
+  { lap: 29, title: 'A pit stop.', text: 'His stop drops him to fourth. By lap 37 he’s back in front.' },
+  { lap: 49, rain: true, title: 'Then the rain.', text: 'Hamilton pits for intermediates. Lando stays out on slicks, still leading.' },
+  { lap: 53, rain: true, title: 'That’s the day I started supporting him.', text: 'On lap 51 he slides off at turn 5. He finishes seventh.' },
+].map((step) => ({ ...step, pos: at(step.lap) }));
+---
+
+<section class="race section" id="sochi" aria-labelledby="race-title">
+  <div class="container">
+    <h2 class="display-2" id="race-title" data-reveal="lines">Sochi, 2021.</h2>
+    <p class="lead race__lead" data-reveal="fade">The race that made me a Lando fan.</p>
+
+    <div class="race__grid" data-steps data-race data-total={totalLaps}>
+      <div class="race__stage" data-race-stage aria-hidden="true">
+        <Picture class="race__photo" src={photo} formats={['avif', 'webp']} widths={[800, 1200, 1800]} sizes="(max-width: 899px) 92vw, 55vw" alt="" loading="lazy" />
+        <div class="race__wet"></div>
+        <div class="race__streaks"></div>
+        <div class="race__hud">
+          <p class="race__lap"><span data-race-lap>Grid</span> <span class="race__of">/ {totalLaps}</span></p>
+          <p class="race__counter"><span class="race__p">P</span><span class="race__digit"><span data-race-pos>{grid}</span></span></p>
+          <div class="race__bar"><span data-race-bar></span></div>
+        </div>
+      </div>
+
+      <ol class="race__steps" role="list">
+        {
+          steps.map((step) => (
+            <li class="race__step" data-step data-lap={step.lap} data-pos={step.pos} data-rain={step.rain ? 'true' : 'false'}>
+              <h3 class="race__step-title">{step.title}</h3>
+              <p class="race__step-text">{step.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

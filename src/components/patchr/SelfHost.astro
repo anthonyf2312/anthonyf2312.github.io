@@ -1,0 +1,38 @@
+---
+// Run your own copy: the three lines from the README, with a copy button.
+import { repo } from '../../data/patchr/links';
+import ExternalLink from '../ExternalLink.astro';
+import Icon from '../Icon.astro';
+
+const lines = [
+  'curl -O https://raw.githubusercontent.com/anthonyf2312/patchr/main/compose.yaml',
+  'curl -o .env https://raw.githubusercontent.com/anthonyf2312/patchr/main/.env.example',
+  'docker compose up -d   # after adding your tokens to .env',
+];
+const script = lines.join('\n');
+---
+
+<section class="selfhost section" aria-labelledby="selfhost-title">
+  <div class="container selfhost__grid">
+    <div>
+      <h2 class="p-h2" id="selfhost-title" data-reveal="lines">Or run your own.</h2>
+      <p class="p-lead" data-reveal="fade">
+        Patchr is open source under the MIT licence. Add your bot token and start it with Docker.
+      </p>
+      <p data-reveal="fade">
+        <ExternalLink class="text-link" href={`${repo}/blob/main/docs/SELF-HOSTING.md`}>Self-hosting guide</ExternalLink>
+      </p>
+    </div>
+    <div class="code" data-reveal="fade">
+      <div class="code__bar">
+        <span>Terminal</span>
+        <button class="code__copy" type="button" data-copy={script} aria-label="Copy the commands">
+          <Icon name="copy" class="code__icon code__icon--copy" />
+          <Icon name="check" class="code__icon code__icon--done" />
+          <span class="code__label" data-copy-label>Copy</span>
+        </button>
+      </div>
+      <pre><code>{lines.map((line) => <span class="code__line">{line}</span>)}</code></pre>
+    </div>
+  </div>
+</section>

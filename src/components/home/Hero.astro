@@ -1,0 +1,46 @@
+---
+// First screen: Lando's McLaren full-bleed, with my name across the track. As you scroll, the photo
+// shrinks into a rounded card and the page carries on (hero.ts). The letters rise in with pure CSS.
+import { Picture } from 'astro:assets';
+import ExternalLink from '../ExternalLink.astro';
+import Icon from '../Icon.astro';
+import photo from '../../assets/photos/hero.jpg';
+
+const letters = [...'Anthony'];
+---
+
+<section class="hero" id="top" data-hero aria-labelledby="hero-title">
+  <div class="hero__frame" data-hero-frame>
+    <div class="hero__media">
+      <Picture
+        class="hero__photo"
+        src={photo}
+        formats={['avif', 'webp']}
+        widths={[960, 1440, 1920, 2560]}
+        sizes="100vw"
+        alt="Lando Norris’s McLaren on the kerb at the 2025 Japanese Grand Prix."
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="hero__shade" data-hero-shade aria-hidden="true"></div>
+  </div>
+
+  <div class="container hero__copy" data-hero-copy>
+    <h1 class="hero__name" id="hero-title">
+      <span class="visually-hidden">Anthony</span>
+      <span class="hero__letters" aria-hidden="true">
+        {letters.map((letter, i) => <span class="hero__letter" style={`--i: ${i}`}>{letter}</span>)}
+      </span>
+    </h1>
+    <div class="hero__row">
+      <p class="hero__sub">I use AI to build things for fun, mostly Discord bots. Weekends are for Formula&nbsp;1.</p>
+      <div class="hero__actions">
+        <span class="magnetic" data-magnetic><a class="btn" href="/patchr/">Meet Patchr</a></span>
+        <ExternalLink class="btn btn--glass" href="https://github.com/anthonyf2312" arrow={false}>
+          <Icon name="github" />GitHub
+        </ExternalLink>
+      </div>
+    </div>
+  </div>
+</section>

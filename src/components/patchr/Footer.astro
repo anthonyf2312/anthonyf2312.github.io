@@ -1,0 +1,28 @@
+---
+import { repo, support } from '../../data/patchr/links';
+import ExternalLink from '../ExternalLink.astro';
+import Wordmark from './Wordmark.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="pfooter">
+  <div class="container pfooter__inner">
+    <div class="pfooter__brand">
+      <Wordmark />
+      <p>Patch notes, posted beautifully.</p>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="pfooter__links" role="list">
+        <li><ExternalLink href={support}>Support server</ExternalLink></li>
+        <li><ExternalLink href={repo}>GitHub</ExternalLink></li>
+        <li><a href="/patchr/privacy/">Privacy</a></li>
+        <li><a href="/patchr/terms/">Terms</a></li>
+      </ul>
+    </nav>
+    <p class="pfooter__fine">
+      © {year} Made by <ExternalLink href="https://github.com/anthonyf2312" arrow={false}>@anthonyf2312</ExternalLink>.
+      Patchr isn’t made by or affiliated with Discord.
+    </p>
+  </div>
+</footer>

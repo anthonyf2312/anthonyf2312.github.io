@@ -1,42 +1,43 @@
 # anthonyf2312.github.io
 
-Anthony's personal site: Discord bots (Insko Bot and Patchr), Formula 1, and MS. Live at [anthonyf2312.github.io](https://anthonyf2312.github.io).
+Two sites from one repo, built with [Astro](https://astro.build) and deployed to GitHub Pages by GitHub Actions.
 
-It also hosts [Patchr's own site](https://anthonyf2312.github.io/patchr/) at `/patchr/`, with its privacy policy and terms. Patchr's pages have their own layout (`src/layouts/PatchrBase.astro`), styles (`src/styles/patchr.css`) and components (`src/components/patchr/`), built from the brand kit in `brand/`.
+| Path | Site |
+|---|---|
+| `/` | Anthony's personal site: AI and Discord bots, Formula 1 (McLaren and Lando, since Sochi 2021), and MS |
+| `/patchr/` | [Patchr](https://github.com/anthonyf2312/patchr), the Discord bot, with its own privacy policy and terms |
 
-Built with [Astro](https://astro.build) and deployed to GitHub Pages by GitHub Actions on every push to `main`.
-
-## Working on it
+## Run it
 
 ```sh
 npm install
-npm run dev       # local dev server
-npm run build     # static build into dist/
-npm run preview   # serve the build
+npm run dev      # http://localhost:4321
+npm run build    # static site in dist/
+npm run preview  # serve dist/
 ```
 
-## Photos
+## How it's put together
 
-Photos come from [Pixabay](https://pixabay.com) and are downloaded into `src/assets/pixabay/` and committed. Pixabay doesn't allow permanent hotlinking, and this way the API key never leaves your machine.
-
-1. Put your key in `.env` as `pixabay=<key>`. `.env` is git-ignored.
-2. Find candidates: `node scripts/fetch-pixabay.mjs --search "wet track" --preview ./previews`
-3. List the ones you want in `scripts/pixabay.json` (`{ "slot": "name", "id": 123 }`).
-4. Run `npm run images`. This rewrites the images and `credits.json`, and the page reads its credits from there.
+- `src/pages/`: the routes. `src/layouts/Home.astro` and `src/layouts/Patchr.astro` give each site its own head, nav, footer, favicon and link preview.
+- `src/styles/`: `base.css` is shared; `home.css` (graphite and white, papaya, Archivo) and `patchr.css` (Patchr's brand kit: ink, mist, pink, Inter) hold each site's tokens.
+- `src/scripts/`: motion. GSAP (ScrollTrigger, SplitText) and Lenis smooth scrolling, set up in `motion.ts`. Everything honours `prefers-reduced-motion`, and every page reads fine without JavaScript.
+- Light and dark mode follow the system until someone uses the sun/moon switch; the choice is kept in the visitor's own browser.
 
 ## Data
 
-The Sochi 2021 trace (`src/data/sochi.ts`) is Lando Norris's running position at the end of each lap, from the [Jolpica F1 API](https://api.jolpi.ca/ergast/f1/2021/15/drivers/norris/laps.json).
+- `src/data/sochi.ts`: Lando Norris's position on every lap of the 2021 Russian Grand Prix, from the Jolpica F1 API. The Sochi counter on the home page runs on it.
+- `src/assets/photos/`: the F1 photos, from Wikimedia Commons, with their credits in `credits.json` (shown in the footer).
+- `src/data/patchr/`: Patchr's links, its latest version (read from GitHub releases at build time) and its server count (read from Discord at build time).
+- `src/content/patchr/`: Patchr's privacy policy and terms, copied word for word from the Patchr repo. Re-copy them when they change there.
+
+## Deploying
+
+Pushing to `main` builds and deploys the site (`.github/workflows/deploy.yml`). It also rebuilds daily so Patchr's version and server count stay current.
+
+In the repository's **Settings → Pages**, the source must be **GitHub Actions**. The server count needs a repository secret named `PATCHR_BOT_TOKEN`; without it, the count is simply left out.
 
 ## Credits
 
-- Rain photo: Arcaion on Pixabay
-- LN4 logo: Lando Norris's mark, supplied by the site owner (src/components/LandoLogo.astro)
-- McLaren wordmark and speedmark: Wikimedia Commons (public domain as simple logos, McLaren trademarks; shown on a fan page with no affiliation)
-- Type: [Mona Sans](https://github.com/github/mona-sans) (SIL OFL); Patchr's pages use [Inter](https://rsms.me/inter/) (SIL OFL)
-- Icons: [Lucide](https://lucide.dev) (ISC); Discord and GitHub glyphs from [Simple Icons](https://simpleicons.org) (CC0)
-- Patchr's logo, 3D renders and badges: the Patchr brand kit in `brand/` (rendered from `brand/Patchr_Brand.blend`)
-
-## Patchr's policies
-
-`src/data/patchr/privacy.md` and `terms.md` are copies of `PRIVACY.md` and `TERMS.md` from the Patchr repo. Change them there first, then copy them here. The only difference is that the terms' two repo-relative links point at `/patchr/privacy/` and the LICENSE on GitHub.
+- F1 photos by Liauzh and Lukas Raich on Wikimedia Commons (CC BY-SA 4.0), credited per photo in the footer.
+- McLaren's and Lando Norris's names and marks belong to them. This is a fan page, not affiliated with either.
+- Fonts: Archivo and Inter (SIL Open Font License). Icons: Phosphor (MIT).

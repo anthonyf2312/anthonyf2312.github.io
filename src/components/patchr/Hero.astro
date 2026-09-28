@@ -1,0 +1,38 @@
+---
+// Category-standard bot hero: what it does, the two buttons, and the real thing it posts.
+import { invite, support } from '../../data/patchr/links';
+import { version } from '../../data/patchr/release';
+import { servers } from '../../data/patchr/stats';
+import ExternalLink from '../ExternalLink.astro';
+import Icon from '../Icon.astro';
+import ExamplePost from './ExamplePost.astro';
+
+const facts = [`Version ${version}`, 'Free', 'Open source (MIT)', ...(servers ? [`In ${servers}`] : [])];
+---
+
+<section class="phero" id="top" aria-labelledby="phero-title">
+  <div class="phero__glow" aria-hidden="true"></div>
+  <div class="container phero__grid">
+    <div class="phero__copy">
+      <h1 class="p-display phero__title" id="phero-title">Patch notes, posted beautifully.</h1>
+      <p class="p-lead phero__sub">
+        Patchr posts clean, formatted patch notes to your Discord server, from GitHub releases or notes you write.
+      </p>
+      <div class="phero__actions">
+        <span class="magnetic" data-magnetic>
+          <ExternalLink class="btn" href={invite} arrow={false}><Icon name="discord" />Add to Discord</ExternalLink>
+        </span>
+        <ExternalLink class="btn btn--ghost" href={support}>Support server</ExternalLink>
+      </div>
+    </div>
+    <figure class="phero__visual">
+      <ExamplePost animate />
+      <figcaption class="phero__caption">An example post: Patchr’s own 1.0 release.</figcaption>
+    </figure>
+  </div>
+  <div class="container">
+    <ul class="pfacts" role="list" aria-label="At a glance">
+      {facts.map((fact) => <li>{fact}</li>)}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,64 @@
+---
+// Four features, four cells, each with its own picture.
+import { Image } from 'astro:assets';
+import badgeChange from '../../assets/patchr/badge-change-128.png';
+import badgeFix from '../../assets/patchr/badge-fix-128.png';
+import badgeNew from '../../assets/patchr/badge-new-128.png';
+import Icon from '../Icon.astro';
+
+const badges = [
+  { src: badgeNew, label: 'New' },
+  { src: badgeFix, label: 'Fixes' },
+  { src: badgeChange, label: 'Changes' },
+];
+---
+
+<section class="features section" id="features" aria-labelledby="features-title">
+  <div class="container">
+    <h2 class="p-h2" id="features-title" data-reveal="lines">Everything a changelog needs.</h2>
+    <div class="bento">
+      <article class="cell cell--wide cell--releases" data-reveal="fade">
+        <div class="cell__art" aria-hidden="true">
+          <span class="chip"><Icon name="github" /> anthonyf2312/patchr</span>
+          <span class="flow"><span class="flow__dot"></span></span>
+          <span class="chip chip--channel"><span>#</span> announcements</span>
+        </div>
+        <h3>GitHub releases, automatically.</h3>
+        <p>Follow any public repo. New releases post themselves, and edits on GitHub update the post.</p>
+      </article>
+
+      <article class="cell cell--patch" data-reveal="fade">
+        <div class="cell__art" aria-hidden="true">
+          <span class="slash"><span class="slash__cmd">/patch</span> Write a patch note</span>
+          <span class="private">Only you can see this preview</span>
+        </div>
+        <h3>/patch for everything else.</h3>
+        <p>Not on GitHub? Write the notes in a form, check a private preview, then post.</p>
+      </article>
+
+      <article class="cell cell--badges" data-reveal="fade">
+        <div class="cell__art badges" aria-hidden="true">
+          {
+            badges.map((badge) => (
+              <span class="badge">
+                <Image src={badge.src} alt="" width={56} height={56} densities={[1, 2]} />
+                {badge.label}
+              </span>
+            ))
+          }
+        </div>
+        <h3>Badges that read at a glance.</h3>
+        <p>Sections like New, Fixes and Changes get their own badge, so people find what they care about.</p>
+      </article>
+
+      <article class="cell cell--wide cell--announce" data-reveal="fade">
+        <div class="cell__art" aria-hidden="true">
+          <span class="role">@Patch notes</span>
+          <span class="chip chip--follow"><Icon name="arrow-up-right" /> Sent to following servers</span>
+        </div>
+        <h3>Made for announcements.</h3>
+        <p>Ping an opt-in role, and posts in announcement channels reach every server that follows them.</p>
+      </article>
+    </div>
+  </div>
+</section>

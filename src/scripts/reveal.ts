@@ -1,33 +1,69 @@
-// Reveal marked elements once as they enter the viewport. Inside a [data-reveal-group],
-// siblings are staggered in reading order (capped, so a long group never lags).
-// Shared by the personal site (Base.astro) and Patchr (PatchrBase.astro).
-document.querySelectorAll('[data-reveal-group]').forEach((group) => {
-  group.querySelectorAll<HTMLElement>('[data-reveal]').forEach((el, i) => {
-    el.style.setProperty('--reveal-i', String(Math.min(i, 5)));
-  });
-});
+// Scroll reveals shared by both sites. Nothing is hidden unless this code is about to animate it,
+// so the page reads fine without JS and with reduced motion.
+//
+//   data-reveal="lines"   headings: each line rises out of a mask (the landonorris.com move)
+//   data-reveal="fade"    supporting text and cards: a short fade up, batched so neighbours stagger
+//   data-scrub-words      a statement whose words light up as you scroll through it (Apple)
+import { gsap, MOTION_OK, ScrollTrigger, SplitText } from './motion';
 
-const targets = document.querySelectorAll<HTMLElement>('[data-reveal]');
-if (!('IntersectionObserver' in window)) {
-  targets.forEach((el) => el.classList.add('is-in'));
-} else {
-  // Wipe variants start fully clipped, and the observer counts a fully clipped element as
-  // invisible, so it would never fire. For those, watch the unclipped parent instead.
-  const clipped = new Set(['panel', 'wipe-left']);
-  const revealFor = new Map<Element, HTMLElement>();
-  const observer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        revealFor.get(entry.target)?.classList.add('is-in');
-        observer.unobserve(entry.target);
-      }
-    },
-    { threshold: 0.15, rootMargin: '0px 0px -8% 0px' },
-  );
-  targets.forEach((el) => {
-    const watched = clipped.has(el.dataset.reveal ?? '') && el.parentElement ? el.parentElement : el;
-    revealFor.set(watched, el);
-    observer.observe(watched);
+export function initReveals(): void {
+  const mm = gsap.matchMedia();
+
+  mm.add(MOTION_OK, () => {
+    document.querySelectorAll<HTMLElement>('[data-reveal="lines"]').forEach((el) => {
+      let played = false;
+      SplitText.create(el, {
+        type: 'lines',
+        mask: 'lines',
+        linesClass: 'reveal-line',
+        // The lines only wrap the real text, so screen readers read it as is. ("auto" would put an
+        // aria-label on the element, which isn't allowed on a paragraph.)
+        aria: 'none',
+        autoSplit: true,
+        onSplit(self) {
+          // A re-split after fonts load or a resize shouldn't replay a reveal that already ran.
+          if (played) return;
+          return gsap.from(self.lines, {
+            yPercent: 110,
+            duration: 1.1,
+            ease: 'expo.out',
+            stagger: 0.08,
+            scrollTrigger: { trigger: el, start: 'top 88%', once: true, onEnter: () => (played = true) },
+          });
+        },
+      });
+    });
+
+    const fades = gsap.utils.toArray<HTMLElement>('[data-reveal="fade"]');
+    if (fades.length > 0) {
+      // Opacity only, never visibility: hidden, so links inside stay in the tab order. Tabbing to one
+      // scrolls it into view, which runs its reveal.
+      gsap.set(fades, { opacity: 0, y: 16 });
+      ScrollTrigger.batch(fades, {
+        start: 'top 90%',
+        once: true,
+        onEnter: (batch) =>
+          gsap.to(batch, { opacity: 1, y: 0, duration: 0.9, ease: 'expo.out', stagger: 0.06, overwrite: true }),
+      });
+    }
+
+    document.querySelectorAll<HTMLElement>('[data-scrub-words]').forEach((el) => {
+      SplitText.create(el, {
+        type: 'words',
+        autoSplit: true,
+        onSplit(self) {
+          return gsap.fromTo(
+            self.words,
+            { opacity: 0.16 },
+            {
+              opacity: 1,
+              ease: 'none',
+              stagger: 0.1,
+              scrollTrigger: { trigger: el, start: 'top 82%', end: 'bottom 45%', scrub: true },
+            },
+          );
+        },
+      });
+    });
   });
 }

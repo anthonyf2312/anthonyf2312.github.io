@@ -1,4 +1,4 @@
-# Secrets: the Pixabay key lives here and never leaves this machine
+# Secrets never leave this machine
 .env
 .env.*
 
@@ -6,14 +6,6 @@
 node_modules/
 dist/
 .astro/
-
-# Impeccable working files (screenshots, mocks, decision page payloads)
-.impeccable/review/
-.impeccable/mocks/
-.impeccable/decision/
-.impeccable/questions/
-.impeccable/hook.cache.json
-.impeccable/config.local.json
 
 # Blender's automatic backup of the brand file
 *.blend1

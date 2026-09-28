@@ -1,0 +1,83 @@
+---
+// Patchr's own site: its brand kit (ink, mist, pink, Inter), its own nav, footer, icons and link preview.
+import '@fontsource-variable/inter';
+import 'lenis/dist/lenis.css';
+import '../styles/base.css';
+import '../styles/patchr.css';
+import Nav from '../components/patchr/Nav.astro';
+import Footer from '../components/patchr/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  isHome?: boolean;
+}
+
+const { title, description, isHome = false } = Astro.props;
+// `site` comes from astro.config.mjs; fall back to the address being served so a page never fails to render.
+const origin = Astro.site ?? Astro.url;
+const canonical = new URL(Astro.url.pathname, origin);
+const ogImage = new URL('/patchr/og-image-1200x630.png', origin);
+const themeColors = { light: '#F4F2FA', dark: '#0E0C1A' };
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content={themeColors.dark} />
+    <script is:inline define:vars={{ storageKey: 'patchr-theme', themeColors }}>
+      // Runs before the page paints: pick the saved theme, or follow the system until one is picked.
+      const root = document.documentElement;
+      root.classList.add('js');
+      const system = matchMedia('(prefers-color-scheme: dark)');
+      const saved = () => {
+        try {
+          return localStorage.getItem(storageKey);
+        } catch (err) {
+          return null;
+        }
+      };
+      const set = (theme) => {
+        root.dataset.theme = theme;
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', themeColors[theme]);
+      };
+      const stored = saved();
+      set(stored === 'light' || stored === 'dark' ? stored : system.matches ? 'dark' : 'light');
+      system.addEventListener('change', (event) => {
+        if (!saved()) set(event.matches ? 'dark' : 'light');
+      });
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/patchr/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/patchr/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/patchr/apple-touch-icon-180.png" />
+    <link rel="manifest" href="/patchr/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Patchr" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="patchr grain">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="nav-sentinel" data-nav-sentinel aria-hidden="true"></div>
+    <Nav isHome={isHome} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      import { initPatchr } from '../scripts/patchr';
+      initPatchr();
+    </script>
+  </body>
+</html>

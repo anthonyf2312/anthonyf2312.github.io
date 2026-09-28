@@ -1,0 +1,35 @@
+---
+// The whole command list, from the Patchr README.
+const commands = [
+  { names: ['/feed add github'], text: 'Post a repo’s releases to a channel' },
+  { names: ['/feed list', '/feed edit', '/feed remove'], text: 'Manage your feeds' },
+  { names: ['/patch'], text: 'Write, preview and post your own notes' },
+  { names: ['/settings'], text: 'Default channel, ping role, publishing and thumbnails' },
+  { names: ['/help'], text: 'How it all works' },
+];
+---
+
+<section class="commands section" id="commands" aria-labelledby="commands-title">
+  <div class="container commands__inner">
+    <div class="commands__intro">
+      <h2 class="p-h2" id="commands-title" data-reveal="lines">A handful of commands.</h2>
+      <p class="p-lead" data-reveal="fade">
+        By default they need Manage Server. You can change that in Server Settings, under Integrations.
+      </p>
+    </div>
+    <dl class="commands__list">
+      {
+        commands.map((command) => (
+          <div class="command" data-reveal="fade">
+            <dt>
+              {command.names.map((name) => (
+                <code>{name}</code>
+              ))}
+            </dt>
+            <dd>{command.text}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>

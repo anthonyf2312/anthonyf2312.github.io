@@ -1,0 +1,103 @@
+---
+// What Patchr actually posts, drawn in Discord's own colours: its v1.0.0 release, laid out the way
+// src/core/render/card.ts in the Patchr repo lays it out (repo line and update size, heading, badges,
+// footer, link buttons). "pulled" shows the grey version a post turns into when its release is pulled.
+import { Image } from 'astro:assets';
+import avatar from '../../assets/patchr/patchr-footer-256.png';
+import badgeFix from '../../assets/patchr/badge-fix-128.png';
+import badgeNew from '../../assets/patchr/badge-new-128.png';
+import Icon from '../Icon.astro';
+
+interface Props {
+  /** "full" for the hero, "compact" for the smaller how-it-works panels. */
+  size?: 'full' | 'compact';
+  pulled?: boolean;
+  /** Build the post line by line when the page loads. */
+  animate?: boolean;
+}
+
+const { size = 'full', pulled = false, animate = false } = Astro.props;
+const compact = size === 'compact';
+
+const added = [
+  'post GitHub releases to Discord as they’re published',
+  'edit a release on GitHub and its Discord post updates to match',
+  'write your own patch notes with /patch, and check a private preview before posting',
+];
+const shownAdded = compact ? added.slice(0, 2) : added;
+
+// Each line gets an index so the build-in can stagger it.
+let i = 0;
+const next = () => `--i: ${i++}`;
+---
+
+<div class:list={['dc', `dc--${size}`, { 'dc--pulled': pulled, 'dc--animate': animate }]} aria-hidden="true">
+  <p class="dc__channel" style={next()}><span>#</span> announcements</p>
+  <div class="dc__msg" style={next()}>
+    <Image class="dc__avatar" src={avatar} alt="" width={40} height={40} densities={[1, 2]} />
+    <div class="dc__main">
+      <p class="dc__head">
+        <span class="dc__name">Patchr</span>
+        <span class="dc__app">APP</span>
+        <span class="dc__time">Today at 18:02</span>
+      </p>
+      <div class="dc__card">
+        <p class="dc__sub" style={next()}>
+          <span class="dc__link">anthonyf2312/patchr</span> · Major update
+        </p>
+        <p class="dc__title" style={next()}>patchr v1.0.0</p>
+        {
+          pulled && (
+            <p class="dc__pulled" style={next()}>
+              <strong>Release pulled.</strong> It’s no longer on GitHub.
+            </p>
+          )
+        }
+        <hr class="dc__sep" />
+        <p class="dc__h" style={next()}>
+          <Image src={badgeNew} alt="" width={20} height={20} densities={[1, 2]} />New
+        </p>
+        <ul class="dc__list" style={next()}>
+          {
+            shownAdded.map((item) => (
+              <li>
+                {item} <span class="dc__hash">(0df2142)</span>
+              </li>
+            ))
+          }
+        </ul>
+        {
+          !compact && (
+            <>
+              <p class="dc__h" style={next()}>
+                <Image src={badgeFix} alt="" width={20} height={20} densities={[1, 2]} />
+                Fixes
+              </p>
+              <ul class="dc__list" style={next()}>
+                <li>
+                  allow any characters in POSTGRES_PASSWORD <span class="dc__hash">(2dd5bf4)</span>
+                </li>
+              </ul>
+            </>
+          )
+        }
+        <p class="dc__foot" style={next()}>
+          <Image src={avatar} alt="" width={16} height={16} densities={[1, 2]} />
+          Released 23 September 2026 · by <span class="dc__link">@anthonyf2312</span>
+        </p>
+        {
+          !pulled && (
+            <div class="dc__buttons" style={next()}>
+              <span class="dc__btn">
+                View on GitHub <Icon name="arrow-up-right" />
+              </span>
+              <span class="dc__btn">
+                Full changelog <Icon name="arrow-up-right" />
+              </span>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</div>

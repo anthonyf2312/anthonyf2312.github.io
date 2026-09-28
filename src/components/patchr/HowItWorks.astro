@@ -1,0 +1,55 @@
+---
+// Three steps with a sticky picture beside them (Apple's sticky swap). The picture changes as each step
+// reaches the middle of the screen (patchr.ts). Without JS, each step shows its own picture.
+import Icon from '../Icon.astro';
+import ExamplePost from './ExamplePost.astro';
+
+const steps = [
+  {
+    title: 'Publish a release on GitHub.',
+    text: 'Point Patchr at a public repo and a channel with /feed add github. That’s the whole setup.',
+  },
+  {
+    title: 'Patchr posts it.',
+    text: 'A few minutes later the notes land in your channel, formatted, with badges for what’s new, fixed and changed.',
+  },
+  {
+    title: 'Change it on GitHub, and the post follows.',
+    text: 'Edit a release and its post updates to match. Pull one, and its post turns grey and says so.',
+  },
+];
+---
+
+<section class="how section" aria-labelledby="how-title">
+  <div class="container">
+    <h2 class="p-h2 how__title" id="how-title" data-reveal="lines">Set it up once.</h2>
+    <div class="how__grid" data-steps>
+      <div class="how__stage" aria-hidden="true">
+        <div class="how__visual is-active" data-step-visual>
+          <div class="gh">
+            <p class="gh__repo"><Icon name="github" /> anthonyf2312/patchr</p>
+            <p class="gh__tag">v1.0.0</p>
+            <p class="gh__status"><span class="gh__latest">Latest</span> Release published</p>
+            <div class="gh__notes">
+              <p class="gh__h">New</p>
+              <p>post GitHub releases to Discord as they’re published</p>
+              <p>edit a release on GitHub and its Discord post updates to match</p>
+            </div>
+          </div>
+        </div>
+        <div class="how__visual" data-step-visual><ExamplePost size="compact" /></div>
+        <div class="how__visual" data-step-visual><ExamplePost size="compact" pulled /></div>
+      </div>
+      <ol class="how__steps" role="list">
+        {
+          steps.map((step, i) => (
+            <li class="how__step" data-step>
+              <h3 class="how__step-title">{step.title}</h3>
+              <p class="how__step-text">{step.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

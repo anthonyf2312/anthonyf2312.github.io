@@ -1,0 +1,58 @@
+---
+// Short answers, each checked against the README, the terms and the privacy policy.
+import { support } from '../../data/patchr/links';
+import ExternalLink from '../ExternalLink.astro';
+import Icon from '../Icon.astro';
+---
+
+<section class="faq section" id="faq" aria-labelledby="faq-title">
+  <div class="container faq__inner">
+    <h2 class="p-h2" id="faq-title" data-reveal="lines">Questions.</h2>
+    <div class="faq__list" data-reveal="fade">
+      <details>
+        <summary>Is Patchr free?<Icon name="plus" class="faq__icon" /></summary>
+        <div class="faq__answer"><p>Yes. It costs nothing and there’s nothing to buy.</p></div>
+      </details>
+      <details>
+        <summary>Who can use its commands?<Icon name="plus" class="faq__icon" /></summary>
+        <div class="faq__answer">
+          <p>
+            Members with Manage Server, by default. Change it in Server Settings, under Integrations, then Patchr.
+          </p>
+        </div>
+      </details>
+      <details>
+        <summary>Does it read my server’s messages?<Icon name="plus" class="faq__icon" /></summary>
+        <div class="faq__answer">
+          <p>
+            No. Patchr doesn’t read messages, member lists or direct messages, and it doesn’t ask Discord for the
+            permissions that would let it.
+          </p>
+        </div>
+      </details>
+      <details>
+        <summary>What does it keep, and for how long?<Icon name="plus" class="faq__icon" /></summary>
+        <div class="faq__answer">
+          <p>
+            Only what it needs to post: your settings, your feeds and a record of each post. Remove Patchr and
+            everything it stored for your server is deleted. The <a href="/patchr/privacy/">privacy policy</a> has
+            the details.
+          </p>
+        </div>
+      </details>
+      <details>
+        <summary>Can I run my own copy?<Icon name="plus" class="faq__icon" /></summary>
+        <div class="faq__answer"><p>Yes. It’s MIT licensed and ships with a Docker setup. See above.</p></div>
+      </details>
+      <details>
+        <summary>Where do I get help?<Icon name="plus" class="faq__icon" /></summary>
+        <div class="faq__answer">
+          <p>
+            In the <ExternalLink href={support}>support server</ExternalLink>. Bug reports and ideas are welcome there
+            too.
+          </p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>

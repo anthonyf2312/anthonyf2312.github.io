@@ -1,393 +1,987 @@
-@import '@fontsource-variable/inter/opsz.css';
-@import './reveal.css';
+/* Patchr's site, in its own brand kit: deep ink / mist, one pink accent, Inter.
+   Radii: buttons are pills, cards 24px, the example "screens" (Discord, GitHub, terminal) 20px, chips 12px. */
 
-@view-transition {
-  navigation: auto;
+.patchr {
+  --font-display: 'Inter Variable', system-ui, sans-serif;
+  --font-body: 'Inter Variable', system-ui, sans-serif;
+  --display-weight: 800;
+  --display-tracking: -0.04em;
+
+  --bg: light-dark(#f4f2fa, #0e0c1a);
+  --bg-2: light-dark(#ece9f6, #141126);
+  --surface: light-dark(#ffffff, #17142b);
+  --text: light-dark(#17142b, #f4f2fa);
+  --text-2: light-dark(#615d7a, #bdb7d9);
+  --line: light-dark(rgb(23 20 43 / 0.1), rgb(189 183 217 / 0.14));
+  --line-strong: light-dark(rgb(23 20 43 / 0.22), rgb(189 183 217 / 0.3));
+  --hover-wash: light-dark(rgb(23 20 43 / 0.05), rgb(244 242 250 / 0.07));
+
+  /* Pink fills carry ink text; pink text on mist is deepened so it stays readable. */
+  --accent: #ff5e8a;
+  --accent-hover: #ff7ea1;
+  --on-accent: #17142b;
+  --accent-text: light-dark(#c81e57, #ff5e8a);
+  --focus: light-dark(#c81e57, #ff5e8a);
+  --glow-pink: light-dark(rgb(255 94 138 / 0.16), rgb(255 94 138 / 0.2));
+  --glow-lilac: light-dark(rgb(139 124 255 / 0.16), rgb(139 124 255 / 0.22));
+  --shadow: light-dark(rgb(23 20 43 / 0.22), rgb(0 0 0 / 0.55));
+  --screen-radius: 20px;
+}
+:root[data-theme='light'] .patchr {
+  --grain: 0.03;
 }
 
-/* ---------- Tokens: Patchr's brand kit (brand/BRAND.md) ---------- */
-
-:root {
-  /* Grounds: deep ink and ink for dark sections, mist and white for light ones. */
-  --deep: #0e0c1a;
-  --ink: #17142b;
-  --mist: #f4f2fa;
-  --white: #ffffff;
-
-  /* Text. Haze is secondary on dark, muted is secondary on light. */
-  --on-dark: #ffffff;
-  --haze: #bdb7d9;
-  --muted: #6b6785;
-
-  /* Pink is the one action colour and the newest change. Ink text sits on it, never white. */
-  --pink: #ff5e8a;
-  --pink-hover: #ff779c;
-  /* Pink as text on light grounds (5:1 on mist). Raw pink is for fills, strokes and text on dark. */
-  --pink-text: #c81e57;
-
-  /* Mint and lilac belong to the Fix and Change badges only. */
-  --mint: #3ddc97;
-  --lilac: #8b7cff;
-
-  --line-dark: rgb(189 183 217 / 0.14);
-  --line-light: #e2deef;
-
-  /*
-    Discord's own UI greys. They appear only inside the Discord screens (product shots),
-    the way a phone screen keeps its own colours inside a product photo.
-  */
-  --dc-bg: #313338;
-  --dc-surface: #2b2d31;
-  --dc-deep: #1e1f22;
-  --dc-text: #dbdee1;
-  --dc-head: #f2f3f5;
-  --dc-muted: #949ba4;
-  --dc-link: #00a8fc;
-  --dc-blurple: #5865f2;
-  --dc-sep: #3f4147;
-  --dc-button: #4e5058;
-
-  --font: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Consolas, monospace;
-
-  --s1: 0.5rem;
-  --s2: 1rem;
-  --s3: 1.5rem;
-  --s4: 2rem;
-  --s6: 3rem;
-  --s8: 4rem;
-  --s12: 6rem;
-  --s16: 8rem;
-
-  --container: 1120px;
-  --gutter: clamp(1.25rem, 5vw, 3rem);
-  --radius: 24px;
-  --section-y: clamp(5.5rem, 12vw, 9.5rem);
-  --nav-h: 3.75rem;
-
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-
-  color-scheme: dark;
-  scrollbar-color: #3a3552 var(--deep);
+/* Type */
+.p-display,
+.p-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+.p-display {
+  font-size: clamp(2.75rem, 4.8vw, 4.25rem);
+  line-height: 1.02;
+}
+.p-h2 {
+  font-size: clamp(2.1rem, 4.2vw, 3.5rem);
+  line-height: 1.06;
+  max-width: 18ch;
+}
+.p-lead {
+  font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--text-2);
+  max-width: 42ch;
 }
 
-/* ---------- Base ---------- */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* Logo: the mark plus the live wordmark. */
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: -0.04em;
+  line-height: 1;
 }
-
-html {
-  -webkit-text-size-adjust: 100%;
-  scroll-padding-top: calc(var(--nav-h) + 1rem);
-  background: var(--deep);
+.wordmark__mark {
+  width: 30px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
+.nav__brand {
+  margin-right: auto;
+  text-decoration: none;
+}
+.nav__cta {
+  margin-left: 0.5rem;
+}
+@media (max-width: 899px) {
+  .nav__sections {
+    display: none;
+  }
+}
+@media (max-width: 420px) {
+  .nav__cta .icon {
+    display: none;
   }
 }
 
-body {
-  margin: 0;
-  background: var(--deep);
-  color: var(--on-dark);
-  font-family: var(--font);
-  font-optical-sizing: auto;
-  font-size: 1.0625rem;
-  line-height: 1.55;
-  letter-spacing: -0.011em;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+/* Hero */
+.phero {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-block: calc(var(--nav-h) + clamp(3rem, 9vh, 6rem)) clamp(3rem, 7vw, 5rem);
 }
-
-h1,
-h2,
-h3,
-p,
-figure,
-blockquote,
-ul,
-ol,
-dl,
-dd {
-  margin: 0;
-}
-
-ul,
-ol {
-  padding: 0;
-  list-style: none;
-}
-
-img,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-a {
-  color: inherit;
-  text-underline-offset: 0.2em;
-  text-decoration-thickness: 1px;
-}
-
-code {
-  font-family: var(--mono);
-  font-size: 0.92em;
-}
-
-::selection {
-  background: var(--pink);
-  color: var(--ink);
-}
-
-:focus-visible {
-  outline: 2px solid var(--pink);
-  outline-offset: 3px;
-  border-radius: 8px;
-}
-
-.container {
-  width: min(100% - 2 * var(--gutter), var(--container));
-  margin-inline: auto;
-}
-
-.visually-hidden {
+.phero__glow {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(45% 55% at 85% 20%, var(--glow-pink), transparent 70%),
+    radial-gradient(40% 50% at 55% 90%, var(--glow-lilac), transparent 70%);
 }
-
-.skip {
-  position: fixed;
-  top: var(--s1);
-  left: var(--s1);
-  z-index: 30;
-  padding: var(--s1) var(--s2);
-  border-radius: 980px;
-  background: var(--pink);
-  color: var(--ink);
-  font-weight: 650;
-  translate: 0 -200%;
+.phero__grid {
+  display: grid;
+  gap: clamp(3rem, 6vw, 5rem);
+  align-items: center;
 }
-
-.skip:focus-visible {
-  translate: 0 0;
+.phero__sub {
+  margin-top: 1.5rem;
 }
-
-/* ---------- Grounds ---------- */
-
-/* Dark is the default ground. Light sections carry .light so the nav can follow them. */
-.light {
-  background: var(--white);
-  color: var(--ink);
-  color-scheme: light;
+.phero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
 }
-
-.light.mist {
-  background: var(--mist);
+.phero__visual {
+  margin: 0;
+  justify-self: center;
+  width: min(100%, 520px);
 }
-
-/* ---------- Type ---------- */
-
-.display {
-  font-size: clamp(2.875rem, 6.4vw, 5.25rem);
-  font-weight: 800;
-  line-height: 0.98;
-  letter-spacing: -0.04em;
-  text-wrap: balance;
-}
-
-.headline {
-  font-size: clamp(2.25rem, 4.8vw, 3.875rem);
-  font-weight: 800;
-  line-height: 1.04;
-  letter-spacing: -0.035em;
-  text-wrap: balance;
-}
-
-.title {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.022em;
-}
-
-.lead {
-  font-size: clamp(1.125rem, 1.65vw, 1.375rem);
-  font-weight: 500;
-  line-height: 1.45;
-  letter-spacing: -0.016em;
-  text-wrap: pretty;
-}
-
-.body {
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  text-wrap: pretty;
-}
-
-.fine {
+.phero__caption {
+  margin-top: 0.9rem;
+  text-align: center;
   font-size: 0.8125rem;
-  line-height: 1.5;
+  color: var(--text-2);
+}
+.pfacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2.5rem;
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding: 1.5rem 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+  color: var(--text-2);
+  font-weight: 550;
+}
+.pfacts li:first-child {
+  color: var(--text);
+}
+@media (min-width: 960px) {
+  .phero__grid {
+    grid-template-columns: 7fr 5fr;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .phero__copy > * {
+    animation: p-fade 0.9s var(--ease-out) both;
+  }
+  .phero__sub {
+    animation-delay: 0.08s;
+  }
+  .phero__actions {
+    animation-delay: 0.16s;
+  }
+}
+@keyframes p-fade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
 }
 
-.dim {
-  color: var(--haze);
+/* The example post, in Discord's own dark colours in both themes: it's a picture of Discord. */
+.dc {
+  --dc-bg: #313338;
+  --dc-card: #2b2d31;
+  --dc-text: #dbdee1;
+  --dc-strong: #f2f3f5;
+  --dc-muted: #949ba4;
+  --dc-link: #00a8fc;
+  --dc-accent: #ff5e8a;
+  padding: 1rem 1.25rem 1.25rem;
+  border-radius: var(--screen-radius);
+  background: var(--dc-bg);
+  color: var(--dc-text);
+  font-size: 15px;
+  line-height: 1.375;
+  text-align: left;
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.06),
+    0 40px 90px -30px var(--shadow);
 }
-
-.light .dim {
-  color: var(--muted);
+.dc--pulled {
+  --dc-accent: #80848e;
 }
-
-/* ---------- Actions ---------- */
-
-.actions {
+.dc__channel {
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.07);
+  color: var(--dc-strong);
+  font-weight: 600;
+}
+.dc__channel span {
+  margin-right: 0.2rem;
+  color: var(--dc-muted);
+  font-size: 1.2em;
+}
+.dc__msg {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 14px;
+}
+.dc__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.dc__head {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--s2);
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+.dc__name {
+  color: var(--dc-strong);
+  font-weight: 600;
+}
+.dc__app {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: #5865f2;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.dc__time {
+  color: var(--dc-muted);
+  font-size: 12px;
+}
+.dc__card {
+  padding: 12px 16px 14px;
+  border-radius: 8px;
+  border-left: 4px solid var(--dc-accent);
+  background: var(--dc-card);
+  transition: border-color 300ms ease;
+}
+.dc__sub {
+  font-size: 12px;
+  color: var(--dc-muted);
+}
+.dc__link,
+.dc__hash {
+  color: var(--dc-link);
+}
+.dc__title {
+  margin-top: 2px;
+  color: var(--dc-strong);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.dc__pulled {
+  margin-top: 6px;
+}
+.dc__pulled strong {
+  color: var(--dc-strong);
+}
+.dc__sep {
+  margin: 10px 0;
+  border: 0;
+  border-top: 1px solid rgb(255 255 255 / 0.08);
+}
+.dc__h {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  color: var(--dc-strong);
+  font-size: 16px;
+  font-weight: 700;
+}
+.dc__h img {
+  width: 20px;
+  height: 20px;
+}
+.dc__list {
+  margin: 4px 0 0;
+  padding-left: 1.2rem;
+}
+.dc__list li + li {
+  margin-top: 2px;
+}
+.dc__list li::marker {
+  color: var(--dc-muted);
+}
+.dc__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--dc-muted);
+}
+.dc__foot img {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+.dc__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.dc__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #4e5058;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+.dc__btn .icon {
+  width: 14px;
+  height: 14px;
+}
+.dc--compact {
+  padding: 1rem;
+  font-size: 14px;
+}
+.dc--compact .dc__channel {
+  display: none;
+}
+.dc--compact .dc__title {
+  font-size: 18px;
 }
 
-.btn {
-  display: inline-flex;
+/* The hero post builds itself: the window arrives, then each line of the note. */
+@media (prefers-reduced-motion: no-preference) {
+  .dc--animate {
+    animation: dc-arrive 0.9s var(--ease-out) 0.2s both;
+  }
+  .dc--animate [style*='--i'] {
+    animation: dc-line 0.6s var(--ease-out) both;
+    animation-delay: calc(0.55s + var(--i) * 0.08s);
+  }
+}
+@keyframes dc-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.98);
+  }
+}
+@keyframes dc-line {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(2px);
+  }
+}
+
+/* How it works: a sticky picture beside the steps. Without JS it's a plain list next to the first picture. */
+.how__title {
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+.how__grid {
+  display: grid;
+  gap: 2rem;
+}
+.how__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 420px;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  border-radius: var(--radius-card);
+  background:
+    radial-gradient(60% 60% at 80% 10%, var(--glow-pink), transparent 70%),
+    radial-gradient(60% 60% at 10% 100%, var(--glow-lilac), transparent 70%),
+    var(--bg-2);
+  overflow: clip;
+}
+.how__visual {
+  grid-area: 1 / 1;
+  width: min(100%, 440px);
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  filter: blur(4px);
+  transition:
+    opacity 450ms var(--ease-out),
+    transform 450ms var(--ease-out),
+    filter 450ms var(--ease-out);
+}
+.how__visual.is-active {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+.how__steps {
+  display: grid;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.how__step-title {
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 750;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+.how__step-text {
+  margin-top: 0.75rem;
+  color: var(--text-2);
+  max-width: 38ch;
+}
+/* The current step is marked by colour and a pink bar, not by fading the others, so every step stays readable. */
+.how__step {
+  position: relative;
+}
+.is-live .how__step-title {
+  color: var(--text-2);
+  transition: color 300ms ease;
+}
+.is-live .how__step.is-active .how__step-title {
+  color: var(--text);
+}
+.is-live .how__step::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * clamp(1rem, 2vw, 1.5rem));
+  top: 50%;
+  width: 3px;
+  height: 4.5rem;
+  margin-top: -2.25rem;
+  border-radius: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transition: transform 350ms var(--ease-out);
+}
+.is-live .how__step.is-active::before {
+  transform: scaleY(1);
+}
+@media (min-width: 900px) {
+  .how__grid {
+    grid-template-columns: 6fr 5fr;
+    gap: clamp(3rem, 6vw, 6rem);
+  }
+  .how__grid.is-live .how__stage {
+    position: sticky;
+    top: calc(var(--nav-h) + 6vh);
+    height: min(76svh, 620px);
+  }
+  .is-live .how__steps {
+    gap: 0;
+  }
+  .is-live .how__step {
+    min-height: 72svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+@media (max-width: 899px) {
+  /* Phones: the step text sits at the top of each step, so the bar lines up with the title. */
+  .is-live .how__step::before {
+    left: -0.7rem;
+    top: 2.1rem;
+    height: 2.2rem;
+    margin-top: 0;
+  }
+  .how__grid.is-live .how__stage {
+    position: sticky;
+    top: calc(var(--nav-h) + 0.5rem);
+    z-index: 2;
+    height: 50svh;
+    min-height: 0;
+    box-shadow: 0 0 0 12px var(--bg);
+  }
+  .is-live .how__step {
+    min-height: 45svh;
+    padding-top: 2rem;
+  }
+  .how__stage .dc {
+    font-size: 13px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .how__visual {
+    transform: none;
+    filter: none;
+  }
+}
+
+/* The GitHub side of step one: a plain release card, not a copy of GitHub's page. */
+.gh {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: var(--screen-radius);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 40px 90px -30px var(--shadow);
+}
+.gh__repo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-2);
+  font-size: 0.9375rem;
+  font-weight: 550;
+}
+.gh__tag {
+  margin-top: 0.75rem;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+.gh__status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+  color: var(--text-2);
+  font-size: 0.9375rem;
+}
+.gh__latest {
+  padding: 0.05rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+.gh__notes {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--text-2);
+  font-size: 0.9375rem;
+}
+.gh__h {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* Features: four cells, each with its own picture and background. */
+.bento {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+.cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-height: 340px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  overflow: clip;
+}
+.cell h3 {
+  font-size: 1.375rem;
+  font-weight: 750;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+.cell p {
+  color: var(--text-2);
+  max-width: 46ch;
+}
+.cell__art {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  min-height: 3rem;
-  padding: 0 1.375rem;
-  border-radius: 980px;
-  font-size: 1rem;
-  font-weight: 650;
-  letter-spacing: -0.012em;
-  line-height: 1;
-  text-decoration: none;
-  white-space: nowrap;
-  transition:
-    background-color 200ms ease,
-    border-color 200ms ease,
-    color 200ms ease,
-    scale 200ms var(--ease-out);
+  gap: 0.75rem;
+  min-height: 140px;
+  margin-bottom: 1rem;
+}
+.cell--releases {
+  background: radial-gradient(70% 90% at 90% 0%, var(--glow-pink), transparent 65%), var(--surface);
+}
+.cell--patch {
+  border-color: transparent;
+  background: radial-gradient(80% 80% at 100% 0%, rgb(255 94 138 / 0.22), transparent 60%), #17142b;
+  color: #f4f2fa;
+}
+.cell--patch p {
+  color: #bdb7d9;
+}
+.cell--announce {
+  background: radial-gradient(70% 100% at 0% 100%, var(--glow-lilac), transparent 65%), var(--surface);
+}
+@media (min-width: 900px) {
+  .bento {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .cell--wide {
+    grid-column: span 2;
+  }
 }
 
-.btn svg {
-  flex: none;
-}
-
-.btn:active {
-  scale: 0.97;
-}
-
-/* The live primary action: solid pink with ink text. */
-.btn--pink {
-  background: var(--pink);
-  color: var(--ink);
-}
-
-.btn--pink:hover {
-  background: var(--pink-hover);
-}
-
-/* Outline: the secondary action beside a pill. */
-.btn--ghost {
-  border: 1px solid rgb(255 255 255 / 0.22);
-  color: var(--on-dark);
-}
-
-.btn--ghost:hover {
-  border-color: rgb(255 255 255 / 0.5);
-  background: rgb(255 255 255 / 0.06);
-}
-
-.light .btn--ghost {
-  border-color: rgb(23 20 43 / 0.2);
-  color: var(--ink);
-}
-
-.light .btn--ghost:hover {
-  border-color: rgb(23 20 43 / 0.45);
-  background: rgb(23 20 43 / 0.04);
-}
-
-/* Ink: the primary pill on the pink band, where a pink pill would vanish. */
-.btn--ink {
-  background: var(--ink);
-  color: var(--white);
-}
-
-.btn--ink:hover {
-  background: #2a2546;
-}
-
-/* Outline in ink, the secondary action on the pink band. */
-.btn--ink-ghost {
-  border: 1px solid rgb(23 20 43 / 0.35);
-  color: var(--ink);
-}
-
-.btn--ink-ghost:hover {
-  border-color: var(--ink);
-  background: rgb(23 20 43 / 0.06);
-}
-
-.btn--sm {
-  min-height: 2.5rem;
-  padding: 0 1rem;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-}
-
-/* Text link with a chevron or external glyph. */
-.text-link {
+.chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.25em;
-  min-height: 2.75rem;
-  color: var(--pink);
-  font-weight: 620;
-  text-decoration: none;
-  background: linear-gradient(currentColor, currentColor) 0 calc(100% - 0.6rem) / 0 1px no-repeat;
-  transition: background-size 300ms var(--ease-out);
-}
-
-.text-link:hover {
-  background-size: calc(100% - 1.3em) 1px;
-}
-
-.text-link svg {
-  transition: translate 200ms var(--ease-out);
-}
-
-.text-link:hover svg {
-  translate: 2px -2px;
-}
-
-.light .text-link {
-  color: var(--pink-text);
-}
-
-/* A slash command, set the way Discord shows it in a message. */
-.cmd {
-  display: inline-block;
-  padding: 0.1em 0.45em;
-  border-radius: 6px;
-  background: rgb(255 94 138 / 0.14);
-  color: #ffb3c7;
-  font-family: var(--mono);
-  font-size: 0.9em;
-  font-weight: 500;
-  letter-spacing: 0;
+  gap: 0.5rem;
+  padding: 0.6rem 0.95rem;
+  border-radius: var(--radius-chip);
+  border: 1px solid var(--line);
+  background: var(--bg);
+  font-size: 0.9375rem;
+  font-weight: 600;
   white-space: nowrap;
 }
+.chip--channel span {
+  color: var(--text-2);
+}
+.flow {
+  position: relative;
+  flex: 0 1 140px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--line-strong), var(--accent));
+}
+.flow__dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent);
+  opacity: 0;
+}
+@media (max-width: 599px) {
+  .cell--releases .cell__art {
+    flex-direction: column;
+  }
+  .flow {
+    flex: none;
+    width: 56px;
+    transform: rotate(90deg);
+    margin-block: 1.5rem;
+  }
+}
+.cell--patch .cell__art {
+  flex-direction: column;
+}
+.slash {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: min(100%, 320px);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-chip);
+  background: #383a40;
+  color: #dbdee1;
+  font-size: 0.9375rem;
+}
+.slash__cmd {
+  color: #fff;
+  font-weight: 700;
+}
+.private {
+  color: #bdb7d9;
+  font-size: 0.8125rem;
+}
+.badges {
+  gap: 1.5rem;
+}
+.badge {
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.badge img {
+  width: 56px;
+  height: 56px;
+}
+.role {
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius-chip);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  color: var(--accent-text);
+  font-weight: 650;
+}
+.chip--follow .icon {
+  color: var(--accent-text);
+}
 
-.light .cmd {
-  background: rgb(200 30 87 / 0.08);
-  color: var(--pink-text);
+/* Commands */
+.commands__inner {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+.commands__intro .p-lead {
+  margin-top: 1.25rem;
+}
+.commands__list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+}
+.command {
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+  padding: 1.35rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.command dt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.command code {
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-chip);
+  background: color-mix(in srgb, var(--accent) 13%, transparent);
+  color: var(--accent-text);
+  font-family: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.command dd {
+  margin: 0;
+  color: var(--text-2);
+}
+@media (min-width: 640px) {
+  .commands__list {
+    grid-template-columns: 1fr 1fr;
+  }
+  /* The one most people start with gets the full width. */
+  .command:first-child {
+    grid-column: 1 / -1;
+  }
+}
+@media (min-width: 900px) {
+  .commands__inner {
+    grid-template-columns: 5fr 7fr;
+    align-items: start;
+  }
+  .commands__intro {
+    position: sticky;
+    top: calc(var(--nav-h) + 2rem);
+  }
+}
+
+/* Run your own */
+.selfhost__grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+.selfhost .p-lead {
+  margin-top: 1.25rem;
+}
+.selfhost .text-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+}
+.code {
+  border-radius: var(--screen-radius);
+  background: #17142b;
+  color: #f4f2fa;
+  overflow: clip;
+  box-shadow: 0 40px 90px -30px var(--shadow);
+}
+.code__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.6rem 0.6rem 1.25rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.08);
+  color: #bdb7d9;
+  font-size: 0.875rem;
+  font-weight: 550;
+}
+.code__copy {
+  display: inline-grid;
+  grid-template-columns: 16px auto;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 36px;
+  padding: 0 0.85rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.07);
+  color: #f4f2fa;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition:
+    background-color 200ms ease,
+    transform 160ms var(--ease-out);
+}
+.code__copy:active {
+  transform: scale(0.97);
+}
+@media (hover: hover) and (pointer: fine) {
+  .code__copy:hover {
+    background: rgb(255 255 255 / 0.13);
+  }
+}
+.code__icon {
+  grid-area: 1 / 1;
+  width: 16px;
+  height: 16px;
+  transition:
+    opacity 200ms var(--ease-out),
+    transform 200ms var(--ease-out),
+    filter 200ms var(--ease-out);
+}
+.code__icon--done,
+.is-copied .code__icon--copy {
+  opacity: 0;
+  transform: scale(0.8);
+  filter: blur(2px);
+}
+.is-copied .code__icon--done {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  color: var(--accent);
+}
+.code pre {
+  margin: 0;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.8;
+}
+.code__line {
+  display: block;
+  white-space: pre;
+}
+@media (min-width: 900px) {
+  .selfhost__grid {
+    grid-template-columns: 5fr 7fr;
+  }
+}
+
+/* FAQ */
+.faq__inner {
+  display: grid;
+  gap: 2rem;
+}
+.faq__list {
+  border-top: 1px solid var(--line);
+}
+.faq details {
+  border-bottom: 1px solid var(--line);
+}
+.faq summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 44px;
+  padding: 1.25rem 0;
+  font-size: 1.125rem;
+  font-weight: 650;
+  cursor: pointer;
+  list-style: none;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq__icon {
+  width: 20px;
+  height: 20px;
+  color: var(--text-2);
+  transition: transform 250ms var(--ease-out);
+}
+.faq details[open] .faq__icon {
+  transform: rotate(45deg);
+}
+.faq__answer {
+  max-width: 60ch;
+  padding-bottom: 1.35rem;
+  color: var(--text-2);
+}
+.faq__answer a {
+  color: var(--accent-text);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .faq details[open] .faq__answer {
+    animation: faq-in 300ms var(--ease-out);
+  }
+}
+@keyframes faq-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+@media (min-width: 900px) {
+  .faq__inner {
+    grid-template-columns: 5fr 7fr;
+    align-items: start;
+  }
+}
+
+/* Closing band: Patchr's ink, in both themes. */
+.cta {
+  padding-top: 0;
+}
+.cta__band {
+  display: grid;
+  justify-items: center;
+  gap: 1.75rem;
+  padding: clamp(3.5rem, 8vw, 6.5rem) var(--gutter);
+  border-radius: var(--radius-card);
+  text-align: center;
+  color: #f4f2fa;
+  background:
+    radial-gradient(55% 80% at 15% 0%, rgb(139 124 255 / 0.4), transparent 65%),
+    radial-gradient(55% 80% at 85% 100%, rgb(255 94 138 / 0.38), transparent 65%),
+    #17142b;
+  overflow: clip;
+}
+.cta__band .p-h2 {
+  max-width: 14ch;
+}
+.cta__mark {
+  width: 84px;
+}
+.cta__mark svg {
+  overflow: visible;
+}
+
+/* Footer */
+.pfooter {
+  padding-block: clamp(3rem, 7vw, 5rem) 2.5rem;
+  border-top: 1px solid var(--line);
+}
+.pfooter__inner {
+  display: grid;
+  gap: 2rem;
+}
+.pfooter__brand p {
+  margin-top: 0.6rem;
+  color: var(--text-2);
+}
+.pfooter__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  padding: 0;
+  list-style: none;
+  font-weight: 550;
+}
+.pfooter__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .pfooter__links a:hover {
+    color: var(--accent-text);
+  }
+}
+.pfooter__fine {
+  font-size: 0.875rem;
+  color: var(--text-2);
+}
+@media (min-width: 900px) {
+  .pfooter__inner {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+  .pfooter__fine {
+    grid-column: 1 / -1;
+  }
 }

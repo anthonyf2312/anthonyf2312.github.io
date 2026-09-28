@@ -1,0 +1,43 @@
+---
+// F1: the headline next to Lando's helmet, which tilts towards the pointer (home.ts). Then a full-width band
+// where the car drives across the screen as you scroll.
+import { Picture } from 'astro:assets';
+import helmet from '../../assets/photos/helmet.jpg';
+import profile from '../../assets/photos/profile.jpg';
+---
+
+<section class="f1 section" id="f1" aria-labelledby="f1-title">
+  <div class="container f1__grid">
+    <div class="f1__copy">
+      <h2 class="display-2" id="f1-title" data-reveal="lines">Formula 1 is my sport.</h2>
+      <p class="lead" data-reveal="fade">McLaren is my team. Lando Norris is my driver.</p>
+    </div>
+    <figure class="helmet" data-reveal="fade">
+      <div class="helmet__card" data-tilt>
+        <Picture
+          class="helmet__photo"
+          src={helmet}
+          formats={['avif', 'webp']}
+          widths={[600, 900, 1400]}
+          sizes="(max-width: 899px) 90vw, 42vw"
+          alt="Lando Norris’s 2024 race helmet: fluorescent yellow with black swirls."
+          loading="lazy"
+        />
+        <div class="helmet__glare" aria-hidden="true"></div>
+      </div>
+      <figcaption class="helmet__caption">Lando’s 2024 helmet.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="band" data-band>
+  <Picture
+    class="band__photo"
+    src={profile}
+    formats={['avif', 'webp']}
+    widths={[960, 1600, 2400]}
+    sizes="120vw"
+    alt="Lando Norris’s McLaren from the side, at speed at the 2025 Japanese Grand Prix."
+    loading="lazy"
+  />
+</div>

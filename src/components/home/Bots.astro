@@ -1,0 +1,70 @@
+---
+// What I build. A statement that lights up as you scroll, then four equal tiles in a grid: Patchr and
+// Insko Bot side by side, then how I build them and where the code lives (tiles.ts animates them in).
+import { Image, Picture } from 'astro:assets';
+import ExternalLink from '../ExternalLink.astro';
+import Icon from '../Icon.astro';
+import inskoAvatar from '../../assets/insko-avatar.png';
+import patchrRender from '../../assets/patchr/hero-3d-bg.png';
+---
+
+<section class="bots" id="bots" aria-labelledby="bots-title">
+  <div class="container">
+    <h2 class="statement" id="bots-title" data-scrub-words>
+      I love messing around with AI. Mostly, I use it to build Discord&nbsp;bots.
+    </h2>
+
+    <ul class="bots__grid" role="list" data-tiles>
+      <li class="tile tile--patchr">
+        <div class="tile__media" data-parallax>
+          <Picture
+            src={patchrRender}
+            formats={['avif', 'webp']}
+            widths={[640, 1000, 1400]}
+            sizes="(max-width: 767px) 92vw, 46vw"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div class="tile__body">
+          <h3 class="tile__title">Patchr</h3>
+          <p class="tile__text">My public bot. It posts clean patch notes to your Discord server.</p>
+          <a class="btn" href="/patchr/">Meet Patchr</a>
+        </div>
+      </li>
+
+      <li class="tile tile--insko">
+        <div class="tile__media tile__media--icon" data-parallax>
+          <Image class="tile__avatar" src={inskoAvatar} alt="" width={280} height={280} densities={[1, 2]} loading="lazy" />
+        </div>
+        <div class="tile__body">
+          <h3 class="tile__title">Insko Bot</h3>
+          <p class="tile__text">Built for the Insko community.</p>
+          <ExternalLink class="btn btn--glass" href="https://inskobot.me">inskobot.me</ExternalLink>
+        </div>
+      </li>
+
+      <li class="tile tile--ai">
+        <div class="prompt" data-prompt aria-hidden="true">
+          <p class="prompt__label">Me, to an AI</p>
+          <p class="prompt__bubble">
+            <span data-prompt-text>make a Discord bot that posts patch notes</span><span class="prompt__caret"></span>
+          </p>
+        </div>
+        <div class="tile__body">
+          <h3 class="tile__title">Built with AI</h3>
+          <p class="tile__text">Every bot here started as me messing around with AI.</p>
+        </div>
+      </li>
+
+      <li class="tile tile--github">
+        <Icon name="github" class="tile__glyph" />
+        <div class="tile__body">
+          <h3 class="tile__title">The code is on GitHub.</h3>
+          <p class="tile__text">Patchr is open source. Have a look around.</p>
+          <ExternalLink class="btn btn--ink" href="https://github.com/anthonyf2312">@anthonyf2312</ExternalLink>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>

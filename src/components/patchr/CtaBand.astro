@@ -1,0 +1,18 @@
+---
+import { invite } from '../../data/patchr/links';
+import ExternalLink from '../ExternalLink.astro';
+import Icon from '../Icon.astro';
+import PatchrMark from '../PatchrMark.astro';
+---
+
+<section class="cta section" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta__band" data-cta>
+      <PatchrMark class="cta__mark" />
+      <h2 class="p-h2" id="cta-title" data-reveal="lines">Add Patchr to your server.</h2>
+      <span class="magnetic" data-magnetic>
+        <ExternalLink class="btn" href={invite} arrow={false}><Icon name="discord" />Add to Discord</ExternalLink>
+      </span>
+    </div>
+  </div>
+</section>

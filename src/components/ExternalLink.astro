@@ -1,0 +1,20 @@
+---
+// Every off-site link: opens in a new tab and says so to screen readers.
+import Icon from './Icon.astro';
+
+interface Props {
+  href: string;
+  class?: string;
+  /** Show the ↗ arrow after the text. */
+  arrow?: boolean;
+  [attr: string]: unknown;
+}
+
+const { href, class: className, arrow = true, ...rest } = Astro.props;
+---
+
+<a href={href} class={className} target="_blank" rel="noopener" {...rest}
+  ><slot />{arrow && <Icon name="arrow-up-right" class="ext-arrow" />}<span class="visually-hidden">
+    (opens in a new tab)</span
+  ></a
+>

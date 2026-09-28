@@ -2,7 +2,7 @@
 // PatchrVersion.astro re-checks in the browser, so a new release shows before the next deploy.
 
 /** Used only if GitHub can't be reached during the build. */
-const fallbackTag = 'v1.1.0';
+const fallbackTag = 'v1.2.0';
 
 export const latestReleaseApi = 'https://api.github.com/repos/anthonyf2312/patchr/releases/latest';
 

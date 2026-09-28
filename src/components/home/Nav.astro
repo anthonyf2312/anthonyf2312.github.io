@@ -1,0 +1,33 @@
+---
+import ThemeToggle from '../ThemeToggle.astro';
+
+interface Props {
+  isHome?: boolean;
+}
+
+const { isHome = false } = Astro.props;
+const base = isHome ? '' : '/';
+const links = [
+  { href: `${base}#bots`, label: 'Bots' },
+  { href: `${base}#f1`, label: 'F1' },
+  { href: `${base}#ms`, label: 'MS' },
+];
+---
+
+<header class="nav" data-nav>
+  <div class="container nav__inner">
+    <a class="nav__brand" href={isHome ? '#top' : '/'}>Anthony</a>
+    <nav aria-label="Sections">
+      <ul class="nav__links" role="list">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <ThemeToggle storageKey="theme" />
+  </div>
+</header>
